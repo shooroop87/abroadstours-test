@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{# SEO блоки #}
+{% block title %}{% trans "Abroads Tours - A Bold Guide To Bernina Express Tour From Milan" %}{% endblock %}
+
+{# Основной контент #}
+{% block content %}
+    {% include 'blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html' %}
+{% endblock %}

@@ -1,0 +1,300 @@
+{% load static %}
+{% load i18n %}
+<section class="layout-pt-xl">
+      <div data-anim-wrap class="container">
+        <div data-anim-child="slide-up" class="row justify-between items-end y-gap-10">
+          <div class="col-auto">
+            <h2 class="text-30 md:text-24">{% trans "Our tours" %}</h2>
+            <p>{% trans "Your reliable partner in organizing unforgettable trips. Let the journey begin!" %}</p>
+          </div>
+          <div class="col-auto">
+              <span>🏆 {% trans "We are the best-rated for day trips from Milan on the internet" %}</span>
+          </div>
+        </div>
+
+        <div class="row y-gap-30 pt-40 sm:pt-20 mobile-css-slider -w-300">
+
+          <div data-anim-child="slide-up delay-1" class="col-lg-4 col-md-6">
+            <a href="{% url 'alba_barolo_tour' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__badge">{% trans "Very popular" %}</div>
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/01alba388x288.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Alba, Piemonte, Italy" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{% trans "Alba, UNESCO Castle & Barolo Wine Tasting Tour from Milan. Small Group" %}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.95 (5)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "10 hours" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">169€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div data-anim-child="slide-up delay-2" class="col-lg-4 col-md-6">
+            <a href="{% url 'barolo_barbaresco_from_milan' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/02barolo388x288_v2.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Alba, Piemonte, Italy" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{% trans "Barolo & Barbaresco Wine tasting from Milan. Visit Alba, Birthplace of Nutella" %}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.8 (269)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "10 hours" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">109€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div data-anim-child="slide-up delay-3" class="col-lg-4 col-md-6">
+            <a href="{% url 'como_city_walking_tour' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/03como388x288.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Como, Lombardia, Italy" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{% trans "Best of Como: Walking Tour & 1-Hour Boat Cruise. Morning Schedule – Less Crowded Time" %}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.8 (269)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "3 hours" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">65€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div data-anim-child="slide-up delay-4" class="col-lg-4 col-md-6">
+            <a href="{% url 'kick_off_walking_tour_in_milano' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/04kick388x288.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Milan, Lombardia, Italy" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{% trans "Kick off walking tour in Milano – Experience history, culture, and charm in just a few hours" %}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.8 (269)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "2 hours 30 min" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">45€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div data-anim-child="slide-up delay-5" class="col-lg-4 col-md-6">
+            <a href="{% url 'lake_como_and_lugano_tour' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/05top388x288.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Como/Lugano, Italy/Switzerland" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  {% trans "Lake Como and Lugano Small Group Tour from Milan with Scenic Views" %}
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.96 (1056)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "10 hours" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">129€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div data-anim-child="slide-up delay-6" class="col-lg-4 col-md-6">
+            <a href="{% url 'bellagio_varenna_tour' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/06visit388x288.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Bellgaio/Varenna, Lombardia, Italy" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  {% trans "Lake Como, Bellagio & Bellano with boat cruise Small Group Tour from Milan" %}
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.8 (269)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "10 hours" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">129€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div data-anim-child="slide-up delay-7" class="col-lg-4 col-md-6">
+            <a href="{% url 'lake_como_lugano_morcote_tour' %}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12  -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  <img src="{% static 'img/tours/00_bg_general/07lugano388x288.webp' %}" alt="{% trans 'image' %}" class="img-ratio rounded-12" loading="lazy">
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% trans "Como/Lugano, Italy/Switzerland" %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  {% trans "From Milan: Lake Como and Lugano tour. Morcote, Lugano & Bellagio Day Trip" %}
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">4.8 (269)</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {% trans "10 hours" %}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">139€</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+        </div> <!-- Закрывающий тег для row mobile-css-slider -->
+      </div> <!-- Закрывающий тег для container -->
+</section> <!-- Закрывающий тег для section -->

@@ -1,0 +1,494 @@
+{% load static %}
+{% block content %}
+
+    <div data-anim="fade" class="container">
+      <div class="row justify-between py-30 mt-80">
+        <div class="col-auto">
+  <a href="{% url 'index' %}">Home</a> > <a href="{% url 'tours' %}">Tours</a> > <a href="{% url 'como_tours' %}">Como Tours</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="">
+      <div data-anim-wrap class="container">
+        <div data-anim-child="slide-up" class="row y-gap-20 justify-between items-end">
+          <div class="col-auto">
+            <div class="row x-gap-10 y-gap-10 items-center">
+              <div class="col-auto">
+                <button class="button -accent-1 text-14 py-5 px-15 bg-accent-1-05 text-accent-1 rounded-200">Bestseller</button>
+              </div>
+              <div class="col-auto">
+                <button class="button -accent-1 text-14 py-5 px-15 bg-light-1 rounded-200">Free cancellation</button>
+              </div>
+            </div>
+
+            <h2 class="text-40 sm:text-30 lh-14 mt-20">
+              All the Lake Como tours from Milan<br>
+            </h2>
+
+            <div class="row x-gap-20 y-gap-20 items-center pt-20">
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <div class="d-flex x-gap-5 pr-10">
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                  </div>
+                  4.8 (269)
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <i class="icon-pin text-16 mr-5"></i>
+                  Como, Lombardy, Italy
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <svg viewBox="0 0 24 24" width="22px" height="22px" class="d Vb UmNoP" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="m14.232 4.13-2.603-2.134L9.037 4.13l-3.358-.195-.848 3.253L2 8.987l1.227 3.142L2 15.26l2.832 1.813.849 3.244 3.357-.195 2.592 2.133 2.603-2.133 3.358.195.849-3.244 2.832-1.812-1.227-3.13 1.227-3.143-2.833-1.8-.847-3.253zm-3.62 11.833 5.195-5.196-1.414-1.414-3.784 3.784-1.753-1.745-1.412 1.417z"></path></svg>
+                  Recommended by 96% of travelers
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div data-anim-child="slide-up delay-2" class="tourSingleGrid -type-1 mt-30">
+          <div class="tourSingleGrid__grid mobile-css-slider-2">
+            <img src="{% static 'img/tours/08all/01all.webp' %}" alt="image">
+            <img src="{% static 'img/tours/08all/02all.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/08all/03all.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/08all/04all.webp' %}" alt="image" loading="lazy">
+          </div>
+
+          <div class="tourSingleGrid__button">
+            <a href="{% static 'img/tours/08all/01all.webp' %}" class="js-gallery" data-gallery="gallery1">
+              <span class="button -accent-1 py-10 px-20 rounded-200 bg-dark-1 lh-16 text-white">See all photos</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout-pt-md js-pin-container">
+      <div class="container">
+        <div class="row y-gap-30 justify-between">
+          <div class="col-lg-8">
+            <div class="row y-gap-20 justify-between items-center layout-pb-md">
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-clock"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Duration</div>
+                    <div class="text-14 text-light-2 lh-16">10 hours</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-teamwork"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Group Size</div>
+                    <div class="text-14 text-light-2 lh-16">up to 19 people</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-mountain"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Tour type</div>
+                    <div class="text-14 text-light-2 lh-16">Como Tours</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-translate"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Languages</div>
+                    <div class="text-14 text-light-2 lh-16">English only</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <h2 class="text-30">Tour Highlights</h2>
+
+<p class="mt-20">
+  🌊 Escape Milan for a relaxing day among the lakes and mountains. Our carefully curated Lake Como tours take you to the most beautiful towns and hidden gems, without the stress of large crowds or rushed schedules.
+</p>
+
+<br>
+
+<p>
+  🛶 Cruise across the serene waters of Lake Como with a small group. Visit the iconic towns of Bellagio and Varenna, discover the hidden Bellano Gorge, or cross into Switzerland for chocolate tasting and charming alpine villages.
+</p>
+
+<br>
+
+<p>
+  🍝 Enjoy real Italian cuisine in family-run restaurants far from the tourist traps. Whether you're strolling through lakeside promenades or exploring peaceful Swiss villages, every moment is designed for comfort, authenticity, and beauty.
+</p>
+
+<br>
+
+<p>
+  👥 Choose the perfect tour for your style: small groups (12 guests max) for a more intimate vibe, or medium groups (up to 30) for great value and community feel — always in English only, never bilingual or overcrowded.
+</p>
+
+<br>
+
+<p>
+  ✨ With scenic routes designed to beat the crowds and direct booking pricing, our tours are exactly what we would book for ourselves — and often do.
+</p>
+
+<h3 class="text-20 fw-500 mt-20">Additional Information</h3>
+<ul class="ulList mt-20">
+  <li>🎁 Promo Code Offer</li>
+  <li>💬 Use Youtube for 15% OFF</li>
+  <li>👥 4+ people? Use Direct20 code</li>
+  <li>🕒 Reserve now, pay 48h before the tour</li>
+  <li>✅ Final price after discount: €109–€129</li>
+</ul>
+
+<div class="accordion -simple row y-gap-20 mt-30 js-accordion">
+  <div class="col-12">
+    <div class="accordion__item px-20 py-15 border-1 rounded-12">
+      <div class="accordion__button d-flex items-center justify-between">
+        <div class="button text-16 text-dark-1">Still Not Convinced? See Us in Action!</div>
+        <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+          <i class="icon-plus text-13"></i>
+          <i class="icon-minus text-13"></i>
+        </div>
+      </div>
+      <div class="accordion__content">
+        <div class="pt-20">
+          <p>We’re a licensed, insured Italian tour operator with years of experience and hundreds of five-star reviews. No middlemen, no surprises — just beautifully designed tours with expert guides who love what they do.</p>
+          <ul class="mt-20">
+            <li>📽 See the real difference — no filters, just facts</li>
+            <li>🎥 Watch our <a href="https://www.youtube.com/channel/UCgnbvG0m5WGgEaw164Cj-ig" target="_blank" rel="noopener">YouTube videos</a> to compare the best and worst Lake Como tours</li>
+            <li>📸 Follow <a href="https://www.instagram.com/abroads_tours/" target="_blank" rel="noopener">our Instagram</a> for behind-the-scenes stories</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4 class="text-20 fw-500 mt-20">Watch and see why travelers say this is the best Lake Como experience from Milan</h4>
+
+<section data-anim="slide-up" class="layout-pt-sm layout-pb-sm is-in-view">
+  <div class="video relative container" style="position: relative; aspect-ratio: 16/9;">
+    <div class="video__bg" style="position: absolute; inset: 0;">
+
+      <!-- Фоновое изображение -->
+      <img src="{% static 'img/mainpage/01mainpage_video.webp' %}"
+           alt="image"
+           class="rounded-12"
+           style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+
+      <!-- Затемнение -->
+      <div class="video__overlay"
+           style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 2;"></div>
+
+      <!-- Кнопка Play -->
+      <div class="play-button-wrapper"
+           style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3;">
+        <button id="play-video-btn"
+                style="background: none; border: none; cursor: pointer;">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="29" stroke="white" stroke-width="2"/>
+            <polygon points="24,20 40,30 24,40" fill="white"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Видео -->
+      <div class="video__iframe-wrapper"
+           style="display: none; position: absolute; inset: 0; width: 100%; height: 100%;">
+        <iframe id="youtube-player"
+                width="100%" height="100%" frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Скрипт -->
+<script>
+  document.getElementById("play-video-btn").addEventListener("click", function () {
+    const videoContainer = this.closest(".video");
+    const iframeWrapper = videoContainer.querySelector(".video__iframe-wrapper");
+    const iframe = videoContainer.querySelector("#youtube-player");
+    const img = videoContainer.querySelector(".video__bg > img");
+    const overlay = videoContainer.querySelector(".video__overlay");
+    const button = this;
+
+    iframe.src = "https://www.youtube.com/embed/JyJqpm5rVUM";
+    iframeWrapper.style.display = "block";
+    if (img) img.style.display = "none";
+    if (overlay) overlay.style.display = "none";
+    button.style.display = "none";
+  });
+</script>
+<h4 class="text-20 fw-500 mt-20">Our promise for Lake Como tours booked directly on our website:</h4>
+<ul class="ulList mt-20">
+  <li>👥 Small to medium groups only — 12 to 30 people max</li>
+  <li>💬 English-only tours — no bilingual delays</li>
+  <li>💸 Best price guarantee with no hidden fees</li>
+  <li>🕒 Free cancellation up to 48 hours before departure</li>
+  <li>🌍 Real towns, real food, real experiences — no tourist traps</li>
+</ul>
+
+<p class="mt-20">
+  Let us take care of the logistics while you focus on soaking in the lake views, sipping espresso by the shore, and experiencing Lake Como the way it’s meant to be — local, slow, and stunning.
+</p><div class="line mt-40 mb-40"></div>
+
+            <h2 class="text-30">What's included</h2>
+
+<div class="row x-gap-130 y-gap-20 pt-20">
+  <div class="col-lg-6">
+    <div class="y-gap-15">
+      <div class="d-flex">
+        <i class="icon-check flex-center text-10 size-24 rounded-full text-green-2 bg-green-1 mr-15"></i>
+        Transport by express train or minivan (tour-dependent)
+      </div>
+      <div class="d-flex">
+        <i class="icon-check flex-center text-10 size-24 rounded-full text-green-2 bg-green-1 mr-15"></i>
+        English-speaking guide (no bilingual tours)
+      </div>
+      <div class="d-flex">
+        <i class="icon-check flex-center text-10 size-24 rounded-full text-green-2 bg-green-1 mr-15"></i>
+        Small/medium group (max 12–30 people)
+      </div>
+      <div class="d-flex">
+        <i class="icon-check flex-center text-10 size-24 rounded-full text-green-2 bg-green-1 mr-15"></i>
+        Lake cruise with uncrowded boats
+      </div>
+      <div class="d-flex">
+        <i class="icon-check flex-center text-10 size-24 rounded-full text-green-2 bg-green-1 mr-15"></i>
+        Visits to 2–3 towns (Bellagio, Varenna, Lugano, etc.)
+      </div>
+      <div class="d-flex">
+        <i class="icon-check flex-center text-10 size-24 rounded-full text-green-2 bg-green-1 mr-15"></i>
+        Hidden gems (e.g. Bellano Gorge)
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="y-gap-15">
+      <div class="d-flex">
+        <i class="icon-cross flex-center text-10 size-24 rounded-full text-red-3 bg-red-4 mr-15"></i>
+        Hotel pickup/drop-off
+      </div>
+      <div class="d-flex">
+        <i class="icon-cross flex-center text-10 size-24 rounded-full text-red-3 bg-red-4 mr-15"></i>
+        Lunch (local tips from guide provided)
+      </div>
+      <div class="d-flex">
+        <i class="icon-cross flex-center text-10 size-24 rounded-full text-red-3 bg-red-4 mr-15"></i>
+        Wine tasting (available in Langhe tour)
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+            
+
+            
+
+
+            <div class="line mt-60 mb-60"></div>
+
+
+            <h2 class="text-30">Important information</h2>
+
+            <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
+
+              <div class="col-12">
+                <div class="accordion__item px-20 py-15 border-1 rounded-12">
+                  <div class="accordion__button d-flex items-center justify-between">
+                    <div class="button text-16 text-dark-1">What to bring</div>
+
+                    <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+                      <i class="icon-plus text-13"></i>
+                      <i class="icon-minus text-13"></i>
+                    </div>
+                  </div>
+
+                  <div class="accordion__content">
+  <div class="pt-20">
+    <p>✅ Comfortable walking shoes — some towns have cobblestones or mild uphill streets</p>
+    <p>☀️ Sunglasses, hat, and sunscreen in summer</p>
+    <p>🌦 Light jacket or umbrella — the lake weather can change quickly</p>
+    <p>📸 Phone or camera for amazing photo stops</p>
+  </div>
+</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="accordion__item px-20 py-15 border-1 rounded-12">
+                  <div class="accordion__button d-flex items-center justify-between">
+                    <div class="button text-16 text-dark-1">Meeting Point</div>
+
+                    <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+                      <i class="icon-plus text-13"></i>
+                      <i class="icon-minus text-13"></i>
+                    </div>
+                  </div>
+
+                  <div class="accordion__content">
+  <div class="pt-20">
+    <p>🕘 Departure around 9:00 AM from central Milan (exact time varies by tour)</p>
+    <p>🚉 Most tours depart from Milano Centrale or Porta Garibaldi train station</p>
+    <p>📍 Meeting point details, including Google Maps links, are sent after booking</p>
+    <p>⏱️ Please arrive 10 minutes early — we depart on time!</p>
+  </div>
+</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="accordion__item px-20 py-15 border-1 rounded-12">
+                  <div class="accordion__button d-flex items-center justify-between">
+                    <div class="button text-16 text-dark-1">Cancellation Policy</div>
+
+                    <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+                      <i class="icon-plus text-13"></i>
+                      <i class="icon-minus text-13"></i>
+                    </div>
+                  </div>
+
+                  <div class="accordion__content">
+                    <div class="pt-20">
+                      <p class="mt-20"><b>📌 Truly Unique Booking Terms</b></p>
+                      <p class="mt-20">We only win if you’re happy — so we do everything to deliver exactly what we promised.But if something goes wrong?</p>
+                      <p class="mt-20"><b>We Keep Our Promises — Or You Get Paid.</b></p>
+                      <p class="mt-20">Too many tour companies promise the world… then give you a poor experience and no refund.</p>
+                      <p class="mt-20"><b>Not us.</b> If the tour is not what we promised, we’ll refund <b>50% of your payment</b>. No excuses.</p>
+
+                      <p class="mt-20">👉 The only thing we ask:</p>
+                      <p class="mt-20">Show us what went wrong. Give us <b>clear proof</b> of what didn’t match our promise. Just saying “I didn’t like it” <b>is not enough.</b></p>
+                      <p class="mt-20">If we mess up, we lose money — and that’s why we make sure to get it right.</p>
+                      <p class="mt-20">We take the risk.</p>
+                      <p class="mt-20"><b>You just enjoy your day.</b></p>
+
+                      <p class="mt-20"><b>😌 Super Flexible Cancellation policy – Because Life Happens</b></p>
+
+<p class="mt-20">✔ Cancel <b></b>up to 24 hours before</b> → <B>Get 100% refund</B></p>
+<p class="mt-20">✔ Cancel <b>12–24 hours before</b> → Get <B>50% refund</B></p>
+<p class="mt-20">✔ No-show? You still get <b>25% refund</b> — if you booked directly on our website<br>
+(We reward travelers who trust us.)</p>
+<p class="mt-20">❌ Booked through a third-party site?<br>
+Miss the tour or cancel late → <b>No refund</b></p>
+<p class="mt-20">👉 We offer the best terms in the industry — don’t risk booking somewhere else.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+            <div class="line mt-60 mb-60"></div>
+  
+          </div>
+
+<div class="col-lg-4">
+            <div class="d-flex justify-end js-pin-content">
+              <div class="tourSingleSidebar">
+                {% include 'tours/booking-code/booking2.html' %}
+              </div>
+            </div>
+          </div>
+<!-- Мобильный фиксированный бар бронирования -->
+    <div class="booking-cta-wrapper only-mobile">
+        <div class="booking-cta-content">
+            <div class="booking-price-text">109€ per adult</div>
+            <button id="openBooking" type="button" class="booking-cta-button">
+                <span>Check availability</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="booking-modal__header">
+            <button id="closeBooking" class="button -sm -outline-accent-1">Close</button>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
+            {% include 'tours/booking-code/booking2.html' %}
+        </div>
+    </div>
+
+    <script>
+        // Функционал мобильного модального окна
+        document.getElementById("openBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.add("open");
+            document.body.classList.add("modal-open");
+        });
+
+        document.getElementById("closeBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.remove("open");
+            document.body.classList.remove("modal-open");
+        });
+
+        // Закрытие модалки по клику вне области (опционально)
+        document.getElementById("bookingModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this.classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+
+        // Закрытие модалки по нажатию Escape
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                document.getElementById("bookingModal").classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+    </script>
+        </div>
+      </div>
+    </section>
+
+    {% include 'includes/similar_experiences.html' %}
+{% endblock %}

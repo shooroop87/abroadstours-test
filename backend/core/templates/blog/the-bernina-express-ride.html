@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{# SEO блоки #}
+{% block title %}{% trans "Watch the Bernina Express ride 🎞 - Abroads Tours" %}{% endblock %}
+
+{# Основной контент #}
+{% block content %}
+    {% include 'blog/content/the-bernina-express-ride-content.html' %}
+{% endblock %}

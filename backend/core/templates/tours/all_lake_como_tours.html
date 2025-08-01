@@ -1,0 +1,55 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{# SEO блоки для страницы тура #}
+{% block title %}{{ tour.title }} - Abroads Tours{% endblock %}
+{% block description %}{{ tour.description|truncatewords:25 }}{% endblock %}
+{% block keywords %}{{ tour.title }}, тур, путешествие, {{ tour.destination }}, экскурсия{% endblock %}
+
+{# Open Graph для соцсетей #}
+{% block og_title %}{{ tour.title }} - Abroads Tours{% endblock %}
+{% block og_description %}{{ tour.description|truncatewords:20 }}{% endblock %}
+{% block og_image %}{% if tour.main_image %}{{ tour.main_image.url }}{% else %}{% static 'images/tour-default.jpg' %}{% endif %}{% endblock %}
+
+{# Дополнительные CSS только для страницы тура #}
+{% block extra_css %}
+{% endblock %}
+
+{# Дополнительный класс для body (если нужен) #}
+{% block body_class %} class="tour-detail-page"{% endblock %}
+
+{# Основной контент страницы тура #}
+{% block content %}
+    {# Боковая панель фильтров (дополнительная к основному sidebar) #}
+    <div class="tourPagesSidebar" data-x="tourPagesSidebar" data-x-toggle="-is-active">
+        <div class="tourPagesSidebar__overlay"></div>
+        <div class="tourPagesSidebar__content">
+            <div class="tourPagesSidebar__header d-flex items-center justify-between">
+                <div class="text-20 fw-500">Все фильтры</div>
+                <button class="button -dark-1 size-40 rounded-full bg-light-1" data-x-click="tourPagesSidebar">
+                    <i class="icon-cross text-10"></i>
+                </button>
+            </div>
+            {# Здесь будет содержимое фильтров #}
+        </div>
+    </div>
+
+    {# Хедер для страницы тура #}
+
+    {# Основной контент тура #}
+    {% include 'tours/content/all_lake_como_tours_content.html' %}
+
+{% endblock %}
+
+{# Дополнительные скрипты только для страницы тура #}
+{% block extra_js %}
+<script>
+  setTimeout(function() {
+    var s = document.createElement('script');
+    s.src = "https://abroadstours82.rezdy.com/pluginJs";
+    s.defer = true;
+    s.type = "text/javascript";
+    document.head.appendChild(s);
+  }, 3500);
+</script>
+{% endblock %}

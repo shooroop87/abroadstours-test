@@ -1,0 +1,11 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{# SEO блоки #}
+{% block title %}{% trans "Lake Como Day Trip from Milan: Insider's Guide - Abroads Tours" %}{% endblock %}
+
+{# Основной контент #}
+{% block content %}
+    {% include 'blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html' %}
+{% endblock %}

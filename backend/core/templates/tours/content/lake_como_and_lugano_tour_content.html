@@ -1,0 +1,338 @@
+{% load static %}
+{% block content %}
+
+    <div data-anim="fade" class="container">
+      <div class="row justify-between py-30 mt-80">
+        <div class="col-auto">
+  <a href="{% url 'index' %}">Home</a> > <a href="{% url 'tours' %}">Tours</a> > <a href="{% url 'como_tours' %}">Como Tours</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="">
+      <div data-anim-wrap class="container">
+        <div data-anim-child="slide-up" class="row y-gap-20 justify-between items-end">
+          <div class="col-auto">
+            <div class="row x-gap-10 y-gap-10 items-center">
+              <div class="col-auto">
+                <button class="button -accent-1 text-14 py-5 px-15 bg-accent-1-05 text-accent-1 rounded-200">Reserve now, pay 48h before</button>
+              </div>
+              <div class="col-auto">
+                <button class="button -accent-1 text-14 py-5 px-15 bg-light-1 rounded-200">Free cancellation</button>
+              </div>
+            </div>
+
+            <h2 class="text-40 sm:text-30 lh-14 mt-20">
+              Lake Como and Lugano<br>
+              Small Group Tour from Milan
+            </h2>
+
+            <div class="row x-gap-20 y-gap-20 items-center pt-20">
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <div class="d-flex x-gap-5 pr-10">
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                  </div>
+                  4.96 (<a href="#reviews">1056 reviews</a>)
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <i class="icon-pin text-16 mr-5"></i>
+                  Como, Lombardy, Italy
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <svg viewBox="0 0 24 24" width="22px" height="22px" class="d Vb UmNoP" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="m14.232 4.13-2.603-2.134L9.037 4.13l-3.358-.195-.848 3.253L2 8.987l1.227 3.142L2 15.26l2.832 1.813.849 3.244 3.357-.195 2.592 2.133 2.603-2.133 3.358.195.849-3.244 2.832-1.812-1.227-3.13 1.227-3.143-2.833-1.8-.847-3.253zm-3.62 11.833 5.195-5.196-1.414-1.414-3.784 3.784-1.753-1.745-1.412 1.417z"></path></svg>
+                  <a href="#reviews">Recommended by 96% of travelers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div data-anim-child="slide-up delay-2" class="tourSingleGrid -type-1 mt-30">
+          <div class="tourSingleGrid__grid mobile-css-slider-2">
+            <img src="{% static 'img/tours/05toprated/01top.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/05toprated/02top.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/05toprated/03top.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/05toprated/04top.webp' %}" alt="image" loading="lazy">
+          </div>
+
+          <div class="tourSingleGrid__button">
+            <a href="{% static 'img/tours/05toprated/01top.webp' %}" class="js-gallery" data-gallery="gallery1">
+              <span class="button -accent-1 py-10 px-20 rounded-200 bg-dark-1 lh-16 text-white">See all photos</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout-pt-md js-pin-container">
+      <div class="container">
+        <div class="row y-gap-30 justify-between">
+          <div class="col-lg-8">
+            <div class="row y-gap-20 justify-between items-center layout-pb-md">
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-clock"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Duration</div>
+                    <div class="text-14 text-light-2 lh-16">10 hours</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-teamwork"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Group Size</div>
+                    <div class="text-14 text-light-2 lh-16">up to 14 people</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-mountain"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Tour type</div>
+                    <div class="text-14 text-light-2 lh-16">Como Tours</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-translate"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Languages</div>
+                    <div class="text-14 text-light-2 lh-16">English only</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+<h2 class="text-30">Tour Highlights</h2>
+    <p class="urgency-message mt-20">
+      Limited spots available! Reserve your place now with zero upfront payment — pay only 48 hours before the tour. Act fast before we sell out!
+    </p>
+            <ul class="ulList mt-20">
+              <li>👥 Very small group - Max 14 people</li>
+              <li>🗣 No bilingual tours — English-only experience for clarity and connection</li>
+              <li>🚆 Fast comfortable Transport from Milan included</li>
+              <li>📍 Meet at Centrale FS (10 minutes subway ride from the Duomo square)</li>
+              <li>🏞 Visit two countries and two lakes in one unforgettable day — explore Lake Como in Italy and Lake Lugano in Switzerland</li>
+              <li>✅ No tourist traps — only real local experiences</li>
+              <li>🕐 The Best-Rated Lake Como & Lugano Tour from Milan on Tripadvisor, Viator, and GetYourGuide</li>
+            </ul>
+<h2 class="text-30 mt-20">Why This Tour Is Unique</h2>
+<p class="mt-20">Experience two countries and their breathtaking lakes in a single day, beyond the typical tourist trails.</p>
+<ul class="ulList mt-20">
+  <li>Explore the charming lakeside town of Como and its historic center</li>
+  <li>Discover peaceful Lugano, Switzerland’s Italian-speaking lakeside gem</li>
+  <li>Enjoy a scenic boat ride across Lake Como with spectacular views</li>
+  <li>No bilingual delays — our tours are in English only</li>
+  <li>Small groups mean more personal attention and insider stories</li>
+  <li>Guided by passionate local experts, not mass-tour operators</li>
+</ul>
+<div class="line mt-40 mb-40"></div>
+<h2 class="text-30">What You’ll Experience</h2>
+
+<h3 class="text-20 fw-500 mt-20">Como</h3>
+<p class="mt-20">Hop on a comfortable Swiss express train in Milan and reach the charming town of Como in just 40 minutes. Start your day with a relaxed walk through Como’s picturesque old town, where cobbled streets open into elegant piazzas, a stunning historic cathedral, and a peaceful lakeside promenade.</p>
+<p class="mt-20">Feel the gentle breeze off the lake as you soak in breathtaking views, and let your guide share captivating stories that bring the city's rich history and timeless beauty to life — making every moment feel like a dream.</p>
+
+<h3 class="text-20 fw-500 mt-20">Lake Como Boat Cruise</h3>
+<p class="mt-20">Board a scenic boat and cruise the serene waters of Lake Como. Take in panoramic views of beautiful villas, lush gardens, and majestic mountains that surround the lake. Glide past charming lakeside villages with colorful houses and quaint streets, each offering its own unique charm.</p>
+<p class="mt-20">Enjoy the view of celebrity villas — including the former Versace villa, the villa featured in the Ocean’s Twelve filming, and the villa where John Legend got married.</p>
+
+<h3 class="text-20 fw-500 mt-20">Lugano, Switzerland</h3>
+<p class="mt-20">Cross the border into Switzerland to visit Lugano, a beautiful city framed by majestic mountains. Wander along the peaceful lakeside promenade, where palm trees sway and the water sparkles in the sunlight. Explore charming streets filled with stylish shops and cozy cafés.</p>
+<p class="mt-20">Don’t miss the chance to taste some of the world’s finest Swiss chocolate — a true delight in this unique Swiss-Italian city with Italian charm.</p>
+
+<h3 class="text-20 fw-500 mt-20">Lake Lugano</h3>
+<p class="mt-20">Lake Lugano is a beautiful, calm lake surrounded by green mountains and small towns. The clear blue water is perfect for relaxing and enjoying the peaceful view.</p>
+<p class="mt-20">Along the shore, you’ll see pretty villas, gardens, and small cafés where you can enjoy a coffee while watching boats pass by. Walking by the lake or sitting in the sun, Lake Lugano feels like a quiet, lovely place to rest and enjoy nature in a mix of Swiss and Italian style.</p>
+
+<h3 class="text-20 fw-500 mt-20">Free Time & Local Food Suggestions</h3>
+<p class="mt-20">You’ll have free time in both Como and Lugano to explore at your own pace, grab a coffee, or enjoy a meal. Your guide will happily recommend authentic local spots for an unforgettable culinary experience.</p>
+
+<h3 class="text-20 fw-500 mt-20">Stop by a Charming Village — A True Hidden Gem</h3>
+<p class="mt-20">Only on our tours will you visit a real, non-touristy Lake Como village — the kind most travelers never get to see. It’s a quiet, beautiful spot where you can truly experience the authentic life around the lake.</p>
+
+
+<div class="row y-gap-30 pt-30">
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/05toprated/07top.webp' %}" alt="Lake Como small group tour experience" class="rounded-8" loading="lazy">
+          </div>
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/05toprated/08top.webp' %}" alt="Scenic boat ride on Lake Como" class="rounded-8" loading="lazy">
+          </div>
+        </div>
+
+<div class="row y-gap-30 pt-30">
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/05toprated/09top.webp' %}" alt="Lake Como small group tour experience" class="rounded-8" loading="lazy">
+          </div>
+        </div>
+
+     
+            <div class="line mt-40 mb-40"></div>
+
+            <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
+
+             <div class="col-12">
+    <div class="accordion__item px-20 py-15 border-1 rounded-12">
+      <div class="accordion__button d-flex items-center justify-between">
+        <div class="button text-16 text-dark-1">Inclusions</div>
+        <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+          <i class="icon-plus text-13"></i>
+          <i class="icon-minus text-13"></i>
+        </div>
+      </div>
+      <div class="accordion__content">
+        <div class="pt-20">
+            <ul class="ulList mt-20">
+    <li>Round-trip transportation from Milan by comfortable swiss express train</li>
+    <li>Expert English-speaking local guide</li>
+    <li>Skip the line boat tickets on Lake Como</li>
+    <li>Walking tours in Como and Lugano</li>
+    <li>Free time to explore and enjoy local food suggestions</li>
+    <li>Small group experience for personalized service</li>
+  </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="accordion__item px-20 py-15 border-1 rounded-12">
+      <div class="accordion__button d-flex items-center justify-between">
+        <div class="button text-16 text-dark-1">Exclusions</div>
+        <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+          <i class="icon-plus text-13"></i>
+          <i class="icon-minus text-13"></i>
+        </div>
+      </div>
+      <div class="accordion__content">
+        <div class="pt-20">
+            <ul class="ulList mt-20">
+    <li>Meals and drinks</li>
+    <li>Hotel pickup or drop-off</li>
+  </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+            <div class="line mt-40 mb-40"></div>
+
+            <h2 class="text-30">Meeting Point</h2>
+
+            <p class="mt-20">📍 Milan Centrale FS – Piazza IV Novembre (main entrance)</p>
+
+            <p class="mt-20">🕘 Please arrive 10 minutes early</p>
+
+            <p class="mt-20"><a href="https://maps.google.com?q=Milan+Centrale+FS" target="_blank" rel="noopener noreferrer">Open in Google Maps</a></p>
+
+            <div class="line mt-40 mb-40"></div>
+
+
+          {% include 'tours/reviews/reviews1.html' %}
+          {% include 'tours/faqs/faq2.html' %}
+        
+          </div>
+          
+
+<div class="col-lg-4">
+            <div class="d-flex justify-end js-pin-content">
+              <div class="tourSingleSidebar">
+                {% include 'tours/booking-code/booking7.html' %}
+              </div>
+            </div>
+          </div>
+<!-- Мобильный фиксированный бар бронирования -->
+    <div class="booking-cta-wrapper only-mobile">
+        <div class="booking-cta-content">
+            <div class="booking-price-text">129€ per adult</div>
+            <button id="openBooking" type="button" class="booking-cta-button">
+                <span>Check availability</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="booking-modal__header">
+            <button id="closeBooking" class="button -sm -outline-accent-1">Close</button>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
+            {% include 'tours/booking-code/booking7.html' %}
+        </div>
+    </div>
+
+    <script>
+        // Функционал мобильного модального окна
+        document.getElementById("openBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.add("open");
+            document.body.classList.add("modal-open");
+        });
+
+        document.getElementById("closeBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.remove("open");
+            document.body.classList.remove("modal-open");
+        });
+
+        // Закрытие модалки по клику вне области (опционально)
+        document.getElementById("bookingModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this.classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+
+        // Закрытие модалки по нажатию Escape
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                document.getElementById("bookingModal").classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+    </script>
+        </div>
+      </div>
+    </section>
+
+    {% include 'includes/similar_experiences.html' %}
+{% endblock %}

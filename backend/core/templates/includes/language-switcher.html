@@ -1,0 +1,87 @@
+{% load static %}
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+{% with request.path as path %}
+    {% if path|slice:":4"|cut:'/' in 'fr,de,es,nl' %}
+        {% with path|slice:"3:" as stripped_path %}
+            <div class="headerDropdown js-form-dd">
+                <div class="headerDropdown__button" data-x-click="header-currency">
+                    {% if LANGUAGE_CODE == 'en' %}
+                        EN
+                    {% elif LANGUAGE_CODE == 'fr' %}
+                        FR
+                    {% elif LANGUAGE_CODE == 'de' %}
+                        DE
+                    {% elif LANGUAGE_CODE == 'es' %}
+                        ES
+                    {% elif LANGUAGE_CODE == 'nl' %}
+                        NL
+                    {% else %}
+                        {{ LANGUAGE_CODE|upper }}
+                    {% endif %}
+                    <i class="icon-chevron-down text-18"></i>
+                </div>
+
+                <div class="headerDropdown__content" data-x="header-currency" data-x-toggle="is-active">
+                    <div class="headerDropdown">
+                        <div class="headerDropdown__container">
+                            {% for code, name in LANGUAGES %}
+                                <div class="headerDropdown__item">
+                                    {% if code == 'en' %}
+                                        <a href="{{ stripped_path }}"
+                                           class="{% if LANGUAGE_CODE == code %}active{% endif %}">EN</a>
+                                    {% else %}
+                                        <a href="/{{ code }}{{ stripped_path }}"
+                                           class="{% if LANGUAGE_CODE == code %}active{% endif %}">{{ code|upper }}</a>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endwith %}
+    {% else %}
+        {% with path as stripped_path %}
+            <div class="headerDropdown js-form-dd">
+                <div class="headerDropdown__button" data-x-click="header-currency">
+                    {% if LANGUAGE_CODE == 'en' %}
+                        EN
+                    {% elif LANGUAGE_CODE == 'fr' %}
+                        FR
+                    {% elif LANGUAGE_CODE == 'de' %}
+                        DE
+                    {% elif LANGUAGE_CODE == 'es' %}
+                        ES
+                    {% elif LANGUAGE_CODE == 'nl' %}
+                        NL
+                    {% else %}
+                        {{ LANGUAGE_CODE|upper }}
+                    {% endif %}
+                    <i class="icon-chevron-down text-18"></i>
+                </div>
+
+                <div class="headerDropdown__content" data-x="header-currency" data-x-toggle="is-active">
+                    <div class="headerDropdown">
+                        <div class="headerDropdown__container">
+                            {% for code, name in LANGUAGES %}
+                                <div class="headerDropdown__item">
+                                    {% if code == 'en' %}
+                                        <a href="{{ stripped_path }}"
+                                           class="{% if LANGUAGE_CODE == code %}active{% endif %}">EN</a>
+                                    {% else %}
+                                        <a href="/{{ code }}{{ stripped_path }}"
+                                           class="{% if LANGUAGE_CODE == code %}active{% endif %}">{{ code|upper }}</a>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endwith %}
+    {% endif %}
+{% endwith %}

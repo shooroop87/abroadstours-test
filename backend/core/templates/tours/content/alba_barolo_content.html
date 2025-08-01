@@ -1,0 +1,369 @@
+{% load static %}
+{% block content %}
+
+    <div data-anim="fade" class="container">
+      <div class="row justify-between py-30 mt-80">
+        <div class="col-auto">
+  <a href="{% url 'index' %}">Home</a> > <a href="{% url 'tours' %}">Tours</a> > <a href="{% url 'wine_tours' %}">Wine Tours</a>
+        </div>
+      </div>
+    </div>
+
+    <section class="">
+      <div data-anim-wrap class="container">
+        <div data-anim-child="slide-up" class="row y-gap-20 justify-between items-end">
+          <div class="col-auto">
+            <div class="row x-gap-10 y-gap-10 items-center">
+              <div class="col-auto">
+                <button class="button -accent-1 text-14 py-5 px-15 bg-accent-1-05 text-accent-1 rounded-200">Reserve now, pay 48h before</button>
+              </div>
+              <div class="col-auto">
+                <button class="button -accent-1 text-14 py-5 px-15 bg-light-1 rounded-200">Free cancellation</button>
+              </div>
+            </div>
+
+            <h2 class="text-40 sm:text-30 lh-14 mt-20">
+              Alba, UNESCO Castle & Barolo Wine Tasting<br>
+              Tour from Milan
+            </h2>
+
+            <div class="row x-gap-20 y-gap-20 items-center pt-20">
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <div class="d-flex x-gap-5 pr-10">
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+
+                  </div>
+                  5.0 (<a href="#reviews">487 reviews</a>)
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <i class="icon-pin text-16 mr-5"></i>
+                  Alba, Piedmont, Italy
+                </div>
+              </div>
+
+              <div class="col-auto">
+                <div class="d-flex items-center">
+                  <svg viewBox="0 0 24 24" width="22px" height="22px" class="d Vb UmNoP" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="m14.232 4.13-2.603-2.134L9.037 4.13l-3.358-.195-.848 3.253L2 8.987l1.227 3.142L2 15.26l2.832 1.813.849 3.244 3.357-.195 2.592 2.133 2.603-2.133 3.358.195.849-3.244 2.832-1.812-1.227-3.13 1.227-3.143-2.833-1.8-.847-3.253zm-3.62 11.833 5.195-5.196-1.414-1.414-3.784 3.784-1.753-1.745-1.412 1.417z"></path></svg>
+                  <a href="#reviews">Recommended by 96% of travelers</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div data-anim-child="slide-up delay-2" class="tourSingleGrid -type-1 mt-30">
+          <div class="tourSingleGrid__grid mobile-css-slider-2">
+            <img src="{% static 'img/tours/02barolo/01_barolo.webp' %}" alt="image">
+            <img src="{% static 'img/tours/02barolo/02_barolo.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/02barolo/03_barolo.webp' %}" alt="image" loading="lazy">
+            <img src="{% static 'img/tours/02barolo/04_barolo.webp' %}" alt="image" loading="lazy">
+          </div>
+
+          <div class="tourSingleGrid__button">
+            <a href="{% static 'img/tours/02barolo/01_barolo.webp' %}" class="js-gallery" data-gallery="gallery1">
+              <span class="button -accent-1 py-10 px-20 rounded-200 bg-dark-1 lh-16 text-white">See all photos</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout-pt-md js-pin-container">
+      <div class="container">
+        <div class="row y-gap-30 justify-between">
+          <div class="col-lg-8">
+            <div class="row y-gap-20 justify-between items-center layout-pb-md">
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-clock"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Duration</div>
+                    <div class="text-14 text-light-2 lh-16">10 hours</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-teamwork"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Group Size</div>
+                    <div class="text-14 text-light-2 lh-16">Max 19 people</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-mountain"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Tour type</div>
+                    <div class="text-14 text-light-2 lh-16">Wine Tour</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-3 col-6">
+                <div class="d-flex items-center">
+                  <div class="flex-center size-50 rounded-12 border-1">
+                    <i class="text-20 icon-translate"></i>
+                  </div>
+
+                  <div class="ml-10">
+                    <div class="lh-16">Languages</div>
+                    <div class="text-14 text-light-2 lh-16">English only</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+<h2 class="text-30">Tour Highlights</h2>
+    <p class="urgency-message mt-20">
+      Limited spots available! Reserve your place now with zero upfront payment — pay only 48 hours before the tour. Act fast before we sell out!
+    </p>
+            <ul class="ulList mt-20">
+              <li>👥 Very small group – Max 19 people</li>
+              <li>🚌 Transport in private AC van from Milan included</li>
+              <li>📍 Meet at Centrale FS (10 minutes subway ride from the Duomo square)</li>
+              <li>✅ Sip six exquisite wines at a charming family-run winery nestled among breathtaking rolling hills</li>
+              <li>🕐 The most and best-rated wine tasting tour from Milan on Tripadvisor and GetYourGuide</li>
+            </ul>
+
+<h2 class="text-30 mt-20">Why This Tour Is Unique</h2>
+<p class="mt-20">Discover the real Italian wine country — far from crowds, clichés, and mass tourism.</p>
+<ul class="ulList mt-20">
+  <li>🏰 Step back in time – explore Alba's medieval charm and a UNESCO-listed castle</li>
+  <li>🚐 Hassle-free escape – easy day trip from Milan with expert local guides</li>
+  <li>⭐ Top-rated everywhere – loved on Tripadvisor, GetYourGuide, and Viator</li>
+  <li>🗣️ English only – no bilingual delays, no confusion</li>
+  <li>🤝 Real connections – personal stories, insider access, meaningful moments</li>
+  <li>🍷 Run by locals – no big corporations, just real people who love what they do</li>
+</ul>
+
+<div class="line mt-40 mb-40"></div>
+
+<h2 class="text-30">What You'll Experience</h2>
+
+<h3 class="text-20 fw-500 mt-20">🍫 Alba – Truffle Capital of the World</h3>
+<p class="mt-20">Discover Alba — the gastronomic heart of Piedmont, internationally renowned for its white truffles, artisanal chocolate, and premium hazelnuts.</p>
+<p class="mt-20">This isn't a place for tour buses or souvenir stalls. Alba is reserved, refined, and blissfully untouched by mass tourism — a destination that rewards those with a taste for authenticity and elegance.</p>
+<p class="mt-20">Meander through quiet, cobblestone streets framed by medieval towers and noble townhouses. Browse curated food boutiques, truffle specialists, and family-run pasticcerias that have perfected their craft for generations.</p>
+
+<h3 class="text-20 fw-500 mt-20">🍷 A Family-Run Winery with 6 Top Wines</h3>
+<p class="mt-20">Savor 6 exceptional wines — including the iconic Barolo — at a boutique, family-owned estate surrounded by the quiet beauty of the Langhe hills.</p>
+<p class="mt-20">This is not a commercial stop. It's an intimate, curated tasting experience hosted by the winemakers themselves — a family with deep roots in Barolo's terroir and traditions.</p>
+<p class="mt-20">You'll be welcomed as a guest, not a tourist. Each glass reveals the elegance, complexity, and passion that define Piedmont's finest reds — guided by people who live and breathe this land.</p>
+
+<h3 class="text-20 fw-500 mt-20">🏰 A UNESCO Castle & a Glass of Wine with a View</h3>
+<p class="mt-20">Step into Grinzane Cavour — a perfectly preserved 11th-century castle rising above the rolling vineyards of the Langhe.</p>
+<p class="mt-20">This UNESCO World Heritage Site isn't just a castle — it's a celebration of Piedmont's wine legacy. Inside, you'll find vaulted stone halls, noble history, and the region's oldest enoteca: a curated collection of Barolo and Barbaresco beneath centuries-old beams.</p>
+<p class="mt-20">Then comes the moment to pause. A hand-picked glass of wine, a quiet terrace, and panoramic views stretching across some of Italy's most prestigious vineyards.</p>
+
+<h3 class="text-20 fw-500 mt-20">🍽️ Taste Real Italian Food – The Way It's Meant to Be</h3>
+<p class="mt-20">In Alba, cuisine isn't a meal — it's heritage. Every dish tells a story, and every ingredient is a celebration of local excellence.</p>
+<p class="mt-20">This is the birthplace of the Slow Food movement, where white truffles are revered like diamonds and hazelnuts become culinary treasures. Forget the tourist menus and factory-made flavors — here, you'll enjoy seasonal, artisanal dishes crafted by chefs who treat cooking as an art.</p>
+
+<div class="row y-gap-30 pt-30">
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/02barolo/05_barolo_411x283.webp' %}" alt="Alba wine tour experience" class="rounded-8" loading="lazy">
+          </div>
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/02barolo/06_barolo_411x283.webp' %}" alt="Barolo wine tasting" class="rounded-8" loading="lazy">
+          </div>
+        </div>
+
+<div class="row y-gap-30 pt-30">
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/02barolo/07_barolo_411x283.webp' %}" alt="UNESCO Castle visit" class="rounded-8" loading="lazy">
+          </div>
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/02barolo/08_barolo_411x283.webp' %}" alt="Langhe vineyards" class="rounded-8" loading="lazy">
+          </div>
+        </div>
+
+<div class="row y-gap-30 pt-30">
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/02barolo/09_barolo_411x283.webp' %}" alt="Family winery" class="rounded-8" loading="lazy">
+          </div>
+          <div class="col-md-6">
+            <img src="{% static 'img/tours/02barolo/10_barolo_411x283.webp' %}" alt="Alba medieval streets" class="rounded-8" loading="lazy">
+          </div>
+        </div>
+
+            <div class="line mt-40 mb-40"></div>
+
+            <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
+
+             <div class="col-12">
+    <div class="accordion__item px-20 py-15 border-1 rounded-12">
+      <div class="accordion__button d-flex items-center justify-between">
+        <div class="button text-16 text-dark-1">What's Included</div>
+        <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+          <i class="icon-plus text-13"></i>
+          <i class="icon-minus text-13"></i>
+        </div>
+      </div>
+      <div class="accordion__content">
+        <div class="pt-20">
+            <ul class="ulList mt-20">
+    <li>Comfortable round-trip A/C transport from Milan with a professional driver</li>
+    <li>Visit to a carefully selected family-run winery cellar</li>
+    <li>English-speaking local expert tour guide</li>
+    <li>Walking tours in beautiful Alba</li>
+    <li>Free time for food, wine tasting, and shopping</li>
+    <li>Optional truffle and hazelnut tastings (ask your guide)</li>
+    <li>Small group experience with a balanced, well-planned itinerary</li>
+  </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="accordion__item px-20 py-15 border-1 rounded-12">
+      <div class="accordion__button d-flex items-center justify-between">
+        <div class="button text-16 text-dark-1">What's Not Included</div>
+        <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+          <i class="icon-plus text-13"></i>
+          <i class="icon-minus text-13"></i>
+        </div>
+      </div>
+      <div class="accordion__content">
+        <div class="pt-20">
+            <ul class="ulList mt-20">
+    <li>Meals — choose your favorites along the way</li>
+    <li>Hotel pickup — meet at the meeting point for a smooth start</li>
+  </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+            <div class="line mt-40 mb-40"></div>
+
+            <h2 class="text-30">Meeting Points</h2>
+
+            <div class="meeting-location mt-20">
+              <p><strong>📍 Milan Centrale FS – Piazza IV Novembre</strong><br>
+              (Corner of Excelsior Hotel Gallia)</p>
+              <p>🕘 Meeting time: <strong>08:55</strong></p>
+              <a href="https://maps.app.goo.gl/A1XC9T4W8JiaHjMV9" target="_blank" rel="noopener noreferrer" aria-label="Open Milan Centrale meeting point in Google Maps">
+                Open in Google Maps
+              </a>
+            </div>
+
+            <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
+
+            <div class="meeting-location">
+              <p><strong>📍 Bar Italia – Piazzale Lodi, 7</strong><br>
+              (In front of Bar Italia Milano)</p>
+              <p>🕘 Meeting time: <strong>09:10</strong></p>
+              <a href="https://maps.app.goo.gl/tuxvZuuTrtzK1suYA" target="_blank" rel="noopener noreferrer" aria-label="Open Bar Italia Lodi meeting point in Google Maps">
+                Open in Google Maps
+              </a>
+            </div>
+
+            <div class="line mt-40 mb-40"></div>
+
+            <h2 class="text-30">Private Tours Available</h2>
+            <div style="border: 1.5px solid #c7a17a; background-color: #f8f5f1; padding: 15px 20px; border-radius: 8px; margin: 30px 0; font-style: italic; color: #5a4a32; font-size: 1rem;">
+              <strong>Private Tours Available</strong> <br />
+              Experience a fully private tour in a luxury van — starting at €1,299 for up to 4 guests. The van accommodates a maximum of 7 guests.<br />
+              For personalized quotes and flexible itineraries for larger groups, or to book your private tour, please
+              <a href="mailto:abroadstour@gmail.com" style="color: #8b6b2f; text-decoration: underline;">email us</a> or
+              <a href="https://wa.me/+393208575909" target="_blank" rel="noopener noreferrer" style="color: #8b6b2f; text-decoration: underline;">send us a WhatsApp message</a>.
+            </div>
+
+          {% include 'tours/reviews/reviews_barolo.html' %}
+          {% include 'tours/faqs/faq_barolo.html' %}
+        
+          </div>
+          
+
+<div class="col-lg-4">
+            <div class="d-flex justify-end js-pin-content">
+              <div class="tourSingleSidebar">
+                {% include 'tours/booking-code/booking3.html' %}
+              </div>
+            </div>
+          </div>
+<!-- Мобильный фиксированный бар бронирования -->
+    <div class="booking-cta-wrapper only-mobile">
+        <div class="booking-cta-content">
+            <div class="booking-price-text">€159 per adult</div>
+            <button id="openBooking" type="button" class="booking-cta-button">
+                <span>Check availability</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="booking-modal__header">
+            <button id="closeBooking" class="button -sm -outline-accent-1">Close</button>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
+            {% include 'tours/booking-code/booking3.html' %}
+        </div>
+    </div>
+
+    <script>
+        // Функционал мобильного модального окна
+        document.getElementById("openBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.add("open");
+            document.body.classList.add("modal-open");
+        });
+
+        document.getElementById("closeBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.remove("open");
+            document.body.classList.remove("modal-open");
+        });
+
+        // Закрытие модалки по клику вне области (опционально)
+        document.getElementById("bookingModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this.classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+
+        // Закрытие модалки по нажатию Escape
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                document.getElementById("bookingModal").classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+    </script>
+        </div>
+      </div>
+    </section>
+
+    {% include 'includes/similar_experiences.html' %}
+{% endblock %}

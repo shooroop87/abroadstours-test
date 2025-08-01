@@ -1,0 +1,18 @@
+{% load static %}
+{% load i18n %}
+{% block content %}
+<div class="border-light rounded-4 px-30 py-30">
+    <h4 class="text-20 fw-500">{% trans "Categories" %}</h4>
+    <div class="y-gap-10 pt-20">
+        {% for category in categories %}
+            <div class="d-flex items-center justify-between">
+                <a href="{{ category.get_absolute_url }}" class="text-15">
+                    {{ category.name }}
+                </a>
+                <span class="text-14 text-light-1">
+                    ({{ category.blogpost_set.count }})
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,90 @@
+volumes:
+  pg_data:
+  static:
+  media:
+  redis_data:
+
+services:
+  db:
+    image: postgres:13.10
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U abroadtours_user -d abroadtours"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  redis:
+    image: redis:7
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: unless-stopped
+
+  backend:
+    build: ./backend/
+    env_file: .env
+    volumes:
+      - static:/app/collected_static
+      - media:/app/media/
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: >
+      sh -c "
+        echo 'Waiting for database and redis...' &&
+        python manage.py migrate &&
+        python manage.py collectstatic --noinput &&
+        echo 'Starting Django server...' &&
+        python manage.py runserver 0.0.0.0:8000
+      "
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
+
+  reviews-updater:
+    build: ./backend/
+    env_file: .env
+    volumes:
+      - ./backend:/app
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: >
+      sh -c "
+        sleep 30 &&
+        echo '0 6 * * * cd /app && python manage.py refresh_all_reviews --clear-cache >> /tmp/reviews.log 2>&1' > /tmp/crontab &&
+        echo '0 18 * * * cd /app && python manage.py refresh_all_reviews >> /tmp/reviews.log 2>&1' >> /tmp/crontab &&
+        crontab /tmp/crontab &&
+        echo 'Cron jobs installed.' &&
+        crond -f -l 2
+      "
+    restart: unless-stopped
+
+  gateway:
+    build: ./gateway/
+    volumes:
+      - static:/staticfiles/
+      - media:/app/media/
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

@@ -1,0 +1,19 @@
+{% load static %}
+<title>{% block title %}Abroads Tours{% endblock %}</title>
+<meta name="description" content="{% block description %}Small group day tours from Milan to Lake Como, Lugano, Barolo, and more. Book your next Italy adventure with Abroads Tours.{% endblock %}">
+<meta name="keywords" content="{% block keywords %}tours, travel, vacation, excursions{% endblock %}">
+
+<!-- Open Graph for social media -->
+<meta property="og:title" content="{% block og_title %}{% if block.title %}{{ block.title }}{% else %}Abroads Tours{% endif %}{% endblock %}">
+<meta property="og:description" content="{% block og_description %}{% if block.description %}{{ block.description }}{% else %}The best tours and travels around the world{% endif %}{% endblock %}">
+<meta property="og:image" content="https://abroadstours.com/static/img/socials/social.webp">
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta property="og:type" content="website">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{% block canonical %}https://{{ request.get_host }}{{ request.path }}{% endblock %}">
+
+<!-- Open Graph for social media -->
+<script type="application/ld+json">
+{{ schema_json|safe }}
+</script>

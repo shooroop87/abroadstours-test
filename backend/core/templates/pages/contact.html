@@ -1,0 +1,167 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+
+{# SEO блоки для страницы контактов #}
+{% block title %}{% trans "Contact Us - Abroads Tours" %}{% endblock %}
+{% block description %}{% trans "Get in touch with Abroads Tours for personalized travel assistance. Contact our expert team for tour bookings, travel advice, and customer support." %}{% endblock %}
+{% block keywords %}{% trans "contact, travel agency, tour booking, customer support, travel consultation, Italy tours" %}{% endblock %}
+
+{% block content %}
+<section class="hero -type-1 -min-2 is-in-view">
+  <div class="hero__bg">
+    <img src="{% static 'img/hero/bg.webp' %}" alt="bernina express train from milan" loading="lazy">
+    <img src="{% static 'img/hero/1/shape.svg' %}" alt="Decorative wave shape" loading="lazy">
+    <div class="overlay overlay--medium"></div>
+  </div>
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-xl-12">
+        <div class="hero__content">
+          <h1 class="hero__title">{% trans "Get in Touch With Abroads Tours" %}</h1>
+          <p class="hero__text">{% trans "For bookings, custom tours, or general inquiries — reach out today." %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-md layout-pb-lg">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-lg-8">
+        <h2 class="text-30 fw-700 text-center mb-30">{% trans "Leave us your info" %}</h2>
+
+        <div class="contactForm">
+          <form method="post" action="{% url 'contact' %}" id="contactForm">
+            {% csrf_token %}
+            <div class="row y-gap-30">
+              <div class="col-md-6">
+                <input type="text" name="name" placeholder="{% trans 'Full Name' %}" required>
+              </div>
+              <div class="col-md-6">
+                <input type="tel" name="phone" placeholder="{% trans 'Phone Number' %}" required>
+              </div>
+              <div class="col-12">
+                <input type="email" name="email" placeholder="{% trans 'Email Address' %}" required>
+              </div>
+              <div class="col-md-6">
+                <select name="inquiry_type" required>
+                  <option value="">{% trans "Select Inquiry Type" %}</option>
+                  <option value="tour_booking">{% trans "Tour Booking" %}</option>
+                  <option value="custom_tour">{% trans "Custom Tour Request" %}</option>
+                  <option value="general_info">{% trans "General Information" %}</option>
+                  <option value="support">{% trans "Customer Support" %}</option>
+                  <option value="partnership">{% trans "Partnership" %}</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <select name="preferred_contact">
+                  <option value="">{% trans "Preferred Contact Method" %}</option>
+                  <option value="email">{% trans "Email" %}</option>
+                  <option value="phone">{% trans "Phone" %}</option>
+                  <option value="whatsapp">{% trans "WhatsApp" %}</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <textarea name="message" placeholder="{% trans 'Your Message' %}" rows="6" required></textarea>
+              </div>
+              
+              <div class="col-12">
+                <div class="d-flex items-center">
+                  <div class="form-checkbox">
+                    <input type="checkbox" name="privacy_consent" id="privacy_consent" required>
+                    <div class="form-checkbox__mark">
+                      <div class="form-checkbox__icon">
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.29082 0.971021..." fill="white" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="text-14 lh-12 ml-10">
+  {% trans "I agree to the" %} 
+  <a href="{% url 'privacy_policy' %}" class="text-accent-1">{% trans "Privacy Policy" %}</a> 
+  {% trans "and consent to my data being processed for this inquiry." %}
+</div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="d-flex items-center">
+                  <div class="form-checkbox">
+                    <input type="checkbox" name="marketing_consent" id="marketing_consent">
+                    <div class="form-checkbox__mark">
+                      <div class="form-checkbox__icon">
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9.29082 0.971021..." fill="white" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="text-14 lh-12 ml-10">
+                    {% trans "I would like to receive marketing communications about tours and special offers." %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <button type="submit" class="button -md -dark-1 bg-accent-1 text-white col-12">{% trans "Send Message" %}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if messages %}
+<section class="layout-pt-md">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-lg-8">
+        {% for message in messages %}
+          <div class="d-flex items-center justify-between {% if message.tags == 'success' %}bg-success-1 text-success-2{% elif message.tags == 'error' %}bg-error-1 text-error-2{% else %}bg-info-1 text-info-2{% endif %} pl-30 pr-20 py-30 rounded-8 mb-20">
+            <div class="lh-1 fw-500">{{ message }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof initMap !== 'undefined') {
+        initMap();
+    }
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            const privacyConsent = document.getElementById('privacy_consent');
+            if (!privacyConsent.checked) {
+                e.preventDefault();
+                alert('{% trans "Please accept the Privacy Policy to continue." %}');
+                return false;
+            }
+        });
+    }
+    const whatsappLinks = document.querySelectorAll('a[href^="https://wa.me/"]');
+    whatsappLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'whatsapp_click', {
+                    'event_category': 'contact',
+                    'event_label': 'whatsapp_contact'
+                });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

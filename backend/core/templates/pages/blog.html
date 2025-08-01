@@ -1,0 +1,155 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+
+{# SEO блоки для страницы блога #}
+{% block title %}{% trans "Travel Blog - Abroads Tours" %}{% endblock %}
+{% block description %}{% trans "Discover amazing travel stories and guides from around the world. Read about safari adventures, island hopping tips and travel inspiration." %}{% endblock %}
+{% block keywords %}{% trans "travel blog, travel guides, safari, Cambodia, travel tips, destinations, adventures" %}{% endblock %}
+
+{% block body_class %}blog-page{% endblock %}
+
+{% block content %}
+<section class="hero -type-1 -min-2">
+  <div class="hero__bg">
+    <img src="{% static 'img/hero/bg.webp' %}" alt="image" loading="lazy">
+    <img src="{% static 'img/hero/1/shape.svg' %}" alt="image" loading="lazy">
+  </div>
+
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-xl-12">
+        <div class="hero__content">
+          <h1 class="hero__title">{% trans "Travel Blog" %}</h1>
+
+          <p class="hero__text">
+            {% trans "Discover amazing stories, guides and inspiration for your next adventure" %}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-md layout-pb-xl">
+  <div class="container">
+    <div class="row y-gap-30 justify-between">
+      <div class="col-lg-12">
+        <div class="row y-gap-30">
+
+          <div class="col-12">
+            <a href="{% url 'lake_como_day_trip' %}" class="pl-blog-list">
+              <div class="pl-blog-list__image">
+                <img src="{% static 'img/blog/lake-como-day-trip-from-milan_600x400.webp' %}" alt="image" loading="lazy">
+              </div>
+
+              <div class="pl-blog-list__content">
+                <div class="d-flex x-gap-10 text-14">
+                  <div class="lh-13">{% trans "February 18 2024" %}</div>
+                </div>
+
+                <h3 class="blogCard__title text-20 fw-500 lh-15 mt-10">{% trans "Lake Como Day Trip from Milan: Insider’s Guide" %}</h3>
+
+                <p class="mt-10">
+                  {% trans "The information was very confusing, and it mainly consisted of the experiences of people who had spent one or two days at Lake Como, sharing their own..." %}
+                </p>
+
+                <button class="fw-500 mt-10">
+                  <span class="mr-10">{% trans "Read More" %}</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_142_28418)">
+                      <path d="M15.5553 0H5.77756C5.53189 0 5.3331 0.198792 5.3331 0.444458C5.3331 0.690125 5.53189 0.888917 5.77756 0.888917H14.4824L0.129975 15.2413C-0.0436504 15.415 -0.0436504 15.6962 0.129975 15.8698C0.216766 15.9566 0.330516 16 0.444225 16C0.557933 16 0.671641 15.9566 0.758475 15.8698L15.1109 1.51738V10.2223C15.1109 10.4679 15.3097 10.6667 15.5553 10.6667C15.801 10.6667 15.9998 10.4679 15.9998 10.2223V0.444458C15.9998 0.198792 15.801 0 15.5553 0Z" fill="#05073C"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_142_28418">
+                        <rect width="16" height="16" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12">
+            <a href="{% url 'bernina_express_tour' %}" class="pl-blog-list">
+              <div class="pl-blog-list__image">
+                <img src="{% static 'img/blog/bernina-express-train-from-milan_600х400.webp' %}" alt="image" loading="lazy">
+              </div>
+
+              <div class="pl-blog-list__content">
+                <div class="d-flex x-gap-10 text-14">
+                  <div class="lh-13">{% trans "February 16 2024" %}</div>
+                </div>
+
+                <h3 class="blogCard__title text-20 fw-500 lh-15 mt-10">{% trans "A Bold Guide To Bernina Express Tour From Milan" %}</h3>
+
+                <p class="mt-10">
+                  {% trans "How to save time, money, and avoid hordes of people you will be surrounded by on Lake Como. Before writing this article, we read top 10 results on Google..." %}
+                </p>
+
+                <button class="fw-500 mt-10">
+                  <span class="mr-10">{% trans "Read More" %}</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_142_28418)">
+                      <path d="M15.5553 0H5.77756C5.53189 0 5.3331 0.198792 5.3331 0.444458C5.3331 0.690125 5.53189 0.888917 5.77756 0.888917H14.4824L0.129975 15.2413C-0.0436504 15.415 -0.0436504 15.6962 0.129975 15.8698C0.216766 15.9566 0.330516 16 0.444225 16C0.557933 16 0.671641 15.9566 0.758475 15.8698L15.1109 1.51738V10.2223C15.1109 10.4679 15.3097 10.6667 15.5553 10.6667C15.801 10.6667 15.9998 10.4679 15.9998 10.2223V0.444458C15.9998 0.198792 15.801 0 15.5553 0Z" fill="#05073C"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_142_28418">
+                        <rect width="16" height="16" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-12">
+            <a href="{% url 'bernina_express_video' %}" class="pl-blog-list">
+              <div class="pl-blog-list__image">
+                <img src="{% static 'img/blog/watch_bernina_express_600x400.webp' %}" alt="image" loading="lazy">
+              </div>
+
+              <div class="pl-blog-list__content">
+                <div class="d-flex x-gap-10 text-14">
+                  <div class="lh-13">{% trans "February 10 2024" %}</div>
+                </div>
+
+                <h3 class="blogCard__title text-20 fw-500 lh-15 mt-10">{% trans "Watch the Bernina Express ride 🎞" %}</h3>
+
+                <p class="mt-10">
+                  {% trans "On the Bernina Express, tourists can experience a captivating adventure with breathtaking views, traversing impressive landscapes and crossing high-mo..." %}
+                </p>
+
+                <button class="fw-500 mt-10">
+                  <span class="mr-10">{% trans "Read More" %}</span>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_142_28418)">
+                      <path d="M15.5553 0H5.77756C5.53189 0 5.3331 0.198792 5.3331 0.444458C5.3331 0.690125 5.53189 0.888917 5.77756 0.888917H14.4824L0.129975 15.2413C-0.0436504 15.415 -0.0436504 15.6962 0.129975 15.8698C0.216766 15.9566 0.330516 16 0.444225 16C0.557933 16 0.671641 15.9566 0.758475 15.8698L15.1109 1.51738V10.2223C15.1109 10.4679 15.3097 10.6667 15.5553 10.6667C15.801 10.6667 15.9998 10.4679 15.9998 10.2223V0.444458C15.9998 0.198792 15.801 0 15.5553 0Z" fill="#05073C"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_142_28418">
+                        <rect width="16" height="16" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Blog page with 2 articles loaded');
+    // Add animations or extra functionality here
+});
+</script>
+{% endblock %}

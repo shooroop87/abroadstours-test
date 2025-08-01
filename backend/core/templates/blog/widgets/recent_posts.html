@@ -1,0 +1,27 @@
+{% load static %}
+{% load i18n %}
+{% block content %} 
+<div class="border-light rounded-4 px-30 py-30">
+    <h4 class="text-20 fw-500">{% trans "Recent Articles" %}</h4>
+    <div class="y-gap-20 pt-20">
+        {% for post in posts %}
+            <div class="d-flex">
+                {% if post.featured_image %}
+                    <div class="flex-shrink-0 mr-15">
+                        <img src="{{ post.featured_image.url }}" 
+                             alt="{{ post.title }}" 
+                             class="size-60 rounded-4 object-cover">
+                    </div>
+                {% endif %}
+                <div>
+                    <h5 class="text-16 fw-500 lh-14">
+                        <a href="{{ post.get_absolute_url }}">{{ post.title|truncatechars:60 }}</a>
+                    </h5>
+                    <div class="text-14 text-light-1 mt-5">
+                        {{ post.published_at|date:"M d, Y" }} • {{ post|reading_time }} {% trans "min read" %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,153 @@
+{% load static %}
+{% load i18n %}
+
+<!-- Cookie Consent Popup -->
+<div id="cookieConsent" class="cookie-consent" style="display: none;">
+  <div class="cookie-consent__overlay"></div>
+  <div class="cookie-consent__modal">
+    <div class="cookie-consent__container">
+      <div class="cookie-consent__header d-flex items-center justify-between mb-20">
+        <h4 class="text-18 fw-500">{% trans "🍪 Cookie Settings" %}</h4>
+        <button class="cookie-consent__close button -dark-1 size-40 rounded-full bg-light-1" id="closeCookieModal">
+          <i class="icon-cross text-10"></i>
+        </button>
+      </div>
+
+      <div class="cookie-consent__content">
+        <p class="text-15 mb-20">
+          {% trans "We use cookies to enhance your browsing experience, provide personalized content, and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies. You can manage your preferences below." %}
+        </p>
+
+        <div class="cookie-consent__categories">
+          <div class="cookie-category mb-20">
+            <div class="d-flex items-center justify-between mb-10">
+              <div class="cookie-category__info">
+                <h5 class="text-16 fw-500">{% trans "Essential Cookies" %}</h5>
+                <p class="text-13 text-light-2">{% trans "Required for basic website functionality" %}</p>
+              </div>
+              <div class="form-switch">
+                <div class="switch">
+                  <input type="checkbox" id="essential-cookies" checked disabled>
+                  <span class="switch__slider"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cookie-category mb-20">
+            <div class="d-flex items-center justify-between mb-10">
+              <div class="cookie-category__info">
+                <h5 class="text-16 fw-500">{% trans "Analytics Cookies" %}</h5>
+                <p class="text-13 text-light-2">{% trans "Help us understand how visitors use our website" %}</p>
+              </div>
+              <div class="form-switch">
+                <div class="switch">
+                  <input type="checkbox" id="analytics-cookies" checked>
+                  <span class="switch__slider"></span>
+                </div>
+              </div>
+            </div>
+            <div class="cookie-category__details text-13 text-light-2">
+              <strong>{% trans "Services used:" %}</strong> Google Analytics, Yandex Metrica, Bing Webmaster Tools
+            </div>
+          </div>
+
+          <div class="cookie-category mb-20">
+            <div class="d-flex items-center justify-between mb-10">
+              <div class="cookie-category__info">
+                <h5 class="text-16 fw-500">{% trans "Marketing Cookies" %}</h5>
+                <p class="text-13 text-light-2">{% trans "Used to show you relevant advertisements" %}</p>
+              </div>
+              <div class="form-switch">
+                <div class="switch">
+                  <input type="checkbox" id="marketing-cookies">
+                  <span class="switch__slider"></span>
+                </div>
+              </div>
+            </div>
+            <div class="cookie-category__details text-13 text-light-2">
+              <strong>{% trans "Services used:" %}</strong> Google Ads, Facebook Pixel, Third-party advertising partners
+            </div>
+          </div>
+
+          <div class="cookie-category mb-20">
+            <div class="d-flex items-center justify-between mb-10">
+              <div class="cookie-category__info">
+                <h5 class="text-16 fw-500">{% trans "Functional Cookies" %}</h5>
+                <p class="text-13 text-light-2">{% trans "Enable enhanced functionality and personalization" %}</p>
+              </div>
+              <div class="form-switch">
+                <div class="switch">
+                  <input type="checkbox" id="functional-cookies" checked>
+                  <span class="switch__slider"></span>
+                </div>
+              </div>
+            </div>
+            <div class="cookie-category__details text-13 text-light-2">
+              <strong>{% trans "Services used:" %}</strong> Rezdy booking system, WhatsApp integration, Language preferences
+            </div>
+          </div>
+        </div>
+
+        <div class="cookie-consent__info mb-20">
+          <p class="text-13 text-light-2">
+            {% trans "For more information about how we use cookies, please read our" %} 
+            <a href="{% url 'privacy_policy' %}" 
+   class="text-accent-1"
+   title="{% trans 'Read our Privacy Policy' %}"
+   aria-label="{% trans 'View Privacy Policy page' %}">
+   {% trans "Privacy Policy" %}
+</a>.
+          </p>
+        </div>
+
+        <div class="cookie-consent__actions row x-gap-10 y-gap-10">
+          <div class="col-auto">
+            <button class="button -sm -dark-1 bg-accent-1 text-white" id="acceptAllCookies">
+              {% trans "Accept All" %}
+            </button>
+          </div>
+          <div class="col-auto">
+            <button class="button -sm -outline-accent-1 text-accent-1" id="acceptSelectedCookies">
+              {% trans "Accept Selected" %}
+            </button>
+          </div>
+          <div class="col-auto">
+            <button class="button -sm -outline-dark-1 text-dark-1" id="rejectAllCookies">
+              {% trans "Reject All" %}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="cookieBanner" class="cookie-banner" style="display: none;">
+  <div class="cookie-banner__container container">
+    <div class="row items-center">
+      <div class="col-lg-8 col-md-7">
+        <div class="cookie-banner__content">
+          <p class="text-15 mb-0">
+            {% trans "🍪 We use cookies to improve your experience on our website. By continuing to browse, you agree to our use of cookies." %}
+            <a href="{% url 'privacy_policy' %}" class="text-accent-1 ml-5">{% trans "Learn more" %}</a>
+          </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-5">
+        <div class="cookie-banner__actions row x-gap-10 justify-end md:justify-start">
+          <div class="col-auto">
+            <button class="button -sm -dark-1 bg-accent-1 text-white" id="acceptCookiesBanner">
+              {% trans "Accept" %}
+            </button>
+          </div>
+          <div class="col-auto">
+            <button class="button -sm -outline-dark-1 text-dark-1" id="manageCookiesBanner">
+              {% trans "Manage" %}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

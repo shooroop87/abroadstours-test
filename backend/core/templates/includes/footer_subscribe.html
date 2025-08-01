@@ -1,0 +1,40 @@
+{% load static %}
+{% load i18n %}
+<div class="col-lg-3 col-md-6">
+  <h4 class="text-20 fw-500">{% trans "Newsletter" %}</h4>
+  <p class="mt-20">{% trans "Subscribe to the free newsletter and stay up to date" %}</p>
+  <div class="footer__newsletter">
+    <form id="newsletter-form">
+      {% csrf_token %}
+      <input type="email" id="email" placeholder="{% trans 'Your email address' %}" required>
+      <button type="submit">{% trans "Send" %}</button>
+    </form>
+    <div id="newsletter-message" style="display:none; margin-top:10px; font-size:14px;"></div>
+  </div>
+</div>
+
+<script>
+document.getElementById("newsletter-form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const messageBox = document.getElementById("newsletter-message");
+
+  fetch("{% url 'subscribe' %}", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": "{{ csrf_token }}",
+    },
+    body: JSON.stringify({ email: email })
+  })
+  .then(res => res.json())
+  .then(data => {
+    messageBox.style.display = 'block';
+    messageBox.innerText = data.message;
+  })
+  .catch(err => {
+    messageBox.style.display = 'block';
+    messageBox.innerText = "Ошибка при отправке данных.";
+  });
+});
+</script>

@@ -1,0 +1,124 @@
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<section class="layout-pt-xl">
+  <div data-anim-wrap class="container animated">
+    <div data-anim-child="slide-up" class="row is-in-view">
+      <div class="col-auto">
+        <h2 class="text-30 md:text-24">{% trans "What tour companies don't want you to know. Watch the video!" %}</h2>
+      </div>
+    </div>
+
+    <div data-anim-child="slide-up delay-2" class="row md:x-gap-20 pt-40 pb-40 sm:pt-20 mobile-css-slider -w-280 is-in-view">
+
+      <div class="col-lg-4 col-sm-6">
+        <div class="featureIcon -type-1 pr-40 md:pr-0">
+          <div class="featureIcon__icon">
+            <svg height="64px" width="64px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#27787d">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <style type="text/css">.st0{fill:#27787d;}</style>
+                <g>
+                  <path class="st0" d="M387.187,68.12c-4.226,0-8.328,0.524-12.249,1.511V55.44c0-27.622-22.472-50.094-50.094-50.094 c-10.293,0-19.865,3.123-27.834,8.461C288.017,5.252,275.869,0,262.508,0c-22.84,0-42.156,15.365-48.16,36.302 c-5.268-1.887-10.935-2.912-16.844-2.912c-27.622,0-50.094,22.472-50.094,50.094v82.984c-5.996-2.332-12.508-3.616-19.318-3.616 c-29.43,0-53.373,23.936-53.373,53.366v99.695c0,63.299,38.525,185.645,184.315,195.649c4.274,0.289,8.586,0.438,12.813,0.438 c91.218,0,165.435-72.378,165.435-161.35V118.214C437.281,90.592,414.81,68.12,387.187,68.12z M271.846,483.947 c-3.585,0-7.209-0.126-10.896-0.376c-134.659-9.237-158.179-126.668-158.179-167.659v-99.695c0-13.979,11.341-25.313,25.32-25.313 c13.98,0,25.321,11.334,25.321,25.313v76.997h22.05V83.485c0-12.172,9.87-22.042,22.041-22.042c12.172,0,22.042,9.87,22.042,22.042 v152.959h20.922V50.094c0-12.172,9.87-22.041,22.041-22.041c12.172,0,22.042,9.87,22.042,22.041v186.35h18.253V55.44 c0-12.172,9.87-22.041,22.042-22.041c12.171,0,22.041,9.87,22.041,22.041v181.004h18.261v-118.23 c0-12.172,9.87-22.042,22.041-22.042c12.172,0,22.042,9.87,22.042,22.042V350.65C409.229,419.748,353.445,483.947,271.846,483.947z"></path>
+                </g>
+              </g>
+            </svg>
+          </div>
+          <h3 class="featureIcon__title text-18 fw-500 mt-30">{% trans "Thinking of Booking a day Tour from Milan? STOP." %}</h3>
+          <p class="featureIcon__text mt-10">{% trans "Not all tours are what they seem — many are far less enjoyable than they look." %}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-sm-6">
+        <div class="featureIcon -type-1 pr-40 md:pr-0">
+          <div class="featureIcon__icon">
+            <svg fill="#27787d" height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490.667 490.667" xml:space="preserve" stroke="#27787d">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g><g><g>
+                  <path d="M245.333,0C110.059,0,0,110.059,0,245.333s110.059,245.333,245.333,245.333s245.333-110.059,245.333-245.333 S380.608,0,245.333,0z M245.333,469.333c-123.52,0-224-100.48-224-224s100.48-224,224-224s224,100.48,224,224 S368.853,469.333,245.333,469.333z"></path>
+                  <path d="M404.779,199.147c-1.365-3.883-4.821-6.635-8.896-7.083l-90.539-10.048l-50.667-91.179 c-3.755-6.763-14.891-6.763-18.645,0l-50.667,91.179l-90.539,10.048c-4.075,0.469-7.552,3.221-8.896,7.083 c-1.365,3.861-0.384,8.171,2.517,11.072l70.635,70.635L138.88,381.909c-0.811,4.075,0.811,8.256,4.16,10.709 c3.371,2.475,7.851,2.731,11.477,0.704l90.816-50.453l90.816,50.453c1.621,0.896,3.413,1.344,5.184,1.344 c2.219,0,4.437-0.683,6.336-2.048c3.349-2.453,4.971-6.635,4.16-10.709l-20.203-101.056l70.635-70.635 C405.163,207.317,406.144,203.008,404.779,199.147z M312.469,269.803c-2.517,2.539-3.627,6.144-2.923,9.643l16.811,84.032 l-75.84-42.133c-1.621-0.896-3.413-1.344-5.184-1.344s-3.563,0.448-5.184,1.344l-75.84,42.133l16.811-84.032 c0.683-3.499-0.405-7.125-2.923-9.643l-58.965-58.987l73.941-8.213c3.435-0.384,6.464-2.389,8.149-5.419l44.011-79.211 l44.011,79.211c1.685,3.008,4.715,5.035,8.149,5.419l73.941,8.213L312.469,269.803z"></path>
+                </g></g></g>
+              </g>
+            </svg>
+          </div>
+          <h3 class="featureIcon__title text-18 fw-500 mt-30">{% trans "Even high ratings and pretty photos often hide the truth" %}</h3>
+          <p class="featureIcon__text mt-10">{% trans "Packed buses, chaotic tours, endless rides, and the Bellagio Weekend mess." %}</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-sm-6">
+        <div class="featureIcon -type-1 pr-40 md:pr-0">
+          <div class="featureIcon__icon">
+            <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path d="M19.5617 7C19.7904 5.69523 18.7863 4.5 17.4617 4.5H6.53788C5.21323 4.5 4.20922 5.69523 4.43784 7" stroke="#27787d" stroke-width="1.5"></path>
+                <path d="M17.4999 4.5C17.5283 4.24092 17.5425 4.11135 17.5427 4.00435C17.545 2.98072 16.7739 2.12064 15.7561 2.01142C15.6497 2 15.5194 2 15.2588 2H8.74099C8.48035 2 8.35002 2 8.24362 2.01142C7.22584 2.12064 6.45481 2.98072 6.45704 4.00434C6.45727 4.11135 6.47146 4.2409 6.49983 4.5" stroke="#27787d" stroke-width="1.5"></path>
+                <path d="M21.1935 16.793C20.8437 19.2739 20.6689 20.5143 19.7717 21.2572C18.8745 22 17.5512 22 14.9046 22H9.09536C6.44881 22 5.12553 22 4.22834 21.2572C3.33115 20.5143 3.15626 19.2739 2.80648 16.793L2.38351 13.793C1.93748 10.6294 1.71447 9.04765 2.66232 8.02383C3.61017 7 5.29758 7 8.67239 7H15.3276C18.7024 7 20.3898 7 21.3377 8.02383C22.0865 8.83268 22.1045 9.98979 21.8592 12" stroke="#27787d" stroke-width="1.5" stroke-linecap="round"></path>
+                <path d="M14.5812 13.6159C15.1396 13.9621 15.1396 14.8582 14.5812 15.2044L11.2096 17.2945C10.6669 17.6309 10 17.1931 10 16.5003L10 12.32C10 11.6273 10.6669 11.1894 11.2096 11.5258L14.5812 13.6159Z" stroke="#27787d" stroke-width="1.5"></path>
+              </g>
+            </svg>
+          </div>
+          <h3 class="featureIcon__title text-18 fw-500 mt-30">{% trans "The Real Hidden Truth About Day Tours from Milan" %}</h3>
+          <p class="featureIcon__text mt-10">{% trans "I've led those tours — I know the game. Watch the video, skip traps, book a tour you'll enjoy." %}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section data-anim="slide-up" class="layout-pt-md layout-pb-md is-in-view">
+  <div class="video relative container" style="position: relative; aspect-ratio: 16/9;">
+    <div class="video__bg" style="position: absolute; inset: 0;">
+
+      <img src="{% static 'img/mainpage/01mainpage_video.webp' %}" alt="image" class="rounded-12" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+
+      <div class="video__overlay" style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 2;"></div>
+
+      <div class="play-button-wrapper" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3;">
+        <button id="play-video-btn" style="background: none; border: none; cursor: pointer;">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="29" stroke="white" stroke-width="2"/>
+            <polygon points="24,20 40,30 24,40" fill="white"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="video__iframe-wrapper" style="display: none; position: absolute; inset: 0; width: 100%; height: 100%;">
+        <iframe id="youtube-player" width="100%" height="100%" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock content %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const playBtn = document.getElementById("play-video-btn");
+  if (playBtn) {
+    playBtn.addEventListener("click", function () {
+      const videoContainer = this.closest(".video");
+      const iframeWrapper = videoContainer.querySelector(".video__iframe-wrapper");
+      const iframe = videoContainer.querySelector("#youtube-player");
+      const img = videoContainer.querySelector(".video__bg > img");
+      const overlay = videoContainer.querySelector(".video__overlay");
+      const button = this;
+
+      iframe.src = "https://www.youtube.com/embed/JyJqpm5rVUM?autoplay=1&rel=0";
+      iframeWrapper.style.display = "block";
+      if (img) img.style.display = "none";
+      if (overlay) overlay.style.display = "none";
+      button.style.display = "none";
+    });
+  }
+});
+</script>
+{% endblock %}

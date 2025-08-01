@@ -1,0 +1,125 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Privacy Policy - Abroads Tours" %}{% endblock %}
+{% block description %}{% trans "Read our privacy policy to understand how we collect, use and protect your personal information when using our travel services." %}{% endblock %}
+{% block keywords %}{% trans "privacy policy, data protection, personal information, travel agency, GDPR compliance" %}{% endblock %}
+
+{% block body_class %}{% endblock %}
+
+{% block content %}
+<section data-anim="fade" class="mt-header pt-30">
+  <div class="container">
+    <div class="breadcrumbs mb-30 md:mb-15">
+      <span class="breadcrumbs__item">
+        <a href="{% url 'index' %}">{% trans "Home" %}</a>
+      </span>
+      <span>></span>
+      <span class="breadcrumbs__item">
+        <a href="{% url 'privacy_policy' %}">{% blocktrans %}Privacy Policy{% endblocktrans %}</a>
+      </span>
+    </div>
+
+    <h1 class="text-30">{% trans "Privacy Policy" %}</h1>
+  </div>
+</section>
+
+<section data-anim="slide-up delay-2" class="layout-pt-md layout-pb-lg">
+  <div class="container">
+    <div class="tabs -terms js-tabs">
+      <div class="row y-gap-30">
+        <div class="col-lg-3">
+          <div class="tabs__controls row y-gap-10 js-tabs-controls">
+            <div class="col-12">
+              <button class="tabs__button relative pl-20 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">{% trans "Information Collection" %}</button>
+            </div>
+            <div class="col-12">
+              <button class="tabs__button relative pl-20 js-tabs-button" data-tab-target=".-tab-item-2">{% trans "Data Usage" %}</button>
+            </div>
+            <div class="col-12">
+              <button class="tabs__button relative pl-20 js-tabs-button" data-tab-target=".-tab-item-3">{% trans "Cookie Policy" %}</button>
+            </div>
+            <div class="col-12">
+              <button class="tabs__button relative pl-20 js-tabs-button" data-tab-target=".-tab-item-4">{% trans "Third-Party Services" %}</button>
+            </div>
+            <div class="col-12">
+              <button class="tabs__button relative pl-20 js-tabs-button" data-tab-target=".-tab-item-5">{% trans "Your Rights" %}</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-9">
+          <div class="tabs__content js-tabs-content">
+
+            <div class="tabs__pane -tab-item-1 is-tab-el-active">
+              <h2 class="text-20 fw-500">{% trans "1. Information We Collect" %}</h2>
+              <p class="mt-10">{% trans "At Abroads Tours, we collect information that you provide directly to us when using our services..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "2. How We Collect Information" %}</h2>
+              <p class="mt-10">{% trans "Information is collected through various methods including..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "3. Legal Basis for Processing" %}</h2>
+              <p class="mt-10">{% trans "We process your personal data based on the following legal grounds..." %}</p>
+            </div>
+
+            <div class="tabs__pane -tab-item-2">
+              <h2 class="text-20 fw-500">{% trans "1. Service Provision" %}</h2>
+              <p class="mt-10">{% trans "We use your information primarily to provide and improve our travel services..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "2. Communication and Marketing" %}</h2>
+              <p class="mt-10">{% trans "With your consent, we may use your contact information to send marketing..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "3. Website Analytics and Improvement" %}</h2>
+              <p class="mt-10">{% trans "We use analytics tools including Google Analytics, Yandex Metrica..." %}</p>
+            </div>
+
+            <div class="tabs__pane -tab-item-3">
+              <h2 class="text-20 fw-500">{% trans "1. What Are Cookies" %}</h2>
+              <p class="mt-10">{% trans "Cookies are small text files stored on your device..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "2. Types of Cookies We Use" %}</h2>
+              <p class="mt-10">{% trans "Essential Cookies, Analytics Cookies, Marketing Cookies..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "3. Managing Your Cookie Preferences" %}</h2>
+              <p class="mt-10">{% trans "You can manage your cookie preferences through our banner or browser settings..." %}</p>
+            </div>
+
+            <div class="tabs__pane -tab-item-4">
+              <h2 class="text-20 fw-500">{% trans "1. Analytics Services" %}</h2>
+              <p class="mt-10">{% trans "We use third-party analytics services such as Google Analytics..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "2. Booking and Payment Services" %}</h2>
+              <p class="mt-10">{% trans "Rezdy is our booking and payment platform..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "3. Communication Services" %}</h2>
+              <p class="mt-10">{% trans "We use WhatsApp Business to provide support and information..." %}</p>
+            </div>
+
+            <div class="tabs__pane -tab-item-5">
+              <h2 class="text-20 fw-500">{% trans "1. Your Privacy Rights" %}</h2>
+              <p class="mt-10">{% trans "Under the GDPR and Italian law, you have rights such as..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "2. How to Exercise Your Rights" %}</h2>
+              <p class="mt-10">{% trans "To exercise any of these rights, contact us using the details provided..." %}</p>
+
+              <h2 class="text-20 fw-500 mt-60 md:mt-30">{% trans "3. Contact Information" %}</h2>
+              <p class="mt-10">{% trans "If you have any questions about this privacy policy, contact us at..." %}</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof initTabs !== 'undefined') {
+        initTabs();
+    }
+});
+</script>
+{% endblock %}

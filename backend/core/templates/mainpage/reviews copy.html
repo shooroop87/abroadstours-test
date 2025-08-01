@@ -1,0 +1,45 @@
+{% load static %}
+{% load i18n %}
+<section class="layout-pt-xl layout-pb-xl relative">
+  <div class="sectionBg -w-1530 rounded-12 bg-light-1"></div>
+  
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up" class="row justify-between items-end y-gap-10">
+      <div class="col-auto">
+        <h2 class="text-30 md:text-24">{% trans "We are the best-rated for day trips from Milan on the internet." %}</h2>
+        <p>{% trans "Don't take it from us — see what our clients have written about our tours." %}</p>
+      </div>
+      <div class="col-auto col-sm-2">
+        <button class="buttonArrow d-flex items-center ">
+          <img src="{% static 'img/testimonials/1/tripadvisor1.webp' %}" alt="TripAdvisor" loading="lazy">
+        </button>
+      </div>
+    </div>
+    
+    <div data-anim-child="slide-up delay-2" class="relative pt-40 sm:pt-20">
+      <div class="overflow-hidden pb-30 js-section-slider" data-gap="30" data-slider-cols="xl-3 lg-3 md-2 sm-1 base-1" data-nav-prev="js-slider1-prev" data-nav-next="js-slider1-next">
+        <div class="swiper-wrapper">
+          
+          {% include '../reviews/review1.html' %}
+          {% include '../reviews/review2.html' %}
+          {% include '../reviews/review3.html' %}
+          {% include '../reviews/review4.html' %}
+          {% include '../reviews/review5.html' %}
+          {% include '../reviews/review6.html' %}
+          {% include '../reviews/review7.html' %}
+          
+        </div>
+      </div>
+      
+      <div class="navAbsolute">
+        <button class="navAbsolute__button bg-white js-slider1-prev">
+          <i class="icon-arrow-left text-14"></i>
+        </button>
+        
+        <button class="navAbsolute__button bg-white js-slider1-next">
+          <i class="icon-arrow-right text-14"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

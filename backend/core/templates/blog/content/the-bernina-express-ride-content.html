@@ -1,0 +1,76 @@
+{% load static %}
+{% load i18n %}
+{% block content %}
+<section class="hero -type-1 -min-2 is-in-view">
+  <div class="hero__bg">
+    <img src="{% static 'img/blog/bernina-express-hero.webp' %}" alt="bernina express train from milan" loading="lazy">
+    <img src="{% static 'img/hero/1/shape.svg' %}" alt="Decorative wave shape" loading="lazy">
+    <div class="overlay overlay--medium"></div>
+  </div>
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-xl-12">
+        <div class="hero__content">
+          <h1 class="hero__title">{% trans "Watch the Bernina Express ride 🎞" %}</h1>
+          <p class="hero__text">{% trans "On the Bernina Express, tourists can experience a captivating adventure with breathtaking views, traversing impressive landscapes and crossing high-mountain bridges." %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-anim="slide-up" class="layout-pt-sm layout-pb-sm is-in-view">
+  <div class="video relative container" style="position: relative; aspect-ratio: 16/9;">
+    <div class="video__bg" style="position: absolute; inset: 0;">
+
+      <img src="{% static 'img/blog/watch_bernina_big.webp' %}"
+           alt="image"
+           class="rounded-12"
+           style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+
+      <div class="video__overlay"
+           style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4); z-index: 2;"></div>
+
+      <div class="play-button-wrapper"
+           style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3;">
+        <button id="play-video-btn"
+                style="background: none; border: none; cursor: pointer;">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="29" stroke="white" stroke-width="2"/>
+            <polygon points="24,20 40,30 24,40" fill="white"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="video__iframe-wrapper"
+           style="display: none; position: absolute; inset: 0; width: 100%; height: 100%;">
+        <iframe id="youtube-player"
+                width="100%" height="100%" frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById("play-video-btn").addEventListener("click", function () {
+    const videoContainer = this.closest(".video");
+    const iframeWrapper = videoContainer.querySelector(".video__iframe-wrapper");
+    const iframe = videoContainer.querySelector("#youtube-player");
+    const img = videoContainer.querySelector(".video__bg > img");
+    const overlay = videoContainer.querySelector(".video__overlay");
+    const button = this;
+
+    iframe.src = "https://www.youtube.com/embed/bKUcrZmj3uY";
+    iframeWrapper.style.display = "block";
+    if (img) img.style.display = "none";
+    if (overlay) overlay.style.display = "none";
+    button.style.display = "none";
+  });
+</script>
+
+<br>
+<br>
+
+{% endblock content %}

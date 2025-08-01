@@ -1,0 +1,97 @@
+{% load static %}
+{% load i18n %}
+<footer class="footer -type-1">
+  <div class="footer__main">
+    <div class="footer__bg">
+      <img src="{% static 'img/footer/1/bg.svg' %}" alt="{% trans 'image' %}">
+    </div>
+
+    <div class="container">
+      <div class="footer__info">
+        <div class="row y-gap-20 justify-between">
+          <div class="col-auto">
+            <div class="row y-gap-20 items-center">
+              <div class="col-auto">
+                <i class="icon-headphone text-50"></i>
+              </div>
+
+              <div class="col-auto">
+                <div class="text-20 fw-500">
+                  {% trans "Speak to our expert at" %}
+                  <a class="text-accent-1" href="tel:+393761446106">+39 376-144-6106</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-auto">
+            <div class="footerSocials">
+              <div class="footerSocials__title">
+                {% trans "Follow Us" %}
+              </div>
+
+              <div class="footerSocials__icons">
+                <a href="https://api.whatsapp.com/send/?phone=393208575909" class="icon-whatsapp" rel="noopener" target="_blank"></a>
+                <a href="https://www.instagram.com/abroads_tours/" class="icon-instagram" rel="noopener" target="_blank"></a>
+                <a href="https://www.tripadvisor.com/Attraction_Review-g187849-d24938712-Reviews-Abroads_Tours-Milan_Lombardy.html" class="icon-tripadvisor" rel="noopener" target="_blank"></a>
+                <a href="https://www.youtube.com/channel/UCgnbvG0m5WGgEaw164Cj-ig" class="icon-youtube" rel="noopener" target="_blank"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__content">
+        <div class="row y-gap-40 justify-between">
+          <div class="col-lg-4 col-md-6">
+            <h4 class="text-20 fw-500">{% trans "Contact" %}</h4>
+            <div class="y-gap-10 mt-20">
+              <a class="d-block" href="https://www.google.com/maps?q=Via+Bellini+23+20099+Sesto+San+Giovanni+(MI)+Italy" target="_blank" rel="noopener">Via Bellini 23 20099 – Sesto San Giovanni (MI), Italy</a>
+              <a class="d-block" href="mailto:abroadstour@gmail.com">abroadstour@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="col-lg-auto col-6">
+            <h4 class="text-20 fw-500">{% trans "Company" %}</h4>
+            <div class="y-gap-10 mt-20">
+              <a class="d-block fw-500" href="{% url 'tours' %}">{% trans "Our tours" %}</a>
+              <a class="d-block fw-500" href="{% url 'blog' %}">{% trans "Blog" %}</a>
+              <a class="d-block fw-500" href="{% url 'about' %}">{% trans "About Us" %}</a>
+              <a class="d-block fw-500" href="{% url 'cookie_policy' %}">{% trans "Cookie Policy" %}</a>
+              <a class="d-block fw-500" href="{% url 'legal' %}">{% trans "Legal" %}</a>
+              <a class="d-block fw-500" href="{% url 'sitemap' %}">{% trans "Sitemap" %}</a>
+            </div>
+          </div>
+
+          <div class="col-lg-auto col-6">
+            <h4 class="text-20 fw-500">{% trans "Support" %}</h4>
+            <div class="y-gap-10 mt-20">
+              <a class="d-block fw-500" href="{% url 'contact' %}">{% trans "Get in Touch" %}</a>
+              <a class="d-block fw-500" href="{% url 'help_center' %}">{% trans "Help center" %}</a>
+              <a class="d-block fw-500" href="https://api.whatsapp.com/send/?phone=393208575909" target="_blank" rel="noopener">{% trans "Live chat" %}</a>
+            </div>
+          </div>
+          <!-- Subscription -->
+          {% include 'includes/footer_subscribe.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="footer__bottom">
+      <div class="row y-gap-5 justify-between items-center">
+        <div class="col-auto">
+          <div>{% trans "© Copyright Abroads Tours 2025 | 04100091208 REA BO-5688 | All rights reserved" %}</div>
+        </div>
+        <div class="col-auto">
+          <div class="footer__images d-flex items-center x-gap-10">
+            <img src="{% static 'img/footer/cards/1.png' %}" alt="{% trans 'image' %}" loading="lazy">
+            <img src="{% static 'img/footer/cards/2.png' %}" alt="{% trans 'image' %}" loading="lazy">
+            <img src="{% static 'img/footer/cards/5.png' %}" alt="{% trans 'image' %}" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

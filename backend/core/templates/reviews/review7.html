@@ -1,0 +1,57 @@
+{% load static %}
+{% load i18n %}
+<div class="swiper-slide">
+  <a href="" class="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
+    <div class="tourCard__header px-10 pt-10">
+      <div class="testi-author-box">
+        <div class="testi-author">
+            <div class="author-thumb"><img src="{% static 'img/reviews/07review.webp' %}" alt="{% trans 'img' %}" loading="lazy"></div>
+            <div class="content" style="display: flex; flex-direction: column; align-items: flex-start;">
+                <h6 class="name">Tina G</h6>
+                <span>
+                  <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                    <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                  </div>
+                  <span class="text-dark-1 ml-10">5.0</span>
+                </div></span>
+            </div>
+        </div>
+        <div class="testi-comp"></div>
+    </div>
+    </div>
+
+    <div class="tourCard__content px-10 pt-10">
+      <h3 class="tourCard__title text-16 fw-500 mt-5">
+        {% trans "Stefano, the tour guide, took us to the best places at Lake Como and Lugano. He was very knowledgeable about the area and the history. I will definitely recommend it to my friends and family." %}
+      </h3>
+
+      <div class="d-flex justify-between items-center text-13 text-dark-1 pt-10 mt-10">
+        <div class="d-flex items-center">
+          {% trans "February 23, 2024" %}
+        </div>
+        <div class="testimonials__slider-meta-icon">
+          <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="19" cy="19" r="19" fill="#00AA6C"></circle>
+            <g clip-path="url(#clip0_335_4099)">
+            <path d="M11.0093 16.9888C8.79146 16.9888 6.99841 18.7812 6.99841 20.9922C6.99841 23.2031 8.79146 24.9956 11.0031 24.9956C13.2147 24.9956 15.0078 23.2031 15.0078 20.9922C15.014 18.7812 13.221 16.9888 11.0093 16.9888ZM11.0093 23.8589C9.42871 23.8589 8.14172 22.5785 8.14172 20.9922C8.14172 19.4058 9.42247 18.1255 11.0093 18.1255C12.5962 18.1255 13.8707 19.412 13.8707 20.9922C13.8707 22.5723 12.59 23.8589 11.0093 23.8589Z" fill="white"></path>
+            <path d="M11.0218 22.9783C12.1225 22.9783 13.0148 22.0863 13.0148 20.986C13.0148 19.8857 12.1225 18.9937 11.0218 18.9937C9.92115 18.9937 9.02887 19.8857 9.02887 20.986C9.02887 22.0863 9.92115 22.9783 11.0218 22.9783Z" fill="white"></path>
+            <path d="M27.0031 16.9888C24.7915 16.9888 22.9984 18.7812 22.9984 20.9922C22.9984 23.2031 24.7915 24.9956 27.0031 24.9956C29.2147 24.9956 31.0078 23.2031 31.0078 20.9922C31.0078 18.7812 29.2147 16.9888 27.0031 16.9888ZM27.0031 23.8589C25.4225 23.8589 24.1355 22.5785 24.1355 20.9922C24.1355 19.4058 25.4162 18.1255 27.0031 18.1255C28.59 18.1255 29.8645 19.412 29.8645 20.9922C29.8645 22.5723 28.5837 23.8589 27.0031 23.8589Z" fill="white"></path>
+            <path d="M27.0156 22.9783C28.1163 22.9783 29.0086 22.0863 29.0086 20.986C29.0086 19.8857 28.1163 18.9937 27.0156 18.9937C25.9149 18.9937 25.0226 19.8857 25.0226 20.986C25.0226 22.0863 25.9149 22.9783 27.0156 22.9783Z" fill="white"></path>
+            <path d="M32.6384 15.3215L34.9938 12.9856H30.2206C27.5467 10.8122 23.1046 9.00098 18.9875 9.00098C14.8641 9.00098 10.4596 10.8122 7.78563 12.9856H3L5.35533 15.3215C3.89965 16.7705 3 18.7753 3 20.9925C3 25.4143 6.5861 28.9993 11.0094 28.9993C13.0398 28.9993 14.8954 28.2435 16.3073 26.9944L19.0187 28.9868L21.6989 27.0382L21.6677 26.9632C23.0859 28.2248 24.9477 28.993 26.9969 28.993C31.4202 28.993 35.0062 25.4081 35.0062 20.9862C35 18.7753 34.0941 16.7705 32.6384 15.3215ZM25.991 13.0481C22.1988 13.5228 19.2249 16.6455 19 20.5115C18.7688 16.6393 15.7888 13.5103 11.984 13.0481C13.8957 11.6741 16.3323 10.9996 18.9875 10.9996C21.6427 10.9996 24.0793 11.6741 25.991 13.0481ZM11.0094 27.0007C7.68567 27.0007 4.99922 24.3088 4.99922 20.9925C4.99922 17.6761 7.69192 14.9842 11.0094 14.9842C14.3268 14.9842 17.0195 17.6761 17.0195 20.9925C17.0133 24.3088 14.3268 27.0007 11.0094 27.0007ZM27.0031 27.0007C23.6857 27.0007 20.993 24.3088 20.993 20.9925C20.993 17.6761 23.6857 14.9842 27.0031 14.9842C30.3206 14.9842 33.0133 17.6761 33.0133 20.9925C33.007 24.3088 30.3206 27.0007 27.0031 27.0007Z" fill="white"></path>
+            </g>
+            <defs>
+            <clipPath id="clip0_335_4099">
+            <rect width="32" height="20" fill="white" transform="translate(3 9)"></rect>
+            </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

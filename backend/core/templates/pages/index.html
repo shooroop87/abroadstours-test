@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% load static i18n %}
+
+{# SEO блоки для главной страницы #}
+{% block title %}{% trans "Abroads Tours - Best Tours and Travel Experiences Worldwide" %}{% endblock %}
+{% block description %}{% trans "Discover unforgettable travel experiences with Abroads Tours. Exclusive tours, best prices, professional service. Book now!" %}{% endblock %}
+{% block keywords %}{% trans "tours, travel, vacation, excursions, travel agency, holiday, airline tickets" %}{% endblock %}
+
+{# Open Graph для соцсетей #}
+{% block og_title %}{% trans "Abroads Tours - Unforgettable Journeys" %}{% endblock %}
+{% block og_description %}{% trans "The best tours around the world from a professional travel agency" %}{% endblock %}
+{% block og_image %}{% static 'images/homepage-hero.jpg' %}{% endblock %}
+
+{# Main page unique content #}
+{% block content %}
+    {% include 'mainpage/menu.html' %}
+    {% include 'mainpage/hero-slider.html' %}
+    {% include 'mainpage/tours.html' %}
+    {% include 'mainpage/video.html' %}
+    {% include 'mainpage/why.html' %}
+    {% include 'mainpage/reviews.html' %}
+    {% include 'mainpage/travel-blog.html' %}
+{% endblock %}
+
+{# Extra JS scripts for home page #}
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize hero-slider with autoplay
+    if (typeof initHeroSlider !== 'undefined') {
+        initHeroSlider({
+            autoplay: true,
+            interval: 5000
+        });
+    }
+});
+</script>
+{% endblock %}

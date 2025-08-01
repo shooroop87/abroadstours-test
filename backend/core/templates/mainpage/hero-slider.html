@@ -1,0 +1,65 @@
+{% load static %}
+{% load i18n %}
+<section class="hero -type-1">
+  <div class="hero__bg">
+    <img src="{% static 'img/hero/bg.webp' %}" alt="image" loading="lazy">
+    <img src="{% static 'img/hero/1/shape.svg' %}" alt="image" loading="lazy">
+  </div>
+  <div class="container">
+    <div class="row justify-center text-center">
+      <div class="col-xl-9 col-lg-10">
+        <div class="hero__content">
+          <h1 data-anim-child="slide-up delay-2" class="hero__title text-white is-in-view">{% trans "Discover Italy like a Local" %}</h1>
+
+          <div data-anim-child="slide-up delay-3" class="hero__text text-white mt-20 is-in-view">
+            {% trans "Choose the Best Day Tours from Milan: small groups, hidden gems and no tourist traps" %}
+          </div>
+
+          <div class="mt-40 d-flex justify-center">
+            <div class="searchForm -type-1">
+              <div class="searchForm__button">
+<button class="button -dark-1 bg-accent-1 text-white">
+                  <a href="{% url 'tours' %}"
+                     class="-dark-1 text-white"
+                     title="{% trans 'Discover the best day tours from Milan to Lake Como, Barolo wine regions, and Italian destinations. Small group tours with expert guides.' %}"
+                     aria-label="{% trans 'Browse all available day tours from Milan' %}">
+                     {% trans "Explore Our Tours" %}
+                    <i class="icon-arrow-top-right ml-10 text-16"></i>
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div data-anim-child="slide-up delay-5" class="heroTags is-in-view">
+            <div class="heroTags__title text-white">{% trans "LOWEST PRICE AND BEST TERMS GUARANTEED FOR DIRECT BOOKINGS ONLY ON OUR WEBSITE" %}</div>
+
+            <div class="heroTags__tags">
+              <div>
+                <button>
+                  <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4.5 10V7C4.5 6.44772 4.94772 6 5.5 6H7.3125M4.5 10V20C4.5 20.5523 4.94772 21 5.5 21H18.5C19.0523 21 19.5 20.5523 19.5 20V10M4.5 10H19.5M19.5 10V7C19.5 6.44772 19.0523 6 18.5 6H16.2188M7.3125 6V3M7.3125 6H16.2188M16.2188 6V3" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M8 14L16 14" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                  <span class="heroSpan">{% trans "Cancel for free 24h in advance" %}</span>
+                </button>
+              </div>
+
+              <div>
+                <button>
+                  <svg width="32px" height="32px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="3" y="6" width="18" height="13" rx="2" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect> <path d="M3 10H20.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M7 15H9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                  <span class="heroSpan">{% trans "Reserve now, pay nothing until 48h before" %}</span>
+                </button>
+              </div>
+
+              <div>
+                <button>
+                   <svg width="32px" height="32px" viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#fff" stroke="#fff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:1.91px;}</style></defs><polygon class="cls-1" points="12 6.25 13.18 8.76 15.82 9.17 13.91 11.12 14.36 13.89 12 12.58 9.64 13.89 10.09 11.12 8.18 9.17 10.82 8.76 12 6.25"></polygon><path class="cls-2" d="M18.68,1.48H5.32A3.82,3.82,0,0,0,1.5,5.3v9.54a3.82,3.82,0,0,0,3.82,3.82H9.14L12,21.52l2.86-2.86h3.82a3.82,3.82,0,0,0,3.82-3.82V5.3A3.82,3.82,0,0,0,18.68,1.48Z"></path></g></svg>
+                  <span class="heroSpan">{% trans "Top-rated tours on Viator, TripAdvisor & GetYourGuide" %}</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

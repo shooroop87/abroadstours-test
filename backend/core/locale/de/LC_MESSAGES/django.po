@@ -1,0 +1,1758 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-23 20:53+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/settings.py:114
+msgid "French"
+msgstr "Französisch"
+
+#: config/settings.py:115
+msgid "German"
+msgstr "Deutsch"
+
+#: config/settings.py:116
+msgid "Spanish"
+msgstr "Spanisch"
+
+#: config/settings.py:117
+msgid "Dutch"
+msgstr "Niederländisch"
+
+#: core/templates/blog/a-bold-guide-to-bernina-express-tour-from-milan.html:6
+msgid "Abroads Tours - A Bold Guide To Bernina Express Tour From Milan"
+msgstr "Abroads Tours - Ein mutiger Leitfaden für die Bernina Express Tour von Mailand"
+
+#: core/templates/blog/a-bold-guide-to-bernina-express-tour-from-milan.html:9
+#: core/templates/blog/lake-como-day-trip-from-milan-insiders-guide.html:9
+#: core/templates/blog/the-bernina-express-ride.html:9
+msgid "All filters"
+msgstr "Alle Filter"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:14
+msgid "All you need to know about the most incredible train line in Europe"
+msgstr "Alles was Sie über die unglaublichste Zuglinie Europas wissen müssen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:15
+msgid "Including how to avoid unpleasant experiences, crowds, and wasting money."
+msgstr "Einschließlich wie man unangenehme Erfahrungen, Menschenmassen und Geldverschwendung vermeidet."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:26
+msgid "After hundreds of bernina express tours from milan"
+msgstr "Nach hunderten von Bernina Express Touren von Mailand"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:27
+#, fuzzy
+#| msgid "We believe this tour can be much better. that's why we offer english-only tours for ages 7+, providing a quiet, focused experience."
+msgid "We believe this tour can be much better. that’s why we offer english-only tours for ages 7+, providing a quiet, focused experience."
+msgstr "Wir glauben, diese Tour kann viel besser sein. Deshalb bieten wir reine englischsprachige Touren für Alter 7+ an und sorgen für eine ruhige, fokussierte Erfahrung."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:28
+#, fuzzy
+#| msgid "The bernina express is the most scenic railway in europe. this article is written by guides who've led 100+ tours and contains rare insights and tips you won't find elsewhere."
+msgid "The bernina express is the most scenic railway in europe. this article is written by guides who've led 100+ tours and contains rare insights and tips you won’t find elsewhere."
+msgstr "Der Bernina Express ist die landschaftlich schönste Eisenbahn Europas. Dieser Artikel wurde von Guides geschrieben, die 100+ Touren geleitet haben und enthält seltene Einblicke und Tipps, die Sie sonst nirgends finden."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:32
+msgid "The bernina express route"
+msgstr "Die Bernina Express Route"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:33
+#, fuzzy
+#| msgid "The train ascends 1,800 meters, traverses alpine lakes and glacier valleys, and ends in glamorous st. moritz. you'll witness untouched nature in both summer and winter seasons."
+msgid "The train ascends 1,800 meters, traverses alpine lakes and glacier valleys, and ends in glamorous st. moritz. you’ll witness untouched nature in both summer and winter seasons."
+msgstr "Der Zug steigt 1.800 Meter auf, durchquert Alpenseen und Gletschertäler und endet im glamourösen St. Moritz. Sie erleben unberührte Natur sowohl im Sommer als auch im Winter."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:34
+#, fuzzy
+#| msgid "From november to april, it's a snowy wonderland. in summer, enjoy crisp air, green meadows, and temperatures far cooler than milan."
+msgid "From november to april, it’s a snowy wonderland. in summer, enjoy crisp air, green meadows, and temperatures far cooler than milan."
+msgstr "Von November bis April ist es ein schneebedecktes Wunderland. Im Sommer genießen Sie frische Luft, grüne Wiesen und Temperaturen, die viel kühler sind als in Mailand."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:36
+msgid "Train carriage types"
+msgstr "Zugwaggon-Typen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:38
+msgid "panoramic windows"
+msgstr "Panoramafenster"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:38
+msgid "large glass, but no opening. reflections can ruin photos on rainy days."
+msgstr "Große Glasflächen, aber nicht zu öffnen. Reflexionen können Fotos an regnerischen Tagen ruinieren."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:39
+msgid "regular carriages"
+msgstr "Normale Waggons"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:39
+msgid "windows open. perfect for fresh air and photography."
+msgstr "Fenster öffnen sich. Perfekt für frische Luft und Fotografie."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:40
+msgid "open carriages (summer only)"
+msgstr "Offene Waggons (nur Sommer)"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:40
+msgid "no glass at all. like a cabrio train ride."
+msgstr "Überhaupt kein Glas. Wie eine Cabrio-Zugfahrt."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:45
+msgid "Unesco heritage experience"
+msgstr "UNESCO-Welterbe-Erlebnis"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:47
+msgid "historic engineering marvel through harsh alpine terrain."
+msgstr "Historisches Ingenieurswunder durch hartes alpines Terrain."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:48
+msgid "blend of culture, nature, and architecture."
+msgstr "Mischung aus Kultur, Natur und Architektur."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:49
+msgid "remarkable visual harmony with the landscape."
+msgstr "Bemerkenswerte visuelle Harmonie mit der Landschaft."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:55
+msgid "Ascend from 400m to 2250m. see italian palms, orchards, and alpine glaciers—all in one ride."
+msgstr "Aufstieg von 400m auf 2250m. Sehen Sie italienische Palmen, Obstgärten und alpine Gletscher – alles in einer Fahrt."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:58
+msgid "What you'll see on the ride"
+msgstr "Was Sie während der Fahrt sehen werden"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:60
+msgid "Valtellina valley"
+msgstr "Valtellina-Tal"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:60
+msgid "vineyards, rural life, alpine agriculture."
+msgstr "Weinberge, ländliches Leben, alpine Landwirtschaft."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:61
+msgid "Poschiavo valley"
+msgstr "Poschiavo-Tal"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:61
+msgid "drastic changes in climate and landscape in just 25 km."
+msgstr "Drastische Veränderungen in Klima und Landschaft auf nur 25 km."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:62
+msgid "Alpine lakes"
+msgstr "Alpenseen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:62
+msgid "turquoise and white, fed by glacial melt."
+msgstr "Türkis und weiß, gespeist von Gletscherschmelze."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:63
+msgid "Bernina peak"
+msgstr "Bernina-Gipfel"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:63
+msgid "4,000-meter alpine giant."
+msgstr "4.000 Meter hoher alpiner Riese."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:64
+msgid "St. Moritz"
+msgstr "St. Moritz"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:64
+msgid "elite ski resort with year-round events."
+msgstr "Elite-Skiresort mit ganzjährigen Veranstaltungen."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:67
+msgid "Cost of self-guided vs. organized"
+msgstr "Kosten für selbstgeführt vs. organisiert"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:68
+msgid "Self-guided: 64€ train + 24€ train milan–tirano + parking/fuel ≈ 88€ total. fully manual."
+msgstr "Selbstgeführt: 64€ Zug + 24€ Zug Mailand–Tirano + Parken/Sprit ≈ 88€ gesamt. Vollständig manuell."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:69
+msgid "Organized tour: 117–144€, but you get one-way train + one-way bus + full logistics + skip the stress."
+msgstr "Organisierte Tour: 117–144€, aber Sie bekommen einfache Zugfahrt + einfache Busfahrt + vollständige Logistik + ohne Stress."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:73
+msgid "⚠️ avoid sundays & holidays — expect +2 hours on the road and overbooked trains."
+msgstr "⚠️ Vermeiden Sie Sonntage & Feiertage — rechnen Sie mit +2 Stunden auf der Straße und überbuchten Zügen."
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:77
+msgid "How our tour differs"
+msgstr "Wie sich unsere Tour unterscheidet"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:80
+msgid "Abroads tours"
+msgstr "Abroads Touren"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:82
+msgid "English only"
+msgstr "Nur Englisch"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:83
+msgid "Age 7+"
+msgstr "Alter 7+"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:84
+msgid "7:45 am departure"
+msgstr "7:45 Uhr Abfahrt"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:85
+msgid "Direct booking: 117€"
+msgstr "Direktbuchung: 117€"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:86
+msgid "Flexible schedule"
+msgstr "Flexibler Zeitplan"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:87
+msgid "Max 35 people"
+msgstr "Max. 35 Personen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:88
+msgid "No tours on sundays"
+msgstr "Keine Touren an Sonntagen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:92
+msgid "Other companies"
+msgstr "Andere Unternehmen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:94
+msgid "Bilingual tours (en/es)"
+msgstr "Zweisprachige Touren (en/es)"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:95
+msgid "All ages"
+msgstr "Alle Altersgruppen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:96
+msgid "7:00 am departure"
+msgstr "7:00 Uhr Abfahrt"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:97
+msgid "Third-party booking: 125–144€"
+msgstr "Drittanbieter-Buchung: 125–144€"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:98
+msgid "No flexibility"
+msgstr "Keine Flexibilität"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:99
+msgid "Up to 55 people"
+msgstr "Bis zu 55 Personen"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:100
+msgid "Crowded sundays"
+msgstr "Überfüllte Sonntage"
+
+#: core/templates/blog/content/a-bold-guide-to-bernina-express-tour-from-milan-content.html:105
+msgid "Book wisely — a well-planned tour = a memorable day in the alps."
+msgstr "Buchen Sie klug — eine gut geplante Tour = ein unvergesslicher Tag in den Alpen."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:14
+#: core/templates/mainpage/travel-blog.html:33
+#: core/templates/pages/blog.html:50
+#, fuzzy
+#| msgid "Lake Como Day Trip from Milan: Insider's Guide"
+msgid "Lake Como Day Trip from Milan: Insider’s Guide"
+msgstr "Comer See Tagesausflug von Mailand: Insider-Leitfaden"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:15
+msgid "How to save time, money, and avoid hordes of people you will be surrounded by on Lake Como."
+msgstr "Wie Sie Zeit und Geld sparen und die Menschenmassen am Comer See vermeiden."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:26
+#, fuzzy
+#| msgid "Why This Insider's Guide Is Your Key to the Perfect Lake Como Day Trip"
+msgid "Why This Insider’s Guide Is Your Key to the Perfect Lake Como Day Trip"
+msgstr "Warum dieser Insider-Leitfaden Ihr Schlüssel zum perfekten Comer See Tagesausflug ist"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:27
+msgid "Before writing this article, we read the top 10 results on Google about what to do on Lake Como and how to plan a day trip from Milan. The information was very confusing..."
+msgstr "Bevor wir diesen Artikel schrieben, lasen wir die Top 10 Google-Ergebnisse darüber, was man am Comer See unternehmen kann und wie man einen Tagesausflug von Mailand plant. Die Informationen waren sehr verwirrend..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:29
+msgid "Three different types of tours to Lake Como from Milan that you may find on the internet:"
+msgstr "Drei verschiedene Arten von Touren zum Comer See von Mailand, die Sie im Internet finden können:"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:32
+msgid "Lake Como day trip from Milan with 50 people in a group..."
+msgstr "Comer See Tagesausflug von Mailand mit 50 Personen in einer Gruppe..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:33
+msgid "Lake Como day trip from Milan in a private group..."
+msgstr "Comer See Tagesausflug von Mailand in einer privaten Gruppe..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:34
+msgid "Lake Como day trip from Milan in a small group tour..."
+msgstr "Comer See Tagesausflug von Mailand in einer kleinen Gruppentour..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:37
+msgid "You have probably already read many websites and articles..."
+msgstr "Sie haben wahrscheinlich bereits viele Websites und Artikel gelesen..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:38
+#, fuzzy
+#| msgid "Now let's be down to earth..."
+msgid "Now let’s be down to earth..."
+msgstr "Lassen Sie uns nun realistisch sein..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:39
+msgid "The above description represents a luxury experience..."
+msgstr "Die obige Beschreibung stellt eine Luxuserfahrung dar..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:40
+msgid "On the other hand, you can have a budget-friendly Lake Como day trip..."
+msgstr "Andererseits können Sie einen budgetfreundlichen Comer See Tagesausflug haben..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:43
+msgid "Lake Como Day Trip from Milan: All Offers"
+msgstr "Comer See Tagesausflug von Mailand: Alle Angebote"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:48
+msgid "Stunning view of Torno village from the boat on Lake Como"
+msgstr "Atemberaubender Blick auf das Dorf Torno vom Boot auf dem Comer See"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:52
+msgid "Okay, you want to spend a beautiful day on Lake Como..."
+msgstr "Okay, Sie möchten einen schönen Tag am Comer See verbringen..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:53
+msgid "Big Group Tours usually include two or three of the following places..."
+msgstr "Große Gruppentouren umfassen normalerweise zwei oder drei der folgenden Orte..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:54
+msgid "These activities are provided by bus companies..."
+msgstr "Diese Aktivitäten werden von Busunternehmen angeboten..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:55
+msgid "Second downside of a big group tour..."
+msgstr "Zweiter Nachteil einer großen Gruppentour..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:56
+msgid "These tours typically involve spending 4 to 5 hours on the bus..."
+msgstr "Diese Touren beinhalten normalerweise 4 bis 5 Stunden im Bus..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:57
+msgid "In summary, when you purchase a big group tour from Milan..."
+msgstr "Zusammenfassend, wenn Sie eine große Gruppentour von Mailand buchen..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:58
+msgid "The main purpose of tour companies is to help you avoid hustle and bustle..."
+msgstr "Der Hauptzweck von Tourunternehmen ist es, Ihnen zu helfen, Hektik und Trubel zu vermeiden..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:59
+msgid "If you don't want to deal with all the organizational details..."
+msgstr "Wenn Sie sich nicht mit allen organisatorischen Details befassen möchten..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:63
+msgid "We have crafted a tour that meets all of these criteria..."
+msgstr "Wir haben eine Tour entwickelt, die all diese Kriterien erfüllt..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:69
+msgid "By joining our tour, you will have the opportunity to uncover this fascinating history..."
+msgstr "Durch die Teilnahme an unserer Tour haben Sie die Möglichkeit, diese faszinierende Geschichte zu entdecken..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:70
+msgid "Going to Lake Como on your own may result in a poor experience..."
+msgstr "Alleine zum Comer See zu fahren kann zu einer schlechten Erfahrung führen..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:73
+msgid "Como Lake: What to See?"
+msgstr "Comer See: Was gibt es zu sehen?"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:75
+msgid "First, let's understand the geography. Como Lake has a shape like an upside-down 'Y'..."
+msgstr "Verstehen wir zunächst die Geographie. Der Comer See hat die Form eines umgedrehten 'Y'..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:79
+msgid "⚠️ Important ⚠️:"
+msgstr "⚠️ Wichtig ⚠️:"
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:79
+msgid "Como Lake is a large area, and it's possible to visit only a few attractions in one day..."
+msgstr "Der Comer See ist ein großes Gebiet, und es ist möglich, nur wenige Attraktionen an einem Tag zu besuchen..."
+
+#: core/templates/blog/content/lake-como-day-trip-from-milan-insiders-guide-content.html:83
+msgid "The most popular and fascinating section of the lake is the branch that stretches from Bellagio to Como..."
+msgstr "Der beliebteste und faszinierendste Abschnitt des Sees ist der Arm, der sich von Bellagio bis Como erstreckt..."
+
+#: core/templates/blog/content/the-bernina-express-ride-content.html:14
+#: core/templates/mainpage/travel-blog.html:67
+#: core/templates/pages/blog.html:118
+msgid "Watch the Bernina Express ride 🎞"
+msgstr "Schauen Sie die Bernina Express Fahrt 🎞"
+
+#: core/templates/blog/content/the-bernina-express-ride-content.html:15
+msgid "On the Bernina Express, tourists can experience a captivating adventure with breathtaking views, traversing impressive landscapes and crossing high-mountain bridges."
+msgstr "Im Bernina Express können Touristen ein faszinierendes Abenteuer mit atemberaubenden Aussichten erleben, beeindruckende Landschaften durchqueren und Hochgebirgsbrücken überqueren."
+
+#: core/templates/blog/lake-como-day-trip-from-milan-insiders-guide.html:6
+msgid "Lake Como Day Trip from Milan: Insider's Guide - Abroads Tours"
+msgstr "Comer See Tagesausflug von Mailand: Insider-Leitfaden - Abroads Tours"
+
+#: core/templates/blog/the-bernina-express-ride.html:6
+msgid "Watch the Bernina Express ride 🎞 - Abroads Tours"
+msgstr "Schauen Sie die Bernina Express Fahrt 🎞 - Abroads Tours"
+
+#: core/templates/includes/cookie_popup.html:10
+msgid "🍪 Cookie Settings"
+msgstr "🍪 Cookie-Einstellungen"
+
+#: core/templates/includes/cookie_popup.html:18
+msgid "We use cookies to enhance your browsing experience, provide personalized content, and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies. You can manage your preferences below."
+msgstr "Wir verwenden Cookies, um Ihr Browsing-Erlebnis zu verbessern, personalisierte Inhalte bereitzustellen und unseren Traffic zu analysieren. Durch Klicken auf 'Alle akzeptieren' stimmen Sie unserer Cookie-Nutzung zu. Sie können Ihre Präferenzen unten verwalten."
+
+#: core/templates/includes/cookie_popup.html:25
+msgid "Essential Cookies"
+msgstr "Notwendige Cookies"
+
+#: core/templates/includes/cookie_popup.html:26
+msgid "Required for basic website functionality"
+msgstr "Erforderlich für grundlegende Website-Funktionalität"
+
+#: core/templates/includes/cookie_popup.html:40
+msgid "Analytics Cookies"
+msgstr "Analyse-Cookies"
+
+#: core/templates/includes/cookie_popup.html:41
+msgid "Help us understand how visitors use our website"
+msgstr "Helfen uns zu verstehen, wie Besucher unsere Website nutzen"
+
+#: core/templates/includes/cookie_popup.html:51
+#: core/templates/includes/cookie_popup.html:69
+#: core/templates/includes/cookie_popup.html:87
+msgid "Services used:"
+msgstr "Verwendete Dienste:"
+
+#: core/templates/includes/cookie_popup.html:58
+msgid "Marketing Cookies"
+msgstr "Marketing-Cookies"
+
+#: core/templates/includes/cookie_popup.html:59
+msgid "Used to show you relevant advertisements"
+msgstr "Verwendet, um Ihnen relevante Werbung zu zeigen"
+
+#: core/templates/includes/cookie_popup.html:76
+msgid "Functional Cookies"
+msgstr "Funktionale Cookies"
+
+#: core/templates/includes/cookie_popup.html:77
+msgid "Enable enhanced functionality and personalization"
+msgstr "Ermöglichen erweiterte Funktionalität und Personalisierung"
+
+#: core/templates/includes/cookie_popup.html:94
+msgid "For more information about how we use cookies, please read our"
+msgstr "Für weitere Informationen darüber, wie wir Cookies verwenden, lesen Sie bitte unsere"
+
+#: core/templates/includes/cookie_popup.html:95
+#: core/templates/includes/footer.html:78 core/templates/pages/contact.html:84
+#: core/templates/pages/privacy_policy.html:19
+#: core/templates/pages/privacy_policy.html:23
+msgid "Privacy Policy"
+msgstr "Datenschutzerklärung"
+
+#: core/templates/includes/cookie_popup.html:102
+msgid "Accept All"
+msgstr "Alle akzeptieren"
+
+#: core/templates/includes/cookie_popup.html:107
+msgid "Accept Selected"
+msgstr "Ausgewählte akzeptieren"
+
+#: core/templates/includes/cookie_popup.html:112
+msgid "Reject All"
+msgstr "Alle ablehnen"
+
+#: core/templates/includes/cookie_popup.html:127
+msgid "🍪 We use cookies to improve your experience on our website. By continuing to browse, you agree to our use of cookies."
+msgstr "🍪 Wir verwenden Cookies, um Ihr Erlebnis auf unserer Website zu verbessern. Durch weiteres Browsen stimmen Sie unserer Cookie-Nutzung zu."
+
+#: core/templates/includes/cookie_popup.html:128
+msgid "Learn more"
+msgstr "Mehr erfahren"
+
+#: core/templates/includes/cookie_popup.html:136
+msgid "Accept"
+msgstr "Akzeptieren"
+
+#: core/templates/includes/cookie_popup.html:141
+msgid "Manage"
+msgstr "Verwalten"
+
+#: core/templates/includes/footer-tour.html:6
+#: core/templates/includes/footer-tour.html:132
+#: core/templates/includes/footer-tour.html:133
+#: core/templates/includes/footer-tour.html:134
+#: core/templates/includes/similar_experiences.html:20
+#: core/templates/includes/similar_experiences.html:62
+#: core/templates/includes/similar_experiences.html:104
+#: core/templates/includes/similar_experiences.html:146
+#: core/templates/includes/similar_experiences.html:188
+#: core/templates/includes/similar_experiences.html:230
+#: core/templates/includes/similar_experiences.html:272
+#: core/templates/includes/similar_experiences.html:314
+#: core/templates/mainpage/tours.html:22 core/templates/mainpage/tours.html:62
+#: core/templates/mainpage/tours.html:102
+#: core/templates/mainpage/tours.html:142
+#: core/templates/mainpage/tours.html:182
+#: core/templates/mainpage/tours.html:222
+#: core/templates/mainpage/tours.html:262
+#: core/templates/mainpage/tours.html:302
+msgid "image"
+msgstr "Bild"
+
+#: core/templates/includes/footer-tour.html:20
+#: core/templates/includes/footer.html:19 core/templates/mainpage/menu.html:70
+msgid "Speak to our expert at"
+msgstr "Sprechen Sie mit unserem Experten unter"
+
+#: core/templates/includes/footer-tour.html:30
+#: core/templates/includes/footer.html:29
+msgid "Follow Us"
+msgstr "Folgen Sie uns"
+
+#: core/templates/includes/footer-tour.html:47
+#: core/templates/includes/footer.html:46 core/templates/mainpage/menu.html:62
+msgid "Contact"
+msgstr "Kontakt"
+
+#: core/templates/includes/footer-tour.html:50
+msgid "Via Bellini 23 20099 – Sesto San Giovanni (MI), Italy"
+msgstr "Via Bellini 23 20099 – Sesto San Giovanni (MI), Italien"
+
+#: core/templates/includes/footer-tour.html:56
+#: core/templates/includes/footer.html:54
+msgid "Company"
+msgstr "Unternehmen"
+
+#: core/templates/includes/footer-tour.html:61
+#: core/templates/includes/footer.html:57 core/templates/mainpage/tours.html:7
+msgid "Our tours"
+msgstr "Unsere Touren"
+
+#: core/templates/includes/footer-tour.html:65
+#: core/templates/includes/footer.html:60
+#: core/templates/includes/header-tour.html:103
+#: core/templates/includes/header.html:173 core/templates/mainpage/menu.html:51
+msgid "Blog"
+msgstr "Blog"
+
+#: core/templates/includes/footer-tour.html:69
+#: core/templates/includes/footer.html:63
+#: core/templates/includes/header-tour.html:109
+#: core/templates/includes/header.html:179 core/templates/mainpage/menu.html:57
+msgid "About Us"
+msgstr "Über uns"
+
+#: core/templates/includes/footer-tour.html:73
+#: core/templates/pages/privacy_policy.html:40
+msgid "Cookie Policy"
+msgstr "Cookie-Richtlinie"
+
+#: core/templates/includes/footer-tour.html:77
+msgid "Legal"
+msgstr "Rechtliches"
+
+#: core/templates/includes/footer-tour.html:81
+#: core/templates/includes/footer.html:66
+msgid "Sitemap"
+msgstr "Sitemap"
+
+#: core/templates/includes/footer-tour.html:88
+#: core/templates/includes/footer.html:72
+msgid "Support"
+msgstr "Support"
+
+#: core/templates/includes/footer-tour.html:93
+#: core/templates/includes/footer.html:75
+msgid "Get in Touch"
+msgstr "Kontakt aufnehmen"
+
+#: core/templates/includes/footer-tour.html:97
+msgid "Help center"
+msgstr "Hilfezentrum"
+
+#: core/templates/includes/footer-tour.html:101
+#: core/templates/includes/footer.html:81
+msgid "Live chat"
+msgstr "Live-Chat"
+
+#: core/templates/includes/footer-tour.html:108
+#: core/templates/includes/footer.html:87
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: core/templates/includes/footer-tour.html:109
+#: core/templates/includes/footer.html:88
+msgid "Subscribe to the free newsletter and stay up to date"
+msgstr "Abonnieren Sie den kostenlosen Newsletter und bleiben Sie auf dem Laufenden"
+
+#: core/templates/includes/footer-tour.html:112
+msgid "Your email address"
+msgstr "Ihre E-Mail-Adresse"
+
+#: core/templates/includes/footer-tour.html:113
+#: core/templates/includes/footer.html:93
+msgid "Send"
+msgstr "Senden"
+
+#: core/templates/includes/footer-tour.html:127
+#: core/templates/includes/footer.html:107
+msgid "© Copyright Abroads Tours 2025 | 04100091208 REA BO-5688 | All rights reserved"
+msgstr "© Copyright Abroads Tours 2025 | 04100091208 REA BO-5688 | Alle Rechte vorbehalten"
+
+#: core/templates/includes/footer.html:56
+msgid "Best day tours from Milan to Lake Como, wine regions and Italian destinations"
+msgstr "Beste Tagestouren von Mailand zum Comer See, Weinregionen und italienischen Zielen"
+
+#: core/templates/includes/footer.html:59
+#: core/templates/includes/header-tour.html:102
+#: core/templates/includes/header.html:172
+msgid "Travel stories, destination guides and travel tips"
+msgstr "Reisegeschichten, Reisezielführer und Reisetipps"
+
+#: core/templates/includes/footer.html:62
+#: core/templates/includes/header-tour.html:108
+#: core/templates/includes/header.html:178
+msgid "Learn about our founders, mission, and commitment to authentic travel experiences"
+msgstr "Erfahren Sie mehr über unsere Gründer, Mission und unser Engagement für authentische Reiseerlebnisse"
+
+#: core/templates/includes/footer.html:92
+msgid "Your email addres"
+msgstr "Ihre E-Mail-Adresse"
+
+#: core/templates/includes/header-tour.html:32
+#: core/templates/includes/header.html:28
+msgid "Discover the best day tours from Milan to Lake Como, Barolo wine regions, and Swiss destinations. Small group experiences with English-speaking guides."
+msgstr "Entdecken Sie die besten Tagestouren von Mailand zum Comer See, Barolo-Weinregionen und Schweizer Zielen. Kleine Gruppenerlebnisse mit englischsprachigen Guides."
+
+#: core/templates/includes/header-tour.html:33
+#: core/templates/includes/header.html:29 core/templates/mainpage/menu.html:21
+msgid "Best day tours from Milan"
+msgstr "Beste Tagestouren von Mailand"
+
+#: core/templates/includes/header-tour.html:39
+#: core/templates/includes/header.html:35 core/templates/mainpage/menu.html:27
+msgid "Our Tours"
+msgstr "Unsere Touren"
+
+#: core/templates/includes/header-tour.html:49
+#: core/templates/includes/header-tour.html:62
+#: core/templates/includes/header.html:45 core/templates/mainpage/menu.html:35
+#: core/templates/pages/best_day_tours_from_milan.html:21
+#: core/templates/pages/como-tours.html:22
+#: core/templates/pages/milano-tours.html:22
+#: core/templates/pages/tour-list.html:22
+#: core/templates/pages/wine-tours.html:22
+msgid "All Tours"
+msgstr "Alle Touren"
+
+#: core/templates/includes/header-tour.html:50
+#: core/templates/includes/header.html:46 core/templates/mainpage/menu.html:38
+#: core/templates/pages/best_day_tours_from_milan.html:29
+#: core/templates/pages/como-tours.html:30
+#: core/templates/pages/milano-tours.html:30
+#: core/templates/pages/tour-list.html:30
+#: core/templates/pages/wine-tours.html:30
+msgid "Wine Tours"
+msgstr "Weintouren"
+
+#: core/templates/includes/header-tour.html:51
+#: core/templates/mainpage/menu.html:41
+#: core/templates/pages/best_day_tours_from_milan.html:37
+#: core/templates/pages/como-tours.html:38
+#: core/templates/pages/milano-tours.html:10
+#: core/templates/pages/milano-tours.html:38
+#: core/templates/pages/tour-list.html:38
+#: core/templates/pages/wine-tours.html:38
+msgid "Milano Tours"
+msgstr "Mailand Touren"
+
+#: core/templates/includes/header-tour.html:52
+#: core/templates/mainpage/menu.html:44
+#: core/templates/pages/best_day_tours_from_milan.html:45
+#: core/templates/pages/como-tours.html:46
+#: core/templates/pages/milano-tours.html:46
+#: core/templates/pages/tour-list.html:46
+#: core/templates/pages/wine-tours.html:46
+msgid "Como Tours"
+msgstr "Como Touren"
+
+#: core/templates/includes/header-tour.html:65
+#: core/templates/includes/similar_experiences.html:31
+#: core/templates/mainpage/tours.html:33 core/templates/pages/tour-list.html:67
+#: core/templates/pages/wine-tours.html:73
+msgid "Alba, UNESCO Castle & Barolo Wine Tasting Tour from Milan. Small Group"
+msgstr "Alba, UNESCO-Schloss & Barolo-Weinverkostung Tour von Mailand. Kleine Gruppe"
+
+#: core/templates/includes/header-tour.html:68
+#: core/templates/includes/similar_experiences.html:73
+#: core/templates/mainpage/tours.html:73
+#: core/templates/pages/tour-list.html:137
+#: core/templates/pages/wine-tours.html:149
+msgid "Barolo & Barbaresco Wine tasting from Milan. Visit Alba, Birthplace of Nutella"
+msgstr "Barolo & Barbaresco Weinverkostung von Mailand. Besuchen Sie Alba, Geburtsort von Nutella"
+
+#: core/templates/includes/header-tour.html:71
+#: core/templates/includes/similar_experiences.html:115
+#: core/templates/mainpage/tours.html:113
+#: core/templates/pages/como-tours.html:69
+#: core/templates/pages/tour-list.html:207
+msgid "Best of Como: Walking Tour & 1-Hour Boat Cruise. Morning Schedule – Less Crowded Time"
+msgstr "Das Beste von Como: Rundgang & 1-stündige Bootsfahrt. Morgenprogramm – weniger überfüllte Zeit"
+
+#: core/templates/includes/header-tour.html:74
+msgid "Kick off walking tour in Milano"
+msgstr "Stadtrundgang in Mailand beginnen"
+
+#: core/templates/includes/header-tour.html:77
+msgid "Lake Como and Lugano Small Group Tour from Milan"
+msgstr "Bestbewertete Comer See und Lugano Kleingruppentour von Mailand"
+
+#: core/templates/includes/header-tour.html:80
+#: core/templates/includes/similar_experiences.html:241
+#: core/templates/mainpage/tours.html:233
+#: core/templates/pages/como-tours.html:213
+#: core/templates/pages/tour-list.html:417
+msgid "Lake Como, Bellagio & Bellano with boat cruise Small Group Tour from Milan"
+msgstr "Besuchen Sie Bellagio und Varenna von Mailand in einer kleinen Gruppe auf Englisch"
+
+#: core/templates/includes/header-tour.html:83
+#: core/templates/includes/similar_experiences.html:283
+#: core/templates/mainpage/tours.html:273
+#: core/templates/pages/como-tours.html:285
+#: core/templates/pages/tour-list.html:487
+msgid "From Milan: Lake Como and Lugano tour. Morcote, Lugano & Bellagio Day Trip"
+msgstr "Von Mailand: Comer See und Lugano Tour. Morcote, Lugano & Bellagio Tagesausflug"
+
+#: core/templates/includes/header-tour.html:86
+msgid "All the Lake Como tours from Milan"
+msgstr "Alle Comer See Touren von Mailand"
+
+#: core/templates/includes/header-tour.html:114
+#: core/templates/includes/header.html:186
+msgid "Contact Us"
+msgstr "Kontakt"
+
+#: core/templates/includes/header.html:47
+msgid "Lake Como Tours"
+msgstr "Comer See Touren"
+
+#: core/templates/includes/header.html:48
+msgid "City Tours"
+msgstr "Stadttouren"
+
+#: core/templates/includes/similar_experiences.html:7
+msgid "Similar experiences"
+msgstr "Ähnliche Erlebnisse"
+
+#: core/templates/includes/similar_experiences.html:27
+#: core/templates/includes/similar_experiences.html:69
+#: core/templates/mainpage/tours.html:29 core/templates/mainpage/tours.html:69
+#: core/templates/pages/tour-list.html:63
+#: core/templates/pages/tour-list.html:133
+#: core/templates/pages/wine-tours.html:69
+#: core/templates/pages/wine-tours.html:145
+msgid "Alba, Piemonte, Italy"
+msgstr "Alba, Piemont, Italien"
+
+#: core/templates/includes/similar_experiences.html:48
+#: core/templates/includes/similar_experiences.html:90
+#: core/templates/includes/similar_experiences.html:216
+#: core/templates/includes/similar_experiences.html:258
+#: core/templates/includes/similar_experiences.html:300
+#: core/templates/includes/similar_experiences.html:342
+#: core/templates/mainpage/tours.html:50 core/templates/mainpage/tours.html:90
+#: core/templates/mainpage/tours.html:210
+#: core/templates/mainpage/tours.html:250
+#: core/templates/mainpage/tours.html:290
+#: core/templates/mainpage/tours.html:330
+#: core/templates/pages/como-tours.html:179
+#: core/templates/pages/como-tours.html:251
+#: core/templates/pages/como-tours.html:323
+#: core/templates/pages/tour-list.html:105
+#: core/templates/pages/tour-list.html:175
+#: core/templates/pages/tour-list.html:385
+#: core/templates/pages/tour-list.html:455
+#: core/templates/pages/tour-list.html:525
+#: core/templates/pages/wine-tours.html:111
+#: core/templates/pages/wine-tours.html:187
+msgid "10 hours"
+msgstr "10 Stunden"
+
+#: core/templates/includes/similar_experiences.html:50
+#: core/templates/includes/similar_experiences.html:92
+#: core/templates/includes/similar_experiences.html:134
+#: core/templates/includes/similar_experiences.html:176
+#: core/templates/includes/similar_experiences.html:218
+#: core/templates/includes/similar_experiences.html:260
+#: core/templates/includes/similar_experiences.html:302
+#: core/templates/includes/similar_experiences.html:344
+#: core/templates/mainpage/tours.html:52 core/templates/mainpage/tours.html:92
+#: core/templates/mainpage/tours.html:132
+#: core/templates/mainpage/tours.html:172
+#: core/templates/mainpage/tours.html:212
+#: core/templates/mainpage/tours.html:252
+#: core/templates/mainpage/tours.html:292
+#: core/templates/mainpage/tours.html:332
+#: core/templates/pages/como-tours.html:112
+#: core/templates/pages/como-tours.html:184
+#: core/templates/pages/como-tours.html:256
+#: core/templates/pages/como-tours.html:328
+#: core/templates/pages/como-tours.html:400
+#: core/templates/pages/milano-tours.html:112
+#: core/templates/pages/tour-list.html:110
+#: core/templates/pages/tour-list.html:180
+#: core/templates/pages/tour-list.html:250
+#: core/templates/pages/tour-list.html:320
+#: core/templates/pages/tour-list.html:390
+#: core/templates/pages/tour-list.html:460
+#: core/templates/pages/tour-list.html:530
+#: core/templates/pages/tour-list.html:600
+#: core/templates/pages/wine-tours.html:116
+#: core/templates/pages/wine-tours.html:192
+msgid "From"
+msgstr "Ab"
+
+#: core/templates/includes/similar_experiences.html:111
+#: core/templates/includes/similar_experiences.html:321
+#: core/templates/mainpage/tours.html:109
+#: core/templates/mainpage/tours.html:309
+#: core/templates/pages/como-tours.html:65
+#: core/templates/pages/como-tours.html:353
+#: core/templates/pages/tour-list.html:203
+#: core/templates/pages/tour-list.html:553
+msgid "Como, Lombardia, Italy"
+msgstr "Como, Lombardei, Italien"
+
+#: core/templates/includes/similar_experiences.html:132
+#: core/templates/mainpage/tours.html:130
+#: core/templates/pages/como-tours.html:107
+#: core/templates/pages/tour-list.html:245
+msgid "3 hours"
+msgstr "3 Stunden"
+
+#: core/templates/includes/similar_experiences.html:153
+#: core/templates/mainpage/tours.html:149
+msgid "Milan, Lombardia, Italy"
+msgstr "Mailand, Lombardei, Italien"
+
+#: core/templates/includes/similar_experiences.html:157
+#: core/templates/mainpage/tours.html:153
+#: core/templates/pages/milano-tours.html:69
+#: core/templates/pages/tour-list.html:277
+msgid "Kick off walking tour in Milano – Experience history, culture, and charm in just a few hours"
+msgstr "Stadtrundgang in Mailand beginnen – Erleben Sie Geschichte, Kultur und Charme in nur wenigen Stunden"
+
+#: core/templates/includes/similar_experiences.html:174
+#: core/templates/mainpage/tours.html:170
+#: core/templates/pages/milano-tours.html:107
+#: core/templates/pages/tour-list.html:315
+msgid "2 hours 30 min"
+msgstr "2 Stunden 30 Min"
+
+#: core/templates/includes/similar_experiences.html:195
+#: core/templates/includes/similar_experiences.html:279
+#: core/templates/mainpage/tours.html:189
+#: core/templates/mainpage/tours.html:269
+#: core/templates/pages/como-tours.html:137
+#: core/templates/pages/como-tours.html:281
+#: core/templates/pages/tour-list.html:343
+#: core/templates/pages/tour-list.html:483
+msgid "Como/Lugano, Italy/Switzerland"
+msgstr "Como/Lugano, Italien/Schweiz"
+
+#: core/templates/includes/similar_experiences.html:199
+#: core/templates/mainpage/tours.html:193
+#: core/templates/pages/como-tours.html:141
+#: core/templates/pages/tour-list.html:347
+msgid "Lake Como and Lugano Small Group Tour from Milan with Scenic Views"
+msgstr "Bestbewertete Comer See und Lugano Kleingruppentour von Mailand mit landschaftlichen Aussichten"
+
+#: core/templates/includes/similar_experiences.html:237
+#: core/templates/pages/como-tours.html:209
+#: core/templates/pages/tour-list.html:413
+msgid "Bellagio/Varenna, Lombardia, Italy"
+msgstr "Bellagio/Varenna, Lombardei, Italien"
+
+#: core/templates/includes/similar_experiences.html:325
+#: core/templates/mainpage/tours.html:313
+#: core/templates/pages/como-tours.html:357
+#: core/templates/pages/tour-list.html:557
+msgid "All the Most Popular Lake Como Tours from Milan for Every Traveler"
+msgstr "Alle beliebtesten Comer See Touren von Mailand für jeden Reisenden"
+
+#: core/templates/includes/similar_experiences.html:355
+msgid "Previous slide"
+msgstr "Vorherige Folie"
+
+#: core/templates/includes/similar_experiences.html:359
+msgid "Next slide"
+msgstr "Nächste Folie"
+
+#: core/templates/mainpage/hero-slider.html:12
+msgid "Discover Italy like a Local"
+msgstr "Entdecken Sie Italien wie ein Einheimischer"
+
+#: core/templates/mainpage/hero-slider.html:15
+msgid "Choose the Best Day Tours from Milan: small groups, hidden gems and no tourist traps"
+msgstr "Wählen Sie die besten Tagestouren von Mailand: kleine Gruppen, versteckte Juwelen und keine Touristenfallen"
+
+#: core/templates/mainpage/hero-slider.html:24
+#: core/templates/pages/about.html:43
+msgid "Discover the best day tours from Milan to Lake Como, Barolo wine regions, and Italian destinations. Small group tours with expert guides."
+msgstr "Entdecken Sie die besten Tagestouren von Mailand zum Comer See, Barolo-Weinregionen und italienischen Zielen. Kleingruppentours mit Expertenguides."
+
+#: core/templates/mainpage/hero-slider.html:25
+#: core/templates/pages/about.html:44
+msgid "Browse all available day tours from Milan"
+msgstr "Durchsuchen Sie alle verfügbaren Tagestouren von Mailand"
+
+#: core/templates/mainpage/hero-slider.html:26
+#: core/templates/pages/about.html:45
+msgid "Explore Our Tours"
+msgstr "Entdecken Sie unsere Touren"
+
+#: core/templates/mainpage/hero-slider.html:35
+msgid "LOWEST PRICE AND BEST TERMS GUARANTEED FOR DIRECT BOOKINGS ONLY ON OUR WEBSITE"
+msgstr "NIEDRIGSTER PREIS UND BESTE KONDITIONEN GARANTIERT NUR FÜR DIREKTBUCHUNGEN AUF UNSERER WEBSITE"
+
+#: core/templates/mainpage/hero-slider.html:41
+msgid "Cancel for free 24h in advance"
+msgstr "Kostenlose Stornierung bis 24 Stunden im Voraus"
+
+#: core/templates/mainpage/hero-slider.html:48
+msgid "Reserve now, pay nothing until 48h before"
+msgstr "Jetzt reservieren, bezahlen erst 48 Stunden vorab"
+
+#: core/templates/mainpage/hero-slider.html:55
+msgid "Top-rated tours on Viator, TripAdvisor & GetYourGuide"
+msgstr "Bestbewertete Touren auf Viator, TripAdvisor & GetYourGuide"
+
+#: core/templates/mainpage/menu.html:7
+msgid "Main Menu"
+msgstr "Hauptmenü"
+
+#: core/templates/mainpage/menu.html:15
+#: core/templates/pages/privacy_policy.html:15
+msgid "Home"
+msgstr "Startseite"
+
+#: core/templates/mainpage/menu.html:20
+msgid "Discover the best day tours from Milan to Lake Como, Barolo wine regions, and Swiss destinations"
+msgstr "Entdecken Sie die besten Tagestouren von Mailand zum Comer See, Barolo-Weinregionen und Schweizer Zielen"
+
+#: core/templates/mainpage/menu.html:32
+msgid "Back"
+msgstr "Zurück"
+
+#: core/templates/mainpage/reviews.html:9
+msgid "We are the best-rated for day trips from Milan on the internet."
+msgstr "Wir sind die bestbewerteten für Tagesausflüge von Mailand im Internet."
+
+#: core/templates/mainpage/reviews.html:10
+msgid "Don't take it from us — see what our clients have written about our tours."
+msgstr "Glauben Sie uns nicht einfach — sehen Sie, was unsere Kunden über unsere Touren geschrieben haben."
+
+#: core/templates/mainpage/reviews.html:14
+#: core/templates/reviews/review1.html:7 core/templates/reviews/review2.html:7
+#: core/templates/reviews/review3.html:7 core/templates/reviews/review4.html:7
+#: core/templates/reviews/review5.html:7 core/templates/reviews/review6.html:7
+#: core/templates/reviews/review7.html:7
+msgid "img"
+msgstr "Bild"
+
+#: core/templates/mainpage/tours.html:8
+msgid "Your reliable partner in organizing unforgettable trips. Let the journey begin!"
+msgstr "Ihr zuverlässiger Partner für unvergessliche Reisen. Lassen Sie das Abenteuer beginnen!"
+
+#: core/templates/mainpage/tours.html:11
+msgid "We are the best-rated for day trips from Milan on the internet"
+msgstr "Wir sind die bestbewertete Wahl für Tagesausflüge ab Mailand im Internet"
+
+#: core/templates/mainpage/tours.html:20
+msgid "Very popular"
+msgstr "Sehr beliebt"
+
+#: core/templates/mainpage/tours.html:229
+msgid "Bellgaio/Varenna, Lombardia, Italy"
+msgstr "Bellagio/Varenna, Lombardei, Italien"
+
+#: core/templates/mainpage/travel-blog.html:7
+msgid "Travel blog and update"
+msgstr "Reiseblog und Neuigkeiten"
+
+#: core/templates/mainpage/travel-blog.html:8
+msgid "We go beyond empty promises — real places, real experiences, not just another overhyped Instagram stop."
+msgstr "Wir bieten mehr als leere Versprechen – echte Orte, echte Erlebnisse, keine überbewerteten Instagram-Hotspots."
+
+#: core/templates/mainpage/travel-blog.html:13
+msgid "See all"
+msgstr "Alle anzeigen"
+
+#: core/templates/mainpage/travel-blog.html:25
+#: core/templates/mainpage/travel-blog.html:42
+#: core/templates/mainpage/travel-blog.html:59
+msgid "Trips"
+msgstr "Reisen"
+
+#: core/templates/mainpage/travel-blog.html:30
+#: core/templates/pages/blog.html:47
+msgid "February 18 2024"
+msgstr "18. Februar 2024"
+
+#: core/templates/mainpage/travel-blog.html:47
+#: core/templates/pages/blog.html:81
+msgid "February 16 2024"
+msgstr "16. Februar 2024"
+
+#: core/templates/mainpage/travel-blog.html:50
+#: core/templates/pages/blog.html:84
+msgid "A Bold Guide To Bernina Express Tour From Milan"
+msgstr "Ein mutiger Reiseführer für die Bernina-Express-Tour ab Mailand"
+
+#: core/templates/mainpage/travel-blog.html:64
+#: core/templates/pages/blog.html:115
+msgid "February 10 2024"
+msgstr "10. Februar 2024"
+
+#: core/templates/mainpage/video.html:9
+msgid "What tour companies don't want you to know. Watch the video!"
+msgstr "Was Reiseveranstalter dir verschweigen wollen. Schau dir das Video an!"
+
+#: core/templates/mainpage/video.html:29
+msgid "Thinking of Booking a day Tour from Milan? STOP."
+msgstr "Du willst eine Tagestour ab Mailand buchen? HALT!"
+
+#: core/templates/mainpage/video.html:30
+msgid "Not all tours are what they seem — many are far less enjoyable than they look."
+msgstr "Nicht alle Touren sind so, wie sie scheinen – viele sind weit weniger unterhaltsam, als sie aussehen."
+
+#: core/templates/mainpage/video.html:48
+msgid "Even high ratings and pretty photos often hide the truth"
+msgstr "Selbst hohe Bewertungen und schöne Fotos verbergen oft die Wahrheit"
+
+#: core/templates/mainpage/video.html:49
+msgid "Packed buses, chaotic tours, endless rides, and the Bellagio Weekend mess."
+msgstr "Überfüllte Busse, chaotische Touren, endlose Fahrten und das Bellagio-Wochenendchaos."
+
+#: core/templates/mainpage/video.html:67
+msgid "The Real Hidden Truth About Day Tours from Milan"
+msgstr "Die wahre, verborgene Wahrheit über Tagestouren ab Mailand"
+
+#: core/templates/mainpage/video.html:68
+msgid "I've led those tours — I know the game. Watch the video, skip traps, book a tour you'll enjoy."
+msgstr "Ich habe solche Touren selbst geleitet – ich kenne das Spiel. Schau dir das Video an, vermeide die Fallen und buche eine Tour, die dir wirklich gefällt."
+
+#: core/templates/pages/404.html:4
+msgid "Page Not Found - Abroads Tours"
+msgstr "Seite nicht gefunden – Abroads Tours"
+
+#: core/templates/pages/404.html:5
+msgid "The page you're looking for isn't available. Return to Abroads Tours homepage."
+msgstr "Die gesuchte Seite ist nicht verfügbar. Kehren Sie zur Startseite von Abroads Tours zurück."
+
+#: core/templates/pages/404.html:14
+msgid "404 Error Image"
+msgstr "404 Fehler Bild"
+
+#: core/templates/pages/404.html:20
+msgid "Oops! Page not found!"
+msgstr "Ups! Es sieht so aus, als hätten Sie sich verirrt."
+
+#: core/templates/pages/404.html:21
+msgid "The page you're looking for isn't available. Try to search again or use the go to."
+msgstr "Die gesuchte Seite ist nicht verfügbar. Versuchen Sie es erneut oder verwenden Sie die Navigation."
+
+#: core/templates/pages/404.html:24 core/templates/pages/500.html:24
+msgid "Go back to homepage"
+msgstr "Zurück zur Startseite"
+
+#: core/templates/pages/500.html:4
+msgid "Server Error - Abroads Tours"
+msgstr "Serverfehler - Abroads Tours"
+
+#: core/templates/pages/500.html:5
+msgid "We're experiencing technical difficulties. Please try again later."
+msgstr "Wir haben technische Schwierigkeiten. Bitte versuchen Sie es später erneut."
+
+#: core/templates/pages/500.html:14
+msgid "500 Server Error Image"
+msgstr "500 Serverfehler Bild"
+
+#: core/templates/pages/500.html:20
+msgid "Something went wrong on our end."
+msgstr "Auf unserer Seite ist etwas schiefgelaufen."
+
+#: core/templates/pages/500.html:21
+msgid "We're experiencing technical difficulties. Our team has been notified and is working to fix the issue. Please try again later."
+msgstr "Wir haben technische Schwierigkeiten. Unser Team wurde benachrichtigt und arbeitet an der Behebung des Problems. Bitte versuchen Sie es später erneut."
+
+#: core/templates/pages/about.html:5
+msgid "About Us - Abroads Tours"
+msgstr "Über uns - Abroads Tours"
+
+#: core/templates/pages/about.html:6
+msgid "Learn about Abroads Tours - founded by experienced tour guides who create authentic travel experiences. Discover our mission to provide personalized tours beyond typical tourist traps."
+msgstr "Erfahren Sie mehr über Abroads Tours - gegründet von erfahrenen Reiseleitern, die authentische Reiseerlebnisse schaffen. Entdecken Sie unsere Mission, personalisierte Touren jenseits typischer Touristenfallen anzubieten."
+
+#: core/templates/pages/about.html:7
+msgid "about us, travel agency, tour guides, authentic tours, personalized travel, Italy tours, travel experience"
+msgstr "über uns, Reisebüro, Reiseleiter, authentische Touren, personalisiertes Reisen, Italien Touren, Reiseerlebnis"
+
+#: core/templates/pages/about.html:13 core/templates/pages/about.html:21
+msgid "About Abroads Tours"
+msgstr "Über Abroads Tours"
+
+#: core/templates/pages/about.html:14
+msgid "Decorative wave shape"
+msgstr "Dekorative Wellenform"
+
+#: core/templates/pages/about.html:22
+msgid "Founded by experienced tour guides who believe travel should be authentic, personal, and unforgettable."
+msgstr "Gegründet von erfahrenen Reiseleitern, die glauben, dass Reisen authentisch, persönlich und unvergesslich sein sollte."
+
+#: core/templates/pages/about.html:33
+msgid "Our company was founded in 2023 by two seasoned tour guides who finally said, \"Enough is enough.\""
+msgstr "Unser Unternehmen wurde 2023 von zwei erfahrenen Reiseleitern gegründet, die schließlich sagten: \"Genug ist genug.\""
+
+#: core/templates/pages/about.html:37
+msgid "After years of watching travelers get herded like cattle into packed buses and dropped at tourist traps, we set out to build something better."
+msgstr "Nach Jahren, in denen wir zusahen, wie Reisende wie Vieh in überfüllte Busse gedrängt und an Touristenfallen abgesetzt wurden, machten wir uns daran, etwas Besseres zu schaffen."
+
+#: core/templates/pages/about.html:38
+msgid "We craft our tours by personally visiting each destination — not just browsing Google. You'd be shocked at how many companies have no idea where they're sending their tourists. Many tours are created from an office, relying solely on Google instead of firsthand experience."
+msgstr "Wir gestalten unsere Touren, indem wir jedes Ziel persönlich besuchen - nicht nur Google durchsuchen. Sie wären schockiert, wie viele Unternehmen keine Ahnung haben, wohin sie ihre Touristen schicken. Viele Touren werden vom Büro aus erstellt und verlassen sich ausschließlich auf Google statt auf Erfahrungen aus erster Hand."
+
+#: core/templates/pages/about.html:56
+msgid "About section image"
+msgstr "Über uns Bereich Bild"
+
+#: core/templates/pages/about.html:61
+msgid "We Make"
+msgstr "Wir machen"
+
+#: core/templates/pages/about.html:61
+msgid "Authentic Travel Easy"
+msgstr "authentisches Reisen einfach"
+
+#: core/templates/pages/about.html:63
+msgid "Traveling with insider knowledge and authentic experiences, you'll connect more meaningfully with your destination and create unforgettable memories!"
+msgstr "Mit Insiderwissen und authentischen Erlebnissen reisen Sie sinnvoller zu Ihrem Ziel und schaffen unvergessliche Erinnerungen!"
+
+#: core/templates/pages/about.html:71
+msgid "Tours Done"
+msgstr "Touren durchgeführt"
+
+#: core/templates/pages/about.html:77
+msgid "Happy Customers"
+msgstr "Zufriedene Kunden"
+
+#: core/templates/pages/about.html:83
+msgid "Positive Reviews"
+msgstr "Positive Bewertungen"
+
+#: core/templates/pages/best_day_tours_from_milan.html:9
+msgid "Best Day Tours from Milan"
+msgstr "Beste Tagestouren von Mailand"
+
+#: core/templates/pages/best_day_tours_from_milan.html:10
+msgid "Discover amazing day trips from Milan to Lake Como, wine regions, and beyond"
+msgstr "Entdecken Sie erstaunliche Tagesausflüge von Mailand zum Comer See, Weinregionen und darüber hinaus"
+
+#: core/templates/pages/blog.html:5
+msgid "Travel Blog - Abroads Tours"
+msgstr "Reiseblog - Abroads Tours"
+
+#: core/templates/pages/blog.html:6
+msgid "Discover amazing travel stories and guides from around the world. Read about safari adventures, island hopping tips and travel inspiration."
+msgstr "Entdecken Sie erstaunliche Reisegeschichten und Guides aus aller Welt. Lesen Sie über Safari-Abenteuer, Inselhopping-Tipps und Reiseinspiration."
+
+#: core/templates/pages/blog.html:7
+msgid "travel blog, travel guides, safari, Cambodia, travel tips, destinations, adventures"
+msgstr "Reiseblog, Reiseführer, Safari, Kambodscha, Reisetipps, Reiseziele, Abenteuer"
+
+#: core/templates/pages/blog.html:22
+msgid "Travel Blog"
+msgstr "Reiseblog"
+
+#: core/templates/pages/blog.html:25
+msgid "Discover amazing stories, guides and inspiration for your next adventure"
+msgstr "Entdecken Sie erstaunliche Geschichten, Guides und Inspiration für Ihr nächstes Abenteuer"
+
+#: core/templates/pages/blog.html:53
+msgid "The information was very confusing, and it mainly consisted of the experiences of people who had spent one or two days at Lake Como, sharing their own..."
+msgstr "Die Informationen waren sehr verwirrend und bestanden hauptsächlich aus den Erfahrungen von Menschen, die ein oder zwei Tage am Comer See verbracht hatten und ihre eigenen..."
+
+#: core/templates/pages/blog.html:57 core/templates/pages/blog.html:91
+#: core/templates/pages/blog.html:125
+msgid "Read More"
+msgstr "Mehr lesen"
+
+#: core/templates/pages/blog.html:87
+msgid "How to save time, money, and avoid hordes of people you will be surrounded by on Lake Como. Before writing this article, we read top 10 results on Google..."
+msgstr "Wie Sie Zeit und Geld sparen und die Menschenmassen vermeiden, von denen Sie am Comer See umgeben sein werden. Bevor wir diesen Artikel schrieben, lasen wir die Top-10-Ergebnisse auf Google..."
+
+#: core/templates/pages/blog.html:121
+msgid "On the Bernina Express, tourists can experience a captivating adventure with breathtaking views, traversing impressive landscapes and crossing high-mo..."
+msgstr "Mit dem Bernina Express können Touristen ein fesselndes Abenteuer mit atemberaubenden Aussichten erleben, beeindruckende Landschaften durchqueren und hohe Berge..."
+
+#: core/templates/pages/como-tours.html:10
+msgid "Lake Como Tours from Milan"
+msgstr "Comer See Touren von Mailand"
+
+#: core/templates/pages/como-tours.html:11
+msgid "Experience the stunning beauty of Lake Como with our expertly guided tours"
+msgstr "Erleben Sie die atemberaubende Schönheit des Comer Sees mit unseren fachmännisch geführten Touren"
+
+#: core/templates/pages/como-tours.html:57
+#: core/templates/pages/tour-list.html:197
+msgid "Como Walking Tour & Boat Cruise"
+msgstr "Como Stadtrundgang & Bootsfahrt"
+
+#: core/templates/pages/como-tours.html:84
+#: core/templates/pages/tour-list.html:222
+msgid "Explore Como city with expert guide and enjoy scenic boat cruise. Perfect morning tour avoiding crowds with stunning lake views."
+msgstr "Erkunden Sie die Stadt Como mit einem Expertenführer und genießen Sie eine malerische Bootsfahrt. Perfekte Morgentour ohne Menschenmassen mit atemberaubendem Seeblick."
+
+#: core/templates/pages/como-tours.html:91
+#: core/templates/pages/como-tours.html:163
+#: core/templates/pages/como-tours.html:235
+#: core/templates/pages/como-tours.html:307
+#: core/templates/pages/como-tours.html:379
+#: core/templates/pages/milano-tours.html:91
+#: core/templates/pages/tour-list.html:89
+#: core/templates/pages/tour-list.html:159
+#: core/templates/pages/tour-list.html:229
+#: core/templates/pages/tour-list.html:299
+#: core/templates/pages/tour-list.html:369
+#: core/templates/pages/tour-list.html:439
+#: core/templates/pages/tour-list.html:509
+#: core/templates/pages/tour-list.html:579
+#: core/templates/pages/wine-tours.html:95
+#: core/templates/pages/wine-tours.html:171
+msgid "Best Price Guarantee"
+msgstr "Bestpreisgarantie"
+
+#: core/templates/pages/como-tours.html:97
+#: core/templates/pages/como-tours.html:169
+#: core/templates/pages/como-tours.html:241
+#: core/templates/pages/como-tours.html:313
+#: core/templates/pages/como-tours.html:385
+#: core/templates/pages/milano-tours.html:97
+#: core/templates/pages/tour-list.html:95
+#: core/templates/pages/tour-list.html:165
+#: core/templates/pages/tour-list.html:235
+#: core/templates/pages/tour-list.html:305
+#: core/templates/pages/tour-list.html:375
+#: core/templates/pages/tour-list.html:445
+#: core/templates/pages/tour-list.html:515
+#: core/templates/pages/tour-list.html:585
+#: core/templates/pages/wine-tours.html:101
+#: core/templates/pages/wine-tours.html:177
+msgid "Free Cancellation"
+msgstr "Kostenlose Stornierung"
+
+#: core/templates/pages/como-tours.html:118
+#: core/templates/pages/como-tours.html:190
+#: core/templates/pages/como-tours.html:262
+#: core/templates/pages/como-tours.html:334
+#: core/templates/pages/como-tours.html:406
+#: core/templates/pages/milano-tours.html:118
+#: core/templates/pages/tour-list.html:116
+#: core/templates/pages/tour-list.html:186
+#: core/templates/pages/tour-list.html:256
+#: core/templates/pages/tour-list.html:326
+#: core/templates/pages/tour-list.html:396
+#: core/templates/pages/tour-list.html:466
+#: core/templates/pages/tour-list.html:536
+#: core/templates/pages/tour-list.html:606
+#: core/templates/pages/wine-tours.html:122
+#: core/templates/pages/wine-tours.html:198
+msgid "View Details"
+msgstr "Details anzeigen"
+
+#: core/templates/pages/como-tours.html:129
+#: core/templates/pages/tour-list.html:337
+msgid "Lake Como and Lugano Tour"
+msgstr "Comer See und Lugano Tour"
+
+#: core/templates/pages/como-tours.html:156
+#: core/templates/pages/tour-list.html:362
+msgid "Experience the beauty of Lake Como and Swiss Lugano in one unforgettable day trip from Milan. Small group experience with stunning scenery."
+msgstr "Erleben Sie die Schönheit des Comer Sees und des schweizerischen Lugano bei einem unvergesslichen Tagesausflug von Mailand. Kleingruppenexperience mit atemberaubender Landschaft."
+
+#: core/templates/pages/como-tours.html:201
+#: core/templates/pages/tour-list.html:407
+msgid "Bellagio and Varenna Tour"
+msgstr "Bellagio und Varenna Tour"
+
+#: core/templates/pages/como-tours.html:228
+#: core/templates/pages/tour-list.html:432
+msgid "Discover the pearl of Lake Como - Bellagio and charming Varenna. Small group tour with English-speaking guide and stunning lake views."
+msgstr "Entdecken Sie die Perle des Comer Sees - Bellagio und das charmante Varenna. Kleingruppentour mit deutschsprachigem Führer und atemberaubendem Seeblick."
+
+#: core/templates/pages/como-tours.html:273
+#: core/templates/pages/tour-list.html:477
+msgid "Lake Como, Lugano & Morcote Tour"
+msgstr "Comer See, Lugano & Morcote Tour"
+
+#: core/templates/pages/como-tours.html:300
+#: core/templates/pages/tour-list.html:502
+msgid "Comprehensive tour combining Lake Como and Swiss destinations. Visit picturesque Morcote, elegant Lugano and beautiful Bellagio in one day."
+msgstr "Umfassende Tour, die den Comer See und schweizerische Ziele kombiniert. Besuchen Sie das malerische Morcote, das elegante Lugano und das schöne Bellagio an einem Tag."
+
+#: core/templates/pages/como-tours.html:345
+#: core/templates/pages/tour-list.html:547
+msgid "All Lake Como Tours"
+msgstr "Alle Comer See Touren"
+
+#: core/templates/pages/como-tours.html:372
+#: core/templates/pages/tour-list.html:572
+msgid "Complete guide to all Lake Como tours from Milan. Find the perfect tour that matches your interests and schedule."
+msgstr "Vollständiger Leitfaden zu allen Comer See Touren von Mailand. Finden Sie die perfekte Tour, die Ihren Interessen und Ihrem Zeitplan entspricht."
+
+#: core/templates/pages/como-tours.html:395
+#: core/templates/pages/tour-list.html:595
+msgid "Various durations"
+msgstr "Verschiedene Dauern"
+
+#: core/templates/pages/contact.html:5
+msgid "Contact Us - Abroads Tours"
+msgstr "Kontaktieren Sie uns - Abroads Tours"
+
+#: core/templates/pages/contact.html:6
+msgid "Get in touch with Abroads Tours for personalized travel assistance. Contact our expert team for tour bookings, travel advice, and customer support."
+msgstr "Kontaktieren Sie Abroads Tours für persönliche Reisebetreuung. Wenden Sie sich an unser Expertenteam für Tourbuchungen, Reiseberatung und Kundensupport."
+
+#: core/templates/pages/contact.html:7
+msgid "contact, travel agency, tour booking, customer support, travel consultation, Italy tours"
+msgstr "Kontakt, Reisebüro, Tourbuchung, Kundensupport, Reiseberatung, Italien Touren"
+
+#: core/templates/pages/contact.html:20
+msgid "Get in Touch With Abroads Tours"
+msgstr "Kontaktieren Sie Abroads Tours"
+
+#: core/templates/pages/contact.html:21
+msgid "For bookings, custom tours, or general inquiries — reach out today."
+msgstr "Für Buchungen, maßgeschneiderte Touren oder allgemeine Anfragen - kontaktieren Sie uns noch heute."
+
+#: core/templates/pages/contact.html:32
+msgid "Leave us your info"
+msgstr "Hinterlassen Sie uns Ihre Informationen"
+
+#: core/templates/pages/contact.html:39
+msgid "Full Name"
+msgstr "Vollständiger Name"
+
+#: core/templates/pages/contact.html:42
+msgid "Phone Number"
+msgstr "Telefonnummer"
+
+#: core/templates/pages/contact.html:45
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+#: core/templates/pages/contact.html:49
+msgid "Select Inquiry Type"
+msgstr "Anfrageart auswählen"
+
+#: core/templates/pages/contact.html:50
+msgid "Tour Booking"
+msgstr "Tourbuchung"
+
+#: core/templates/pages/contact.html:51
+msgid "Custom Tour Request"
+msgstr "Individuelle Touranfrage"
+
+#: core/templates/pages/contact.html:52
+msgid "General Information"
+msgstr "Allgemeine Informationen"
+
+#: core/templates/pages/contact.html:53
+msgid "Customer Support"
+msgstr "Kundensupport"
+
+#: core/templates/pages/contact.html:54
+msgid "Partnership"
+msgstr "Partnerschaft"
+
+#: core/templates/pages/contact.html:59
+msgid "Preferred Contact Method"
+msgstr "Bevorzugte Kontaktmethode"
+
+#: core/templates/pages/contact.html:60
+msgid "Email"
+msgstr "E-Mail"
+
+#: core/templates/pages/contact.html:61
+msgid "Phone"
+msgstr "Telefon"
+
+#: core/templates/pages/contact.html:62
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: core/templates/pages/contact.html:66
+msgid "Your Message"
+msgstr "Ihre Nachricht"
+
+#: core/templates/pages/contact.html:83
+msgid "I agree to the"
+msgstr "Ich stimme der"
+
+#: core/templates/pages/contact.html:85
+msgid "and consent to my data being processed for this inquiry."
+msgstr "zu und stimme der Verarbeitung meiner Daten für diese Anfrage zu."
+
+#: core/templates/pages/contact.html:104
+msgid "I would like to receive marketing communications about tours and special offers."
+msgstr "Ich möchte Marketingkommunikation über Touren und Sonderangebote erhalten."
+
+#: core/templates/pages/contact.html:110
+msgid "Send Message"
+msgstr "Nachricht senden"
+
+#: core/templates/pages/contact.html:149
+msgid "Please accept the Privacy Policy to continue."
+msgstr "Bitte akzeptieren Sie die Datenschutzrichtlinie, um fortzufahren."
+
+#: core/templates/pages/index.html:5
+msgid "Abroads Tours - Best Tours and Travel Experiences Worldwide"
+msgstr "Abroads Tours - Beste Touren und Reiseerlebnisse weltweit"
+
+#: core/templates/pages/index.html:6
+msgid "Discover unforgettable travel experiences with Abroads Tours. Exclusive tours, best prices, professional service. Book now!"
+msgstr "Entdecken Sie unvergessliche Reiseerlebnisse mit Abroads Tours. Exklusive Touren, beste Preise, professioneller Service. Jetzt buchen!"
+
+#: core/templates/pages/index.html:7
+msgid "tours, travel, vacation, excursions, travel agency, holiday, airline tickets"
+msgstr "Touren, Reisen, Urlaub, Ausflüge, Reisebüro, Ferien, Flugtickets"
+
+#: core/templates/pages/index.html:10
+msgid "Abroads Tours - Unforgettable Journeys"
+msgstr "Abroads Tours - Unvergessliche Reisen"
+
+#: core/templates/pages/index.html:11
+msgid "The best tours around the world from a professional travel agency"
+msgstr "Die besten Touren rund um die Welt von einem professionellen Reisebüro"
+
+#: core/templates/pages/milano-tours.html:11
+msgid "Explore the fashion and design capital of Italy with our expert local guides"
+msgstr "Erkunden Sie die Mode- und Designhauptstadt Italiens mit unseren Expertenführern vor Ort"
+
+#: core/templates/pages/milano-tours.html:57
+#: core/templates/pages/tour-list.html:267
+msgid "Milano Walking Tour"
+msgstr "Mailand Stadtrundgang"
+
+#: core/templates/pages/milano-tours.html:65
+#: core/templates/pages/tour-list.html:273
+msgid "Milano, Lombardia, Italy"
+msgstr "Mailand, Lombardei, Italien"
+
+#: core/templates/pages/milano-tours.html:84
+#: core/templates/pages/tour-list.html:292
+msgid "Discover Milano's highlights with our expert local guide. Perfect introduction to the fashion and design capital of Italy."
+msgstr "Entdecken Sie Mailands Höhepunkte mit unserem Expertenführer vor Ort. Perfekte Einführung in die Mode- und Designhauptstadt Italiens."
+
+#: core/templates/pages/privacy_policy.html:4
+msgid "Privacy Policy - Abroads Tours"
+msgstr ""
+
+#: core/templates/pages/privacy_policy.html:5
+msgid "Read our privacy policy to understand how we collect, use and protect your personal information when using our travel services."
+msgstr ""
+
+#: core/templates/pages/privacy_policy.html:6
+msgid "privacy policy, data protection, personal information, travel agency, GDPR compliance"
+msgstr "Datenschutzrichtlinie, Datenschutz, persönliche Daten, Reisebüro, DSGVO-Konformität"
+
+#: core/templates/pages/privacy_policy.html:34
+msgid "Information Collection"
+msgstr "Datenerfassung"
+
+#: core/templates/pages/privacy_policy.html:37
+msgid "Data Usage"
+msgstr "Datenverwendung"
+
+#: core/templates/pages/privacy_policy.html:43
+msgid "Third-Party Services"
+msgstr "Dienste von Drittanbietern"
+
+#: core/templates/pages/privacy_policy.html:46
+msgid "Your Rights"
+msgstr "Ihre Rechte"
+
+#: core/templates/pages/privacy_policy.html:55
+msgid "1. Information We Collect"
+msgstr "1. Welche Informationen wir erfassen"
+
+#: core/templates/pages/privacy_policy.html:56
+msgid "At Abroads Tours, we collect information that you provide directly to us when using our services..."
+msgstr "Bei Abroads Tours erfassen wir Informationen, die Sie uns direkt zur Verfügung stellen, wenn Sie unsere Dienste nutzen ..."
+
+#: core/templates/pages/privacy_policy.html:58
+msgid "2. How We Collect Information"
+msgstr "2. Wie wir Informationen erfassen"
+
+#: core/templates/pages/privacy_policy.html:59
+msgid "Information is collected through various methods including..."
+msgstr "Informationen werden auf verschiedene Weise erfasst, unter anderem ..."
+
+#: core/templates/pages/privacy_policy.html:61
+msgid "3. Legal Basis for Processing"
+msgstr "3. Rechtsgrundlage für die Verarbeitung"
+
+#: core/templates/pages/privacy_policy.html:62
+msgid "We process your personal data based on the following legal grounds..."
+msgstr "Wir verarbeiten Ihre personenbezogenen Daten auf der Grundlage folgender rechtlicher Grundlagen ..."
+
+#: core/templates/pages/privacy_policy.html:66
+msgid "1. Service Provision"
+msgstr "1. Bereitstellung von Dienstleistungen"
+
+#: core/templates/pages/privacy_policy.html:67
+msgid "We use your information primarily to provide and improve our travel services..."
+msgstr "Wir verwenden Ihre Informationen in erster Linie, um unsere Reisedienstleistungen bereitzustellen und zu verbessern ..."
+
+#: core/templates/pages/privacy_policy.html:69
+msgid "2. Communication and Marketing"
+msgstr "2. Kommunikation und Marketing"
+
+#: core/templates/pages/privacy_policy.html:70
+msgid "With your consent, we may use your contact information to send marketing..."
+msgstr "Mit Ihrer Einwilligung dürfen wir Ihre Kontaktdaten verwenden, um Marketinginhalte zu versenden ..."
+
+#: core/templates/pages/privacy_policy.html:72
+msgid "3. Website Analytics and Improvement"
+msgstr "3. Website-Analyse und -Optimierung"
+
+#: core/templates/pages/privacy_policy.html:73
+msgid "We use analytics tools including Google Analytics, Yandex Metrica..."
+msgstr "Wir verwenden Analysetools wie Google Analytics, Yandex Metrica ..."
+
+#: core/templates/pages/privacy_policy.html:77
+msgid "1. What Are Cookies"
+msgstr "1. Was sind Cookies"
+
+#: core/templates/pages/privacy_policy.html:78
+msgid "Cookies are small text files stored on your device..."
+msgstr "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden ..."
+
+#: core/templates/pages/privacy_policy.html:80
+msgid "2. Types of Cookies We Use"
+msgstr "2. Arten von Cookies, die wir verwenden"
+
+#: core/templates/pages/privacy_policy.html:81
+msgid "Essential Cookies, Analytics Cookies, Marketing Cookies..."
+msgstr "Essenzielle Cookies, Analyse-Cookies, Marketing-Cookies ..."
+
+#: core/templates/pages/privacy_policy.html:83
+msgid "3. Managing Your Cookie Preferences"
+msgstr "3. Verwaltung Ihrer Cookie-Einstellungen"
+
+#: core/templates/pages/privacy_policy.html:84
+msgid "You can manage your cookie preferences through our banner or browser settings..."
+msgstr "Sie können Ihre Cookie-Einstellungen über unser Banner oder die Einstellungen Ihres Browsers verwalten ..."
+
+#: core/templates/pages/privacy_policy.html:88
+msgid "1. Analytics Services"
+msgstr "1. Analysedienste"
+
+#: core/templates/pages/privacy_policy.html:89
+msgid "We use third-party analytics services such as Google Analytics..."
+msgstr "Wir verwenden Analysedienste von Drittanbietern wie Google Analytics ..."
+
+#: core/templates/pages/privacy_policy.html:91
+msgid "2. Booking and Payment Services"
+msgstr "2. Buchungs- und Zahlungsdienste"
+
+#: core/templates/pages/privacy_policy.html:92
+msgid "Rezdy is our booking and payment platform..."
+msgstr "Rezdy ist unsere Buchungs- und Zahlungsplattform ..."
+
+#: core/templates/pages/privacy_policy.html:94
+msgid "3. Communication Services"
+msgstr "3. Kommunikationsdienste"
+
+#: core/templates/pages/privacy_policy.html:95
+msgid "We use WhatsApp Business to provide support and information..."
+msgstr "Wir verwenden WhatsApp Business, um Support und Informationen bereitzustellen ..."
+
+#: core/templates/pages/privacy_policy.html:99
+msgid "1. Your Privacy Rights"
+msgstr "1. Ihre Datenschutzrechte"
+
+#: core/templates/pages/privacy_policy.html:100
+msgid "Under the GDPR and Italian law, you have rights such as..."
+msgstr "Nach der DSGVO und dem italienischen Recht haben Sie Rechte wie ..."
+
+#: core/templates/pages/privacy_policy.html:102
+msgid "2. How to Exercise Your Rights"
+msgstr "2. Wie Sie Ihre Rechte ausüben können"
+
+#: core/templates/pages/privacy_policy.html:103
+msgid "To exercise any of these rights, contact us using the details provided..."
+msgstr "Um eines dieser Rechte auszuüben, kontaktieren Sie uns über die angegebenen Kontaktdaten ..."
+
+#: core/templates/pages/privacy_policy.html:105
+msgid "3. Contact Information"
+msgstr "3. Kontaktinformationen"
+
+#: core/templates/pages/privacy_policy.html:106
+msgid "If you have any questions about this privacy policy, contact us at..."
+msgstr "Wenn Sie Fragen zu dieser Datenschutzrichtlinie haben, kontaktieren Sie uns unter ..."
+
+#: core/templates/pages/tour-list.html:10
+msgid "Milan and Beyond: The Best Day Tours"
+msgstr "Mailand und darüber hinaus: Die besten Tagesausflüge"
+
+#: core/templates/pages/tour-list.html:11
+msgid "Explore the magic of Milan and venture out to Northern Italy's most stunning spots—all in a day."
+msgstr ""
+
+#: core/templates/pages/tour-list.html:57
+#: core/templates/pages/wine-tours.html:57
+msgid "Alba UNESCO Castle & Barolo Wine Tour"
+msgstr "UNESCO-Schloss Alba & Barolo-Weintour"
+
+#: core/templates/pages/tour-list.html:82
+#: core/templates/pages/wine-tours.html:88
+msgid "Visit UNESCO World Heritage Barolo wine region from Milan. Small group wine tasting tour with Alba visit and castle exploration."
+msgstr ""
+
+#: core/templates/pages/tour-list.html:127
+#: core/templates/pages/wine-tours.html:133
+msgid "Barolo & Barbaresco Wine Tour"
+msgstr "Weintour nach Barolo & Barbaresco"
+
+#: core/templates/pages/tour-list.html:152
+#: core/templates/pages/wine-tours.html:164
+msgid "Explore two prestigious wine regions - Barolo and Barbaresco. Professional wine tasting with Alba visit in small group from Milan."
+msgstr "Entdecken Sie zwei renommierte Weinregionen – Barolo und Barbaresco. Professionelle Weinverkostung und Besuch in Alba in einer Kleingruppe ab Mailand."
+
+#: core/templates/pages/wine-tours.html:10
+msgid "Wine Tours from Milan"
+msgstr "Weintouren ab Mailand"
+
+#: core/templates/pages/wine-tours.html:11
+msgid "Discover the finest wine regions of Piedmont with expert-guided tastings"
+msgstr "Entdecken Sie die besten Weinregionen des Piemont mit fachkundigen Verkostungen"
+
+#: core/templates/reviews/review1.html:29
+#: core/templates/reviews/review3.html:29
+msgid "An excellent day trip experience out of Milan! Stefano, our tour guide was knowledgeable on history and culture, extremely organized (with a prepared list of recommendations sent via WhatsApp for free time at each stop), and also just hilarious. Loved taking the train and getting to see Como and Lugano with a smaller, more intimate group as opposed to some larger bus tours with 50+ people."
+msgstr ""
+
+#: core/templates/reviews/review1.html:34
+#: core/templates/reviews/review3.html:34
+msgid "March 13, 2024"
+msgstr "13. März 2024"
+
+#: core/templates/reviews/review2.html:29
+msgid "Despite all of the traveling we've done, I have never taken a chance on a guided tour, preferring to wander off the beaten path by ourselves. I'm so glad I chose this tour as my first. Every detail was impeccably planned, setting our minds at ease to fully enjoy the entire experience. Stefano is a true gentleman and a wonderful guide. The small group concept and his ability to form a connection with all of us created a fun and friendly environment."
+msgstr "Trotz all unserer bisherigen Reisen habe ich mich nie auf eine geführte Tour eingelassen – ich zog es immer vor, abseits der ausgetretenen Pfade allein unterwegs zu sein. Ich bin so froh, dass ich diese Tour als meine erste gewählt habe. Jedes Detail war perfekt organisiert, was uns ermöglichte, die Erfahrung vollkommen zu genießen. Stefano ist ein wahrer Gentleman und ein wunderbarer Guide. Das Kleingruppenkonzept und seine Fähigkeit, mit jedem von uns eine Verbindung aufzubauen, schufen eine angenehme und freundschaftliche Atmosphäre."
+
+#: core/templates/reviews/review2.html:34
+msgid "February 24, 2024"
+msgstr "24. Februar 2024"
+
+#: core/templates/reviews/review4.html:29
+msgid "Stefano was an excellent tour guide. Very knowledgeable and interesting, with plenty of suggestions when we had free time. It was great having a small group, Stefan was able to answer all out questions, transport was well managed. Lake Como was beautiful, and walking through the city was also beautiful."
+msgstr "Stefano war ein ausgezeichneter Reiseleiter. Sehr sachkundig und interessant, mit vielen Vorschlägen, wenn wir freie Zeit hatten. Es war toll, eine kleine Gruppe zu haben, Stefan konnte alle unsere Fragen beantworten, der Transport war gut organisiert. Der Comer See war wunderschön, und der Spaziergang durch die Stadt war ebenfalls wunderschön."
+
+#: core/templates/reviews/review4.html:34
+#: core/templates/reviews/review5.html:34
+#: core/templates/reviews/review6.html:34
+#: core/templates/reviews/review7.html:34
+msgid "February 23, 2024"
+msgstr "23. Februar 2024"
+
+#: core/templates/reviews/review5.html:29
+msgid "It was amazing trip. During one day you visit two beautiful lakes from two countries. Alessandro is a very caring and highly professional guide! Thank you."
+msgstr "Es war eine fantastische Reise. An einem Tag besuchen Sie zwei wunderschöne Seen aus zwei Ländern. Alessandro ist ein sehr fürsorglicher und hochprofessioneller Guide! Danke."
+
+#: core/templates/reviews/review6.html:29
+msgid "I had a fantastic experience with our tour guide Stefano during the Lake Como and Lugano day trip. The pace of the tour was just right, allowing us good time to explore and enjoy the beautiful surroundings. The convenience of traveling by train made the journey hassle-free."
+msgstr "Ich hatte eine fantastische Erfahrung mit unserem Reiseleiter Stefano während des Tagesausflugs an den Comer See und nach Lugano. Das Tempo der Tour war genau richtig, sodass wir genug Zeit hatten, die wunderschöne Umgebung zu erkunden und zu genießen. Die bequeme Anreise mit dem Zug machte die Reise völlig stressfrei."
+
+#: core/templates/reviews/review7.html:29
+msgid "Stefano, the tour guide, took us to the best places at Lake Como and Lugano. He was very knowledgeable about the area and the history. I will definitely recommend it to my friends and family."
+msgstr "Stefano, unser Reiseleiter, brachte uns zu den schönsten Orten am Comer See und in Lugano. Er kannte sich hervorragend mit der Region und ihrer Geschichte aus. Ich werde diese Tour auf jeden Fall meinen Freunden und meiner Familie empfehlen."
+
+#~ msgid "English"
+#~ msgstr "Englisch"
+
+#~ msgid "Italian"
+#~ msgstr "Italienisch"
+
+#~ msgid "Free cancelation & Modifications"
+#~ msgstr "Kostenlose Stornierung & Änderungen"
+
+#~ msgid "Online Payments or Pay on Location"
+#~ msgstr "Online-Zahlung oder Zahlung vor Ort"
+
+#~ msgid "24/7 English tours & Licensed Guides"
+#~ msgstr "24/7 englische Touren & lizenzierte Guides"
+
+#: core/templates/mainpage/why.html:29
+msgid "Our Tours vs other companies tours"
+msgstr "Unsere Touren vs. Touren anderer Anbieter"
+
+#: core/templates/mainpage/why.html:30
+msgid "Small or medium group tours vs. 55-person tours. Non-touristy places and off-peak times vs. overcrowded tourist spots only."
+msgstr "Kleine oder mittelgroße Gruppenreisen vs. Touren mit 55 Personen. Nicht-touristische Orte und Nebenzeiten vs. überfüllte Touristenorte."
+
+#: core/templates/mainpage/why.html:33
+msgid "No time wasting"
+msgstr "Keine Zeitverschwendung"
+
+#: core/templates/mainpage/why.html:34
+msgid "You don’t travel to be stuck on a bus or boat for hours. You travel to experience stunning views, dive into history, and savor amazing food."
+msgstr "Man reist nicht, um stundenlang im Bus oder Boot zu sitzen. Man reist, um atemberaubende Ausblicke zu genießen, in Geschichte einzutauchen und köstliches Essen zu erleben."
+
+#: core/templates/mainpage/why.html:39
+msgid "Quiet and relaxed tours"
+msgstr "Ruhige und entspannte Touren"
+
+#: core/templates/mainpage/why.html:40
+msgid "Our tours are made to be easy and fun — so we welcome guests aged 7 and up. Calm, comfortable, and memorable.."
+msgstr "Unsere Touren sind leicht und unterhaltsam – daher heißen wir Gäste ab 7 Jahren willkommen. Ruhig, komfortabel und unvergesslich."
+
+#: core/templates/mainpage/why.html:45
+msgid "English tours only"
+msgstr "Nur Touren auf Englisch"
+
+#: core/templates/mainpage/why.html:46
+msgid "“I find bilingual tours insulting to clients and unacceptable for us. I would never offer them.” – Tour Guide."
+msgstr "„Ich finde zweisprachige Touren respektlos gegenüber den Gästen und für uns inakzeptabel. Ich würde sie niemals anbieten.“ – Reiseleiter."
+
+#: core/templates/mainpage/why.html:51
+msgid "Best rated tours"
+msgstr "Bestbewertete Touren"
+
+#: core/templates/mainpage/why.html:52
+msgid "As of March 2025, we have 1,260 reviews on GetYourGuide, Google and Tripadvisor –  and 95% of them are five stars."
+msgstr "Stand März 2025 haben wir 1.260 Bewertungen auf GetYourGuide, Google und Tripadvisor – und 95 %% davon sind Fünf-Sterne-Bewertungen."
+
+#: core/templates/pages/about.html:99
+msgid "What Our Travelers Say"
+msgstr "Was unsere Reisenden sagen"
+

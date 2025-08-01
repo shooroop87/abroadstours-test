@@ -1,0 +1,193 @@
+{% load static %}
+{% load i18n %}
+
+<header class="header -type-1 -secondary js-header">
+  <div class="header__container container">
+    <div class="headerMobile__left">
+      <button class="header__menuBtn js-menu-button">
+        <i class="icon-main-menu"></i>
+      </button>
+    </div>
+
+    <div class="header__logo">
+      <a href="{% url 'index' %}" class="header__logo">
+        <img src="{% static 'img/general/svgexport-1.svg' %}" alt="logo icon" loading="lazy">
+      </a>
+      <div class="xl:d-none ml-30">
+        <div class="header__search"></div>
+      </div>
+    </div>
+
+    <div class="headerMobile__right">
+      <a href="https://api.whatsapp.com/send/?phone=393208575909&text=Hi%21+Interested+in+Lake+Como%2FBellagio%2FLugano+tour+%28%E2%82%AC109%2B%29%2C+Barolo+wine+tour+%28%E2%82%AC149%2B%29%2C+or+private+Bernina+train.+We+are+%28number%29+on+%28date%29.+Options+and+prices%3F&type=phone_number&app_absent=0" 
+         class="d-flex ml-20" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="icon-whatsapp text-22"></i>
+      </a>
+    </div>
+
+    <div class="header__right">
+
+      <div class="headerDropdown js-form-dd">
+        <a href="{% url 'index' %}" class="headerDropdown__button" title="{% trans "The best tours and travels around the world" %}">
+          {% trans "Home" %}
+        </a>
+      </div>
+
+      <div class="headerDropdown lg:d-none js-form-dd">
+        <div class="headerDropdown__button" data-x-click="header-activities">
+          {% trans "Our Tours" %}
+          <i class="icon-chevron-down text-18"></i>
+        </div>
+
+         <div class="headerDropdown__content" data-x="header-activities" data-x-toggle="is-active">
+          <div class="tabsMenu">
+            <div class="tabsMenu__container">
+              <div class="tabs js-tabs">
+                <div class="tabsMenu__tabs">
+                  <div class="tabs__controls js-tabs-controls">
+                    <button class="tabs__button js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">{% trans "All Tours" %}</button>
+                    <button class="tabs__button js-tabs-button" data-tab-target=".-tab-item-2">{% trans "Wine Tours" %}</button>
+                    <button class="tabs__button js-tabs-button" data-tab-target=".-tab-item-3">{% trans "Lake Como Tours" %}</button>
+                    <button class="tabs__button js-tabs-button" data-tab-target=".-tab-item-4">{% trans "City Tours" %}</button>
+                  </div>
+                </div>
+                <div class="tabsMenu__content">
+                      <div class="tabs__content js-tabs-content">
+
+                        <div class="tabs__pane -tab-item-1 is-tab-el-active">
+                          <div class="tabsMenu__lists">
+                            <div class="tabsMenu-list">
+                              <div class="tabsMenu-list__title">All Tours</div>
+                              <div class="tabsMenu-list__content">
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'alba_barolo_tour' %}">Alba, UNESCO Castle & Barolo Wine Tasting Tour from Milan. Small Group</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'barolo_barbaresco_from_milan' %}">Barolo & Barbaresco Wine tasting from Milan. Visit Alba, Birthplace of Nutella</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'como_city_walking_tour' %}">Best of Como: Walking Tour & 1-Hour Boat Cruise. Morning Schedule – Less Crowded Time</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'kick_off_walking_tour_in_milano' %}">Kick off walking tour in Milano</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'lake_como_and_lugano_tour' %}">Lake Como and Lugano Small Group Tour from Milan</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'bellagio_varenna_tour' %}">Lake Como, Bellagio & Bellano with boat cruise Small Group Tour from Milan</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'lake_como_lugano_morcote_tour' %}">From Milan: Lake Como and Lugano tour. Morcote, Lugano & Bellagio Day Trip</a>
+                                </div>
+
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+
+                        <div class="tabs__pane -tab-item-2">
+                          <div class="tabsMenu__lists">
+                            <div class="tabsMenu-list">
+                              <div class="tabsMenu-list__title">Wine Tours</div>
+                              <div class="tabsMenu-list__content">
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'alba_barolo_tour' %}">Alba, UNESCO Castle & Barolo Wine Tasting Tour from Milan. Small Group</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'barolo_barbaresco_from_milan' %}">Barolo & Barbaresco Wine tasting from Milan. Visit Alba, Birthplace of Nutella</a>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tabs__pane -tab-item-3">
+                          <div class="tabsMenu__lists">
+                            <div class="tabsMenu-list">
+                              <div class="tabsMenu-list__title">Lake Como Tours</div>
+                              <div class="tabsMenu-list__content">
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'como_city_walking_tour' %}">Best of Como: Walking Tour & 1-Hour Boat Cruise. Morning Schedule – Less Crowded Time</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'lake_como_and_lugano_tour' %}">Lake Como and Lugano Small Group Tour from Milan</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'bellagio_varenna_tour' %}">Lake Como, Bellagio & Bellano with boat cruise Small Group Tour from Milan</a>
+                                </div>
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'lake_como_lugano_morcote_tour' %}">From Milan: Lake Como and Lugano tour. Morcote, Lugano & Bellagio Day Trip</a>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="tabs__pane -tab-item-4">
+                          <div class="tabsMenu__lists">
+                            <div class="tabsMenu-list">
+                              <div class="tabsMenu-list__title">City Tours</div>
+                              <div class="tabsMenu-list__content">
+
+                                <div class="tabsMenu-list__item">
+                                  <a href="{% url 'kick_off_walking_tour_in_milano' %}">Kick off walking tour in Milano</a>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+
+      <div class="headerDropdown js-form-dd">
+        <a href="{% url 'blog' %}" class="headerDropdown__button" title="{% trans "Travel stories, destination guides and travel tips" %}">
+          {% trans "Blog" %}
+        </a>
+      </div>
+
+      <div class="headerDropdown js-form-dd">
+        <a href="{% url 'about' %}" class="headerDropdown__button" title="{% trans "Learn about our founders, mission, and commitment to authentic travel experiences" %}">
+          {% trans "About Us" %}
+        </a>
+      </div>
+
+      {% include 'includes/language-switcher.html' %}
+
+      <a href="{% url 'contact' %}" class="button -sm -dark-1 bg-accent-1 rounded-200 text-white ml-30">
+        {% trans "Contact Us" %}
+      </a>
+
+      <button class="header__menuBtn ml-30 js-menu-button">
+        <i class="icon-main-menu"></i>
+      </button>
+    </div>
+  </div>
+</header>
+<!-- Mobile Menu -->
+{% include 'includes/header-mobile-menu.html' %}

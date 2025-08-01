@@ -1,0 +1,402 @@
+{% load static %}
+{% load i18n %}
+
+<section class="layout-pt-xl layout-pb-xl relative">
+  <div class="sectionBg -w-1530 rounded-12 bg-light-1"></div>
+  
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up" class="row justify-between items-end y-gap-10">
+      <div class="col-auto">
+        <h2 class="text-30 md:text-24">{% trans "We are the best-rated for day trips from Milan on the internet." %}</h2>
+        <p>{% trans "Real reviews from Google and TripAdvisor - see what our clients really think about our tours." %}</p>
+      </div>
+      <div class="col-auto col-sm-2">
+        <div class="d-flex items-center">
+          <!-- Показываем только те источники, которые реально загрузились -->
+          <a href="https://www.google.com/maps/place/Abroads+Tours/@45.5449712,9.2380265,17z/data=!4m12!1m2!2m1!1smilan+abroads+tours!3m8!1s0x8283676077334283:0xcacbc8880683610f!8m2!3d45.5449712!4d9.2406014!9m1!1b1!15sChNtaWxhbiBhYnJvYWRzIHRvdXJzWhUiE21pbGFuIGFicm9hZHMgdG91cnOSAQ10b3VyX29wZXJhdG9ymgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU42Ym5abVNuTkJSUkFC4AEA-gEECAAQHg!16s%2Fg%2F11vf5y2_mb?entry=ttu&g_ep=EgoyMDI1MDcyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
+            <img src="{% static 'img/testimonials/1/google_review2.svg' %}" alt="Google Reviews" loading="lazy">
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div data-anim-child="slide-up delay-2" class="relative pt-40 sm:pt-20">
+      <div class="overflow-hidden pb-30 js-section-slider" data-gap="30" data-slider-cols="xl-3 lg-3 md-2 sm-1 base-1" data-nav-prev="js-slider1-prev" data-nav-next="js-slider1-next">
+        <div class="swiper-wrapper" id="reviews-container">
+          
+          {% for review in google_reviews %}
+          <div class="swiper-slide" data-review-id="{{ review.review_id }}">
+            <div class="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
+              <div class="tourCard__header px-10 pt-10">
+                <div class="testi-author-box">
+                  <div class="testi-author">
+                    <div class="author-thumb">
+                      {% if review.author_photo_url %}
+                        <img src="{{ review.author_photo_url }}" alt="{% trans 'Author photo' %}" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                      {% else %}
+                        <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, {% if review.source == 'tripadvisor' %}#00AA6C{% elif review.source == 'google' %}#DAC5A7{% else %}#B8A082{% endif %} 0%, {% if review.source == 'tripadvisor' %}#009960{% elif review.source == 'google' %}#B8A082{% else %}#A18B6B{% endif %} 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">
+                          {{ review.author_name|first|upper }}
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="content" style="display: flex; flex-direction: column; align-items: flex-start;">
+                      <h6 class="name">{{ review.author_name }}</h6>
+                      <span>
+                        <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                          <div class="d-flex x-gap-5">
+                            {% for i in "12345" %}
+                              {% if forloop.counter <= review.rating %}
+                                <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                              {% else %}
+                                <div><i class="icon-star text-10 text-light-2"></i></div>
+                              {% endif %}
+                            {% endfor %}
+                          </div>
+                          <span class="text-dark-1 ml-10">{{ review.rating }}.0</span>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="testi-comp"></div>
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  "{% if review.text|length > 150 %}{{ review.text|truncatewords:25 }}...{% else %}{{ review.text }}{% endif %}"
+                </h3>
+
+                <div class="d-flex justify-between items-center text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    {{ review.relative_time_description }}
+                  </div>
+                  <div class="testimonials__slider-meta-icon">
+                    {% if review.source == 'tripadvisor' %}
+                      <!-- TripAdvisor Logo -->
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="19" cy="19" r="19" fill="#00AA6C"></circle>
+                        <g clip-path="url(#clip0_335_4099)">
+                        <path d="M11.0093 16.9888C8.79146 16.9888 6.99841 18.7812 6.99841 20.9922C6.99841 23.2031 8.79146 24.9956 11.0031 24.9956C13.2147 24.9956 15.0078 23.2031 15.0078 20.9922C15.014 18.7812 13.221 16.9888 11.0093 16.9888ZM11.0093 23.8589C9.42871 23.8589 8.14172 22.5785 8.14172 20.9922C8.14172 19.4058 9.42247 18.1255 11.0093 18.1255C12.5962 18.1255 13.8707 19.412 13.8707 20.9922C13.8707 22.5723 12.59 23.8589 11.0093 23.8589Z" fill="white"></path>
+                        <path d="M11.0218 22.9783C12.1225 22.9783 13.0148 22.0863 13.0148 20.986C13.0148 19.8857 12.1225 18.9937 11.0218 18.9937C9.92115 18.9937 9.02887 19.8857 9.02887 20.986C9.02887 22.0863 9.92115 22.9783 11.0218 22.9783Z" fill="white"></path>
+                        <path d="M27.0031 16.9888C24.7915 16.9888 22.9984 18.7812 22.9984 20.9922C22.9984 23.2031 24.7915 24.9956 27.0031 24.9956C29.2147 24.9956 31.0078 23.2031 31.0078 20.9922C31.0078 18.7812 29.2147 16.9888 27.0031 16.9888ZM27.0031 23.8589C25.4225 23.8589 24.1355 22.5785 24.1355 20.9922C24.1355 19.4058 25.4162 18.1255 27.0031 18.1255C28.59 18.1255 29.8645 19.412 29.8645 20.9922C29.8645 22.5723 28.5837 23.8589 27.0031 23.8589Z" fill="white"></path>
+                        <path d="M27.0156 22.9783C28.1163 22.9783 29.0086 22.0863 29.0086 20.986C29.0086 19.8857 28.1163 18.9937 27.0156 18.9937C25.9149 18.9937 25.0226 19.8857 25.0226 20.986C25.0226 22.0863 25.9149 22.9783 27.0156 22.9783Z" fill="white"></path>
+                        <path d="M32.6384 15.3215L34.9938 12.9856H30.2206C27.5467 10.8122 23.1046 9.00098 18.9875 9.00098C14.8641 9.00098 10.4596 10.8122 7.78563 12.9856H3L5.35533 15.3215C3.89965 16.7705 3 18.7753 3 20.9925C3 25.4143 6.5861 28.9993 11.0094 28.9993C13.0398 28.9993 14.8954 28.2435 16.3073 26.9944L19.0187 28.9868L21.6989 27.0382L21.6677 26.9632C23.0859 28.2248 24.9477 28.993 26.9969 28.993C31.4202 28.993 35.0062 25.4081 35.0062 20.9862C35 18.7753 34.0941 16.7705 32.6384 15.3215ZM25.991 13.0481C22.1988 13.5228 19.2249 16.6455 19 20.5115C18.7688 16.6393 15.7888 13.5103 11.984 13.0481C13.8957 11.6741 16.3323 10.9996 18.9875 10.9996C21.6427 10.9996 24.0793 11.6741 25.991 13.0481ZM11.0094 27.0007C7.68567 27.0007 4.99922 24.3088 4.99922 20.9925C4.99922 17.6761 7.69192 14.9842 11.0094 14.9842C14.3268 14.9842 17.0195 17.6761 17.0195 20.9925C17.0133 24.3088 14.3268 27.0007 11.0094 27.0007ZM27.0031 27.0007C23.6857 27.0007 20.993 24.3088 20.993 20.9925C20.993 17.6761 23.6857 14.9842 27.0031 14.9842C30.3206 14.9842 33.0133 17.6761 33.0133 20.9925C33.007 24.3088 30.3206 27.0007 27.0031 27.0007Z" fill="white"></path>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_335_4099">
+                        <rect width="32" height="20" fill="white" transform="translate(3 9)"></rect>
+                        </clipPath>
+                        </defs>
+                      </svg>
+                    {% elif review.source == 'google' %}
+                      <!-- Google Logo -->
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.14685 10.8285C4.29724 8.43121 5.92263 6.40504 7.97107 4.72027C10.7469 2.42691 13.9308 1.04644 17.5008 0.623394C21.6941 0.126129 25.6351 0.920269 29.2793 3.1023C30.1847 3.6441 31.0308 4.26011 31.8398 4.92808C32.0402 5.09136 32.0179 5.18785 31.8472 5.35113C30.1922 6.99879 28.5371 8.64644 26.8969 10.3089C26.7039 10.5019 26.6 10.4871 26.3922 10.3312C21.5828 6.62769 14.5691 7.62965 10.9844 12.5281C10.3535 13.389 9.84138 14.3168 9.48513 15.3261C9.45544 15.4152 9.39607 15.4968 9.35154 15.5859C8.39412 14.8586 7.42927 14.1312 6.47927 13.3964C5.36599 12.5429 4.25271 11.6894 3.14685 10.8285Z" fill="#E94335"/>
+                        <path d="M9.35151 22.5479C9.67065 23.2529 9.93784 23.9877 10.3386 24.6482C12.0234 27.4092 14.4281 29.183 17.5972 29.8139C20.4546 30.3854 23.2007 29.9994 25.7613 28.567C25.8503 28.5225 25.9394 28.4779 26.021 28.4334C26.0656 28.4779 26.1027 28.5299 26.1472 28.567C28.0621 30.0514 29.9843 31.5357 31.8992 33.0201C30.9789 33.933 29.9324 34.6678 28.8191 35.3061C25.5906 37.1467 22.0949 37.8889 18.4136 37.6068C13.8269 37.2506 9.87105 35.4396 6.60542 32.174C5.173 30.7416 3.99292 29.1236 3.1394 27.2756C3.93354 26.667 4.72769 26.0658 5.52183 25.4572C6.79839 24.485 8.07495 23.5201 9.35151 22.5479Z" fill="#34A853"/>
+                        <path d="M31.9066 33.0199C29.9918 31.5355 28.0695 30.0512 26.1547 28.5668C26.1101 28.5297 26.0656 28.4777 26.0285 28.4332C26.689 27.9211 27.3644 27.4238 27.9062 26.7707C28.8117 25.6871 29.4129 24.4625 29.7246 23.0895C29.7617 22.9188 29.732 22.8594 29.5613 22.8668C29.4722 22.8742 29.3906 22.8668 29.3015 22.8668C26.2734 22.8668 23.2379 22.8594 20.2097 22.8742C19.8758 22.8742 19.8015 22.7852 19.809 22.466C19.8238 20.3137 19.8238 18.1613 19.809 16.009C19.809 15.7344 19.8832 15.6602 20.1578 15.6602C25.7094 15.6676 31.2609 15.6676 36.8199 15.6602C37.0574 15.6602 37.1539 15.7195 37.2133 15.9719C37.666 18.0129 37.6363 20.0613 37.3617 22.1246C37.139 23.7723 36.7383 25.368 36.1222 26.9117C35.2094 29.1902 33.866 31.1793 32.0996 32.8863C32.0328 32.9383 31.966 32.9754 31.9066 33.0199Z" fill="#4285F3"/>
+                        <path d="M9.35153 22.5477C8.07497 23.5199 6.79841 24.4848 5.52185 25.457C4.72771 26.0582 3.93357 26.6668 3.13943 27.2754C2.52341 26.1324 2.12263 24.9227 1.79607 23.6758C1.17263 21.2637 1.07614 18.8145 1.41755 16.3578C1.68474 14.4281 2.24138 12.5727 3.13943 10.8359C4.25271 11.6895 5.35857 12.5504 6.47185 13.4039C7.42927 14.1387 8.38669 14.866 9.34411 15.5934C9.18083 16.3875 8.95075 17.1668 8.87653 17.9832C8.74294 19.4676 8.88396 20.9148 9.307 22.3398C9.33669 22.3992 9.34411 22.4734 9.35153 22.5477Z" fill="#FABB06"/>
+                      </svg>
+                    {% else %}
+                      <!-- Fallback: Default review icon -->
+                      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="19" cy="19" r="19" fill="#DAC5A7"/>
+                        <path d="M19 10L21.5 16.5H28L22.5 21L24.5 28L19 24L13.5 28L15.5 21L10 16.5H16.5L19 10Z" fill="white"/>
+                      </svg>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+      
+      <div class="navAbsolute">
+        <button class="navAbsolute__button bg-white js-slider1-prev">
+          <i class="icon-arrow-left text-14"></i>
+        </button>
+        
+        <button class="navAbsolute__button bg-white js-slider1-next">
+          <i class="icon-arrow-right text-14"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Скрытый индикатор загрузки -->
+    <div id="loading-indicator" class="row justify-center mt-20 d-none">
+      <div class="col-auto">
+        <div class="d-flex items-center bg-white rounded-8 px-20 py-10 shadow-1">
+          <i class="icon-spinner animate-spin mr-10"></i>
+          <span class="text-14 text-light-2">{% trans "Loading more reviews..." %}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Информация о источниках -->
+    <div class="row justify-center mt-30 source-info">
+      <div class="col-auto">
+        <div class="d-flex items-center justify-center bg-white rounded-8 px-20 py-10 shadow-1">
+          <span class="text-13 text-light-2">
+            {% if reviews_data.sources_used.tripadvisor and reviews_data.sources_used.google %}
+              <i class="icon-check-circle text-green-1 mr-5"></i>
+              {% trans "Reviews from TripAdvisor & Google" %}
+            {% elif reviews_data.sources_used.tripadvisor %}
+              <i class="icon-check-circle text-green-1 mr-5"></i>
+              {% trans "Reviews from TripAdvisor" %}
+            {% elif reviews_data.sources_used.google %}
+              <i class="icon-check-circle text-green-1 mr-5"></i>
+              {% trans "Reviews from Google" %}
+            {% else %}
+              <i class="icon-info-circle text-blue-1 mr-5"></i>
+              {% trans "Sample reviews" %}
+            {% endif %}
+          </span>
+          <span class="text-13 text-light-2 ml-15">•</span>
+          <span class="text-13 text-light-2 ml-15">
+            {% trans "Updated" %} {{ reviews_data.fetched_at|date:"M d, H:i" }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- JavaScript для автоматической подгрузки через стрелки слайдера -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const reviewsContainer = document.querySelector('#reviews-container');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    
+    // Переменные для отслеживания состояния
+    let currentPage = 2; // Первая страница уже загружена
+    let isLoading = false;
+    let hasMoreReviews = {{ reviews_data.has_next|yesno:"true,false" }};
+    let totalLoadedReviews = {{ reviews_data.reviews|length }};
+    
+    // Инициализация Swiper с обработчиками
+    function initSwiperWithAutoLoad() {
+        // Ждем инициализации Swiper
+        const checkSwiper = setInterval(() => {
+            if (window.swiper || document.querySelector('.js-section-slider').swiper) {
+                const swiperInstance = window.swiper || document.querySelector('.js-section-slider').swiper;
+                
+                // Добавляем обработчик события slideChange
+                swiperInstance.on('slideChange', function() {
+                    const activeIndex = this.activeIndex;
+                    const slidesLength = this.slides.length;
+                    
+                    // Если достигли предпоследнего слайда и есть еще отзывы
+                    if (activeIndex >= slidesLength - 2 && hasMoreReviews && !isLoading) {
+                        loadMoreReviews();
+                    }
+                });
+                
+                // Добавляем обработчик для кнопки "следующий"
+                const nextButton = document.querySelector('.js-slider1-next');
+                if (nextButton) {
+                    nextButton.addEventListener('click', function() {
+                        setTimeout(() => {
+                            const activeIndex = swiperInstance.activeIndex;
+                            const slidesLength = swiperInstance.slides.length;
+                            
+                            // Если на последнем слайде и есть еще отзывы
+                            if (activeIndex >= slidesLength - 1 && hasMoreReviews && !isLoading) {
+                                loadMoreReviews();
+                            }
+                        }, 100);
+                    });
+                }
+                
+                clearInterval(checkSwiper);
+            }
+        }, 100);
+        
+        // Очищаем интервал через 10 секунд если Swiper не найден
+        setTimeout(() => clearInterval(checkSwiper), 10000);
+    }
+    
+    function loadMoreReviews() {
+        if (isLoading || !hasMoreReviews) return;
+        
+        isLoading = true;
+        
+        // Показываем индикатор загрузки
+        loadingIndicator.classList.remove('d-none');
+        
+        // AJAX запрос за новыми отзывами
+        fetch(`/load-more-reviews/?page=${currentPage}&per_page=7`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.reviews && data.reviews.length > 0) {
+                    // Получаем текущий Swiper instance
+                    const swiperInstance = window.swiper || document.querySelector('.js-section-slider').swiper;
+                    
+                    // Добавляем новые слайды
+                    data.reviews.forEach(review => {
+                        const slideHTML = createReviewSlide(review);
+                        swiperInstance.appendSlide(slideHTML);
+                    });
+                    
+                    // Обновляем переменные состояния
+                    currentPage++;
+                    hasMoreReviews = data.has_next;
+                    totalLoadedReviews += data.reviews.length;
+                    
+                    console.log(`Loaded ${data.reviews.length} more reviews. Total: ${totalLoadedReviews}`);
+                    
+                    // Переходим к первому из новых слайдов
+                    const newSlideIndex = totalLoadedReviews - data.reviews.length;
+                    setTimeout(() => {
+                        swiperInstance.slideTo(newSlideIndex, 500);
+                    }, 300);
+                    
+                } else {
+                    hasMoreReviews = false;
+                    console.log('No more reviews to load');
+                }
+            })
+            .catch(error => {
+                console.error('Error loading more reviews:', error);
+                hasMoreReviews = false;
+            })
+            .finally(() => {
+                isLoading = false;
+                loadingIndicator.classList.add('d-none');
+            });
+    }
+    
+    function createReviewSlide(review) {
+        const sourceColor = review.source === 'tripadvisor' ? '#00AA6C' : 
+                          review.source === 'google' ? '#DAC5A7' : '#B8A082';
+        
+        const sourceIcon = review.source === 'tripadvisor' ? 
+            `<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="19" cy="19" r="19" fill="#00AA6C"/>
+                <path d="M19 8C13.48 8 9 12.48 9 18s4.48 10 10 10 10-4.48 10-10S24.52 8 19 8zm-2 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm6 0c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" fill="white"/>
+            </svg>` : 
+            `<svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3.14685 10.8285C4.29724 8.43121 5.92263 6.40504 7.97107 4.72027C10.7469 2.42691 13.9308 1.04644 17.5008 0.623394C21.6941 0.126129 25.6351 0.920269 29.2793 3.1023C30.1847 3.6441 31.0308 4.26011 31.8398 4.92808C32.0402 5.09136 32.0179 5.18785 31.8472 5.35113C30.1922 6.99879 28.5371 8.64644 26.8969 10.3089C26.7039 10.5019 26.6 10.4871 26.3922 10.3312C21.5828 6.62769 14.5691 7.62965 10.9844 12.5281C10.3535 13.389 9.84138 14.3168 9.48513 15.3261C9.45544 15.4152 9.39607 15.4968 9.35154 15.5859C8.39412 14.8586 7.42927 14.1312 6.47927 13.3964C5.36599 12.5429 4.25271 11.6894 3.14685 10.8285Z" fill="#E94335"/>
+                <path d="M9.35151 22.5479C9.67065 23.2529 9.93784 23.9877 10.3386 24.6482C12.0234 27.4092 14.4281 29.183 17.5972 29.8139C20.4546 30.3854 23.2007 29.9994 25.7613 28.567C25.8503 28.5225 25.9394 28.4779 26.021 28.4334C26.0656 28.4779 26.1027 28.5299 26.1472 28.567C28.0621 30.0514 29.9843 31.5357 31.8992 33.0201C30.9789 33.933 29.9324 34.6678 28.8191 35.3061C25.5906 37.1467 22.0949 37.8889 18.4136 37.6068C13.8269 37.2506 9.87105 35.4396 6.60542 32.174C5.173 30.7416 3.99292 29.1236 3.1394 27.2756C3.93354 26.667 4.72769 26.0658 5.52183 25.4572C6.79839 24.485 8.07495 23.5201 9.35151 22.5479Z" fill="#34A853"/>
+                <path d="M31.9066 33.0199C29.9918 31.5355 28.0695 30.0512 26.1547 28.5668C26.1101 28.5297 26.0656 28.4777 26.0285 28.4332C26.689 27.9211 27.3644 27.4238 27.9062 26.7707C28.8117 25.6871 29.4129 24.4625 29.7246 23.0895C29.7617 22.9188 29.732 22.8594 29.5613 22.8668C29.4722 22.8742 29.3906 22.8668 29.3015 22.8668C26.2734 22.8668 23.2379 22.8594 20.2097 22.8742C19.8758 22.8742 19.8015 22.7852 19.809 22.466C19.8238 20.3137 19.8238 18.1613 19.809 16.009C19.809 15.7344 19.8832 15.6602 20.1578 15.6602C25.7094 15.6676 31.2609 15.6676 36.8199 15.6602C37.0574 15.6602 37.1539 15.7195 37.2133 15.9719C37.666 18.0129 37.6363 20.0613 37.3617 22.1246C37.139 23.7723 36.7383 25.368 36.1222 26.9117C35.2094 29.1902 33.866 31.1793 32.0996 32.8863C32.0328 32.9383 31.966 32.9754 31.9066 33.0199Z" fill="#4285F3"/>
+                <path d="M9.35153 22.5477C8.07497 23.5199 6.79841 24.4848 5.52185 25.457C4.72771 26.0582 3.93357 26.6668 3.13943 27.2754C2.52341 26.1324 2.12263 24.9227 1.79607 23.6758C1.17263 21.2637 1.07614 18.8145 1.41755 16.3578C1.68474 14.4281 2.24138 12.5727 3.13943 10.8359C4.25271 11.6895 5.35857 12.5504 6.47185 13.4039C7.42927 14.1387 8.38669 14.866 9.34411 15.5934C9.18083 16.3875 8.95075 17.1668 8.87653 17.9832C8.74294 19.4676 8.88396 20.9148 9.307 22.3398C9.33669 22.3992 9.34411 22.4734 9.35153 22.5477Z" fill="#FABB06"/>
+            </svg>`;
+            
+        const stars = Array.from({length: 5}, (_, i) => 
+            `<div><i class="icon-star text-10 ${i < review.rating ? 'text-yellow-2' : 'text-light-2'}"></i></div>`
+        ).join('');
+        
+        const avatarHTML = review.author_photo_url ? 
+            `<img src="${review.author_photo_url}" alt="Author photo" loading="lazy" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">` :
+            `<div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, ${sourceColor} 0%, ${sourceColor}CC 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 18px;">
+                ${review.author_name.charAt(0).toUpperCase()}
+            </div>`;
+        
+        const truncatedText = review.text.length > 150 ? 
+            review.text.substring(0, 220) + '...' : review.text;
+        
+        return `
+            <div class="swiper-slide review-slide-new" data-review-id="${review.review_id}">
+                <div class="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
+                    <div class="tourCard__header px-10 pt-10">
+                        <div class="testi-author-box">
+                            <div class="testi-author">
+                                <div class="author-thumb">${avatarHTML}</div>
+                                <div class="content" style="display: flex; flex-direction: column; align-items: flex-start;">
+                                    <h6 class="name">${review.author_name}</h6>
+                                    <span>
+                                        <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                                            <div class="d-flex x-gap-5">${stars}</div>
+                                            <span class="text-dark-1 ml-10">${review.rating}.0</span>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="testi-comp"></div>
+                        </div>
+                    </div>
+                    <div class="tourCard__content px-10 pt-10">
+                        <h3 class="tourCard__title text-16 fw-500 mt-5">"${truncatedText}"</h3>
+                        <div class="d-flex justify-between items-center text-13 text-dark-1 pt-10 mt-10">
+                            <div class="d-flex items-center">${review.relative_time_description}</div>
+                            <div class="testimonials__slider-meta-icon">${sourceIcon}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Инициализируем после загрузки DOM
+    initSwiperWithAutoLoad();
+});
+</script>
+
+<!-- CSS для улучшения UX -->
+<style>
+.tourCard {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tourCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.author-thumb img,
+.author-thumb div {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tourCard__title {
+    line-height: 1.4;
+    min-height: 80px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.testimonials__slider-meta-icon {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.testimonials__slider-meta-icon:hover {
+    opacity: 1;
+}
+
+.button-loader .icon-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Анимация появления новых отзывов */
+.review-slide-new {
+    animation: slideInFromRight 0.6s ease-out;
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Индикатор загрузки */
+#loading-indicator {
+    position: relative;
+    z-index: 10;
+}
+
+</style>

@@ -1,0 +1,110 @@
+{% load static %}
+{% load i18n %}
+{% block content %}
+<section class="hero -type-1 -min-2 is-in-view">
+  <div class="hero__bg">
+    <img src="{% static 'img/blog/bernina-express-hero.webp' %}" alt="bernina express train from milan" loading="lazy">
+    <img src="{% static 'img/hero/1/shape.svg' %}" alt="Decorative wave shape" loading="lazy">
+    <div class="overlay overlay--medium"></div>
+  </div>
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-xl-12">
+        <div class="hero__content">
+          <h1 class="hero__title">{% trans "All you need to know about the most incredible train line in Europe" %}</h1>
+          <p class="hero__text">{% trans "Including how to avoid unpleasant experiences, crowds, and wasting money." %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="layout-pt-md layout-pb-xl">
+  <div class="container">
+    <div class="row y-gap-30 justify-center">
+      <div class="col-lg-8">
+        <h2 class="text-30 md:text-24">{% trans "After hundreds of bernina express tours from milan" %}</h2>
+        <p class="mt-20">{% trans "We believe this tour can be much better. that’s why we offer english-only tours for ages 7+, providing a quiet, focused experience." %}</p>
+        <p class="mt-20">{% trans "The bernina express is the most scenic railway in europe. this article is written by guides who've led 100+ tours and contains rare insights and tips you won’t find elsewhere." %}</p>
+
+        <img class="mt-30 rounded-8" src="{% static 'img/blog/bernina-view-summer.webp' %}" alt="bernina express" loading="lazy">
+
+        <h3 class="text-24 md:text-20 mt-40">{% trans "The bernina express route" %}</h3>
+        <p class="mt-20">{% trans "The train ascends 1,800 meters, traverses alpine lakes and glacier valleys, and ends in glamorous st. moritz. you’ll witness untouched nature in both summer and winter seasons." %}</p>
+        <p class="mt-20">{% trans "From november to april, it’s a snowy wonderland. in summer, enjoy crisp air, green meadows, and temperatures far cooler than milan." %}</p>
+
+        <h3 class="text-24 md:text-20 mt-40">{% trans "Train carriage types" %}</h3>
+        <ul class="list-disc mt-20">
+          <li>{% trans "panoramic windows" %} – {% trans "large glass, but no opening. reflections can ruin photos on rainy days." %}</li>
+          <li>{% trans "regular carriages" %} – {% trans "windows open. perfect for fresh air and photography." %}</li>
+          <li>{% trans "open carriages (summer only)" %} – {% trans "no glass at all. like a cabrio train ride." %}</li>
+        </ul>
+
+        <img class="mt-30 rounded-8" src="{% static 'img/blog/bernina-winter.webp' %}" alt="train view" loading="lazy">
+
+        <h3 class="text-24 md:text-20 mt-40">{% trans "Unesco heritage experience" %}</h3>
+        <ul class="list-disc mt-20">
+          <li>{% trans "historic engineering marvel through harsh alpine terrain." %}</li>
+          <li>{% trans "blend of culture, nature, and architecture." %}</li>
+          <li>{% trans "remarkable visual harmony with the landscape." %}</li>
+        </ul>
+
+        <img class="mt-30 rounded-8" src="{% static 'img/blog/bernini_most.webp' %}" alt="alpine route" loading="lazy">
+
+        <blockquote class="mt-30">
+          <p>{% trans "Ascend from 400m to 2250m. see italian palms, orchards, and alpine glaciers—all in one ride." %}</p>
+        </blockquote>
+
+        <h3 class="text-24 md:text-20 mt-40">{% trans "What you'll see on the ride" %}</h3>
+        <ul class="list-disc mt-20">
+          <li><strong>{% trans "Valtellina valley" %}</strong> – {% trans "vineyards, rural life, alpine agriculture." %}</li>
+          <li><strong>{% trans "Poschiavo valley" %}</strong> – {% trans "drastic changes in climate and landscape in just 25 km." %}</li>
+          <li><strong>{% trans "Alpine lakes" %}</strong> – {% trans "turquoise and white, fed by glacial melt." %}</li>
+          <li><strong>{% trans "Bernina peak" %}</strong> – {% trans "4,000-meter alpine giant." %}</li>
+          <li><strong>{% trans "St. Moritz" %}</strong> – {% trans "elite ski resort with year-round events." %}</li>
+        </ul>
+
+        <h3 class="text-24 md:text-20 mt-40">{% trans "Cost of self-guided vs. organized" %}</h3>
+        <p class="mt-20">{% trans "Self-guided: 64€ train + 24€ train milan–tirano + parking/fuel ≈ 88€ total. fully manual." %}</p>
+        <p class="mt-10">{% trans "Organized tour: 117–144€, but you get one-way train + one-way bus + full logistics + skip the stress." %}</p>
+
+        <div class="mt-30 p-20" style="background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 8px;">
+          <p style="margin: 0; color: #856404;">
+            {% trans "⚠️ avoid sundays & holidays — expect +2 hours on the road and overbooked trains." %}
+          </p>
+        </div>
+
+        <h3 class="text-24 md:text-20 mt-40">{% trans "How our tour differs" %}</h3>
+        <div class="row y-gap-30 pt-30">
+          <div class="col-md-6">
+            <h5 class="text-16">{% trans "Abroads tours" %}</h5>
+            <ul>
+              <li>{% trans "English only" %}</li>
+              <li>{% trans "Age 7+" %}</li>
+              <li>{% trans "7:45 am departure" %}</li>
+              <li>{% trans "Direct booking: 117€" %}</li>
+              <li>{% trans "Flexible schedule" %}</li>
+              <li>{% trans "Max 35 people" %}</li>
+              <li>{% trans "No tours on sundays" %}</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-16">{% trans "Other companies" %}</h5>
+            <ul>
+              <li>{% trans "Bilingual tours (en/es)" %}</li>
+              <li>{% trans "All ages" %}</li>
+              <li>{% trans "7:00 am departure" %}</li>
+              <li>{% trans "Third-party booking: 125–144€" %}</li>
+              <li>{% trans "No flexibility" %}</li>
+              <li>{% trans "Up to 55 people" %}</li>
+              <li>{% trans "Crowded sundays" %}</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="mt-30">{% trans "Book wisely — a well-planned tour = a memorable day in the alps." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
