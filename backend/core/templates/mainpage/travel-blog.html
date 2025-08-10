@@ -1,3 +1,4 @@
+<!-- backend/core/templates/mainpage/travel-blog.html -->
 {% load static %}
 {% load i18n %}
 <section class="layout-pt-xl layout-pb-xl">
@@ -9,7 +10,7 @@
       </div>
 
       <div class="col-auto">
-        <a href="{% url 'blog' %}" class="buttonArrow d-flex items-center">
+        <a href="{% url 'blog:blog' %}" class="buttonArrow d-flex items-center">
           <span>{% trans "See all" %}</span>
           <i class="icon-arrow-top-right text-16 ml-10"></i>
         </a>
@@ -30,7 +31,7 @@
               <div class="lh-13">{% trans "February 18 2024" %}</div>
             </div>
 
-            <h3 class="blogCard__title text-18 fw-500 mt-10">{% trans "Lake Como Day Trip from Milan: Insider’s Guide" %}</h3>
+            <h3 class="blogCard__title text-18 fw-500 mt-10">{% trans "Lake Como Day Trip from Milan: Insider's Guide" %}</h3>
           </div>
         </a>
       </div>

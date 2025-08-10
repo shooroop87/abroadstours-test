@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base/base.html' %}
 {% load i18n %}
 
 {% block title %}{{ page_title }}{% endblock %}
@@ -17,7 +17,7 @@
                     
                     <div class="p-6">
                         <h2 class="text-xl font-semibold mb-2">
-                            <a href="{{ post.get_absolute_url }}" class="hover:text-blue-600">{{ post.title }}</a>
+                            <a href="{% url 'blog:post_detail' slug=post.slug %}" class="hover:text-blue-600">{{ post.title }}</a>
                         </h2>
                         
                         {% if post.excerpt %}
@@ -26,7 +26,9 @@
                         
                         <div class="flex justify-between items-center text-sm text-gray-500">
                             <span>{{ post.published_at|date:"M d, Y" }}</span>
-                            <span>{{ post.views_count }} views</span>
+                            {% if post.views_count %}
+                                <span>{{ post.views_count }} views</span>
+                            {% endif %}
                         </div>
                     </div>
                 </article>
@@ -35,20 +37,20 @@
             {% endfor %}
         </div>
         
-        <!-- Пагинация -->
-        {% if posts.has_other_pages %}
+        <!-- Исправленная пагинация для Django ListView -->
+        {% if is_paginated %}
             <div class="mt-8 flex justify-center">
                 <nav class="flex space-x-2">
-                    {% if posts.has_previous %}
-                        <a href="?page={{ posts.previous_page_number }}" class="px-3 py-2 bg-blue-500 text-white rounded">Previous</a>
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-2 bg-blue-500 text-white rounded">Previous</a>
                     {% endif %}
                     
                     <span class="px-3 py-2 bg-gray-200 rounded">
-                        Page {{ posts.number }} of {{ posts.paginator.num_pages }}
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                     </span>
                     
-                    {% if posts.has_next %}
-                        <a href="?page={{ posts.next_page_number }}" class="px-3 py-2 bg-blue-500 text-white rounded">Next</a>
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-2 bg-blue-500 text-white rounded">Next</a>
                     {% endif %}
                 </nav>
             </div>

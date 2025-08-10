@@ -83,7 +83,7 @@
         <nav aria-label="breadcrumb" class="mb-30">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'index' %}">{% trans "Home" %}</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'blog:blog_list' %}">{% trans "Blog" %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'blog:blog' %}">{% trans "Blog" %}</a></li>
             {% if post.category %}
               <li class="breadcrumb-item">
                 <a href="{% url 'blog:category' post.category.slug %}">{{ post.category.name }}</a>

@@ -69,8 +69,5 @@ urlpatterns = [
         "blog/watch-the-bernina-express-ride/",
         views.bernina_express_video,
         name="bernina_express_video",
-    ),
-    
-    # НОВАЯ система блога (подключается последней)
-    path("blog/", include('blog.urls')),
+    )
 ]

@@ -1,4 +1,3 @@
-# backend/blog/urls.py
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
@@ -7,8 +6,11 @@ from . import views
 app_name = 'blog'
 
 urlpatterns = [
-    # Главная страница блога - это исправит NoReverseMatch для 'blog'
-    path('', views.BlogListView.as_view(), name='blog'),  # ✅ Используем класс, а не функцию
+    # Главная страница блога
+    path('', views.BlogListView.as_view(), name='blog'),
+    
+    # Добавляем алиас для совместимости
+    path('list/', views.BlogListView.as_view(), name='blog_list'),
     
     # Поиск
     path('search/', views.blog_search, name='search'),

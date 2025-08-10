@@ -199,18 +199,66 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # stdout fix
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
+# Путь к логам (в рабочей директории /app)
+LOGS_DIR = BASE_DIR / 'logs'
+
+# Создаем директорию для логов если её нет
+os.makedirs(LOGS_DIR, exist_ok=True)
+
+# Настройки логирования (исправленные)
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {asctime} {message}',
+            'style': '{',
         },
     },
-    "root": {
-        "handlers": ["console"],
-        "level": "ERROR",
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'reviews_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': LOGS_DIR / 'reviews.log',  # Используем путь внутри /app
+            'formatter': 'verbose',
+        },
+        'django_file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler', 
+            'filename': LOGS_DIR / 'django.log',
+            'formatter': 'verbose',
+        },
     },
+    'loggers': {
+        'reviews': {
+            'handlers': ['reviews_file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'django': {
+            'handlers': ['django_file', 'console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'blog': {
+            'handlers': ['django_file', 'console'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    }
 }
 
 # API ключи для отзывов

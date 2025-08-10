@@ -29,11 +29,24 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Копирование проекта
 COPY . .
 
+# Создание пользователя для безопасности ПЕРЕД созданием файлов
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# Создание директорий для медиа файлов блога и логов
+RUN mkdir -p media/blog/featured media/blog/images media/uploads && \
+    mkdir -p logs && \
+    touch logs/reviews.log logs/django.log
+
+# Установка прав доступа для пользователя appuser
+RUN chown -R appuser:appuser /app && \
+    chmod -R 755 /app && \
+    chmod 666 logs/*.log
+
 # Компиляция переводов
 RUN django-admin compilemessages
 
-# Создание директории для логов отзывов
-RUN mkdir -p /tmp && touch /tmp/reviews.log
+# Переключение на пользователя appuser
+USER appuser
 
 # Запуск через Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "config.wsgi"]

@@ -1,3 +1,4 @@
+<!-- backend/core/templates/includes/header-mobile-menu.html -->
 {% load static %}
 {% load i18n %}
 <div class="menu js-menu">
@@ -41,7 +42,7 @@
         </li>
 
         <li class="menuNav__item">
-          <a href="{% url 'blog' %}">
+          <a href="{% url 'blog:blog' %}">
             {% trans "Blog" %}
           </a>
         </li>

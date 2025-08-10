@@ -33,12 +33,11 @@ services:
       retries: 3
     restart: unless-stopped
 
-  backend:
+  # Отдельный контейнер для выполнения миграций
+  migrations:
     build: ./backend/
     env_file: .env
     volumes:
-      - static:/app/collected_static
-      - media:/app/media/
       - ./backend:/app
     depends_on:
       db:
@@ -47,9 +46,25 @@ services:
         condition: service_healthy
     command: >
       sh -c "
-        echo 'Waiting for database and redis...' &&
+        echo 'Running migrations...' &&
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
+        echo 'Migrations and static files collection completed.'
+      "
+    restart: "no"
+
+  backend:
+    build: ./backend/
+    env_file: .env
+    volumes:
+      - static:/app/collected_static
+      - media:/app/media/
+      - ./backend:/app
+    depends_on:
+      migrations:
+        condition: service_completed_successfully
+    command: >
+      sh -c "
         echo 'Starting Django server...' &&
         python manage.py runserver 0.0.0.0:8000
       "
@@ -63,10 +78,8 @@ services:
     volumes:
       - ./backend:/app
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
     command: >
       sh -c "
         sleep 30 &&
@@ -86,5 +99,6 @@ services:
     ports:
       - "8000:80"
     depends_on:
-      - backend
+      backend:
+        condition: service_started
     restart: unless-stopped
