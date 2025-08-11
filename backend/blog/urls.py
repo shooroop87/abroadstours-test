@@ -1,7 +1,9 @@
-from django.urls import path, include
-from django.conf import settings
-from django.conf.urls.static import static
+# blog/urls.py
+from django.urls import path
 from . import views
+
+# Импортируем views из core для старых статических статей
+from core import views as core_views
 
 app_name = 'blog'
 
@@ -12,19 +14,25 @@ urlpatterns = [
     # Добавляем алиас для совместимости
     path('list/', views.BlogListView.as_view(), name='blog_list'),
     
-    # Поиск
-    path('search/', views.blog_search, name='search'),
+    # Поиск - используем SearchView класс
+    path('search/', views.SearchView.as_view(), name='search'),
     
-    # Категории
-    path('category/<slug:slug>/', views.CategoryListView.as_view(), name='category'),
+    # Категории - используем CategoryView класс
+    path('category/<slug:slug>/', views.CategoryView.as_view(), name='category'),
     
-    # Теги
-    path('tag/<slug:tag_slug>/', views.tag_posts, name='tag'),
+    # Теги - используем TagView класс
+    path('tag/<slug:slug>/', views.TagView.as_view(), name='tag'),
     
-    # Статические статьи (ваши существующие)
-    path('lake-como-day-trip-from-milan/', views.lake_como_day_trip, name='lake_como_day_trip'),
-    path('bernina-express-tour-from-milan/', views.bernina_express_tour, name='bernina_express_tour'),
-    path('watch-bernina-express-ride/', views.bernina_express_video, name='bernina_express_video'),
+    # СТАТИЧЕСКИЕ СТАТЬИ ДЛЯ SEO СОВМЕСТИМОСТИ (ПЕРЕД динамическими!)
+    path('lake-como-day-trip-from-milan-insiders-guide/', 
+         core_views.lake_como_day_trip, 
+         name='lake_como_day_trip'),
+    path('a-bold-guide-to-bernina-express-tour-from-milan/', 
+         core_views.bernina_express_tour, 
+         name='bernina_express_tour'),
+    path('watch-the-bernina-express-ride/', 
+         core_views.bernina_express_video, 
+         name='bernina_express_video'),
     
     # Динамические статьи (новая система) - должно быть в конце!
     path('<slug:slug>/', views.BlogDetailView.as_view(), name='post_detail'),

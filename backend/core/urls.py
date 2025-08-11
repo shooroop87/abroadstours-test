@@ -1,5 +1,5 @@
 # backend/core/urls.py
-from django.urls import path, include
+from django.urls import path
 from . import views
 
 urlpatterns = [
@@ -53,21 +53,6 @@ urlpatterns = [
         name="lake_como_lugano_morcote_tour",
     ),
     
-    # ВАЖНО: Статические blog статьи ПЕРЕД include('blog.urls')
-    # Это сохраняет старые URL для SEO
-    path(
-        "blog/lake-como-day-trip-from-milan-insiders-guide/",
-        views.lake_como_day_trip,
-        name="lake_como_day_trip",
-    ),
-    path(
-        "blog/a-bold-guide-to-bernina-express-tour-from-milan/",
-        views.bernina_express_tour,
-        name="bernina_express_tour",
-    ),
-    path(
-        "blog/watch-the-bernina-express-ride/",
-        views.bernina_express_video,
-        name="bernina_express_video",
-    )
+    # УБИРАЕМ СТАТИЧЕСКИЕ BLOG URL-Ы - теперь их обрабатывает blog приложение
+    # Если нужны старые URL для SEO совместимости, перенесите их в blog/urls.py
 ]

@@ -12,16 +12,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", "1insecure1-1default1")
 
 # DEBUG выключает все виды кэша и сжатия
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost 127.0.0.1").split()
+# Или если хотите разрешить все хосты в DEBUG режиме:
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost 127.0.0.1").split()
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.abroadstours.com",
     "https://abroadstours.com",
     "http://localhost",
+    'http://localhost:8000',
+    'http://backend-1:8000',
     "http://127.0.0.1",
     "http://127.0.0.1:8000",
+    "http://0.0.0.0:8000",
 ]
 
 # Apps
@@ -91,6 +98,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "core.context_processors.default_schema",
+                "blog.context_processors.blog_context",
             ],
         },
     },
@@ -134,8 +142,8 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "core" / "static"]
 STATIC_ROOT = BASE_DIR / "collected_static"
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if DEBUG:
     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"

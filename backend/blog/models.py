@@ -9,6 +9,7 @@ from parler.models import TranslatableModel, TranslatedFields
 from taggit.managers import TaggableManager
 from PIL import Image
 import os
+import re
 
 
 class Category(TranslatableModel):
@@ -32,12 +33,19 @@ class Category(TranslatableModel):
         return self.safe_translation_getter('name', any_language=True) or f"Category {self.pk}"
     
     def get_absolute_url(self):
-        return reverse('blog:category', kwargs={'slug': self.slug})
+        slug = self.safe_translation_getter('slug', any_language=True)
+        if slug:
+            return reverse('blog:category', kwargs={'slug': slug})
+        return '#'
     
     def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
+        # Сначала сохраняем объект
         super().save(*args, **kwargs)
+        
+        # Потом работаем с переводимыми полями
+        if hasattr(self, 'name') and self.name and not self.safe_translation_getter('slug'):
+            self.slug = slugify(self.name)
+            super().save(*args, **kwargs)
 
 
 class BlogPost(TranslatableModel):
@@ -140,28 +148,52 @@ class BlogPost(TranslatableModel):
         return self.safe_translation_getter('title', any_language=True) or f"Post {self.pk}"
     
     def get_absolute_url(self):
-        return reverse('blog:post_detail', kwargs={'slug': self.slug})
+        """Получаем URL статьи с правильной работой переводов"""
+        slug = self.safe_translation_getter('slug', any_language=True)
+        if slug:
+            return reverse('blog:post_detail', kwargs={'slug': slug})
+        return '#'
     
     def save(self, *args, **kwargs):
+        # Сначала сохраняем объект, чтобы получить pk
+        is_new = self.pk is None
+        super().save(*args, **kwargs)
+        
+        # Теперь работаем с переводимыми полями
+        current_title = self.safe_translation_getter('title', any_language=True)
+        current_slug = self.safe_translation_getter('slug', any_language=True)
+        current_meta_title = self.safe_translation_getter('meta_title', any_language=True)
+        current_meta_description = self.safe_translation_getter('meta_description', any_language=True)
+        current_excerpt = self.safe_translation_getter('excerpt', any_language=True)
+        current_content = self.safe_translation_getter('content', any_language=True)
+        
+        need_save = False
+        
         # Автогенерация slug если не указан
-        if not self.slug and self.title:
-            self.slug = slugify(self.title)
+        if current_title and not current_slug:
+            self.slug = slugify(current_title)
+            need_save = True
         
         # Автогенерация meta_title если не указан
-        if not self.meta_title and self.title:
-            self.meta_title = self.title[:60]
+        if current_title and not current_meta_title:
+            self.meta_title = current_title[:60]
+            need_save = True
         
         # Автогенерация meta_description из excerpt или content
-        if not self.meta_description:
-            if self.excerpt:
-                self.meta_description = self.excerpt[:160]
-            elif self.content:
+        if not current_meta_description:
+            if current_excerpt:
+                self.meta_description = current_excerpt[:160]
+                need_save = True
+            elif current_content:
                 # Убираем HTML теги и берем первые 160 символов
-                import re
-                clean_content = re.sub(r'<[^>]+>', '', self.content)
-                self.meta_description = clean_content[:160] + '...' if len(clean_content) > 160 else clean_content
+                clean_content = re.sub(r'<[^>]+>', '', current_content)
+                if clean_content:
+                    self.meta_description = clean_content[:160] + '...' if len(clean_content) > 160 else clean_content
+                    need_save = True
         
-        super().save(*args, **kwargs)
+        # Сохраняем если были изменения
+        if need_save:
+            super().save(*args, **kwargs)
         
         # Оптимизация изображения
         if self.featured_image:
@@ -174,19 +206,23 @@ class BlogPost(TranslatableModel):
             
         image_path = self.featured_image.path
         if os.path.exists(image_path):
-            with Image.open(image_path) as img:
-                # Конвертируем в RGB если необходимо
-                if img.mode in ('RGBA', 'P'):
-                    img = img.convert('RGB')
-                
-                # Изменяем размер если больше 1200px по ширине
-                if img.width > 1200:
-                    ratio = 1200 / img.width
-                    new_height = int(img.height * ratio)
-                    img = img.resize((1200, new_height), Image.Resampling.LANCZOS)
-                
-                # Сохраняем с оптимизацией
-                img.save(image_path, 'JPEG', quality=85, optimize=True)
+            try:
+                with Image.open(image_path) as img:
+                    # Конвертируем в RGB если необходимо
+                    if img.mode in ('RGBA', 'P'):
+                        img = img.convert('RGB')
+                    
+                    # Изменяем размер если больше 1200px по ширине
+                    if img.width > 1200:
+                        ratio = 1200 / img.width
+                        new_height = int(img.height * ratio)
+                        img = img.resize((1200, new_height), Image.Resampling.LANCZOS)
+                    
+                    # Сохраняем с оптимизацией
+                    img.save(image_path, 'JPEG', quality=85, optimize=True)
+            except Exception as e:
+                # Логируем ошибку, но не прерываем выполнение
+                print(f"Error optimizing image: {e}")
     
     def get_next_post(self):
         """Следующая статья"""
@@ -214,15 +250,47 @@ class BlogPost(TranslatableModel):
             status='published'
         ).exclude(pk=self.pk).order_by('-published_at')[:limit]
     
+    def get_display_title(self):
+        """Получить заголовок для отображения"""
+        return self.safe_translation_getter('title', any_language=True) or f"Post {self.pk}"
+    
+    def get_display_content(self):
+        """Получить контент для отображения"""
+        return self.safe_translation_getter('content', any_language=True) or ''
+    
+    def get_display_excerpt(self):
+        """Получить описание для отображения"""
+        excerpt = self.safe_translation_getter('excerpt', any_language=True)
+        if excerpt:
+            return excerpt
+        
+        # Если нет excerpt, создаем из content
+        content = self.get_display_content()
+        if content:
+            clean_content = re.sub(r'<[^>]+>', '', content)
+            return clean_content[:300] + '...' if len(clean_content) > 300 else clean_content
+        
+        return ''
+    
+    def get_display_meta_title(self):
+        """Получить meta title для отображения"""
+        return (self.safe_translation_getter('meta_title', any_language=True) or 
+                self.get_display_title())
+    
+    def get_display_meta_description(self):
+        """Получить meta description для отображения"""
+        return (self.safe_translation_getter('meta_description', any_language=True) or 
+                self.get_display_excerpt())
+    
     def generate_schema_json(self):
         """Генерация JSON-LD разметки"""
         from django.conf import settings
         
         schema = {
             "@context": "https://schema.org",
-            "@type": self.schema_article_type,
-            "headline": self.meta_title or self.title,
-            "description": self.meta_description,
+            "@type": self.safe_translation_getter('schema_article_type', any_language=True) or 'Article',
+            "headline": self.get_display_meta_title(),
+            "description": self.get_display_meta_description(),
             "author": {
                 "@type": "Person",
                 "name": self.author.get_full_name() or self.author.username
@@ -232,18 +300,18 @@ class BlogPost(TranslatableModel):
                 "name": "Abroads Tours",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": f"{settings.SITE_URL}/static/img/logo.png"
+                    "url": f"{getattr(settings, 'SITE_URL', 'http://localhost:8000')}/static/img/logo.png"
                 }
             },
             "datePublished": self.published_at.isoformat(),
             "dateModified": self.updated_at.isoformat(),
-            "url": f"{settings.SITE_URL}{self.get_absolute_url()}",
+            "url": f"{getattr(settings, 'SITE_URL', 'http://localhost:8000')}{self.get_absolute_url()}",
         }
         
         if self.featured_image:
             schema["image"] = {
                 "@type": "ImageObject",
-                "url": f"{settings.SITE_URL}{self.featured_image.url}",
+                "url": f"{getattr(settings, 'SITE_URL', 'http://localhost:8000')}{self.featured_image.url}",
                 "width": 1200,
                 "height": 630
             }
@@ -270,7 +338,8 @@ class BlogImage(models.Model):
         verbose_name_plural = "Blog Images"
     
     def __str__(self):
-        return f"Image for {self.post.title}"
+        post_title = self.post.safe_translation_getter('title', any_language=True) or f"Post {self.post.pk}"
+        return f"Image for {post_title}"
 
 
 class BlogComment(models.Model):
@@ -289,4 +358,5 @@ class BlogComment(models.Model):
         ordering = ['-created_at']
     
     def __str__(self):
-        return f"Comment by {self.name} on {self.post.title}"
+        post_title = self.post.safe_translation_getter('title', any_language=True) or f"Post {self.post.pk}"
+        return f"Comment by {self.name} on {post_title}"

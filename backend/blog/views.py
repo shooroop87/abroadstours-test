@@ -1,11 +1,10 @@
-# backend/blog/views.py
-from django.shortcuts import render, get_object_or_404
+# blog/views.py
 from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
+from django.http import Http404
+from django.utils.translation import get_language
 from django.core.paginator import Paginator
-from django.http import JsonResponse
-from django.db.models import Q
 from .models import BlogPost, Category
-from taggit.models import Tag
 
 
 class BlogListView(ListView):
@@ -13,15 +12,18 @@ class BlogListView(ListView):
     model = BlogPost
     template_name = 'blog/blog_list.html'
     context_object_name = 'posts'
-    paginate_by = 10
+    paginate_by = 9
     
     def get_queryset(self):
-        return BlogPost.objects.filter(status='published').order_by('-published_at')
+        """Возвращаем только опубликованные статьи"""
+        return BlogPost.objects.filter(
+            status='published'
+        ).select_related('author', 'category').prefetch_related('tags').order_by('-published_at')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['categories'] = Category.objects.filter(is_active=True)
-        context['page_title'] = 'Blog'
+        context['page_title'] = 'Blog - Abroads Tours'
+        context['page_description'] = 'Travel tips, destination guides, and travel inspiration from Abroads Tours.'
         return context
 
 
@@ -30,129 +32,124 @@ class BlogDetailView(DetailView):
     model = BlogPost
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
-    slug_field = 'slug'
+    slug_field = 'translations__slug'
+    slug_url_kwarg = 'slug'
     
     def get_queryset(self):
-        return BlogPost.objects.filter(status='published')
+        """Возвращаем только опубликованные статьи"""
+        return BlogPost.objects.filter(
+            status='published'
+        ).select_related('author', 'category').prefetch_related('tags')
     
     def get_object(self, queryset=None):
-        obj = super().get_object(queryset)
-        # Увеличиваем счетчик просмотров
-        obj.increment_views()
-        return obj
+        """Получаем объект с правильной работой переводов"""
+        if queryset is None:
+            queryset = self.get_queryset()
+        
+        slug = self.kwargs.get(self.slug_url_kwarg)
+        if slug is None:
+            raise Http404("No slug provided")
+        
+        try:
+            # Ищем пост по slug в переводах
+            obj = queryset.get(translations__slug=slug)
+            
+            # Увеличиваем счетчик просмотров
+            obj.increment_views()
+            
+            return obj
+            
+        except BlogPost.DoesNotExist:
+            raise Http404("Blog post not found")
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         post = self.get_object()
         
-        # Похожие статьи
-        context['related_posts'] = post.get_related_posts()
+        # Используем helper методы модели
+        context['page_title'] = post.get_display_meta_title()
+        context['page_description'] = post.get_display_meta_description()
         
-        # Комментарии
+        # Получаем связанные статьи
+        context['related_posts'] = post.get_related_posts(limit=3)
+        
+        # Получаем предыдущую и следующую статьи
+        context['next_post'] = post.get_next_post()
+        context['previous_post'] = post.get_previous_post()
+        
+        # Получаем комментарии (только одобренные)
         context['comments'] = post.comments.filter(is_approved=True).order_by('-created_at')
         
-        context['page_title'] = post.safe_translation_getter('title', any_language=True)
         return context
 
 
-class CategoryListView(ListView):
-    """Статьи по категории"""
+class CategoryView(ListView):
+    """Статьи определенной категории"""
     model = BlogPost
-    template_name = 'blog/category_detail.html'
+    template_name = 'blog/category.html'
     context_object_name = 'posts'
-    paginate_by = 10
+    paginate_by = 9
     
     def get_queryset(self):
         self.category = get_object_or_404(
             Category, 
-            slug=self.kwargs['slug'], 
+            translations__slug=self.kwargs['slug'],
             is_active=True
         )
         return BlogPost.objects.filter(
-            category=self.category, 
+            category=self.category,
             status='published'
-        ).order_by('-published_at')
+        ).select_related('author', 'category').prefetch_related('tags').order_by('-published_at')
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['category'] = self.category
-        context['page_title'] = f'Category: {self.category.safe_translation_getter("name", any_language=True)}'
+        context['page_title'] = f"{self.category.safe_translation_getter('name', any_language=True)} - Blog"
+        context['page_description'] = self.category.safe_translation_getter('description', any_language=True) or f"Articles in {self.category.safe_translation_getter('name', any_language=True)} category"
         return context
 
 
-def tag_posts(request, tag_slug):
-    """Статьи по тегу"""
-    tag = get_object_or_404(Tag, slug=tag_slug)
-    posts = BlogPost.objects.filter(
-        tags__in=[tag], 
-        status='published'
-    ).order_by('-published_at')
+class TagView(ListView):
+    """Статьи с определенным тегом"""
+    model = BlogPost
+    template_name = 'blog/tag.html'
+    context_object_name = 'posts'
+    paginate_by = 9
     
-    # Пагинация
-    paginator = Paginator(posts, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
-    
-    context = {
-        'tag': tag,
-        'posts': page_obj,
-        'page_title': f'Tag: {tag.name}',
-    }
-    
-    return render(request, 'blog/tag_posts.html', context)
-
-
-def blog_search(request):
-    """Поиск по блогу"""
-    query = request.GET.get('q', '')
-    posts = []
-    
-    if query:
-        posts = BlogPost.objects.filter(
-            Q(translations__title__icontains=query) |
-            Q(translations__content__icontains=query) |
-            Q(translations__excerpt__icontains=query),
+    def get_queryset(self):
+        self.tag_slug = self.kwargs['slug']
+        return BlogPost.objects.filter(
+            tags__slug=self.tag_slug,
             status='published'
-        ).distinct().order_by('-published_at')
+        ).select_related('author', 'category').prefetch_related('tags').order_by('-published_at')
     
-    # Пагинация
-    paginator = Paginator(posts, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tag_slug'] = self.tag_slug
+        context['page_title'] = f"#{self.tag_slug} - Blog"
+        context['page_description'] = f"Articles tagged with {self.tag_slug}"
+        return context
+
+
+class SearchView(ListView):
+    """Поиск по статьям"""
+    model = BlogPost
+    template_name = 'blog/search.html'
+    context_object_name = 'posts'
+    paginate_by = 9
     
-    context = {
-        'posts': page_obj,
-        'query': query,
-        'page_title': f'Search: {query}' if query else 'Search',
-    }
+    def get_queryset(self):
+        query = self.request.GET.get('q', '')
+        if query:
+            return BlogPost.objects.filter(
+                translations__title__icontains=query,
+                status='published'
+            ).select_related('author', 'category').prefetch_related('tags').order_by('-published_at')
+        return BlogPost.objects.none()
     
-    return render(request, 'blog/search_results.html', context)
-
-
-# === ВАШИ СУЩЕСТВУЮЩИЕ СТАТИЧЕСКИЕ СТАТЬИ ===
-
-def lake_como_day_trip(request):
-    """Статическая статья - поездка на озеро Комо"""
-    context = {
-        'page_title': 'Lake Como Day Trip from Milan',
-        'meta_description': 'Discover the beauty of Lake Como on a day trip from Milan',
-    }
-    return render(request, 'blog/static/lake_como_day_trip.html', context)
-
-
-def bernina_express_tour(request):
-    """Статическая статья - тур на Bernina Express"""
-    context = {
-        'page_title': 'Bernina Express Tour from Milan',
-        'meta_description': 'Experience the scenic Bernina Express train journey from Milan',
-    }
-    return render(request, 'blog/static/bernina_express_tour.html', context)
-
-
-def bernina_express_video(request):
-    """Видео Bernina Express"""
-    context = {
-        'page_title': 'Watch Bernina Express Ride',
-        'meta_description': 'Watch stunning videos of the Bernina Express train ride',
-    }
-    return render(request, 'blog/static/bernina_express_video.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['query'] = self.request.GET.get('q', '')
+        context['page_title'] = f"Search results for '{context['query']}'"
+        context['page_description'] = f"Search results for {context['query']}"
+        return context

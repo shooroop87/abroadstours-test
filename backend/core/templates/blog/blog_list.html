@@ -1,62 +1,222 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% load i18n %}
 
-{% block title %}{{ page_title }}{% endblock %}
+{% block title %}{% trans "Travel Blog - Abroads Tours" %}{% endblock %}
+{% block description %}{% trans "Discover amazing travel stories and guides from around the world." %}{% endblock %}
 
 {% block content %}
-<div class="container mx-auto py-8">
-    <h1 class="text-3xl font-bold mb-8">{% trans "Blog" %}</h1>
-    
-    {% if posts %}
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for post in posts %}
-                <article class="bg-white rounded-lg shadow-md overflow-hidden">
-                    {% if post.featured_image %}
-                        <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" class="w-full h-48 object-cover">
-                    {% endif %}
-                    
-                    <div class="p-6">
-                        <h2 class="text-xl font-semibold mb-2">
-                            <a href="{% url 'blog:post_detail' slug=post.slug %}" class="hover:text-blue-600">{{ post.title }}</a>
-                        </h2>
-                        
-                        {% if post.excerpt %}
-                            <p class="text-gray-600 mb-4">{{ post.excerpt|truncatewords:20 }}</p>
-                        {% endif %}
-                        
-                        <div class="flex justify-between items-center text-sm text-gray-500">
-                            <span>{{ post.published_at|date:"M d, Y" }}</span>
-                            {% if post.views_count %}
-                                <span>{{ post.views_count }} views</span>
-                            {% endif %}
-                        </div>
-                    </div>
-                </article>
-            {% empty %}
-                <p class="text-gray-500">{% trans "No blog posts yet." %}</p>
-            {% endfor %}
+<section data-anim="fade" class="hero -type-1 -min-2 is-in-view">
+  <div class="hero__bg">
+    <img src="{% static 'img/hero/bg.webp' %}" alt="image" loading="lazy">
+    <img src="{% static 'img/hero/1/shape.svg' %}" alt="image" loading="lazy">
+  </div>
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-xl-12">
+        <div class="hero__content">
+          <h1 class="hero__title">{% trans "Travel Blog" %}</h1>
+          <p class="hero__text">
+            {% trans "Discover amazing stories, guides and inspiration for your next adventure" %}
+          </p>
         </div>
-        
-        <!-- Исправленная пагинация для Django ListView -->
-        {% if is_paginated %}
-            <div class="mt-8 flex justify-center">
-                <nav class="flex space-x-2">
-                    {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}" class="px-3 py-2 bg-blue-500 text-white rounded">Previous</a>
-                    {% endif %}
-                    
-                    <span class="px-3 py-2 bg-gray-200 rounded">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-                    </span>
-                    
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}" class="px-3 py-2 bg-blue-500 text-white rounded">Next</a>
-                    {% endif %}
-                </nav>
-            </div>
-        {% endif %}
-    {% else %}
-        <p class="text-gray-500">{% trans "No blog posts available." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЛАДОЧНАЯ СЕКЦИЯ - УДАЛИТЕ В ПРОДАКШЕНЕ -->
+{% if debug %}
+<section style="background: #ffeb3b; padding: 20px; margin: 20px; border: 3px solid #f57c00;">
+  <h3 style="color: #e65100;">🐛 ОТЛАДКА BLOG LIST:</h3>
+  <strong>Всего постов:</strong> {{ posts|length }}<br>
+  <strong>MEDIA_URL:</strong> {{ MEDIA_URL }}<br>
+  <strong>DEBUG:</strong> {{ debug }}<br>
+  {% for post in posts|slice:":1" %}
+    <br><strong>Первый пост:</strong><br>
+    - ID: {{ post.id }}<br>
+    - Title: {{ post.get_display_title }}<br>
+    - Featured Image: {{ post.featured_image }}<br>
+    {% if post.featured_image %}
+      - Image URL: {{ post.featured_image.url }}<br>
+      - Full URL: http://localhost:8000{{ post.featured_image.url }}<br>
     {% endif %}
-</div>
+  {% endfor %}
+</section>
+{% endif %}
+
+<section class="layout-pt-md layout-pb-xl">
+  <div class="container">
+    <div class="tabs -pills-3 pt-30 js-tabs">
+      <div class="tabs__controls row x-gap-10 y-gap-10 justify-center js-tabs-controls">
+        
+        <div class="col-auto">
+          <button class="tabs__button fw-500 rounded-200 js-tabs-button is-tab-el-active" data-tab-target=".-tab-item-1">
+            {% trans "All Articles" %}
+          </button>
+        </div>
+
+        {% for category in categories|slice:":6" %}
+        <div class="col-auto">
+          <button class="tabs__button fw-500 rounded-200 js-tabs-button" data-tab-target=".-tab-item-{{ forloop.counter|add:1 }}">
+            {{ category.safe_translation_getter.name }}
+          </button>
+        </div>
+        {% endfor %}
+
+      </div>
+
+      <div class="tabs__content pt-30 js-tabs-content">
+        
+        <div class="tabs__pane -tab-item-1 is-tab-el-active">
+          <div class="row y-gap-30">
+
+            {% for post in posts %}
+            <div class="col-lg-4 col-md-6">
+              <a href="{{ post.get_absolute_url }}" class="blogCard -type-1">
+                <div class="blogCard__image ratio ratio-41:30">
+                  {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" 
+                         alt="{{ post.get_display_title }}" 
+                         class="img-ratio rounded-12" 
+                         loading="lazy"
+                         style="border: 3px solid green;"
+                         onload="console.log('✅ Загружено изображение для поста {{ post.id }}: {{ post.featured_image.url }}');"
+                         onerror="console.error('❌ Ошибка загрузки изображения для поста {{ post.id }}: {{ post.featured_image.url }}'); this.style.border='3px solid red';">
+                  {% else %}
+                    <img src="{% static 'img/blog/default.webp' %}" 
+                         alt="{{ post.get_display_title }}" 
+                         class="img-ratio rounded-12" 
+                         loading="lazy"
+                         style="border: 3px solid orange;"
+                         onload="console.log('🟡 Загружено дефолтное изображение для поста {{ post.id }}');">
+                  {% endif %}
+                  
+                  <div class="blogCard__badge">
+                    {% if post.category %}
+                      {{ post.category.safe_translation_getter.name|default:"Article" }}
+                    {% else %}
+                      Article
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="blogCard__content mt-30">
+                  <div class="blogCard__info text-14">
+                    <div class="lh-13">{{ post.published_at|date:"F d, Y" }}</div>
+                  </div>
+
+                  <h3 class="blogCard__title text-18 fw-500 mt-10">{{ post.get_display_title }}</h3>
+                  
+                  {% if post.get_display_excerpt %}
+                    <p class="mt-10 text-14 text-light-1">{{ post.get_display_excerpt|truncatechars:100 }}</p>
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+            {% empty %}
+            <div class="col-12">
+              <div class="text-center py-60">
+                <h3>{% trans "No articles found" %}</h3>
+                <p class="mt-10">{% trans "Check back soon for new travel stories and guides." %}</p>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <!-- Additional category tabs content if needed -->
+        {% for category in categories|slice:":6" %}
+        <div class="tabs__pane -tab-item-{{ forloop.counter|add:1 }}">
+          <div class="row y-gap-30">
+            {% for post in category.blogpost_set.all|slice:":9" %}
+            {% if post.status == 'published' %}
+            <div class="col-lg-4 col-md-6">
+              <a href="{{ post.get_absolute_url }}" class="blogCard -type-1">
+                <div class="blogCard__image ratio ratio-41:30">
+                  {% if post.featured_image %}
+                    <img src="{{ post.featured_image.url }}" 
+                         alt="{{ post.get_display_title }}" 
+                         class="img-ratio rounded-12" 
+                         loading="lazy"
+                         onload="console.log('✅ Загружено изображение категории для поста {{ post.id }}');"
+                         onerror="console.error('❌ Ошибка загрузки изображения категории для поста {{ post.id }}');">
+                  {% else %}
+                    <img src="{% static 'img/blog/default.webp' %}" 
+                         alt="{{ post.get_display_title }}" 
+                         class="img-ratio rounded-12" 
+                         loading="lazy">
+                  {% endif %}
+                  
+                  <div class="blogCard__badge">{{ category.safe_translation_getter.name }}</div>
+                </div>
+
+                <div class="blogCard__content mt-30">
+                  <div class="blogCard__info text-14">
+                    <div class="lh-13">{{ post.published_at|date:"F d, Y" }}</div>
+                    <div class="blogCard__line"></div>
+                    <div class="lh-13">{% trans "By" %} {{ post.author.get_full_name|default:post.author.username }}</div>
+                  </div>
+
+                  <h3 class="blogCard__title text-18 fw-500 mt-10">{{ post.get_display_title }}</h3>
+                  
+                  {% if post.get_display_excerpt %}
+                    <p class="mt-10 text-14 text-light-1">{{ post.get_display_excerpt|truncatechars:100 }}</p>
+                  {% endif %}
+                </div>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    {% if is_paginated %}
+    <div class="d-flex justify-center flex-column mt-60">
+      <div class="pagination justify-center">
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" 
+           class="pagination__button button -accent-1 mr-15 -prev">
+          <i class="icon-arrow-left text-15"></i>
+        </a>
+        {% endif %}
+
+        <div class="pagination__count">
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <a href="#" class="is-active">{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ num }}</a>
+            {% elif num == 1 %}
+              <a href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">1</a>
+              {% if page_obj.number > 5 %}<div>...</div>{% endif %}
+            {% elif num == page_obj.paginator.num_pages %}
+              {% if page_obj.number < page_obj.paginator.num_pages|add:'-4' %}<div>...</div>{% endif %}
+              <a href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ page_obj.paginator.num_pages }}</a>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" 
+           class="pagination__button button -accent-1 ml-15 -next">
+          <i class="icon-arrow-right text-15"></i>
+        </a>
+        {% endif %}
+      </div>
+
+      <div class="text-14 text-center mt-20">
+        {% trans "Showing results" %} {{ page_obj.start_index }}-{{ page_obj.end_index }} {% trans "of" %} {{ page_obj.paginator.count }}
+      </div>
+    </div>
+    {% endif %}
+
+  </div>
+</section>
 {% endblock %}

@@ -10,6 +10,12 @@ idna==3.7
 django-browser-reload==1.9.0
 django-hcaptcha
 whitenoise[brotli]
-django-redis>=5.3.0
-django-ckeditor==6.7.0
-Pillow==10.0.0
+# Пакеты для блога
+django-parler>=2.3          # Многоязычность
+django-ckeditor>=6.7.0      # Богатый текстовый редактор  
+django-taggit>=4.0.0        # Система тегов
+django-meta>=2.2.0          # SEO мета-теги
+sorl-thumbnail>=12.10.0     # Обработка изображений
+Pillow>=10.0.0              # Работа с изображениями
+redis>=4.5.0                # Кэширование
+django-redis>=5.3.0         # Redis для Django

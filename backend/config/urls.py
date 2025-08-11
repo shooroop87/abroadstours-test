@@ -1,12 +1,13 @@
-# backend/config/urls.py - главный файл маршрутизации
+# backend/config/urls.py - ОТЛАДОЧНАЯ ВЕРСИЯ
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib.sitemaps.views import sitemap
-from django.http import HttpResponse
-from django.urls import include, path
+from django.http import HttpResponse, FileResponse, Http404
+from django.urls import include, path, re_path
 from django.views.decorators.http import require_GET
 from django.views.i18n import set_language
+import os
 
 # Импорты из core приложения
 from core.sitemaps import CompleteSitemap
@@ -31,6 +32,33 @@ if BLOG_AVAILABLE:
         "blog_categories": CategorySitemap,
     })
 
+# Прямая функция для обслуживания медиа
+def serve_media_debug(request, path):
+    """Отладочное обслуживание медиа-файлов"""
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    print(f"🐛 MEDIA REQUEST: {request.method} {path}")
+    print(f"🐛 FULL PATH: {file_path}")
+    print(f"🐛 EXISTS: {os.path.exists(file_path)}")
+    print(f"🐛 IS FILE: {os.path.isfile(file_path) if os.path.exists(file_path) else 'N/A'}")
+    
+    if os.path.exists(file_path) and os.path.isfile(file_path):
+        print(f"🐛 SERVING FILE: {file_path}")
+        try:
+            response = FileResponse(open(file_path, 'rb'))
+            print(f"🐛 RESPONSE CREATED: {response}")
+            return response
+        except Exception as e:
+            print(f"🐛 ERROR SERVING FILE: {e}")
+            raise Http404(f"Ошибка обслуживания файла: {e}")
+    else:
+        print(f"🐛 FILE NOT FOUND: {file_path}")
+        # Показываем содержимое директории для отладки
+        dir_path = os.path.dirname(file_path)
+        if os.path.exists(dir_path):
+            files = os.listdir(dir_path)
+            print(f"🐛 DIR CONTENTS: {files}")
+        raise Http404("Медиа файл не найден")
+
 # --- robots.txt ---
 @require_GET
 def robots_txt(request):
@@ -51,6 +79,9 @@ def robots_txt(request):
 
 # --- URLs без языкового префикса ---
 urlpatterns = [
+    # ПЕРВЫМ делом - медиа файлы (КРИТИЧЕСКИ ВАЖНО!)
+    re_path(r'^media/(?P<path>.*)$', serve_media_debug, name='debug_media'),
+    
     path("robots.txt", robots_txt, name="robots_txt"),
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
     path("set-language/", set_language, name="set_language"),
@@ -72,30 +103,31 @@ if BLOG_AVAILABLE:
 
 # --- Языковые маршруты ---
 urlpatterns += i18n_patterns(
-    # Core приложение (главная страница и основной сайт)
-    path("", include("core.urls")),
-    
-    # Blog приложение
+    # Blog приложение - обрабатывается первым для /blog/ URL-ов
     path("blog/", include("blog.urls")),
+    
+    # Core приложение - все остальные URL-ы включая главную страницу
+    path("", include("core.urls")),
     
     prefix_default_language=False,
 )
 
-# Для режима разработки
+# === ДОПОЛНИТЕЛЬНО В DEBUG РЕЖИМЕ ===
 if settings.DEBUG:
-    from django.conf.urls.static import static
+    print("🐛 DEBUG: Добавляем django_browser_reload...")
     
     # Django browser reload (если используется)
-    try:
+    if 'django_browser_reload' in settings.INSTALLED_APPS:
         urlpatterns += [
             path("__reload__/", include("django_browser_reload.urls")),
         ]
-    except:
-        pass
     
-    # Статические файлы
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # ДОПОЛНИТЕЛЬНО: static файлы
+    from django.conf.urls.static import static
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+print(f"🐛 DEBUG: Итого URL patterns: {len(urlpatterns)}")
+print("🐛 DEBUG: Медиа файлы обслуживаются через serve_media_debug")
 
 # Обработчики ошибок (в core приложении)
 handler404 = "core.views.custom_404"

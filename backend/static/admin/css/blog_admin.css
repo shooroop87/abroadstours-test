@@ -1,0 +1,424 @@
+/* Стили для админки блога */
+
+/* Улучшенные fieldsets */
+.fieldset {
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.fieldset h2 {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin: 0;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для статусов */
+.field-status_badge {
+    vertical-align: middle;
+}
+
+/* Превью изображений */
+.field-featured_image_preview img,
+.field-image_preview img {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.field-featured_image_preview img:hover,
+.field-image_preview img:hover {
+    border-color: #007cba;
+    box-shadow: 0 4px 12px rgba(0, 124, 186, 0.15);
+    transform: scale(1.02);
+}
+
+/* SEO превью */
+.field-seo_preview div {
+    font-family: arial, sans-serif;
+    line-height: 1.4;
+}
+
+/* Счетчики символов */
+.char-counter {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+    text-align: right;
+}
+
+/* Улучшенные инлайны */
+.inline-group {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.inline-group .module h2 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    font-size: 13px;
+    padding: 10px 15px;
+}
+
+/* Стили для табличных инлайнов */
+.inline-group table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.inline-group table th {
+    background: #f8f9fa;
+    color: #495057;
+    font-weight: 600;
+    padding: 12px 8px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.inline-group table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: top;
+}
+
+.inline-group table tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Кнопки действий */
+.button, input[type="submit"], .submit-row a, .submit-row input {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.button:hover, input[type="submit"]:hover, .submit-row a:hover, .submit-row input:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+/* Кнопка предпросмотра */
+.field-preview_link a {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.field-preview_link a:hover {
+    background: linear-gradient(135deg, #43a3f5 0%, #00d4e6 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(79, 172, 254, 0.3);
+}
+
+/* Улучшенные списки */
+.results table {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.results table thead th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 600;
+    padding: 15px 12px;
+    border: none;
+}
+
+.results table thead th a {
+    color: white;
+    text-decoration: none;
+}
+
+.results table thead th a:hover {
+    color: #f8f9fa;
+}
+
+.results table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.results table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.results table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+/* Фильтры */
+#changelist-filter {
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#changelist-filter h2 {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    margin: 0;
+    padding: 12px 15px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+#changelist-filter h3 {
+    color: #495057;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 15px 0 8px 0;
+    padding: 0 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#changelist-filter ul {
+    margin: 0 0 15px 0;
+    padding: 0 15px;
+}
+
+#changelist-filter li {
+    padding: 4px 0;
+}
+
+#changelist-filter a {
+    color: #495057;
+    text-decoration: none;
+    padding: 2px 4px;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+}
+
+#changelist-filter a:hover,
+#changelist-filter a.selected {
+    background: #667eea;
+    color: white;
+}
+
+/* Поиск */
+#changelist-search {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#changelist-search input[type="text"] {
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    width: 300px;
+}
+
+#changelist-search input[type="text"]:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Пагинация */
+.paginator {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.paginator a {
+    color: #667eea;
+    text-decoration: none;
+    padding: 8px 12px;
+    margin: 0 2px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.paginator a:hover {
+    background: #667eea;
+    color: white;
+}
+
+.paginator .this-page {
+    background: #667eea;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Сообщения */
+.messagelist {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.messagelist li {
+    padding: 15px 20px;
+    margin: 0;
+    border: none;
+    font-weight: 500;
+}
+
+.messagelist .success {
+    background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+    color: white;
+}
+
+.messagelist .warning {
+    background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+    color: white;
+}
+
+.messagelist .error {
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    color: white;
+}
+
+/* Улучшения для form fields */
+.form-row {
+    margin-bottom: 20px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.form-row:hover {
+    background-color: #f8f9fa;
+}
+
+.form-row label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.form-row input[type="text"],
+.form-row input[type="email"],
+.form-row input[type="url"],
+.form-row textarea,
+.form-row select {
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-row input[type="text"]:focus,
+.form-row input[type="email"]:focus,
+.form-row input[type="url"]:focus,
+.form-row textarea:focus,
+.form-row select:focus {
+    border-color: #667eea;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Специальные стили для CKEditor */
+.cke_chrome {
+    border-radius: 6px !important;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .results table {
+        font-size: 12px;
+    }
+    
+    .results table td,
+    .results table th {
+        padding: 8px 4px;
+    }
+    
+    #changelist-filter {
+        margin-top: 20px;
+    }
+    
+    .form-row input[type="text"],
+    .form-row input[type="email"],
+    .form-row input[type="url"],
+    .form-row textarea,
+    .form-row select {
+        max-width: 100%;
+    }
+}
+
+/* Анимации загрузки */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #667eea;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Темная тема для кода */
+code {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 12px;
+}
+
+/* Индикаторы статуса */
+.status-published { color: #48bb78; }
+.status-draft { color: #a0aec0; }
+.status-scheduled { color: #4299e1; }
+
+/* Эмодзи в заголовках админки */
+.app-blog .model-blogpost::before { content: "📝 "; }
+.app-blog .model-category::before { content: "📂 "; }
+.app-blog .model-blogcomment::before { content: "💬 "; }
+.app-blog .model-blogimage::before { content: "🖼️ "; }
