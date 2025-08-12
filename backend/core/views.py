@@ -12,8 +12,12 @@ from django.views.decorators.cache import cache_page
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.vary import vary_on_headers
 
+from django.http import FileResponse, Http404
+import os
+
 # Импортируем только сервис отзывов
 from .services.multi_reviews_service import MultiSourceReviewsService
+
 
 # --- SendPulse API ключи ---
 SENDPULSE_CLIENT_ID = "your_client_id"
@@ -246,3 +250,20 @@ def custom_404(request, exception):
 
 def custom_500(request):
     return render(request, "pages/500.html", status=500)
+
+
+def test_image_view(request):
+    # Проверим все возможные файлы
+    files_to_check = [
+        "/app/media/blog/featured/photo_5215488009007395914_y.jpg",
+        "/app/media/blog/featured/photo_5215488009007395914_y_mDSsS6v.jpg"
+    ]
+    
+    for file_path in files_to_check:
+        if os.path.exists(file_path):
+            try:
+                return FileResponse(open(file_path, 'rb'), content_type='image/jpeg')
+            except Exception as e:
+                return HttpResponse(f"Error opening file: {e}", status=500)
+    
+    return HttpResponse("No image files found", status=404)

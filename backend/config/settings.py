@@ -226,41 +226,71 @@ LOGGING = {
             'format': '{levelname} {asctime} {message}',
             'style': '{',
         },
+        'detailed': {
+            'format': '🐛 {levelname} [{asctime}] {name} {module}:{lineno} - {message}',
+            'style': '{',
+        },
     },
     'handlers': {
         'console': {
-            'level': 'INFO',
+            'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'simple'
+            'formatter': 'detailed'
         },
-        'reviews_file': {
-            'level': 'INFO',
+        'file_debug': {
+            'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': LOGS_DIR / 'reviews.log',  # Используем путь внутри /app
-            'formatter': 'verbose',
+            'filename': LOGS_DIR / 'debug.log',
+            'formatter': 'detailed',
         },
-        'django_file': {
-            'level': 'INFO',
-            'class': 'logging.FileHandler', 
-            'filename': LOGS_DIR / 'django.log',
-            'formatter': 'verbose',
+        'media_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': LOGS_DIR / 'media.log',
+            'formatter': 'detailed',
+        },
+        'blog_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': LOGS_DIR / 'blog.log',
+            'formatter': 'detailed',
         },
     },
     'loggers': {
-        'reviews': {
-            'handlers': ['reviews_file', 'console'],
-            'level': 'INFO',
+        'blog': {
+            'handlers': ['blog_file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'blog.models': {
+            'handlers': ['blog_file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.core.files': {
+            'handlers': ['media_file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'PIL': {
+            'handlers': ['media_file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'ckeditor': {
+            'handlers': ['media_file', 'console'],
+            'level': 'DEBUG',
+            'propagate': False,
+        },
+        'django.request': {
+            'handlers': ['file_debug', 'console'],
+            'level': 'DEBUG',
             'propagate': False,
         },
         'django': {
-            'handlers': ['django_file', 'console'],
+            'handlers': ['file_debug'],
             'level': 'INFO',
             'propagate': False,
-        },
-        'blog': {
-            'handlers': ['django_file', 'console'],
-            'level': 'INFO',
-            'propagate': True,
         },
     },
     'root': {
@@ -385,6 +415,18 @@ CKEDITOR_CONFIGS = {
         ],
         'format_tags': 'p;h1;h2;h3;h4;h5;h6',
         'extraPlugins': 'uploadimage',
+    },
+    # Специальная конфигурация для полной ширины
+    'fullwidth': {
+        'toolbar': 'Full',
+        'height': 400,
+        'width': '100%',
+        'resize_enabled': True,
+        'resize_dir': 'vertical',
+        'autoGrow_onStartup': True,
+        'contentsCss': ['/static/admin/css/ckeditor.css'],
+        'bodyClass': 'fullwidth-editor',
+        'stylesSet': False,
     }
 }
 
@@ -399,6 +441,17 @@ THUMBNAIL_PRESERVE_FORMAT = False
 # Настройки для пагинации
 PAGINATE_BY = 10
 
-# Настройки безопасности для загрузки файлов
+# Настройки для загрузки изображений
 FILE_UPLOAD_PERMISSIONS = 0o644
+FILE_UPLOAD_DIRECTORY_PERMISSIONS = 0o755
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 15 * 1024 * 1024  # 15MB
+
+# Разрешенные форматы изображений
+ALLOWED_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp']
+MAX_IMAGE_SIZE = 5 * 1024 * 1024  # 5MB
+
+# Пилау для обработки изображений
+IMAGE_QUALITY = 85
+MAX_IMAGE_WIDTH = 1200
+MAX_IMAGE_HEIGHT = 1200

@@ -1,0 +1,714 @@
+/* backend/core/static/admin/css/custom_admin.css */
+
+/* WordPress-стиль для Django Admin */
+
+/* === ОСНОВНЫЕ ЦВЕТА И ШРИФТЫ === */
+:root {
+    --wp-blue: #0073aa;
+    --wp-dark-blue: #005177;
+    --wp-light-blue: #00a0d2;
+    --wp-green: #46b450;
+    --wp-red: #dc3232;
+    --wp-orange: #f56e28;
+    --wp-yellow: #ffb900;
+    --wp-gray: #f1f1f1;
+    --wp-dark-gray: #32373c;
+    --wp-text: #23282d;
+    --wp-border: #ccd0d4;
+}
+
+/* Переопределяем базовые стили Django */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
+    background: #f1f1f1 !important;
+    color: var(--wp-text) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* === HEADER === */
+#header {
+    background: var(--wp-dark-gray) !important;
+    border-bottom: 1px solid #464b50 !important;
+    height: 46px !important;
+    line-height: 46px !important;
+    padding: 0 !important;
+}
+
+#branding h1 {
+    color: #fff !important;
+    font-size: 20px !important;
+    font-weight: 400 !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
+    float: left !important;
+}
+
+#branding h1 a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+#branding h1 a:hover {
+    color: var(--wp-light-blue) !important;
+}
+
+/* User tools */
+#user-tools {
+    float: right !important;
+    padding: 0 20px !important;
+    font-size: 13px !important;
+}
+
+#user-tools a {
+    color: #eee !important;
+    margin-left: 10px !important;
+    text-decoration: none !important;
+}
+
+#user-tools a:hover {
+    color: var(--wp-light-blue) !important;
+}
+
+/* === NAVIGATION === */
+.breadcrumbs {
+    background: #fff !important;
+    border-bottom: 1px solid var(--wp-border) !important;
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+    margin: 0 !important;
+}
+
+.breadcrumbs a {
+    color: var(--wp-blue) !important;
+    text-decoration: none !important;
+}
+
+.breadcrumbs a:hover {
+    color: var(--wp-dark-blue) !important;
+}
+
+/* === CONTENT WRAPPER === */
+#container {
+    min-width: 760px !important;
+}
+
+#content {
+    margin: 0 !important;
+    padding: 20px !important;
+    background: #f1f1f1 !important;
+}
+
+/* === ОСНОВНАЯ ОБЛАСТЬ КОНТЕНТА === */
+.module {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.04) !important;
+}
+
+.module h2 {
+    background: var(--wp-blue) !important;
+    color: #fff !important;
+    padding: 10px 15px !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    border-radius: 3px 3px 0 0 !important;
+}
+
+.module h3 {
+    background: #f9f9f9 !important;
+    color: var(--wp-text) !important;
+    padding: 8px 15px !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    border-bottom: 1px solid var(--wp-border) !important;
+}
+
+/* === ТАБЛИЦЫ === */
+table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    background: #fff !important;
+}
+
+thead th {
+    background: #f9f9f9 !important;
+    color: var(--wp-text) !important;
+    font-weight: 600 !important;
+    padding: 10px !important;
+    border-bottom: 1px solid var(--wp-border) !important;
+    text-align: left !important;
+}
+
+tbody td {
+    padding: 10px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    vertical-align: top !important;
+}
+
+tbody tr:hover {
+    background: #f9f9f9 !important;
+}
+
+/* === КНОПКИ === */
+.button, input[type="submit"], input[type="button"], .submit-row input {
+    background: var(--wp-blue) !important;
+    color: #fff !important;
+    border: 1px solid var(--wp-dark-blue) !important;
+    border-radius: 3px !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    margin-right: 5px !important;
+    transition: all 0.2s ease !important;
+}
+
+.button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+    background: var(--wp-dark-blue) !important;
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.button.default, .submit-row input[name="_save"] {
+    background: var(--wp-green) !important;
+    border-color: #2e7d32 !important;
+}
+
+.button.default:hover, .submit-row input[name="_save"]:hover {
+    background: #2e7d32 !important;
+}
+
+.deletelink, .button.deletelink {
+    background: var(--wp-red) !important;
+    border-color: #c62d2d !important;
+}
+
+.deletelink:hover, .button.deletelink:hover {
+    background: #c62d2d !important;
+}
+
+/* === ФОРМЫ === */
+.form-row {
+    padding: 10px !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+.form-row:last-child {
+    border-bottom: none !important;
+}
+
+label {
+    font-weight: 600 !important;
+    color: var(--wp-text) !important;
+    display: block !important;
+    margin-bottom: 5px !important;
+    font-size: 13px !important;
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], 
+input[type="number"], input[type="tel"], input[type="search"], textarea, select {
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    padding: 6px 8px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    background: #fff !important;
+    color: var(--wp-text) !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.07) !important;
+    transition: border-color 0.2s ease !important;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, 
+input[type="password"]:focus, input[type="number"]:focus, input[type="tel"]:focus, 
+input[type="search"]:focus, textarea:focus, select:focus {
+    border-color: var(--wp-blue) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 1px var(--wp-blue) !important;
+}
+
+/* === БОКОВАЯ ПАНЕЛЬ === */
+.dashboard #content {
+    width: 100% !important;
+}
+
+.dashboard .module {
+    float: left !important;
+    width: 48% !important;
+    margin-right: 2% !important;
+}
+
+.dashboard .module:nth-child(even) {
+    margin-right: 0 !important;
+}
+
+/* === ВИДЖЕТЫ DASHBOARD === */
+.dashboard .module h2 {
+    background: var(--wp-dark-gray) !important;
+    color: #fff !important;
+}
+
+.dashboard .module table {
+    margin: 0 !important;
+}
+
+.dashboard .module .addlink {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23007cba" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1z"/><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>') no-repeat left center !important;
+    padding-left: 20px !important;
+    color: var(--wp-blue) !important;
+    text-decoration: none !important;
+    font-size: 13px !important;
+}
+
+.dashboard .module .addlink:hover {
+    color: var(--wp-dark-blue) !important;
+}
+
+/* === MESSAGES === */
+.messagelist {
+    margin: 0 0 20px 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+}
+
+.messagelist li {
+    background: var(--wp-green) !important;
+    color: #fff !important;
+    padding: 10px 15px !important;
+    margin-bottom: 10px !important;
+    border-radius: 3px !important;
+    font-size: 13px !important;
+}
+
+.messagelist li.warning {
+    background: var(--wp-orange) !important;
+}
+
+.messagelist li.error {
+    background: var(--wp-red) !important;
+}
+
+.messagelist li.info {
+    background: var(--wp-light-blue) !important;
+}
+
+/* === ОБЪЕКТЫ СПИСКА === */
+.results {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    overflow: hidden !important;
+}
+
+.results thead th {
+    background: var(--wp-dark-gray) !important;
+    color: #fff !important;
+    border-bottom: 1px solid #464b50 !important;
+}
+
+.results thead th a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
+
+.results thead th a:hover {
+    color: var(--wp-light-blue) !important;
+}
+
+/* === CHANGELIST === */
+.changelist .actions {
+    background: #f9f9f9 !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.changelist .actions select {
+    max-width: 200px !important;
+    margin-right: 10px !important;
+}
+
+/* === ФИЛЬТРЫ === */
+#changelist-filter {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    padding: 15px !important;
+    margin-left: 20px !important;
+    width: 240px !important;
+}
+
+#changelist-filter h2 {
+    background: none !important;
+    color: var(--wp-text) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin: 0 0 10px 0 !important;
+    padding: 0 !important;
+    border-bottom: 1px solid var(--wp-border) !important;
+    padding-bottom: 5px !important;
+}
+
+#changelist-filter h3 {
+    background: none !important;
+    color: var(--wp-text) !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    margin: 15px 0 5px 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+#changelist-filter ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 15px 0 !important;
+}
+
+#changelist-filter li {
+    padding: 3px 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+}
+
+#changelist-filter li:last-child {
+    border-bottom: none !important;
+}
+
+#changelist-filter a {
+    color: var(--wp-blue) !important;
+    text-decoration: none !important;
+    font-size: 12px !important;
+}
+
+#changelist-filter a:hover {
+    color: var(--wp-dark-blue) !important;
+}
+
+#changelist-filter a.selected {
+    color: var(--wp-text) !important;
+    font-weight: 600 !important;
+}
+
+/* === ПОИСК === */
+.changelist-search {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+.changelist-search input[type="text"] {
+    max-width: 300px !important;
+    margin-right: 10px !important;
+}
+
+/* === ПАГИНАЦИЯ === */
+.paginator {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    padding: 10px !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+.paginator a, .paginator .this-page {
+    padding: 5px 8px !important;
+    margin: 0 2px !important;
+    text-decoration: none !important;
+    border-radius: 3px !important;
+    display: inline-block !important;
+}
+
+.paginator a {
+    color: var(--wp-blue) !important;
+    border: 1px solid var(--wp-border) !important;
+}
+
+.paginator a:hover {
+    background: var(--wp-blue) !important;
+    color: #fff !important;
+}
+
+.paginator .this-page {
+    background: var(--wp-blue) !important;
+    color: #fff !important;
+    border: 1px solid var(--wp-dark-blue) !important;
+}
+
+/* === INLINE ФОРМЫ === */
+.inline-group {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    margin-bottom: 20px !important;
+}
+
+.inline-group .module h2 {
+    background: var(--wp-dark-gray) !important;
+    color: #fff !important;
+}
+
+.inline-related {
+    background: #f9f9f9 !important;
+}
+
+.inline-related h3 {
+    background: var(--wp-gray) !important;
+    border-bottom: 1px solid var(--wp-border) !important;
+}
+
+/* === КАЛЕНДАРЬ === */
+.calendar {
+    background: #fff !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+}
+
+.calendar caption {
+    background: var(--wp-blue) !important;
+    color: #fff !important;
+    padding: 10px !important;
+    font-weight: 600 !important;
+}
+
+.calendar th {
+    background: #f9f9f9 !important;
+    color: var(--wp-text) !important;
+    padding: 8px !important;
+    border: 1px solid var(--wp-border) !important;
+}
+
+.calendar td {
+    border: 1px solid var(--wp-border) !important;
+    padding: 8px !important;
+    text-align: center !important;
+}
+
+.calendar td a {
+    color: var(--wp-blue) !important;
+    text-decoration: none !important;
+}
+
+.calendar td a:hover {
+    color: var(--wp-dark-blue) !important;
+}
+
+/* === ПОЛЯ ВЫБОРА ФАЙЛОВ === */
+.file-upload {
+    background: #f9f9f9 !important;
+    border: 1px solid var(--wp-border) !important;
+    border-radius: 3px !important;
+    padding: 10px !important;
+}
+
+.file-upload input[type="file"] {
+    max-width: none !important;
+    width: auto !important;
+}
+
+/* === HELP TEXT === */
+.help {
+    color: #666 !important;
+    font-size: 12px !important;
+    font-style: italic !important;
+    margin-top: 5px !important;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+    #content {
+        padding: 10px !important;
+    }
+    
+    .dashboard .module {
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    #changelist-filter {
+        margin-left: 0 !important;
+        margin-top: 10px !important;
+        width: 100% !important;
+    }
+    
+    .results {
+        overflow-x: auto !important;
+    }
+}
+
+/* === CUSTOM BLOG ADMIN === */
+.blog-admin-header {
+    background: linear-gradient(135deg, var(--wp-blue), var(--wp-light-blue)) !important;
+    color: #fff !important;
+    padding: 20px !important;
+    border-radius: 3px !important;
+    margin-bottom: 20px !important;
+}
+
+.blog-admin-stats {
+    display: flex !important;
+    gap: 20px !important;
+    margin-top: 15px !important;
+}
+
+.blog-stat-card {
+    background: rgba(255,255,255,0.1) !important;
+    padding: 15px !important;
+    border-radius: 3px !important;
+    flex: 1 !important;
+    text-align: center !important;
+}
+
+.blog-stat-number {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+.blog-stat-label {
+    font-size: 12px !important;
+    opacity: 0.8 !important;
+    margin-top: 5px !important;
+}
+.django-ckeditor-widget {
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Убираем все inline стили ширины и display */
+.django-ckeditor-widget[style] {
+    display: block !important;
+    width: 100% !important;
+}
+
+.django-ckeditor-widget[style*="display: inline-block"] {
+    display: block !important;
+}
+
+.django-ckeditor-widget[style*="width: auto"] {
+    width: 100% !important;
+}
+
+/* Растягиваем сам CKEditor */
+.django-ckeditor-widget .cke {
+    width: 100% !important;
+    max-width: none !important;
+    display: block !important;
+}
+
+.django-ckeditor-widget .cke[style*="width"] {
+    width: 100% !important;
+}
+
+/* Убираем фиксированную ширину у textarea */
+.django-ckeditor-widget textarea {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Растягиваем iframe редактора */
+.django-ckeditor-widget .cke_contents iframe {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Растягиваем все внутренние элементы */
+.django-ckeditor-widget .cke_inner {
+    width: 100% !important;
+}
+
+.django-ckeditor-widget .cke_contents {
+    width: 100% !important;
+}
+
+/* Специально для form-row */
+.form-row .django-ckeditor-widget {
+    width: 100% !important;
+    display: block !important;
+}
+
+.form-row .field-content .django-ckeditor-widget {
+    width: 100% !important;
+    display: block !important;
+}
+
+/* Для flex-container */
+.flex-container .django-ckeditor-widget {
+    width: 100% !important;
+    flex: 1 !important;
+    display: block !important;
+}
+
+/* Для колонки col-lg-8 */
+.col-lg-8 .django-ckeditor-widget {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.col-lg-8 .django-ckeditor-widget .cke {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* WordPress-стиль админка */
+.wp-box .django-ckeditor-widget {
+    width: 100% !important;
+    display: block !important;
+    box-sizing: border-box;
+}
+
+.wp-box .field-content .django-ckeditor-widget,
+.wp-box .field-content .cke {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Убираем все возможные inline стили */
+div[data-field-id="id_content"] {
+    display: block !important;
+    width: 100% !important;
+}
+
+div[data-field-id="id_content"][style] {
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Дополнительная защита от inline стилей */
+.django-ckeditor-widget[style*="display"],
+.django-ckeditor-widget[style*="width"] {
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Растягиваем панель инструментов */
+.django-ckeditor-widget .cke_top {
+    width: 100% !important;
+}
+
+.django-ckeditor-widget .cke_toolbox {
+    width: 100% !important;
+}
+
+/* Для адаптивности */
+@media (max-width: 768px) {
+    .django-ckeditor-widget {
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: unset !important;
+    }
+}

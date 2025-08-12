@@ -25,22 +25,44 @@
   </div>
 </section>
 
-<!-- ОТЛАДОЧНАЯ СЕКЦИЯ - УДАЛИТЕ В ПРОДАКШЕНЕ -->
+<!-- ОТЛАДОЧНАЯ СЕКЦИЯ - ВРЕМЕННАЯ -->
 {% if debug %}
 <section style="background: #ffeb3b; padding: 20px; margin: 20px; border: 3px solid #f57c00;">
   <h3 style="color: #e65100;">🐛 ОТЛАДКА BLOG LIST:</h3>
   <strong>Всего постов:</strong> {{ posts|length }}<br>
   <strong>MEDIA_URL:</strong> {{ MEDIA_URL }}<br>
+  <strong>MEDIA_ROOT:</strong> {{ settings.MEDIA_ROOT }}<br>
   <strong>DEBUG:</strong> {{ debug }}<br>
   {% for post in posts|slice:":1" %}
     <br><strong>Первый пост:</strong><br>
     - ID: {{ post.id }}<br>
     - Title: {{ post.get_display_title }}<br>
-    - Featured Image: {{ post.featured_image }}<br>
+    - Featured Image Field: "{{ post.featured_image }}"<br>
     {% if post.featured_image %}
       - Image URL: {{ post.featured_image.url }}<br>
-      - Full URL: http://localhost:8000{{ post.featured_image.url }}<br>
+      - Full URL: {{ request.scheme }}://{{ request.get_host }}{{ post.featured_image.url }}<br>
+      - File exists: 
+      <script>
+        fetch('{{ post.featured_image.url }}')
+          .then(response => {
+            if (response.ok) {
+              console.log('✅ Изображение доступно: {{ post.featured_image.url }}');
+              document.write('<span style="color: green;">✅ ДОСТУПНО</span>');
+            } else {
+              console.error('❌ Изображение недоступно: {{ post.featured_image.url }}');
+              document.write('<span style="color: red;">❌ НЕДОСТУПНО (HTTP ' + response.status + ')</span>');
+            }
+          })
+          .catch(error => {
+            console.error('❌ Ошибка загрузки: {{ post.featured_image.url }}', error);
+            document.write('<span style="color: red;">❌ ОШИБКА СЕТИ</span>');
+          });
+      </script>
+    {% else %}
+      - No featured image<br>
     {% endif %}
+  {% empty %}
+    <br><strong>Постов нет!</strong><br>
   {% endfor %}
 </section>
 {% endif %}
@@ -55,14 +77,6 @@
             {% trans "All Articles" %}
           </button>
         </div>
-
-        {% for category in categories|slice:":6" %}
-        <div class="col-auto">
-          <button class="tabs__button fw-500 rounded-200 js-tabs-button" data-tab-target=".-tab-item-{{ forloop.counter|add:1 }}">
-            {{ category.safe_translation_getter.name }}
-          </button>
-        </div>
-        {% endfor %}
 
       </div>
 
@@ -80,16 +94,16 @@
                          alt="{{ post.get_display_title }}" 
                          class="img-ratio rounded-12" 
                          loading="lazy"
-                         style="border: 3px solid green;"
-                         onload="console.log('✅ Загружено изображение для поста {{ post.id }}: {{ post.featured_image.url }}');"
-                         onerror="console.error('❌ Ошибка загрузки изображения для поста {{ post.id }}: {{ post.featured_image.url }}'); this.style.border='3px solid red';">
+                         style="border: 2px solid green; object-fit: cover;"
+                         onload="console.log('✅ Загружено: {{ post.featured_image.url }}'); this.style.border='2px solid green';"
+                         onerror="console.error('❌ Ошибка загрузки: {{ post.featured_image.url }}'); this.style.border='2px solid red'; this.src='{% static 'img/blog/default.webp' %}';">
                   {% else %}
                     <img src="{% static 'img/blog/default.webp' %}" 
                          alt="{{ post.get_display_title }}" 
                          class="img-ratio rounded-12" 
                          loading="lazy"
-                         style="border: 3px solid orange;"
-                         onload="console.log('🟡 Загружено дефолтное изображение для поста {{ post.id }}');">
+                         style="border: 2px solid orange; object-fit: cover;"
+                         onload="console.log('🟡 Дефолтное изображение: {{ post.id }}');">
                   {% endif %}
                   
                   <div class="blogCard__badge">
@@ -107,10 +121,6 @@
                   </div>
 
                   <h3 class="blogCard__title text-18 fw-500 mt-10">{{ post.get_display_title }}</h3>
-                  
-                  {% if post.get_display_excerpt %}
-                    <p class="mt-10 text-14 text-light-1">{{ post.get_display_excerpt|truncatechars:100 }}</p>
-                  {% endif %}
                 </div>
               </a>
             </div>
@@ -119,59 +129,17 @@
               <div class="text-center py-60">
                 <h3>{% trans "No articles found" %}</h3>
                 <p class="mt-10">{% trans "Check back soon for new travel stories and guides." %}</p>
+                <div class="mt-20">
+                  <a href="{% url 'admin:blog_blogpost_add' %}" class="button -sm -dark-1 bg-accent-1 text-white">
+                    {% trans "Add Your First Post" %}
+                  </a>
+                </div>
               </div>
             </div>
             {% endfor %}
 
           </div>
         </div>
-
-        <!-- Additional category tabs content if needed -->
-        {% for category in categories|slice:":6" %}
-        <div class="tabs__pane -tab-item-{{ forloop.counter|add:1 }}">
-          <div class="row y-gap-30">
-            {% for post in category.blogpost_set.all|slice:":9" %}
-            {% if post.status == 'published' %}
-            <div class="col-lg-4 col-md-6">
-              <a href="{{ post.get_absolute_url }}" class="blogCard -type-1">
-                <div class="blogCard__image ratio ratio-41:30">
-                  {% if post.featured_image %}
-                    <img src="{{ post.featured_image.url }}" 
-                         alt="{{ post.get_display_title }}" 
-                         class="img-ratio rounded-12" 
-                         loading="lazy"
-                         onload="console.log('✅ Загружено изображение категории для поста {{ post.id }}');"
-                         onerror="console.error('❌ Ошибка загрузки изображения категории для поста {{ post.id }}');">
-                  {% else %}
-                    <img src="{% static 'img/blog/default.webp' %}" 
-                         alt="{{ post.get_display_title }}" 
-                         class="img-ratio rounded-12" 
-                         loading="lazy">
-                  {% endif %}
-                  
-                  <div class="blogCard__badge">{{ category.safe_translation_getter.name }}</div>
-                </div>
-
-                <div class="blogCard__content mt-30">
-                  <div class="blogCard__info text-14">
-                    <div class="lh-13">{{ post.published_at|date:"F d, Y" }}</div>
-                    <div class="blogCard__line"></div>
-                    <div class="lh-13">{% trans "By" %} {{ post.author.get_full_name|default:post.author.username }}</div>
-                  </div>
-
-                  <h3 class="blogCard__title text-18 fw-500 mt-10">{{ post.get_display_title }}</h3>
-                  
-                  {% if post.get_display_excerpt %}
-                    <p class="mt-10 text-14 text-light-1">{{ post.get_display_excerpt|truncatechars:100 }}</p>
-                  {% endif %}
-                </div>
-              </a>
-            </div>
-            {% endif %}
-            {% endfor %}
-          </div>
-        </div>
-        {% endfor %}
 
       </div>
     </div>
@@ -219,4 +187,22 @@
 
   </div>
 </section>
+
+<script>
+// Отладочный скрипт для проверки доступности медиа
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🐛 DEBUG: Проверка настроек медиа');
+    console.log('MEDIA_URL:', '{{ MEDIA_URL }}');
+    console.log('STATIC_URL:', '{{ STATIC_URL }}');
+    console.log('DEBUG:', {{ debug|yesno:"true,false" }});
+    
+    // Проверяем все изображения на странице
+    const images = document.querySelectorAll('.blogCard__image img');
+    console.log(`🐛 Найдено изображений на странице: ${images.length}`);
+    
+    images.forEach((img, index) => {
+        console.log(`🐛 Изображение ${index + 1}: ${img.src}`);
+    });
+});
+</script>
 {% endblock %}
