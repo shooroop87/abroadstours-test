@@ -239,7 +239,7 @@ class CategoryAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
     
     def get_name_styled(self, obj):
         name = obj.safe_translation_getter('name', any_language=True) or f'Category {obj.pk}'
-        post_count = obj.blogpost_set.count()
+        post_count = obj.posts.count()
         
         return format_html(
             '<div class="wp-category-name" style="display: flex; flex-direction: column;">'
@@ -270,9 +270,9 @@ class CategoryAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
     get_slug_styled.admin_order_field = 'translations__slug'
     
     def post_statistics(self, obj):
-        published = obj.blogpost_set.filter(status='published').count()
-        draft = obj.blogpost_set.filter(status='draft').count()
-        total = obj.blogpost_set.count()
+        published = obj.posts.filter(status='published').count()
+        draft = obj.posts.filter(status='draft').count()
+        total = obj.posts.count()
         
         # Определяем цвет по активности
         if published > 5:
@@ -344,11 +344,11 @@ class CategoryAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
         if not obj.pk:
             return format_html('<p style="color: #999;">Save category to see statistics</p>')
         
-        total_posts = obj.blogpost_set.count()
-        published_posts = obj.blogpost_set.filter(status='published').count()
-        draft_posts = obj.blogpost_set.filter(status='draft').count()
-        featured_posts = obj.blogpost_set.filter(is_featured=True).count()
-        total_views = sum(post.views_count for post in obj.blogpost_set.all())
+        total_posts = obj.posts.count()
+        published_posts = obj.posts.filter(status='published').count()
+        draft_posts = obj.posts.filter(status='draft').count()
+        featured_posts = obj.posts.filter(is_featured=True).count()
+        total_views = sum(post.views_count for post in obj.posts.all())
         
         return format_html(
             '<div class="wp-category-stats" style="background: #f9f9f9; padding: 20px; '
@@ -391,8 +391,8 @@ class CategoryAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
                 'slug': category.safe_translation_getter('slug', any_language=True),
                 'description': category.safe_translation_getter('description', any_language=True),
                 'is_active': category.is_active,
-                'post_count': category.blogpost_set.count(),
-                'published_posts': category.blogpost_set.filter(status='published').count(),
+                'post_count': category.posts.count(),
+                'published_posts': category.posts.filter(status='published').count(),
                 'created_at': category.created_at.isoformat(),
             })
         
@@ -537,7 +537,7 @@ class BlogPostAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
         display_title = title[:50] + '...' if len(title) > 50 else title
         
         # Добавляем индикатор комментариев
-        comment_count = obj.blogcomment_set.filter(is_approved=True).count()
+        comment_count = obj.comments.filter(is_approved=True).count()
         comment_indicator = f' <span style="color: #82878c;">({comment_count} 💬)</span>' if comment_count > 0 else ''
         
         return format_html(
@@ -593,7 +593,7 @@ class BlogPostAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
         """Информация о категории как в WordPress"""
         if obj.category:
             category_name = obj.category.safe_translation_getter('name', any_language=True) or 'Unnamed'
-            post_count = obj.category.blogpost_set.filter(status='published').count()
+            post_count = obj.category.posts.filter(status='published').count()
             
             # Определяем цвет по количеству постов
             if post_count > 10:
@@ -622,8 +622,8 @@ class BlogPostAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
     def post_stats(self, obj):
         """Статистика поста как в WordPress Analytics"""
         views = obj.views_count
-        comments = obj.blogcomment_set.filter(is_approved=True).count()
-        images = obj.blogimage_set.count()
+        comments = obj.comments.filter(is_approved=True).count()
+        images = obj.images.count()
         
         # Определяем "популярность"
         if views > 1000:
@@ -882,10 +882,10 @@ class BlogPostAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
         
         # Собираем статистику
         total_views = obj.views_count
-        total_comments = obj.blogcomment_set.count()
-        approved_comments = obj.blogcomment_set.filter(is_approved=True).count()
+        total_comments = obj.comments.count()
+        approved_comments = obj.comments.filter(is_approved=True).count()
         pending_comments = total_comments - approved_comments
-        total_images = obj.blogimage_set.count()
+        total_images = obj.images.count()
         
         # Примерные данные для демонстрации
         reading_time = obj.reading_time or 5
@@ -1007,8 +1007,8 @@ class BlogPostAdmin(TranslatableAdmin, WordPressStyleAdminMixin):
                 'meta_description': post.safe_translation_getter('meta_description', any_language=True),
                 'meta_keywords': post.safe_translation_getter('meta_keywords', any_language=True),
                 'tags': [tag.name for tag in post.tags.all()],
-                'comments_count': post.blogcomment_set.count(),
-                'images_count': post.blogimage_set.count(),
+                'comments_count': post.comments.count(),
+                'images_count': post.images.count(),
             }
             posts_data.append(post_data)
         
@@ -1318,7 +1318,7 @@ class BlogCommentAdmin(admin.ModelAdmin, WordPressStyleAdminMixin):
     def get_post_info(self, obj):
         """Информация о посте"""
         post_title = obj.post.safe_translation_getter('title', any_language=True) or f'Post {obj.post.pk}'
-        post_comments_count = obj.post.blogcomment_set.filter(is_approved=True).count()
+        post_comments_count = obj.post.comments.filter(is_approved=True).count()
         
         # Статус поста
         status_config = {
@@ -1595,7 +1595,7 @@ class BlogCommentAdmin(admin.ModelAdmin, WordPressStyleAdminMixin):
             return format_html('<p style="color: #999;">Save comment to see thread</p>')
         
         # Получаем все комментарии к этому посту
-        all_comments = obj.post.blogcomment_set.order_by('created_at')
+        all_comments = obj.post.comments.order_by('created_at')
         current_index = list(all_comments.values_list('pk', flat=True)).index(obj.pk) + 1
         
         # Показываем контекст (2 комментария до и после)
@@ -1846,7 +1846,7 @@ class BlogImageAdmin(admin.ModelAdmin, WordPressStyleAdminMixin):
         """Информация о посте"""
         if obj.post:
             post_title = obj.post.safe_translation_getter('title', any_language=True) or f'Post {obj.post.pk}'
-            post_images_count = obj.post.blogimage_set.count()
+            post_images_count = obj.post.images.count()
             
             return format_html(
                 '<div class="wp-image-post" style="display: flex; flex-direction: column; gap: 3px;">'
