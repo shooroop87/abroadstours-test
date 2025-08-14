@@ -72,6 +72,9 @@ if BLOG_AVAILABLE:
 
 # --- Языковые маршруты ---
 urlpatterns += i18n_patterns(
+    # Tours приложение - обрабатывается первым для /tours/ URL-ов
+    path("tours/", include("tours.urls")),
+    
     # Blog приложение - обрабатывается первым для /blog/ URL-ов
     path("blog/", include("blog.urls")),
     

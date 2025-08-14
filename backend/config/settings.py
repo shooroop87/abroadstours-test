@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "core",
     "blog",
+    "tours",
     "parler",
     "ckeditor",
     "ckeditor_uploader",

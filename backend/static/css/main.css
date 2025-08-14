@@ -14282,6 +14282,15 @@ button.gm-ui-hover-effect::after {
             .booking-cta-wrapper.only-mobile {
                 display: block;
             }
+            .icon-tripadvisor {
+              font-size: 24px!important;
+            }
+            .icon-youtube {
+              font-size: 24px!important;
+            }
+            [class*=" icon-"], [class^=icon-] {
+              font-size: 20px;
+            }
         }
 
         /* Скрыть на планшетах и десктопе */

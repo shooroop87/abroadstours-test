@@ -1,0 +1,792 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ page_title }}{% endblock %}
+{% block description %}{{ page_description }}{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<div data-anim="fade" class="container">
+  <div class="row justify-between py-30 mt-80">
+    <div class="col-auto">
+      <a href="{% url 'index' %}">{% trans "Home" %}</a> > 
+      <a href="{% url 'tours:list' %}">{% trans "Tours" %}</a> > 
+      {% if tour.category %}
+        <a href="{{ tour.category.get_absolute_url }}">{{ tour.category.safe_translation_getter.name }}</a> >
+      {% endif %}
+      {{ tour.safe_translation_getter.title }}
+    </div>
+  </div>
+</div>
+
+<!-- Tour Header -->
+<section class="">
+  <div data-anim-wrap class="container">
+    <div data-anim-child="slide-up" class="row y-gap-20 justify-between items-end">
+      <div class="col-auto">
+        <div class="row x-gap-10 y-gap-10 items-center">
+          {% if tour.free_cancellation %}
+          <div class="col-auto">
+            <button class="button -accent-1 text-14 py-5 px-15 bg-accent-1-05 text-accent-1 rounded-200">
+              {% trans "Free cancellation" %}
+            </button>
+          </div>
+          {% endif %}
+          {% if tour.reserve_now_pay_later %}
+          <div class="col-auto">
+            <button class="button -accent-1 text-14 py-5 px-15 bg-light-1 rounded-200">
+              {% trans "Reserve now, pay later" %}
+            </button>
+          </div>
+          {% endif %}
+          {% if tour.instant_confirmation %}
+          <div class="col-auto">
+            <button class="button -accent-1 text-14 py-5 px-15 bg-success-1 text-white rounded-200">
+              {% trans "Instant confirmation" %}
+            </button>
+          </div>
+          {% endif %}
+        </div>
+
+        <h1 class="text-40 sm:text-30 lh-14 mt-20">
+          {{ tour.safe_translation_getter.title }}
+        </h1>
+
+        <div class="row x-gap-20 y-gap-20 items-center pt-20">
+          <div class="col-auto">
+            <div class="d-flex items-center">
+              <div class="d-flex x-gap-5 pr-10">
+                {% for i in "12345"|make_list %}
+                  {% if forloop.counter <= tour.get_rating_stars %}
+                    <i class="flex-center icon-star text-yellow-2 text-12"></i>
+                  {% else %}
+                    <i class="flex-center icon-star text-light-2 text-12"></i>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {{ tour.rating }} (<a href="#reviews">{{ tour.reviews_count }} reviews</a>)
+            </div>
+          </div>
+
+          {% if tour.category %}
+          <div class="col-auto">
+            <div class="d-flex items-center">
+              <i class="icon-pin text-16 mr-5"></i>
+              {{ tour.category.safe_translation_getter.name }}
+            </div>
+          </div>
+          {% endif %}
+
+          {% if tour.reviews_count > 10 %}
+          <div class="col-auto">
+            <div class="d-flex items-center">
+              <svg viewBox="0 0 24 24" width="22px" height="22px" class="d Vb UmNoP" aria-hidden="true">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="m14.232 4.13-2.603-2.134L9.037 4.13l-3.358-.195-.848 3.253L2 8.987l1.227 3.142L2 15.26l2.832 1.813.849 3.244 3.357-.195 2.592 2.133 2.603-2.133 3.358.195.849-3.244 2.832-1.812-1.227-3.13 1.227-3.143-2.833-1.8-.847-3.253zm-3.62 11.833 5.195-5.196-1.414-1.414-3.784 3.784-1.753-1.745-1.412 1.417z"></path>
+              </svg>
+              <a href="#reviews">{% trans "Recommended by" %} 96% {% trans "of travelers" %}</a>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div data-anim-child="slide-up delay-2" class="tourSingleGrid -type-1 mt-30">
+      <div class="tourSingleGrid__grid mobile-css-slider-2">
+        {% if tour.featured_image %}
+          <img src="{{ tour.featured_image.url }}" alt="{{ tour.safe_translation_getter.title }}">
+        {% endif %}
+        {% for image in gallery_images %}
+          <img src="{{ image.image.url }}" alt="{{ image.alt_text|default:tour.safe_translation_getter.title }}" loading="lazy">
+        {% endfor %}
+        {% if gallery_images|length < 3 %}
+          {% for i in "123"|make_list %}
+            {% if forloop.counter > gallery_images|length %}
+              <img src="{% static 'img/tours/00_bg_general/default-tour.webp' %}" alt="Tour image" loading="lazy">
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+
+      <div class="tourSingleGrid__button">
+        {% if all_images %}
+        <a href="{{ all_images.0.image.url }}" class="js-gallery" data-gallery="gallery1">
+          <span class="button -accent-1 py-10 px-20 rounded-200 bg-dark-1 lh-16 text-white">
+            {% trans "See all photos" %}
+          </span>
+        </a>
+        <!-- Hidden gallery images for lightbox -->
+        {% for image in all_images|slice:"1:" %}
+          <a href="{{ image.image.url }}" class="js-gallery d-none" data-gallery="gallery1"></a>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="layout-pt-md js-pin-container">
+  <div class="container">
+    <div class="row y-gap-30 justify-between">
+      <div class="col-lg-8">
+        
+        <!-- Tour Info Icons -->
+        <div class="row y-gap-20 justify-between items-center layout-pb-md">
+          <div class="col-lg-3 col-6">
+            <div class="d-flex items-center">
+              <div class="flex-center size-50 rounded-12 border-1">
+                <i class="text-20 icon-clock"></i>
+              </div>
+              <div class="ml-10">
+                <div class="lh-16">{% trans "Duration" %}</div>
+                <div class="text-14 text-light-2 lh-16">{{ tour.get_duration_display }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="d-flex items-center">
+              <div class="flex-center size-50 rounded-12 border-1">
+                <i class="text-20 icon-teamwork"></i>
+              </div>
+              <div class="ml-10">
+                <div class="lh-16">{% trans "Group Size" %}</div>
+                <div class="text-14 text-light-2 lh-16">{% trans "Max" %} {{ tour.max_group_size }} {% trans "people" %}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="d-flex items-center">
+              <div class="flex-center size-50 rounded-12 border-1">
+                <i class="text-20 icon-mountain"></i>
+              </div>
+              <div class="ml-10">
+                <div class="lh-16">{% trans "Tour type" %}</div>
+                <div class="text-14 text-light-2 lh-16">{{ tour.get_tour_type_display }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-6">
+            <div class="d-flex items-center">
+              <div class="flex-center size-50 rounded-12 border-1">
+                <i class="text-20 icon-translate"></i>
+              </div>
+              <div class="ml-10">
+                <div class="lh-16">{% trans "Languages" %}</div>
+                <div class="text-14 text-light-2 lh-16">{{ tour.languages }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tour Highlights -->
+        {% if tour.safe_translation_getter.tour_highlights %}
+        <h2 class="text-30">{% trans "Tour Highlights" %}</h2>
+        <div class="mt-20">
+          {{ tour.safe_translation_getter.tour_highlights|safe }}
+        </div>
+        {% endif %}
+
+        <!-- Why This Tour Is Unique -->
+        {% if tour.safe_translation_getter.why_unique %}
+        <h2 class="text-30 mt-40">{% trans "Why This Tour Is Unique" %}</h2>
+        <div class="mt-20">
+          {{ tour.safe_translation_getter.why_unique|safe }}
+        </div>
+        {% endif %}
+
+        <!-- What You'll Experience -->
+        {% if tour.safe_translation_getter.what_experience %}
+        <div class="line mt-40 mb-40"></div>
+        <h2 class="text-30">{% trans "What You'll Experience" %}</h2>
+        <div class="mt-20">
+          {{ tour.safe_translation_getter.what_experience|safe }}
+        </div>
+        {% endif %}
+
+        <!-- What's Included / Not Included -->
+        {% if tour.safe_translation_getter.whats_included or tour.safe_translation_getter.whats_not_included %}
+        <div class="line mt-40 mb-40"></div>
+        <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
+          {% if tour.safe_translation_getter.whats_included %}
+          <div class="col-12">
+            <div class="accordion__item px-20 py-15 border-1 rounded-12">
+              <div class="accordion__button d-flex items-center justify-between">
+                <div class="button text-16 text-dark-1">{% trans "What's Included" %}</div>
+                <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+                  <i class="icon-plus text-13"></i>
+                  <i class="icon-minus text-13"></i>
+                </div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20">
+                  {{ tour.safe_translation_getter.whats_included|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+          {% if tour.safe_translation_getter.whats_not_included %}
+          <div class="col-12">
+            <div class="accordion__item px-20 py-15 border-1 rounded-12">
+              <div class="accordion__button d-flex items-center justify-between">
+                <div class="button text-16 text-dark-1">{% trans "What's Not Included" %}</div>
+                <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+                  <i class="icon-plus text-13"></i>
+                  <i class="icon-minus text-13"></i>
+                </div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20">
+                  {{ tour.safe_translation_getter.whats_not_included|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- FAQ Section -->
+        {% if tour.faqs.all %}
+        <div class="line mt-40 mb-40"></div>
+        <h2 class="text-30">{% trans "Frequently Asked Questions" %}</h2>
+        <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
+          {% for faq in tour.faqs.all %}
+          <div class="col-12">
+            <div class="accordion__item px-20 py-15 border-1 rounded-12">
+              <div class="accordion__button d-flex items-center justify-between">
+                <div class="button text-16 text-dark-1">{{ faq.safe_translation_getter.question }}</div>
+                <div class="accordion__icon size-30 flex-center bg-light-2 rounded-full">
+                  <i class="icon-plus text-13"></i>
+                  <i class="icon-minus text-13"></i>
+                </div>
+              </div>
+              <div class="accordion__content">
+                <div class="pt-20">
+                  {{ faq.safe_translation_getter.answer|safe }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Meeting Points -->
+        {% if tour.meeting_points.all %}
+        <div class="line mt-40 mb-40"></div>
+        <h2 class="text-30">{% trans "Meeting Points" %}</h2>
+        <div class="mt-20">
+          {% for meeting_point in tour.meeting_points.all %}
+          <div class="tourSingleCard -meeting-point {% if not forloop.last %}mb-20{% endif %}">
+            <div class="tourSingleCard__content">
+              <div class="d-flex items-center mb-15">
+                <i class="icon-pin text-20 text-accent-1 mr-10"></i>
+                <h4 class="text-18 fw-500">{{ meeting_point.safe_translation_getter.name }}</h4>
+                {% if meeting_point.is_primary %}
+                <span class="button -sm -accent-1 bg-accent-1-05 text-accent-1 ml-10">{% trans "Primary" %}</span>
+                {% endif %}
+              </div>
+              
+              <div class="d-flex items-center mb-10">
+                <i class="icon-clock text-16 text-light-2 mr-10"></i>
+                <span class="text-15">{{ meeting_point.meeting_time }}</span>
+              </div>
+              
+              <div class="text-15 mb-10">{{ meeting_point.safe_translation_getter.address }}</div>
+              
+              {% if meeting_point.safe_translation_getter.description %}
+              <div class="text-14 text-light-2">{{ meeting_point.safe_translation_getter.description }}</div>
+              {% endif %}
+              
+              {% if meeting_point.google_maps_url %}
+              <div class="mt-15">
+                <a href="{{ meeting_point.google_maps_url }}" target="_blank" rel="noopener" class="button -sm -outline-accent-1 text-accent-1">
+                  {% trans "View on Google Maps" %}
+                </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Reviews Section -->
+        <div class="line mt-40 mb-40"></div>
+        <div id="reviews" class="row y-gap-40">
+          <div class="col-12">
+            <h2 class="text-30">{% trans "Reviews" %} ({{ tour.reviews_count }})</h2>
+          </div>
+
+          {% if tour.reviews_count > 0 %}
+          <div class="col-12">
+            <div class="row x-gap-40 y-gap-40">
+              <div class="col-lg-4">
+                <div class="tourSingleCard -rating">
+                  <div class="tourSingleCard__content">
+                    <div class="d-flex items-center">
+                      <div class="flex-center bg-accent-1 rounded-12 size-70">
+                        <div class="text-30 fw-600 text-white">{{ tour.rating }}</div>
+                      </div>
+                      <div class="ml-20">
+                        <div class="lh-15 fw-500 text-dark-1">{% trans "Excellent" %}</div>
+                        <div class="lh-15 text-light-2">{{ tour.reviews_count }} reviews</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-8">
+                <!-- Individual Reviews -->
+                {% for review in tour.reviews.all %}
+                <div class="tourSingleCard -review mb-30">
+                  <div class="tourSingleCard__content">
+                    <div class="row justify-between items-center">
+                      <div class="col-auto">
+                        <div class="d-flex items-center">
+                          <div class="size-40 rounded-full bg-light-2 flex-center">
+                            {% if review.author_avatar %}
+                              <img src="{{ review.author_avatar.url }}" alt="{{ review.author_name }}" class="size-40 rounded-full object-cover">
+                            {% else %}
+                              <div class="text-14 fw-500 text-dark-1">{{ review.author_name|first }}</div>
+                            {% endif %}
+                          </div>
+                          <div class="ml-20">
+                            <div class="fw-500 text-dark-1 lh-15">{{ review.author_name }}</div>
+                            <div class="text-14 text-light-2 lh-15">{{ review.review_date|date:"F Y" }}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="d-flex x-gap-5">
+                          {% for i in "12345"|make_list %}
+                            {% if forloop.counter <= review.rating %}
+                              <i class="icon-star text-10 text-yellow-2"></i>
+                            {% else %}
+                              <i class="icon-star text-10 text-light-2"></i>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {% if review.safe_translation_getter.title %}
+                    <h4 class="fw-500 text-dark-1 mt-20">{{ review.safe_translation_getter.title }}</h4>
+                    {% endif %}
+                    
+                    <p class="text-dark-1 mt-10">{{ review.safe_translation_getter.content }}</p>
+                  </div>
+                </div>
+                {% empty %}
+                <!-- Placeholder review if none exist -->
+                <div class="tourSingleCard -review mb-30">
+                  <div class="tourSingleCard__content">
+                    <div class="row justify-between items-center">
+                      <div class="col-auto">
+                        <div class="d-flex items-center">
+                          <div class="size-40 rounded-full bg-light-2 flex-center">
+                            <div class="text-14 fw-500 text-dark-1">MC</div>
+                          </div>
+                          <div class="ml-20">
+                            <div class="fw-500 text-dark-1 lh-15">Marco C.</div>
+                            <div class="text-14 text-light-2 lh-15">{% trans "Verified traveler" %}</div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <div class="d-flex x-gap-5">
+                          {% for i in "12345"|make_list %}
+                            <i class="icon-star text-10 text-yellow-2"></i>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <h4 class="fw-500 text-dark-1 mt-20">{% trans "Amazing experience!" %}</h4>
+                    <p class="text-dark-1 mt-10">{% trans "This tour exceeded all expectations. Professional guide, amazing locations, perfect organization. Highly recommended!" %}</p>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <!-- No reviews yet -->
+          <div class="col-12">
+            <div class="text-center py-40">
+              <div class="text-18 fw-500 text-dark-1 mb-10">{% trans "No reviews yet" %}</div>
+              <div class="text-15 text-light-2">{% trans "Be the first to review this tour!" %}</div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Booking Sidebar -->
+      <div class="col-lg-4">
+        <div class="tourSingleSidebar">
+          <div data-anim="slide-up" class="tourSingleSidebar__content">
+            
+            <!-- Booking Widget -->
+            <div class="tourSingleCard -booking">
+              <div class="tourSingleCard__content">
+                <!-- Price Display -->
+                <div class="d-flex items-center justify-between mb-20">
+                  <div class="text-18 lh-13 fw-500">{% trans "From" %}</div>
+                  {% if tour.discount_percentage and tour.discount_percentage > 0 %}
+                  <div class="text-14 text-light-2">
+                    <span class="line-through">€{{ tour.original_price|floatformat:0 }}</span>
+                    <span class="text-accent-1 ml-5">{{ tour.discount_percentage }}% {% trans "off" %}</span>
+                  </div>
+                  {% endif %}
+                </div>
+                
+                <div class="text-30 lh-16 fw-600 text-dark-1 mb-5">{{ tour.get_price_display }}</div>
+                <div class="text-14 text-light-2 mb-30">{% trans "per adult" %}</div>
+
+                <!-- Booking Widget from BookingCode model -->
+                {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
+                  <div class="booking-widget">
+                    {{ tour.booking_code.html_code|safe }}
+                  </div>
+                {% else %}
+                  <!-- Default Contact Options if no booking code -->
+                  <div class="text-center py-30">
+                    <h4 class="text-18 fw-500 mb-20">{% trans "Book This Tour" %}</h4>
+                    <p class="text-14 text-light-2 mb-20">{% trans "Contact us to book this amazing experience" %}</p>
+                    <a href="{% url 'contact' %}" class="button -dark-1 bg-accent-1 text-white col-12 mb-15">
+                      {% trans "Contact Us" %}
+                    </a>
+                    <a href="https://wa.me/393208575909" target="_blank" rel="noopener" class="button -outline-success-1 text-success-1 col-12">
+                      <i class="icon-whatsapp text-16 mr-10"></i>
+                      {% trans "WhatsApp" %}
+                    </a>
+                  </div>
+                {% endif %}
+
+                <!-- Help Section -->
+                <div class="mt-30 pt-20 border-1-top">
+                  <div class="text-center">
+                    <div class="text-14 text-light-2 mb-10">{% trans "Need help with booking?" %}</div>
+                    <div class="d-flex justify-center x-gap-15">
+                      <a href="{% url 'contact' %}" class="button -sm -outline-accent-1 text-accent-1">
+                        <i class="icon-email text-16 mr-5"></i>
+                        {% trans "Email" %}
+                      </a>
+                      <a href="https://wa.me/393208575909" target="_blank" rel="noopener" class="button -sm -outline-success-1 text-success-1">
+                        <i class="icon-whatsapp text-16 mr-5"></i>
+                        {% trans "WhatsApp" %}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tour Features -->
+            <div class="tourSingleCard -info mt-30">
+              <div class="tourSingleCard__content">
+                <h5 class="text-18 fw-500 mb-20">{% trans "Why Book With Us?" %}</h5>
+                
+                <div class="y-gap-15">
+                  {% if tour.free_cancellation %}
+                  <div class="d-flex">
+                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
+                    <div class="text-15 lh-15">{% trans "Free cancellation up to 24 hours before" %}</div>
+                  </div>
+                  {% endif %}
+
+                  {% if tour.reserve_now_pay_later %}
+                  <div class="d-flex">
+                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
+                    <div class="text-15 lh-15">{% trans "Reserve now, pay later" %}</div>
+                  </div>
+                  {% endif %}
+
+                  {% if tour.instant_confirmation %}
+                  <div class="d-flex">
+                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
+                    <div class="text-15 lh-15">{% trans "Instant confirmation" %}</div>
+                  </div>
+                  {% endif %}
+
+                  <div class="d-flex">
+                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
+                    <div class="text-15 lh-15">{% trans "Small group experience" %}</div>
+                  </div>
+
+                  <div class="d-flex">
+                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
+                    <div class="text-15 lh-15">{% trans "Expert local guide" %}</div>
+                  </div>
+
+                  <div class="d-flex">
+                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
+                    <div class="text-15 lh-15">{% trans "Best price guarantee" %}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Share Tour -->
+            <div class="tourSingleCard -share mt-30">
+              <div class="tourSingleCard__content">
+                <h5 class="text-18 fw-500 mb-20">{% trans "Share this tour" %}</h5>
+                
+                <div class="d-flex x-gap-10">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}" 
+                     target="_blank" rel="noopener" 
+                     class="button -sm -outline-facebook text-facebook">
+                    <i class="icon-facebook"></i>
+                  </a>
+                  
+                  <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}&text={{ tour.safe_translation_getter.title|urlencode }}" 
+                     target="_blank" rel="noopener" 
+                     class="button -sm -outline-twitter text-twitter">
+                    <i class="icon-twitter"></i>
+                  </a>
+                  
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}" 
+                     target="_blank" rel="noopener" 
+                     class="button -sm -outline-linkedin text-linkedin">
+                    <i class="icon-linkedin"></i>
+                  </a>
+                  
+                  <a href="https://wa.me/?text={{ tour.safe_translation_getter.title|urlencode }}%20{{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}" 
+                     target="_blank" rel="noopener" 
+                     class="button -sm -outline-success-1 text-success-1">
+                    <i class="icon-whatsapp"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Similar Tours Section -->
+{% if related_tours %}
+<section class="layout-pt-mb layout-pb-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-auto">
+        <h2 class="text-30">{% trans "Similar experiences" %}</h2>
+      </div>
+    </div>
+
+    <div class="relative pt-40 sm:pt-20">
+      <div class="overflow-hidden pb-60 js-section-slider" data-gap="30" data-slider-cols="xl-4 lg-3 md-2 sm-1 base-1" data-nav-prev="js-slider1-prev" data-nav-next="js-slider1-next">
+        <div class="swiper-wrapper">
+          {% for related_tour in related_tours %}
+          <div class="swiper-slide">
+            <a href="{{ related_tour.get_absolute_url }}" class="tourCard -type-1 py-10 px-10 border-1 rounded-12 bg-white -hover-shadow">
+              <div class="tourCard__header">
+                <div class="tourCard__image ratio ratio-28:20">
+                  {% if related_tour.featured_image %}
+                    <img src="{{ related_tour.featured_image.url }}" 
+                         alt="{{ related_tour.safe_translation_getter.title }}" 
+                         class="img-ratio rounded-12" 
+                         loading="lazy">
+                  {% else %}
+                    <img src="{% static 'img/tours/00_bg_general/default-tour.webp' %}" 
+                         alt="{{ related_tour.safe_translation_getter.title }}" 
+                         class="img-ratio rounded-12" 
+                         loading="lazy">
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="tourCard__content px-10 pt-10">
+                <div class="tourCard__location d-flex items-center text-13 text-light-2">
+                  <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
+                  {% if related_tour.category %}
+                    {{ related_tour.category.safe_translation_getter.name }}
+                  {% else %}
+                    {{ related_tour.get_tour_type_display }}
+                  {% endif %}
+                </div>
+
+                <h3 class="tourCard__title text-16 fw-500 mt-5">
+                  <span>{{ related_tour.safe_translation_getter.title }}</span>
+                </h3>
+
+                <div class="tourCard__rating d-flex items-center text-13 mt-5">
+                  <div class="d-flex x-gap-5">
+                    {% for i in "12345"|make_list %}
+                      {% if forloop.counter <= related_tour.get_rating_stars %}
+                        <div><i class="icon-star text-10 text-yellow-2"></i></div>
+                      {% else %}
+                        <div><i class="icon-star text-10 text-light-2"></i></div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                  <span class="text-dark-1 ml-10">{{ related_tour.rating }} ({{ related_tour.reviews_count }})</span>
+                </div>
+
+                <div class="d-flex justify-between items-center border-1-top text-13 text-dark-1 pt-10 mt-10">
+                  <div class="d-flex items-center">
+                    <i class="icon-clock text-16 mr-5"></i>
+                    {{ related_tour.get_duration_display }}
+                  </div>
+                  <div>{% trans "From" %} <span class="text-16 fw-500">{{ related_tour.get_price_display }}</span></div>
+                </div>
+              </div>
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="navAbsolute">
+        <button class="navAbsolute__button bg-white js-slider1-prev" aria-label="{% trans 'Previous slide' %}">
+          <i class="icon-arrow-left text-14"></i>
+        </button>
+        <button class="navAbsolute__button bg-white js-slider1-next" aria-label="{% trans 'Next slide' %}">
+          <i class="icon-arrow-right text-14"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Mobile Booking Bar -->
+<div class="booking-cta-wrapper only-mobile">
+  <div class="booking-cta-content">
+    <div class="booking-price-text">{{ tour.get_price_display }} {% trans "per adult" %}</div>
+    <button id="openBooking" type="button" class="booking-cta-button">
+      <span>{% trans "Check availability" %}</span>
+    </button>
+  </div>
+</div>
+
+<!-- Mobile Booking Modal -->
+<div id="bookingModal" class="booking-modal">
+  <div class="booking-modal__header">
+    <button id="closeBooking" class="button -sm -outline-accent-1">{% trans "Close" %}</button>
+  </div>
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
+    {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
+      {{ tour.booking_code.html_code|safe }}
+    {% else %}
+      <div class="text-center py-40">
+        <h4 class="text-18 fw-500 mb-20">{% trans "Book This Tour" %}</h4>
+        <p class="text-14 text-light-2 mb-20">{% trans "Contact us to book this amazing experience" %}</p>
+        <a href="{% url 'contact' %}" class="button -dark-1 bg-accent-1 text-white">
+          {% trans "Contact Us" %}
+        </a>
+        <div class="mt-15">
+          <a href="https://wa.me/393208575909" target="_blank" rel="noopener" class="button -outline-accent-1 text-accent-1">
+            <i class="icon-whatsapp mr-10"></i>
+            {% trans "WhatsApp" %}
+          </a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+// Simple utility functions for tour page
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Mobile booking modal functionality
+  const openButton = document.getElementById("openBooking");
+  const closeButton = document.getElementById("closeBooking");
+  const modal = document.getElementById("bookingModal");
+
+  if (openButton && closeButton && modal) {
+    openButton.addEventListener("click", function () {
+      modal.classList.add("open");
+      document.body.classList.add("modal-open");
+    });
+
+    closeButton.addEventListener("click", function () {
+      modal.classList.remove("open");
+      document.body.classList.remove("modal-open");
+    });
+
+    // Close modal on outside click
+    modal.addEventListener("click", function (e) {
+      if (e.target === this) {
+        this.classList.remove("open");
+        document.body.classList.remove("modal-open");
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        modal.classList.remove("open");
+        document.body.classList.remove("modal-open");
+      }
+    });
+  }
+
+  // Copy to clipboard function for sharing
+  window.copyToClipboard = function(text) {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('{% trans "Link copied to clipboard!" %}');
+      });
+    } else {
+      // Fallback
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      alert('{% trans "Link copied to clipboard!" %}');
+    }
+  };
+
+  // Additional booking scripts from BookingCode model
+  {% if tour.booking_code and tour.booking_code.additional_scripts %}
+  {{ tour.booking_code.additional_scripts|safe }}
+  {% endif %}
+});
+</script>
+
+<!-- Schema.org structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "{{ tour.safe_translation_getter.title|escapejs }}",
+  "description": "{{ tour.safe_translation_getter.short_description|escapejs }}",
+  "provider": {
+    "@type": "Organization",
+    "name": "Abroads Tours",
+    "url": "{{ request.build_absolute_uri:'/' }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ tour.price_adult }}",
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ tour.rating }}",
+    "reviewCount": "{{ tour.reviews_count }}"
+  },
+  "duration": "PT{{ tour.duration_hours }}H{% if tour.duration_minutes %}{{ tour.duration_minutes }}M{% endif %}",
+  {% if tour.featured_image %}
+  "image": "{{ request.build_absolute_uri:tour.featured_image.url }}",
+  {% endif %}
+  "url": "{{ request.build_absolute_uri:tour.get_absolute_url }}"
+}
+</script>
+{% endblock %}
