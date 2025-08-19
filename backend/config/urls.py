@@ -61,6 +61,9 @@ urlpatterns = [
     
     # CKEditor
     path("ckeditor/", include("ckeditor_uploader.urls")),
+
+    # Django-Filer маршруты
+    path("filer/", include("filer.urls")),  
 ]
 
 # Добавляем RSS feeds для блога если доступны

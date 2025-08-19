@@ -40,9 +40,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sitemaps",
+    # Django-Filer и зависимости
+    "easy_thumbnails",
+    "filer",
+    "mptt",
+    # Ваши приложения
     "core",
     "blog",
     "tours",
+    # Остальные зависимости
     "parler",
     "ckeditor",
     "ckeditor_uploader",
@@ -145,6 +151,17 @@ STATIC_ROOT = BASE_DIR / "collected_static"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Настройки Django-Filer
+THUMBNAIL_HIGH_RESOLUTION = True
+THUMBNAIL_QUALITY = 90
+THUMBNAIL_PROCESSORS = (
+    "easy_thumbnails.processors.colorspace",
+    "easy_thumbnails.processors.autocrop",
+    "easy_thumbnails.processors.scale_and_crop",
+    "filer.thumbnail_processors.scale_and_crop_with_subject_location",
+    "easy_thumbnails.processors.filters",
+)
 
 if DEBUG:
     STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage"

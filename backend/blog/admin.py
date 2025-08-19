@@ -10,6 +10,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from parler.admin import TranslatableAdmin, TranslatableTabularInline
 from .models import BlogPost, Category, BlogImage, BlogComment
+from filer.fields.image import FilerImageField
 import json
 
 
