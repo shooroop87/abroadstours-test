@@ -1,4 +1,4 @@
-# backend/tours/admin.py - ЧАСТЬ 1 из 4
+# backend/tours/admin.py - ИСПРАВЛЕННАЯ ВЕРСИЯ
 from django.contrib import admin
 from django.utils.html import format_html
 from django.urls import reverse, path
@@ -175,7 +175,27 @@ class TourFAQInline(admin.TabularInline, WordPressStyleTourAdminMixin):
     faq_actions.short_description = 'Actions'
 
 
-# backend/tours/admin.py - ЧАСТЬ 2 из 4
+class TourMeetingPointInline(admin.TabularInline, WordPressStyleTourAdminMixin):
+    """Inline для точек встречи"""
+    model = TourMeetingPoint
+    extra = 1
+    fields = ('meeting_point_info', 'meeting_time', 'sort_order', 'is_primary')
+    readonly_fields = ('meeting_point_info',)
+    
+    def meeting_point_info(self, obj):
+        name = obj.safe_translation_getter('name', any_language=True) or 'No name'
+        address = obj.safe_translation_getter('address', any_language=True) or 'No address'
+        
+        return format_html(
+            '<div>'
+            '<strong style="color: #0073aa;">📍 {}</strong><br>'
+            '<small style="color: #666;">{}</small>'
+            '</div>',
+            name[:50] + '...' if len(name) > 50 else name,
+            address[:80] + '...' if len(address) > 80 else address
+        )
+    meeting_point_info.short_description = 'Meeting Point Info'
+
 
 @admin.register(TourCategory)
 class TourCategoryAdmin(TranslatableAdmin, WordPressStyleTourAdminMixin):
@@ -389,7 +409,176 @@ class TourDifficultyAdmin(admin.ModelAdmin, WordPressStyleTourAdminMixin):
         return '-'
     difficulty_actions.short_description = 'Actions'
 
-# backend/tours/admin.py - ЧАСТЬ 4 из 4 (завершение)
+
+@admin.register(Tour)
+class TourAdmin(TranslatableAdmin, WordPressStyleTourAdminMixin):
+    """Главная админка для туров в WordPress стиле"""
+    
+    list_display = (
+        'tour_thumbnail', 'get_title_with_status', 'category_info', 
+        'pricing_display', 'performance_score', 'tour_actions'
+    )
+    list_filter = (
+        'status', 'category', 'difficulty', 'tour_type', 
+        'is_featured', 'free_cancellation'
+    )
+    search_fields = (
+        'translations__title', 'translations__short_description', 
+        'author__username', 'category__translations__name'
+    )
+    list_per_page = 25
+    ordering = ['-is_featured', 'sort_order', '-created_at']
+    
+    # Inline админки
+    inlines = [TourImageInline, TourFAQInline, TourMeetingPointInline]
+    
+    # Fieldsets для формы редактирования
+    fieldsets = (
+        ('🎯 Tour Basics', {
+            'fields': (
+                'author', 'category', 'difficulty', 'status', 'tour_type', 
+                'is_featured', 'sort_order'
+            ),
+            'classes': ('wp-tour-box', 'wp-tour-box-primary'),
+        }),
+        ('📝 Content', {
+            'fields': (
+                'title', 'slug', 'short_description', 'featured_image'
+            ),
+            'classes': ('wp-tour-box', 'wp-tour-box-content'),
+        }),
+        ('📖 Detailed Content', {
+            'fields': (
+                'tour_highlights', 'why_unique', 'what_experience',
+                'whats_included', 'whats_not_included'
+            ),
+            'classes': ('wp-tour-box', 'wp-tour-box-detailed'),
+        }),
+        ('⏰ Tour Details', {
+            'fields': (
+                'duration_hours', 'duration_minutes', 'max_group_size', 
+                'languages', 'free_cancellation', 'reserve_now_pay_later', 
+                'instant_confirmation'
+            ),
+            'classes': ('wp-tour-box', 'wp-tour-box-details'),
+        }),
+        ('💰 Pricing', {
+            'fields': ('price_adult', 'price_child', 'price_private'),
+            'classes': ('wp-tour-box', 'wp-tour-box-pricing'),
+        }),
+        ('⭐ Rating & Reviews', {
+            'fields': ('rating', 'reviews_count'),
+            'classes': ('wp-tour-box', 'wp-tour-box-rating'),
+        }),
+        ('🔍 SEO', {
+            'fields': ('meta_title', 'meta_description', 'meta_keywords', 'tags'),
+            'classes': ('wp-tour-box', 'wp-tour-box-seo', 'collapse'),
+        }),
+        ('📊 Analytics', {
+            'fields': ('tour_analytics_dashboard',),
+            'classes': ('wp-tour-box', 'wp-tour-box-analytics'),
+        }),
+        ('👁️ Preview', {
+            'fields': ('tour_preview_card',),
+            'classes': ('wp-tour-box', 'wp-tour-box-preview'),
+        }),
+    )
+    
+    readonly_fields = ('tour_analytics_dashboard', 'tour_preview_card')
+    
+    # Методы для list_display
+    def tour_thumbnail(self, obj):
+        """Миниатюра тура"""
+        if obj.featured_image:
+            return format_html(
+                '<div class="wp-tour-thumbnail" style="position: relative; width: 60px; height: 60px;">'
+                '<img src="{}" style="width: 60px; height: 60px; object-fit: cover; '
+                'border-radius: 8px; border: 2px solid {};" />'
+                '{}'
+                '</div>',
+                obj.featured_image.url,
+                '#46b450' if obj.status == 'published' else '#82878c',
+                '<div style="position: absolute; top: 2px; right: 2px; '
+                'background: rgba(0,0,0,0.8); color: white; border-radius: 2px; '
+                'padding: 1px 3px; font-size: 8px; font-weight: bold;">⭐</div>' if obj.is_featured else ''
+            )
+        return format_html(
+            '<div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f1f1f1, #e1e1e1); '
+            'border-radius: 8px; display: flex; align-items: center; justify-content: center; '
+            'border: 2px solid #ddd; color: #999; font-size: 20px;">🎯</div>'
+        )
+    tour_thumbnail.short_description = ''
+    
+    def get_title_with_status(self, obj):
+        """Название тура со статусом"""
+        title = obj.safe_translation_getter('title', any_language=True) or f'Tour {obj.pk}'
+        
+        status_colors = {
+            'published': '#46b450',
+            'draft': '#f56e28', 
+            'archived': '#82878c'
+        }
+        
+        status_icons = {
+            'published': '🟢',
+            'draft': '🟡',
+            'archived': '⚫'
+        }
+        
+        return format_html(
+            '<div class="wp-tour-title-status">'
+            '<div style="font-weight: bold; color: #0073aa; font-size: 14px; margin-bottom: 3px; '
+            'max-width: 250px; line-height: 1.3;">{}</div>'
+            '<div style="display: flex; align-items: center; gap: 5px;">'
+            '<span style="font-size: 10px;">{}</span>'
+            '<span style="background: {}; color: white; padding: 2px 6px; '
+            'border-radius: 10px; font-size: 9px; font-weight: bold; '
+            'text-transform: uppercase;">{}</span>'
+            '{}'
+            '</div>'
+            '</div>',
+            title,
+            status_icons.get(obj.status, '🔘'),
+            status_colors.get(obj.status, '#82878c'),
+            obj.status,
+            '<span style="background: #826eb4; color: white; padding: 2px 6px; '
+            'border-radius: 10px; font-size: 8px; font-weight: bold; '
+            'margin-left: 5px;">FEATURED</span>' if obj.is_featured else ''
+        )
+    get_title_with_status.short_description = 'Tour Title & Status'
+    get_title_with_status.admin_order_field = 'translations__title'
+    
+    def category_info(self, obj):
+        """Информация о категории и типе"""
+        category_name = obj.category.safe_translation_getter('name', any_language=True) if obj.category else 'No Category'
+        tour_type = obj.get_tour_type_display()
+        
+        return format_html(
+            '<div class="wp-tour-category-info" style="text-align: center;">'
+            '<div style="font-weight: bold; color: #0073aa; font-size: 12px;">{}</div>'
+            '<div style="font-size: 10px; color: #666;">{}</div>'
+            '</div>',
+            category_name, tour_type
+        )
+    category_info.short_description = 'Category & Type'
+    
+    def pricing_display(self, obj):
+        """Отображение цен"""
+        return format_html(
+            '<div class="wp-tour-pricing" style="text-align: center; '
+            'background: linear-gradient(135deg, #f9f9f9, #f1f1f1); '
+            'padding: 8px; border-radius: 6px; border: 1px solid #e1e1e1;">'
+            '<div style="font-size: 18px; font-weight: bold; color: #46b450; margin-bottom: 3px;">'
+            '€{}</div>'
+            '<div style="font-size: 10px; color: #666;">ADULT</div>'
+            '{}'
+            '</div>',
+            obj.price_adult,
+            f'<div style="font-size: 11px; color: #0073aa; margin-top: 2px;">Child: €{obj.price_child}</div>' 
+            if obj.price_child else ''
+        )
+    pricing_display.short_description = 'Pricing'
+    
     def performance_score(self, obj):
         """Performance Score как общая оценка тура"""
         score = 0
@@ -478,16 +667,16 @@ class TourDifficultyAdmin(admin.ModelAdmin, WordPressStyleTourAdminMixin):
             # Quick publish/unpublish
             if obj.status != 'published':
                 actions.append(
-                    self.get_wordpress_button('Publish', f'/admin/tours/tour/{obj.pk}/quick-publish/', 'success', '🚀')
+                    self.get_wordpress_button('Publish', f'#', 'success', '🚀')
                 )
             else:
                 actions.append(
-                    self.get_wordpress_button('Draft', f'/admin/tours/tour/{obj.pk}/quick-draft/', 'warning', '📝')
+                    self.get_wordpress_button('Draft', f'#', 'warning', '📝')
                 )
             
             # Duplicate button
             actions.append(
-                self.get_wordpress_button('Copy', f'/admin/tours/tour/{obj.pk}/duplicate/', 'secondary', '📄')
+                self.get_wordpress_button('Copy', f'#', 'secondary', '📄')
             )
             
             return format_html(
@@ -597,7 +786,7 @@ class TourDifficultyAdmin(admin.ModelAdmin, WordPressStyleTourAdminMixin):
 # Остальные админ-классы
 @admin.register(TourImage)
 class TourImageAdmin(admin.ModelAdmin, WordPressStyleTourAdminMixin):
-    list_display = ('image_thumbnail', 'tour_info', 'image_details', 'sort_order', 'is_featured')
+    list_display = ('image_thumbnail', 'tour_info', 'alt_text', 'sort_order', 'is_featured')
     list_filter = ('is_featured', 'created_at')
     search_fields = ('tour__translations__title', 'alt_text', 'caption')
     
@@ -649,6 +838,26 @@ class TourReviewAdmin(TranslatableAdmin, WordPressStyleTourAdminMixin):
         stars = '⭐' * obj.rating + '☆' * (5 - obj.rating)
         return format_html('<span style="font-size: 16px;">{}</span>', stars)
     rating_stars.short_description = 'Rating'
+    
+    def tour_link(self, obj):
+        tour_title = obj.tour.safe_translation_getter('title', any_language=True)
+        return format_html(
+            '<a href="/admin/tours/tour/{}/change/">{}</a>',
+            obj.tour.pk, tour_title or f'Tour {obj.tour.pk}'
+        )
+    tour_link.short_description = 'Tour'
+
+
+@admin.register(TourMeetingPoint)
+class TourMeetingPointAdmin(TranslatableAdmin, WordPressStyleTourAdminMixin):
+    list_display = ('meeting_point_name', 'tour_link', 'meeting_time', 'is_primary', 'sort_order')
+    list_filter = ('is_primary', 'meeting_time')
+    search_fields = ('tour__translations__title', 'translations__name', 'translations__address')
+    
+    def meeting_point_name(self, obj):
+        name = obj.safe_translation_getter('name', any_language=True) or 'No name'
+        return name[:50] + '...' if len(name) > 50 else name
+    meeting_point_name.short_description = 'Meeting Point'
     
     def tour_link(self, obj):
         tour_title = obj.tour.safe_translation_getter('title', any_language=True)

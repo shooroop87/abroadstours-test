@@ -14557,3 +14557,9 @@ button.gm-ui-hover-effect::after {
 .source-info {
   display: none;
 }
+
+body:not(.preloader-done) #ht-ctc-chat,
+body:not(.preloader-done) [id^="ht-ctc"],
+body:not(.preloader-done) .ht-ctc-chat {
+  display: none !important;
+}

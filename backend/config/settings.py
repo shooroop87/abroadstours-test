@@ -53,8 +53,7 @@ INSTALLED_APPS = [
     "ckeditor",
     "ckeditor_uploader",
     "taggit",
-    "meta",  # Meta теги
-    "sorl.thumbnail",  # Миниатюры изображений
+    "meta",
 ]
 
 # Dev-only apps
@@ -473,3 +472,13 @@ MAX_IMAGE_SIZE = 5 * 1024 * 1024  # 5MB
 IMAGE_QUALITY = 85
 MAX_IMAGE_WIDTH = 1200
 MAX_IMAGE_HEIGHT = 1200
+
+# Настройки easy-thumbnails для blog
+THUMBNAIL_ALIASES = {
+    '': {
+        'blog_featured': {'size': (1200, 630), 'crop': True, 'quality': 85},
+        'blog_preview': {'size': (400, 300), 'crop': True, 'quality': 85},
+        'blog_thumb': {'size': (150, 150), 'crop': True, 'quality': 80},
+        'admin_thumb': {'size': (100, 75), 'crop': True, 'quality': 75},
+    },
+}

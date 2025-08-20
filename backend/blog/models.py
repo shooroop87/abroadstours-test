@@ -10,6 +10,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from django.contrib.auth.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
+from easy_thumbnails.fields import ThumbnailerImageField
 from parler.models import TranslatableModel, TranslatedFields
 from taggit.managers import TaggableManager
 from PIL import Image
@@ -71,7 +72,7 @@ class BlogPost(TranslatableModel):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
-    featured_image = models.ImageField(
+    featured_image = ThumbnailerImageField(
         upload_to='blog/featured/', 
         blank=True, null=True,
         help_text="Recommended size: 1200x630px for social media"
@@ -613,7 +614,7 @@ class BlogPost(TranslatableModel):
 class BlogImage(models.Model):
     """Модель для изображений в статьях"""
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='blog/images/')
+    image = ThumbnailerImageField(upload_to='blog/images/')
     alt_text = models.CharField(max_length=200, blank=True)
     caption = models.CharField(max_length=300, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

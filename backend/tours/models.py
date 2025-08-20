@@ -1,4 +1,4 @@
-# backend/tours/models.py - ЧАСТЬ 1 из 3
+# backend/tours/models.py - ИСПРАВЛЕННАЯ ВЕРСИЯ
 import logging
 import os
 from django.db import models
@@ -41,7 +41,8 @@ class TourCategory(TranslatableModel):
     def get_absolute_url(self):
         slug = self.safe_translation_getter('slug', any_language=True)
         if slug:
-            return reverse('tours:category', kwargs={'slug': slug})
+            # ИСПРАВЛЕНО: убрали namespace
+            return reverse('tour_category', kwargs={'slug': slug})
         return '#'
 
 
@@ -156,7 +157,7 @@ class Tour(TranslatableModel):
         title = self.safe_translation_getter('title', any_language=True)
         return title or f"Tour {self.pk}"
     
-    # Переводимые поля
+    # Переводимые поля - УБРАЛИ meeting_points отсюда!
     translations = TranslatedFields(
         title=models.CharField(max_length=200, verbose_name="Tour Title"),
         slug=models.SlugField(max_length=250, unique=True, verbose_name="URL Slug"),
@@ -198,11 +199,7 @@ class Tour(TranslatableModel):
             help_text="List of services not included in the price"
         ),
         
-        meeting_points=RichTextUploadingField(
-            blank=True,
-            verbose_name="Meeting Points",
-            help_text="Detailed meeting point information with addresses and times"
-        ),
+        # УБРАЛИ meeting_points отсюда - оно будет через ForeignKey в TourMeetingPoint!
         
         private_tour_info=RichTextUploadingField(
             blank=True,
@@ -232,9 +229,32 @@ class Tour(TranslatableModel):
     def get_absolute_url(self):
         """Получаем URL тура"""
         slug = self.safe_translation_getter('slug', any_language=True)
-        if slug:
-            return reverse('tours:detail', kwargs={'slug': slug})
-        return '#'
+        if not slug:
+            # Если нет slug, генерируем его из title
+            title = self.safe_translation_getter('title', any_language=True)
+            if title:
+                slug = slugify(title)
+            else:
+                slug = f"tour-{self.pk}"
+        
+        # ИСПРАВЛЕНО: убрали namespace 'tours:'
+        # Проверяем, есть ли статичный URL для этого тура
+        static_tours_mapping = {
+            'barolo-wine-tasting-tour-from-milan-alba': 'alba_barolo_tour',
+            'barolo-barbaresco-wine-tasting-from-milan-visit-alba': 'barolo_barbaresco_from_milan',
+            'kick-off-walking-tour-in-milano': 'kick_off_walking_tour_in_milano',
+            'como-city-walking-tour-with-the-boat-cruise-small-group-tour': 'como_city_walking_tour',
+            'lake-como-and-lugano-small-group-tour-from-milan': 'lake_como_and_lugano_tour',
+            'bellagio-varenna-from-milan': 'bellagio_varenna_tour',
+            'from-milan-lake-como-and-lugano-tour-with-morcote': 'lake_como_lugano_morcote_tour',
+        }
+        
+        # Если есть статичный URL, используем его
+        if slug in static_tours_mapping:
+            return reverse(static_tours_mapping[slug])
+        
+        # Иначе используем динамический URL
+        return reverse('tour_detail', kwargs={'slug': slug})
     
     def get_duration_display(self):
         """Форматированное отображение продолжительности"""
@@ -289,7 +309,6 @@ class Tour(TranslatableModel):
         
         logger.info(f"✅ Тур сохранен, ID={self.pk}")
 
-# backend/tours/models.py - ЧАСТЬ 3 из 3 (связанные модели)
 
 class TourImage(models.Model):
     """Галерея изображений для тура"""
@@ -384,8 +403,8 @@ class TourReview(TranslatableModel):
 
 
 class TourMeetingPoint(TranslatableModel):
-    """Точки встречи для тура"""
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='meeting_points')
+    """Точки встречи для тура - ИСПРАВЛЕНО related_name"""
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='tour_meeting_points')
     
     # Время встречи
     meeting_time = models.TimeField(help_text="Meeting time (e.g., 08:55)")

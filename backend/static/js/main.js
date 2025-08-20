@@ -18,6 +18,7 @@ App.SMcontroller = new ScrollMagic.Controller();
 
 // Переменные для контроля прелоадера
 let preloaderHidden = false;
+let preloaderAnimationCompleted = false; // НОВЫЙ ФЛАГ
 
 window.onload = function () {
   document.fonts.ready.then(function () {
@@ -41,6 +42,70 @@ function hidePreloader() {
   
   if (preloader) {
     preloader.classList.add('-is-hidden');
+
+    // Ждём реального завершения анимации прелоадера (transitionend) с резервом
+    const FALLBACK_MS = 2000; // подгони под самую длинную анимацию прелоадера
+    let done = false;
+
+    const finalize = () => {
+      if (done) return;
+      done = true;
+      preloaderAnimationCompleted = true;
+      // ✅ маячок готовности
+      document.body.classList.add('preloader-done');
+      window.dispatchEvent(new Event('preloader:done'));
+      console.log('Preloader animation completed (transitionend/fallback)');
+
+      // Теперь можно инициализировать WhatsApp
+      if (window.App && window.App.CookieManager) {
+        try {
+          window.App.CookieManager.loadWhatsApp();
+        } catch (e) {
+          console.warn('CookieManager.loadWhatsApp() failed:', e);
+        }
+      }
+    };
+
+    // Слушаем завершение перехода у контейнера прелоадера
+    const onEnd = (e) => {
+      // if (e.propertyName && e.propertyName !== 'opacity') return; // при желании можно ограничить по свойству
+      if (e.target === preloader) {
+        preloader.removeEventListener('transitionend', onEnd);
+        finalize();
+      }
+    };
+    preloader.addEventListener('transitionend', onEnd);
+
+    // Если фон/оверлей в отдельном дочернем элементе — слушаем и его как триггер
+    const bg = preloader.querySelector('.js-preloader__bg, .preloader__bg');
+    if (bg) {
+      const onBgEnd = (e) => {
+        // if (e.propertyName && e.propertyName !== 'opacity') return;
+        if (e.target === bg) {
+          bg.removeEventListener('transitionend', onBgEnd);
+          finalize();
+        }
+      };
+      bg.addEventListener('transitionend', onBgEnd);
+    }
+
+    // Резерв, если transitionend не прилетел
+    setTimeout(finalize, FALLBACK_MS);
+  } else {
+    preloaderAnimationCompleted = true;
+    // ✅ маячок готовности даже если прелоадера нет
+    document.body.classList.add('preloader-done');
+    window.dispatchEvent(new Event('preloader:done'));
+    console.log('No preloader found, setting flag to true immediately');
+    
+    // Инициализация WhatsApp по той же логике
+    if (window.App && window.App.CookieManager) {
+      try {
+        window.App.CookieManager.loadWhatsApp();
+      } catch (e) {
+        console.warn('CookieManager.loadWhatsApp() failed:', e);
+      }
+    }
   }
   
   initComponents();
@@ -424,7 +489,6 @@ function menuClose() {
     })
 }
 
-
 const Header = (function() {
   let navList;
   let navBtnListBack;
@@ -482,9 +546,6 @@ const Header = (function() {
     let showListItems = showList.children;
     showListItems = Array.from(showListItems);
     const showListLinks = showListItems.map(item => item.querySelector('li > a'));
-
-    // let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-    // if (width < 1199 || document.querySelector('.js-desktopMenu')) {}
 
     timeline
       .clear()
@@ -656,7 +717,6 @@ function sectionSlider() {
       pagination: pagination,
       spaceBetween: 10,
       
-      // width: 330,
       slidesPerView: parseInt(cols_base),
       breakpoints: {
         1199: { slidesPerView: parseInt(cols_xl), width: null, spaceBetween: parseInt(gap), },
@@ -839,10 +899,6 @@ const ShowMore = (function() {
   }
 })();
 
-/*--------------------------------------------------
-  12. Parallax
----------------------------------------------------*/
-
 function parallaxInit() {
   if (!document.querySelector('[data-parallax]')) return;
   const target = document.querySelectorAll('[data-parallax]')
@@ -854,10 +910,6 @@ function parallaxInit() {
     })
   })
 }
-
-/*--------------------------------------------------
-  06. Elements reveal
----------------------------------------------------*/
 
 const RevealAnim = (function() {
   function single() {
@@ -881,12 +933,8 @@ const RevealAnim = (function() {
   }
   
   function container() {
-  
     const animationContainer = document.querySelectorAll('[data-anim-wrap]');
-  
-    if (!animationContainer.length) {
-      return;
-    }
+    if (!animationContainer.length) return;
     
     for (let i = 0; i < animationContainer.length; i++) {
       const el = animationContainer[i];
@@ -898,20 +946,15 @@ const RevealAnim = (function() {
         reverse: false,
       })
       .on('enter', function (event) {
-        
         const animChilds = el.querySelectorAll('[data-anim-child]');
         el.classList.add('animated');
         animChilds.forEach(el => animateElement(el));
-        
       })
       .addTo(App.SMcontroller)
     }
-  
   }
-  
 
   function animateElement(target) {
-    
     let attrVal;
     let animDelay;
     let attrDelayPart;
@@ -936,11 +979,9 @@ const RevealAnim = (function() {
     else {
       target.classList.add('is-in-view');
     }
-
   }
   
   function counter(target, animDelay = 0) {
-  
     const counterVal = target.getAttribute('data-counter');
     const counterAdd = target.getAttribute('data-counter-add');
     const totalDelay = animDelay;
@@ -963,7 +1004,6 @@ const RevealAnim = (function() {
         counterNum.innerHTML = Math.round(object.count) + symbols;
       },
     });
-  
   }
 
   function init() {
@@ -976,15 +1016,8 @@ const RevealAnim = (function() {
   }
 })();
 
-/*--------------------------------------------------
-  11. Lazy loading
----------------------------------------------------*/
-
 function lazyLoading() {
-  if (!document.querySelector('.js-lazy')) {
-    return;
-  }
-
+  if (!document.querySelector('.js-lazy')) return;
   new LazyLoad({
     elements_selector: ".js-lazy",
   });
@@ -1107,12 +1140,7 @@ const Select = (function() {
   }
 })()
 
-/*--------------------------------------------------
-  05. Custom cursor
----------------------------------------------------*/
-
 const Cursor = (function() {
-
   const cursor = document.querySelector(".js-cursor");
   let follower;
   let label;
@@ -1126,7 +1154,6 @@ const Cursor = (function() {
   let state;
 
   function variables() {
-
     follower = cursor.querySelector(".js-follower");
     label = cursor.querySelector(".js-label");
     icon = cursor.querySelector(".js-icon");
@@ -1137,11 +1164,9 @@ const Cursor = (function() {
     cursorHeight = cursor.offsetHeight / 2;
     cursorTriggers;
     state = false;
-
   }
 
   function init() {
-
     if (!cursor) return;
 
     variables();
@@ -1170,11 +1195,9 @@ const Cursor = (function() {
 
     update();
     breakpoint();
-
   }
 
   function enterHandler({ target }) {
-
     cursor.classList.add('is-active');
 
     if (target.getAttribute('data-cursor-label')) {
@@ -1195,11 +1218,9 @@ const Cursor = (function() {
       const iconAttr = target.getAttribute('data-cursor-icon');
       icon.innerHTML = feather.icons[iconAttr].toSvg();
     }
-
   }
   
   function leaveHandler() {
-
     App.body.classList.remove('is-cursor-active');
     cursor.classList.remove('is-active');
     cursor.classList.remove('has-label');
@@ -1207,11 +1228,9 @@ const Cursor = (function() {
     cursor.classList.remove('has-icon');
     label.innerHTML = '';
     icon.innerHTML = '';
-
   }
 
   function update() {
-
     if (!cursor) return;
 
     cursorTriggers = document.querySelectorAll([
@@ -1229,36 +1248,28 @@ const Cursor = (function() {
       el.addEventListener("mouseenter", enterHandler);
       el.addEventListener("mouseleave", leaveHandler);
     });
-
   }
 
   function clear() {
-
     if (!cursor) return;
     
     cursorTriggers.forEach(el => {
       el.removeEventListener("mouseenter", enterHandler);
       el.removeEventListener("mouseleave", leaveHandler);
     });
-
   }
 
   function hide() {
-
     if (!cursor) return;
     cursor.classList.add('is-hidden');
-
   }
 
   function show() {
-
     if (!cursor) return;
     cursor.classList.remove('is-hidden');
-
   }
 
   function breakpoint() {
-
     if (!state) return;
     if (!App.config.cursorFollower.disableBreakpoint) return;
 
@@ -1287,7 +1298,6 @@ const Cursor = (function() {
         update();
       }
     })
-
   }
 
   return {
@@ -1298,9 +1308,7 @@ const Cursor = (function() {
     hide: hide,
     show: show,
   };
-
 })();
-
 
 const Events = (function() {
   function init() {
@@ -1353,40 +1361,12 @@ const Events = (function() {
     })
   }
 
-  // function closeAllDropdowns() {
-  //   // const classes = document.querySelectorAll(".-is-dd-wrap-active")
-  //   // if (classes) {
-  //   //   classes.forEach(el => {
-  //   //     el.classList.remove('-is-dd-wrap-active')
-  //   //   });
-  //   // }
-
-  //   console.log('seoijr')
-
-  //   const targets = document.querySelectorAll(".js-form-dd")
-  //   if (!targets) return
-  
-  //   targets.forEach((el) => {
-  //     const eventElement = el.querySelector('[data-x-dd]')
-  //     const eventTarget = el.querySelector('[data-x-dd-click]')
-  //     const attributes = eventTarget.getAttribute('data-x-dd-click').split(', ')
-      
-  //     attributes.forEach((el) => {
-  //       eventElement.classList.remove('-is-active')
-  //       const target = document.querySelector(`[data-x-dd=${el}]`)
-  //       const toggleClass = target.getAttribute('data-x-dd-toggle')
-  //       target.classList.remove(toggleClass)
-  //     })
-  //   })
-  // }
-
   return {
     ddInit: ddInit,
     closeAllDropdowns: closeAllDropdowns,
     init: init,
   }
 })()
-
 
 function closeAllDropdowns() {
   const targets = document.querySelectorAll(".js-form-dd")
@@ -1399,16 +1379,13 @@ function closeAllDropdowns() {
   })
 
   const alldds = document.querySelectorAll('.js-dropdown.is-active')
-
   alldds.forEach(el => {
     el.classList.remove('is-active')
   })
 }
 
 window.onclick = function(event) {
-  if (
-    !event.target.closest(".js-form-dd")
-  ) {
+  if (!event.target.closest(".js-form-dd")) {
     closeAllDropdowns()
   }
 
@@ -1436,3 +1413,6 @@ window.onclick = function(event) {
 }
 
 })();
+
+// ВАЖНО: Глобальная функция должна быть ВНЕ закрывающей скобки
+window.isPreloaderHidden = function() { return document.body.classList.contains('preloader-done'); };

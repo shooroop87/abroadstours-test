@@ -47,9 +47,14 @@ services:
     command: >
       sh -c "
         echo 'Running migrations...' &&
+        python manage.py makemigrations core &&
+        python manage.py makemigrations blog &&
+        python manage.py makemigrations tours &&
         python manage.py migrate &&
         python manage.py collectstatic --noinput &&
-        echo 'Migrations and static files collection completed.'
+        echo 'Loading initial tours data...' &&
+        python manage.py load_initial_tours_data &&
+        echo 'Migrations and setup completed.'
       "
     restart: "no"
 

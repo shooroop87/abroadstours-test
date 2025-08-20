@@ -124,19 +124,21 @@
                 </div>
               </a>
             </div>
-            {% empty %}
-            <div class="col-12">
-              <div class="text-center py-60">
-                <h3>{% trans "No articles found" %}</h3>
-                <p class="mt-10">{% trans "Check back soon for new travel stories and guides." %}</p>
-                <div class="mt-20">
-                  <a href="{% url 'admin:blog_blogpost_add' %}" class="button -sm -dark-1 bg-accent-1 text-white">
-                    {% trans "Add Your First Post" %}
-                  </a>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
+{% empty %}
+<div class="col-12">
+  <div class="text-center py-60">
+    <h3>{% trans "No articles found" %}</h3>
+    <p class="mt-10">{% trans "Check back soon for new travel stories and guides." %}</p>
+    
+    <!-- ИСПРАВЛЕНО: убрали namespace из URL -->
+    <div class="mt-20">
+      <a href="{% url 'tours' %}" class="button -sm -dark-1 bg-accent-1 text-white">
+        {% trans "Browse Our Tours" %}
+      </a>
+    </div>
+  </div>
+</div>
+{% endfor %}
 
           </div>
         </div>

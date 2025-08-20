@@ -6,19 +6,21 @@
 {% block description %}{{ page_description }}{% endblock %}
 
 {% block content %}
+
 <!-- Breadcrumb -->
-<div data-anim="fade" class="container">
-  <div class="row justify-between py-30 mt-80">
-    <div class="col-auto">
-      <a href="{% url 'index' %}">{% trans "Home" %}</a> > 
-      <a href="{% url 'tours:list' %}">{% trans "Tours" %}</a> > 
+    <div data-anim="fade" class="container">
+      <div class="row justify-between py-30 mt-80">
+        <div class="col-auto">
+ <a href="{% url 'index' %}">Home</a> > <a href="{% url 'tour_list' %}">{% trans "Tours" %}</a> > 
       {% if tour.category %}
-        <a href="{{ tour.category.get_absolute_url }}">{{ tour.category.safe_translation_getter.name }}</a> >
+        {{ tour.category.safe_translation_getter.name|default:tour.category.name|default:"Tour" }}
+      {% else %}
+        {% trans "Tour" %}
       {% endif %}
-      {{ tour.safe_translation_getter.title }}
+      > {{ tour.safe_translation_getter.title|default:tour.title|default:"Untitled Tour" }}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 <!-- Tour Header -->
 <section class="">
@@ -50,7 +52,7 @@
         </div>
 
         <h1 class="text-40 sm:text-30 lh-14 mt-20">
-          {{ tour.safe_translation_getter.title }}
+          {{ tour.safe_translation_getter.title|default:tour.title|default:"Untitled Tour" }}
         </h1>
 
         <div class="row x-gap-20 y-gap-20 items-center pt-20">
@@ -78,7 +80,7 @@
           </div>
           {% endif %}
 
-          {% if tour.reviews_count > 10 %}
+          {% if tour.reviews_count > 1 %}
           <div class="col-auto">
             <div class="d-flex items-center">
               <svg viewBox="0 0 24 24" width="22px" height="22px" class="d Vb UmNoP" aria-hidden="true">
@@ -280,16 +282,17 @@
         {% endif %}
 
         <!-- Meeting Points -->
-        {% if tour.meeting_points.all %}
+        {% if tour.tour_meeting_points.all %}
         <div class="line mt-40 mb-40"></div>
         <h2 class="text-30">{% trans "Meeting Points" %}</h2>
         <div class="mt-20">
-          {% for meeting_point in tour.meeting_points.all %}
+          {% for meeting_point in tour.tour_meeting_points.all %}
           <div class="tourSingleCard -meeting-point {% if not forloop.last %}mb-20{% endif %}">
             <div class="tourSingleCard__content">
               <div class="d-flex items-center mb-15">
                 <i class="icon-pin text-20 text-accent-1 mr-10"></i>
-                <h4 class="text-18 fw-500">{{ meeting_point.safe_translation_getter.name }}</h4>
+
+                <h4 class="text-18 fw-500">{{ meeting_point.safe_translation_getter.translations.name }}</h4>
                 {% if meeting_point.is_primary %}
                 <span class="button -sm -accent-1 bg-accent-1-05 text-accent-1 ml-10">{% trans "Primary" %}</span>
                 {% endif %}
@@ -323,29 +326,14 @@
         <div class="line mt-40 mb-40"></div>
         <div id="reviews" class="row y-gap-40">
           <div class="col-12">
-            <h2 class="text-30">{% trans "Reviews" %} ({{ tour.reviews_count }})</h2>
+            <h2 class="text-30">{% trans "Customer Reviews" %} ({{ tour.reviews_count }})</h2>
           </div>
 
           {% if tour.reviews_count > 0 %}
           <div class="col-12">
             <div class="row x-gap-40 y-gap-40">
-              <div class="col-lg-4">
-                <div class="tourSingleCard -rating">
-                  <div class="tourSingleCard__content">
-                    <div class="d-flex items-center">
-                      <div class="flex-center bg-accent-1 rounded-12 size-70">
-                        <div class="text-30 fw-600 text-white">{{ tour.rating }}</div>
-                      </div>
-                      <div class="ml-20">
-                        <div class="lh-15 fw-500 text-dark-1">{% trans "Excellent" %}</div>
-                        <div class="lh-15 text-light-2">{{ tour.reviews_count }} reviews</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
 
-              <div class="col-lg-8">
+              <div class="col-lg-12">
                 <!-- Individual Reviews -->
                 {% for review in tour.reviews.all %}
                 <div class="tourSingleCard -review mb-30">
@@ -431,146 +419,65 @@
       </div>
 
       <!-- Booking Sidebar -->
-      <div class="col-lg-4">
-        <div class="tourSingleSidebar">
-          <div data-anim="slide-up" class="tourSingleSidebar__content">
-            
-            <!-- Booking Widget -->
-            <div class="tourSingleCard -booking">
-              <div class="tourSingleCard__content">
-                <!-- Price Display -->
-                <div class="d-flex items-center justify-between mb-20">
-                  <div class="text-18 lh-13 fw-500">{% trans "From" %}</div>
-                  {% if tour.discount_percentage and tour.discount_percentage > 0 %}
-                  <div class="text-14 text-light-2">
-                    <span class="line-through">€{{ tour.original_price|floatformat:0 }}</span>
-                    <span class="text-accent-1 ml-5">{{ tour.discount_percentage }}% {% trans "off" %}</span>
-                  </div>
-                  {% endif %}
-                </div>
-                
-                <div class="text-30 lh-16 fw-600 text-dark-1 mb-5">{{ tour.get_price_display }}</div>
-                <div class="text-14 text-light-2 mb-30">{% trans "per adult" %}</div>
-
-                <!-- Booking Widget from BookingCode model -->
+<div class="col-lg-4">
+            <div class="d-flex justify-end js-pin-content">
+              <div class="tourSingleSidebar">
                 {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
-                  <div class="booking-widget">
                     {{ tour.booking_code.html_code|safe }}
-                  </div>
-                {% else %}
-                  <!-- Default Contact Options if no booking code -->
-                  <div class="text-center py-30">
-                    <h4 class="text-18 fw-500 mb-20">{% trans "Book This Tour" %}</h4>
-                    <p class="text-14 text-light-2 mb-20">{% trans "Contact us to book this amazing experience" %}</p>
-                    <a href="{% url 'contact' %}" class="button -dark-1 bg-accent-1 text-white col-12 mb-15">
-                      {% trans "Contact Us" %}
-                    </a>
-                    <a href="https://wa.me/393208575909" target="_blank" rel="noopener" class="button -outline-success-1 text-success-1 col-12">
-                      <i class="icon-whatsapp text-16 mr-10"></i>
-                      {% trans "WhatsApp" %}
-                    </a>
-                  </div>
                 {% endif %}
-
-                <!-- Help Section -->
-                <div class="mt-30 pt-20 border-1-top">
-                  <div class="text-center">
-                    <div class="text-14 text-light-2 mb-10">{% trans "Need help with booking?" %}</div>
-                    <div class="d-flex justify-center x-gap-15">
-                      <a href="{% url 'contact' %}" class="button -sm -outline-accent-1 text-accent-1">
-                        <i class="icon-email text-16 mr-5"></i>
-                        {% trans "Email" %}
-                      </a>
-                      <a href="https://wa.me/393208575909" target="_blank" rel="noopener" class="button -sm -outline-success-1 text-success-1">
-                        <i class="icon-whatsapp text-16 mr-5"></i>
-                        {% trans "WhatsApp" %}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tour Features -->
-            <div class="tourSingleCard -info mt-30">
-              <div class="tourSingleCard__content">
-                <h5 class="text-18 fw-500 mb-20">{% trans "Why Book With Us?" %}</h5>
-                
-                <div class="y-gap-15">
-                  {% if tour.free_cancellation %}
-                  <div class="d-flex">
-                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
-                    <div class="text-15 lh-15">{% trans "Free cancellation up to 24 hours before" %}</div>
-                  </div>
-                  {% endif %}
-
-                  {% if tour.reserve_now_pay_later %}
-                  <div class="d-flex">
-                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
-                    <div class="text-15 lh-15">{% trans "Reserve now, pay later" %}</div>
-                  </div>
-                  {% endif %}
-
-                  {% if tour.instant_confirmation %}
-                  <div class="d-flex">
-                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
-                    <div class="text-15 lh-15">{% trans "Instant confirmation" %}</div>
-                  </div>
-                  {% endif %}
-
-                  <div class="d-flex">
-                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
-                    <div class="text-15 lh-15">{% trans "Small group experience" %}</div>
-                  </div>
-
-                  <div class="d-flex">
-                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
-                    <div class="text-15 lh-15">{% trans "Expert local guide" %}</div>
-                  </div>
-
-                  <div class="d-flex">
-                    <i class="icon-check flex-center size-16 rounded-full bg-accent-1-05 text-accent-1 text-10 mr-15 mt-5"></i>
-                    <div class="text-15 lh-15">{% trans "Best price guarantee" %}</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Share Tour -->
-            <div class="tourSingleCard -share mt-30">
-              <div class="tourSingleCard__content">
-                <h5 class="text-18 fw-500 mb-20">{% trans "Share this tour" %}</h5>
-                
-                <div class="d-flex x-gap-10">
-                  <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}" 
-                     target="_blank" rel="noopener" 
-                     class="button -sm -outline-facebook text-facebook">
-                    <i class="icon-facebook"></i>
-                  </a>
-                  
-                  <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}&text={{ tour.safe_translation_getter.title|urlencode }}" 
-                     target="_blank" rel="noopener" 
-                     class="button -sm -outline-twitter text-twitter">
-                    <i class="icon-twitter"></i>
-                  </a>
-                  
-                  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}" 
-                     target="_blank" rel="noopener" 
-                     class="button -sm -outline-linkedin text-linkedin">
-                    <i class="icon-linkedin"></i>
-                  </a>
-                  
-                  <a href="https://wa.me/?text={{ tour.safe_translation_getter.title|urlencode }}%20{{ request.build_absolute_uri:tour.get_absolute_url|urlencode }}" 
-                     target="_blank" rel="noopener" 
-                     class="button -sm -outline-success-1 text-success-1">
-                    <i class="icon-whatsapp"></i>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
+<!-- Мобильный фиксированный бар бронирования -->
+    <div class="booking-cta-wrapper only-mobile">
+        <div class="booking-cta-content">
+            <div class="booking-price-text">€159 per adult</div>
+            <button id="openBooking" type="button" class="booking-cta-button">
+                <span>Check availability</span>
+            </button>
         </div>
-      </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="booking-modal__header">
+            <button id="closeBooking" class="button -sm -outline-accent-1">Close</button>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
+                {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
+                    {{ tour.booking_code.html_code|safe }}
+                {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Функционал мобильного модального окна
+        document.getElementById("openBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.add("open");
+            document.body.classList.add("modal-open");
+        });
+
+        document.getElementById("closeBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.remove("open");
+            document.body.classList.remove("modal-open");
+        });
+
+        // Закрытие модалки по клику вне области (опционально)
+        document.getElementById("bookingModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this.classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+
+        // Закрытие модалки по нажатию Escape
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                document.getElementById("bookingModal").classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+    </script>
     </div>
   </div>
 </section>
@@ -759,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Schema.org structured data for SEO -->
+<!-- Schema.org structured data for SEO - ИСПРАВЛЕННАЯ ВЕРСИЯ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -769,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
   "provider": {
     "@type": "Organization",
     "name": "Abroads Tours",
-    "url": "{{ request.build_absolute_uri:'/' }}"
+    "url": "{{ request.scheme }}://{{ request.get_host }}/"
   },
   "offers": {
     "@type": "Offer",
@@ -784,9 +691,9 @@ document.addEventListener('DOMContentLoaded', function() {
   },
   "duration": "PT{{ tour.duration_hours }}H{% if tour.duration_minutes %}{{ tour.duration_minutes }}M{% endif %}",
   {% if tour.featured_image %}
-  "image": "{{ request.build_absolute_uri:tour.featured_image.url }}",
+  "image": "{{ request.scheme }}://{{ request.get_host }}{{ tour.featured_image.url }}",
   {% endif %}
-  "url": "{{ request.build_absolute_uri:tour.get_absolute_url }}"
+  "url": "{{ request.scheme }}://{{ request.get_host }}{{ tour.get_absolute_url }}"
 }
 </script>
 {% endblock %}

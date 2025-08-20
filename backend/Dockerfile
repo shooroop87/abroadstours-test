@@ -32,10 +32,11 @@ COPY . .
 # Создание пользователя для безопасности ПЕРЕД созданием файлов
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
-# Создание директорий для медиа файлов блога и логов
-RUN mkdir -p media/blog/featured media/blog/images media/uploads && \
+# Создание директорий для медиа файлов блога, логов и статики
+RUN mkdir -p media/blog/featured media/blog/images media/uploads media/tours/featured media/tours/gallery && \
     mkdir -p logs && \
-    touch logs/reviews.log logs/django.log
+    mkdir -p core/static && \
+    touch logs/reviews.log logs/django.log logs/tours.log
 
 # Установка прав доступа для пользователя appuser
 RUN chown -R appuser:appuser /app && \

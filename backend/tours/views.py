@@ -1,4 +1,4 @@
-# backend/tours/views.py - Упрощенная версия
+# backend/tours/views.py - ИСПРАВЛЕННАЯ ВЕРСИЯ
 import logging
 from django.views.generic import ListView, DetailView
 from django.shortcuts import get_object_or_404
@@ -127,7 +127,7 @@ class TourDetailView(DetailView):
         ).select_related(
             'author', 'category', 'difficulty'
         ).prefetch_related(
-            'tags', 'images', 'faqs', 'reviews', 'meeting_points'
+            'tags', 'images', 'faqs', 'reviews', 'tour_meeting_points'  # ИСПРАВЛЕНО: meeting_points → tour_meeting_points
         )
         
         return queryset
@@ -191,8 +191,8 @@ class TourDetailView(DetailView):
         # Отзывы (проверенные)
         context['reviews'] = tour.reviews.filter(is_verified=True).order_by('-is_featured', 'sort_order', '-review_date')
         
-        # Точки встречи
-        context['meeting_points'] = tour.meeting_points.all().order_by('sort_order')
+        # Точки встречи - ИСПРАВЛЕНО: meeting_points → tour_meeting_points
+        context['meeting_points'] = tour.tour_meeting_points.all().order_by('sort_order')
         
         # Код бронирования
         try:
