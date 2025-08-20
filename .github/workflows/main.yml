@@ -214,7 +214,7 @@ jobs:
           # 👤 СОЗДАНИЕ СУПЕРПОЛЬЗОВАТЕЛЯ (если не существует)
           echo "👤 Creating admin user..."
           sudo docker compose -f docker-compose.production.yml exec \
-            -e DJANGO_SUPERUSER_USERNAME="${{ secrets.ADMIN_USERNAME }}" \
+            -e DJANGO_SUPERUSER_USERNAME="${{ secrets.SUPERUSER_USERNAME }}" \
             -e DJANGO_SUPERUSER_EMAIL="${{ secrets.ADMIN_EMAIL }}" \
             -e DJANGO_SUPERUSER_PASSWORD="${{ secrets.ADMIN_PASSWORD }}" \
             backend python manage.py create_admin || echo "ℹ️ Admin user creation skipped (may already exist)"

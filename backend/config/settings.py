@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     # Ваши приложения
     "core",
     "blog",
-    "tours",
+    #"tours",
     # Остальные зависимости
     "parler",
     "ckeditor",
@@ -374,7 +374,10 @@ PARLER_LANGUAGES = {
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_BROWSE_SHOW_DIRS = True
-CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_RESTRICT_BY_USER = False         # общий доступ к медиа как в WP
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = True
+CKEDITOR_ALLOW_NONIMAGE_FILES = False
+
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -412,7 +415,6 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath'
         ]),
-        'removeButtons': 'Source,Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,Replace,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,Subscript,Superscript,CopyFormatting,RemoveFormat,Outdent,Indent,CreateDiv,Blockquote,BidiLtr,BidiRtl,Language,Unlink,Anchor,Image,Flash,Table,HorizontalRule,Smiley,SpecialChar,PageBreak,Iframe,Maximize,ShowBlocks,About',
         'format_tags': 'p;h1;h2;h3;h4;h5;h6;pre;address;div',
         'contentsCss': ['/static/admin/css/ckeditor.css'],
     },

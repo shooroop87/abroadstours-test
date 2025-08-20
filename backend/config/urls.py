@@ -1,4 +1,4 @@
-# backend/config/urls.py - ИСПРАВЛЕННАЯ ВЕРСИЯ
+# backend/config/urls.py - ИСПРАВЛЕННАЯ ВЕРСИЯ БЕЗ TOURS APP
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
@@ -75,13 +75,10 @@ if BLOG_AVAILABLE:
 
 # --- Языковые маршруты ---
 urlpatterns += i18n_patterns(
-    # Tours приложение - обрабатывается первым для /tours/ URL-ов
-    path("tours/", include("tours.urls")),
-    
     # Blog приложение - обрабатывается первым для /blog/ URL-ов
     path("blog/", include("blog.urls")),
     
-    # Core приложение - все остальные URL-ы включая главную страницу
+    # Core приложение - все остальные URL-ы включая главную страницу И ТУРЫ
     path("", include("core.urls")),
     
     prefix_default_language=False,
