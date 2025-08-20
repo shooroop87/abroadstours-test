@@ -8,19 +8,19 @@
 {% block content %}
 
 <!-- Breadcrumb -->
-<div data-anim="fade" class="container">
-  <div class="row justify-between py-30 mt-80">
-    <div class="col-auto">
-      <a href="{% url 'index' %}">Home</a> > <a href="{% url 'tour_list' %}">{% trans "Tours" %}</a> > 
+    <div data-anim="fade" class="container">
+      <div class="row justify-between py-30 mt-80">
+        <div class="col-auto">
+ <a href="{% url 'index' %}">Home</a> > <a href="{% url 'tour_list' %}">{% trans "Tours" %}</a> > 
       {% if tour.category %}
         {{ tour.category.safe_translation_getter.name|default:tour.category.name|default:"Tour" }}
       {% else %}
         {% trans "Tour" %}
       {% endif %}
       > {{ tour.safe_translation_getter.title|default:tour.title|default:"Untitled Tour" }}
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 <!-- Tour Header -->
 <section class="">
@@ -71,15 +71,7 @@
             </div>
           </div>
 
-          <!-- ИСПРАВЛЕНО: Добавлено географическое место -->
-          {% if tour.location %}
-          <div class="col-auto">
-            <div class="d-flex items-center">
-              <i class="icon-pin text-16 mr-5"></i>
-              {{ tour.location }}
-            </div>
-          </div>
-          {% elif tour.category %}
+          {% if tour.category %}
           <div class="col-auto">
             <div class="d-flex items-center">
               <i class="icon-pin text-16 mr-5"></i>
@@ -263,47 +255,12 @@
         </div>
         {% endif %}
 
-        <!-- Meeting Points -->
-        {% if tour.tour_meeting_points.all %}
-        <div class="line mt-40 mb-40"></div>
-        <h2 class="text-30">{% trans "Meeting Points" %}</h2>
-        <div class="mt-20">
-          {% for meeting_point in tour.tour_meeting_points.all %}
-          <div class="meeting-location {% if not forloop.last %}mb-20{% endif %}">
-            <p><strong>📍 {{ meeting_point.safe_translation_getter.name }}</strong><br>
-            {{ meeting_point.safe_translation_getter.address }}</p>
-            <p>🕘 Meeting time: <strong>{{ meeting_point.meeting_time }}</strong></p>
-            {% if meeting_point.safe_translation_getter.description %}
-            <p>{{ meeting_point.safe_translation_getter.description }}</p>
-            {% endif %}
-            {% if meeting_point.google_maps_url %}
-            <a href="{{ meeting_point.google_maps_url }}" target="_blank" rel="noopener noreferrer">
-              Open in Google Maps
-            </a>
-            {% endif %}
-          </div>
-          {% if not forloop.last %}
-          <hr style="margin: 20px 0; border: none; border-top: 1px solid #ddd;">
-          {% endif %}
-          {% endfor %}
-        </div>
-        {% endif %}
-
-        <!-- Private Tours Available -->
-        {% if tour.safe_translation_getter.private_tour_info %}
-        <div class="line mt-40 mb-40"></div>
-        <h2 class="text-30">{% trans "Private Tours Available" %}</h2>
-        <div style="border: 1.5px solid #c7a17a; background-color: #f8f5f1; padding: 15px 20px; border-radius: 8px; margin: 30px 0; font-style: italic; color: #5a4a32; font-size: 1rem;">
-          {{ tour.safe_translation_getter.private_tour_info|safe }}
-        </div>
-        {% endif %}
-<!-- FAQ Section -->
+        <!-- FAQ Section -->
         {% if tour.faqs.all %}
         <div class="line mt-40 mb-40"></div>
         <h2 class="text-30">{% trans "Frequently Asked Questions" %}</h2>
         <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
           {% for faq in tour.faqs.all %}
-          {% if faq.is_active %}
           <div class="col-12">
             <div class="accordion__item px-20 py-15 border-1 rounded-12">
               <div class="accordion__button d-flex items-center justify-between">
@@ -320,7 +277,47 @@
               </div>
             </div>
           </div>
-          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Meeting Points -->
+        {% if tour.tour_meeting_points.all %}
+        <div class="line mt-40 mb-40"></div>
+        <h2 class="text-30">{% trans "Meeting Points" %}</h2>
+        <div class="mt-20">
+          {% for meeting_point in tour.tour_meeting_points.all %}
+          <div class="tourSingleCard -meeting-point {% if not forloop.last %}mb-20{% endif %}">
+            <div class="tourSingleCard__content">
+              <div class="d-flex items-center mb-15">
+                <i class="icon-pin text-20 text-accent-1 mr-10"></i>
+
+                <h4 class="text-18 fw-500">{{ meeting_point.safe_translation_getter.translations.name }}</h4>
+                {% if meeting_point.is_primary %}
+                <span class="button -sm -accent-1 bg-accent-1-05 text-accent-1 ml-10">{% trans "Primary" %}</span>
+                {% endif %}
+              </div>
+              
+              <div class="d-flex items-center mb-10">
+                <i class="icon-clock text-16 text-light-2 mr-10"></i>
+                <span class="text-15">{{ meeting_point.meeting_time }}</span>
+              </div>
+              
+              <div class="text-15 mb-10">{{ meeting_point.safe_translation_getter.address }}</div>
+              
+              {% if meeting_point.safe_translation_getter.description %}
+              <div class="text-14 text-light-2">{{ meeting_point.safe_translation_getter.description }}</div>
+              {% endif %}
+              
+              {% if meeting_point.google_maps_url %}
+              <div class="mt-15">
+                <a href="{{ meeting_point.google_maps_url }}" target="_blank" rel="noopener" class="button -sm -outline-accent-1 text-accent-1">
+                  {% trans "View on Google Maps" %}
+                </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
           {% endfor %}
         </div>
         {% endif %}
@@ -335,6 +332,7 @@
           {% if tour.reviews_count > 0 %}
           <div class="col-12">
             <div class="row x-gap-40 y-gap-40">
+
               <div class="col-lg-12">
                 <!-- Individual Reviews -->
                 {% for review in tour.reviews.all %}
@@ -421,15 +419,65 @@
       </div>
 
       <!-- Booking Sidebar -->
-      <div class="col-lg-4">
-        <div class="d-flex justify-end js-pin-content">
-          <div class="tourSingleSidebar">
-            {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
-                {{ tour.booking_code.html_code|safe }}
-            {% endif %}
+<div class="col-lg-4">
+            <div class="d-flex justify-end js-pin-content">
+              <div class="tourSingleSidebar">
+                {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
+                    {{ tour.booking_code.html_code|safe }}
+                {% endif %}
+              </div>
+            </div>
           </div>
+<!-- Мобильный фиксированный бар бронирования -->
+    <div class="booking-cta-wrapper only-mobile">
+        <div class="booking-cta-content">
+            <div class="booking-price-text">€159 per adult</div>
+            <button id="openBooking" type="button" class="booking-cta-button">
+                <span>Check availability</span>
+            </button>
         </div>
-      </div>
+    </div>
+
+    <!-- Модальное окно бронирования -->
+    <div id="bookingModal" class="booking-modal">
+        <div class="booking-modal__header">
+            <button id="closeBooking" class="button -sm -outline-accent-1">Close</button>
+        </div>
+        <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
+                {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
+                    {{ tour.booking_code.html_code|safe }}
+                {% endif %}
+        </div>
+    </div>
+
+    <script>
+        // Функционал мобильного модального окна
+        document.getElementById("openBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.add("open");
+            document.body.classList.add("modal-open");
+        });
+
+        document.getElementById("closeBooking").addEventListener("click", function () {
+            document.getElementById("bookingModal").classList.remove("open");
+            document.body.classList.remove("modal-open");
+        });
+
+        // Закрытие модалки по клику вне области (опционально)
+        document.getElementById("bookingModal").addEventListener("click", function (e) {
+            if (e.target === this) {
+                this.classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+
+        // Закрытие модалки по нажатию Escape
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                document.getElementById("bookingModal").classList.remove("open");
+                document.body.classList.remove("modal-open");
+            }
+        });
+    </script>
     </div>
   </div>
 </section>
@@ -535,7 +583,7 @@
   <div class="booking-modal__header">
     <button id="closeBooking" class="button -sm -outline-accent-1">{% trans "Close" %}</button>
   </div>
-  <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5;">
+  <div style="flex: 1; display: flex; align-items: center; justify-content: center; background: #f5f5f5; color: #666;">
     {% if tour.booking_code and tour.booking_code.is_active and tour.booking_code.html_code %}
       {{ tour.booking_code.html_code|safe }}
     {% else %}
@@ -618,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Schema.org structured data for SEO -->
+<!-- Schema.org structured data for SEO - ИСПРАВЛЕННАЯ ВЕРСИЯ -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

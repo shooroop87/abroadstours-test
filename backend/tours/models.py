@@ -1,4 +1,4 @@
-# backend/tours/models.py - ИСПРАВЛЕННАЯ ВЕРСИЯ
+# backend/tours/models.py - ИСПРАВЛЕННАЯ ВЕРСИЯ БЕЗ КОНФЛИКТОВ
 import logging
 import os
 from django.db import models
@@ -41,7 +41,6 @@ class TourCategory(TranslatableModel):
     def get_absolute_url(self):
         slug = self.safe_translation_getter('slug', any_language=True)
         if slug:
-            # ИСПРАВЛЕНО: убрали namespace
             return reverse('tour_category', kwargs={'slug': slug})
         return '#'
 
@@ -88,6 +87,14 @@ class Tour(TranslatableModel):
     
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     tour_type = models.CharField(max_length=20, choices=TOUR_TYPE_CHOICES, default='custom')
+    
+    # ДОБАВЛЯЕМ: Географическое место тура
+    location = models.CharField(
+        max_length=200, 
+        blank=True,
+        help_text="Geographic location (e.g., 'Alba, Piedmont, Italy')",
+        verbose_name="Tour Location"
+    )
     
     # Базовые характеристики тура
     duration_hours = models.IntegerField(default=8, help_text="Duration in hours")
@@ -157,7 +164,7 @@ class Tour(TranslatableModel):
         title = self.safe_translation_getter('title', any_language=True)
         return title or f"Tour {self.pk}"
     
-    # Переводимые поля - УБРАЛИ meeting_points отсюда!
+    # Переводимые поля
     translations = TranslatedFields(
         title=models.CharField(max_length=200, verbose_name="Tour Title"),
         slug=models.SlugField(max_length=250, unique=True, verbose_name="URL Slug"),
@@ -199,8 +206,7 @@ class Tour(TranslatableModel):
             help_text="List of services not included in the price"
         ),
         
-        # УБРАЛИ meeting_points отсюда - оно будет через ForeignKey в TourMeetingPoint!
-        
+        # ДОБАВЛЯЕМ: Private Tour Information
         private_tour_info=RichTextUploadingField(
             blank=True,
             verbose_name="Private Tour Information",
@@ -237,7 +243,6 @@ class Tour(TranslatableModel):
             else:
                 slug = f"tour-{self.pk}"
         
-        # ИСПРАВЛЕНО: убрали namespace 'tours:'
         # Проверяем, есть ли статичный URL для этого тура
         static_tours_mapping = {
             'barolo-wine-tasting-tour-from-milan-alba': 'alba_barolo_tour',
@@ -403,8 +408,8 @@ class TourReview(TranslatableModel):
 
 
 class TourMeetingPoint(TranslatableModel):
-    """Точки встречи для тура - ИСПРАВЛЕНО related_name"""
-    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='tour_meeting_points')
+    """Точки встречи для тура - ИСПРАВЛЕНО: используем 'meeting_points' вместо 'tour_meeting_points'"""
+    tour = models.ForeignKey(Tour, on_delete=models.CASCADE, related_name='meeting_points')
     
     # Время встречи
     meeting_time = models.TimeField(help_text="Meeting time (e.g., 08:55)")
