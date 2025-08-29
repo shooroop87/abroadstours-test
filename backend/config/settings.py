@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     # Ваши приложения
     "core",
     "blog",
-    #"tours",
+    "tours",
     # Остальные зависимости
     "parler",
     "ckeditor",

@@ -1,0 +1,249 @@
+/* backend/core/static/css/mobile-tour-fixes.css */
+
+/* Исправления для мобильного меню и WhatsApp кнопки */
+.menu {
+    z-index: 1000;
+}
+
+.menu.is-active {
+    z-index: 1001;
+}
+
+/* WhatsApp кнопка должна быть видна даже при открытом меню */
+.ht-ctc {
+    z-index: 999 !important;
+}
+
+/* Но скрываем её когда открыт booking modal */
+.booking-modal.open ~ .ht-ctc {
+    display: none !important;
+}
+
+/* Мобильная панель бронирования */
+.booking-cta-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 998;
+    display: none;
+    border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .booking-cta-wrapper.only-mobile {
+        display: block;
+    }
+    
+    /* Добавляем отступ снизу для контента чтобы не перекрывала панель */
+    .layout-pb-xl {
+        padding-bottom: 100px !important;
+    }
+}
+
+/* Когда открыто мобильное меню, скрываем booking bar */
+.menu.is-active ~ .booking-cta-wrapper {
+    display: none !important;
+}
+
+.booking-cta-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+
+.booking-price-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #0073aa;
+    flex: 1;
+}
+
+.booking-cta-button {
+    background: #0073aa;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    min-width: 140px;
+}
+
+.booking-cta-button:hover {
+    background: #005177;
+}
+
+/* Модальное окно бронирования */
+.booking-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+}
+
+.booking-modal.open {
+    display: flex;
+}
+
+.booking-modal__header {
+    padding: 15px 20px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.booking-modal__content {
+    flex: 1;
+    background: #f5f5f5;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* FAQ аккордеон исправления */
+.accordion__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion__item.is-active .accordion__content {
+    max-height: 1000px;
+}
+
+.accordion__icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion__item.is-active .accordion__icon {
+    transform: rotate(45deg);
+}
+
+/* Исправления для галереи */
+.tourSingleGrid__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tourSingleGrid__grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.tourSingleGrid__grid img:hover {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .tourSingleGrid__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tourSingleGrid__grid img {
+        height: 250px;
+    }
+}
+
+/* Исправления для карточек отзывов */
+.tourSingleCard.-review {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Кнопки навигации для слайдера */
+.navAbsolute__button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navAbsolute__button:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.navAbsolute__button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Улучшения для мобильных устройств */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 28px !important;
+        line-height: 1.2;
+    }
+    
+    .text-30 {
+        font-size: 24px !important;
+    }
+    
+    .text-40 {
+        font-size: 28px !important;
+    }
+    
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .row.y-gap-30 > * {
+        margin-bottom: 20px;
+    }
+    
+    .tourCard {
+        margin-bottom: 20px;
+    }
+}
+
+/* Исправления для кнопок */
+.button {
+    transition: all 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-1px);
+}
+
+.button.-dark-1.bg-accent-1 {
+    background-color: #0073aa;
+    border-color: #0073aa;
+}
+
+.button.-dark-1.bg-accent-1:hover {
+    background-color: #005177;
+    border-color: #005177;
+}

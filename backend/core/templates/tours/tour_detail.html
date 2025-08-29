@@ -194,7 +194,7 @@
           </div>
         </div>
 
-        <!-- Tour Highlights -->
+        <!-- Tour Highlights - ИСПРАВЛЕНО -->
         {% if tour.safe_translation_getter.tour_highlights %}
         <h2 class="text-30">{% trans "Tour Highlights" %}</h2>
         <div class="mt-20">
@@ -202,24 +202,24 @@
         </div>
         {% endif %}
 
-        <!-- Why This Tour Is Unique -->
+        <!-- Why This Tour Is Unique - ИСПРАВЛЕНО -->
         {% if tour.safe_translation_getter.why_unique %}
-        <h2 class="text-30 mt-40">{% trans "Why This Tour Is Unique" %}</h2>
+        <h3>{% trans "Why This Tour Is Unique" %}</h3>
         <div class="mt-20">
           {{ tour.safe_translation_getter.why_unique|safe }}
         </div>
         {% endif %}
 
-        <!-- What You'll Experience -->
+        <!-- What You'll Experience - ИСПРАВЛЕНО -->
         {% if tour.safe_translation_getter.what_experience %}
         <div class="line mt-40 mb-40"></div>
-        <h2 class="text-30">{% trans "What You'll Experience" %}</h2>
+        <h3>{% trans "What You'll Experience" %}</h3>
         <div class="mt-20">
           {{ tour.safe_translation_getter.what_experience|safe }}
         </div>
         {% endif %}
 
-        <!-- What's Included / Not Included -->
+        <!-- What's Included / Not Included - ИСПРАВЛЕНО -->
         {% if tour.safe_translation_getter.whats_included or tour.safe_translation_getter.whats_not_included %}
         <div class="line mt-40 mb-40"></div>
         <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
@@ -263,12 +263,12 @@
         </div>
         {% endif %}
 
-        <!-- Meeting Points -->
-        {% if tour.tour_meeting_points.all %}
+        <!-- Meeting Points - ИСПРАВЛЕНО: используем meeting_points -->
+        {% if tour.meeting_points.all %}
         <div class="line mt-40 mb-40"></div>
-        <h2 class="text-30">{% trans "Meeting Points" %}</h2>
+        <h3>{% trans "Meeting Points" %}</h3>
         <div class="mt-20">
-          {% for meeting_point in tour.tour_meeting_points.all %}
+          {% for meeting_point in tour.meeting_points.all %}
           <div class="meeting-location {% if not forloop.last %}mb-20{% endif %}">
             <p><strong>📍 {{ meeting_point.safe_translation_getter.name }}</strong><br>
             {{ meeting_point.safe_translation_getter.address }}</p>
@@ -289,18 +289,19 @@
         </div>
         {% endif %}
 
-        <!-- Private Tours Available -->
+        <!-- Private Tours Available - ИСПРАВЛЕНО -->
         {% if tour.safe_translation_getter.private_tour_info %}
         <div class="line mt-40 mb-40"></div>
-        <h2 class="text-30">{% trans "Private Tours Available" %}</h2>
+        <h3>{% trans "Private Tours Available" %}</h3>
         <div style="border: 1.5px solid #c7a17a; background-color: #f8f5f1; padding: 15px 20px; border-radius: 8px; margin: 30px 0; font-style: italic; color: #5a4a32; font-size: 1rem;">
           {{ tour.safe_translation_getter.private_tour_info|safe }}
         </div>
         {% endif %}
-<!-- FAQ Section -->
+
+        <!-- FAQ Section - ИСПРАВЛЕНО -->
         {% if tour.faqs.all %}
         <div class="line mt-40 mb-40"></div>
-        <h2 class="text-30">{% trans "Frequently Asked Questions" %}</h2>
+        <h3>{% trans "Frequently Asked Questions" %}</h3>
         <div class="accordion -simple row y-gap-20 mt-30 js-accordion">
           {% for faq in tour.faqs.all %}
           {% if faq.is_active %}
@@ -329,7 +330,7 @@
         <div class="line mt-40 mb-40"></div>
         <div id="reviews" class="row y-gap-40">
           <div class="col-12">
-            <h2 class="text-30">{% trans "Customer Reviews" %} ({{ tour.reviews_count }})</h2>
+            <h3>{% trans "Customer Reviews" %} ({{ tour.reviews_count }})</h3>
           </div>
 
           {% if tour.reviews_count > 0 %}
@@ -469,7 +470,9 @@
               <div class="tourCard__content px-10 pt-10">
                 <div class="tourCard__location d-flex items-center text-13 text-light-2">
                   <i class="icon-pin d-flex text-16 text-light-2 mr-5"></i>
-                  {% if related_tour.category %}
+                  {% if related_tour.location %}
+                    {{ related_tour.location }}
+                  {% elif related_tour.category %}
                     {{ related_tour.category.safe_translation_getter.name }}
                   {% else %}
                     {{ related_tour.get_tour_type_display }}
@@ -556,6 +559,86 @@
   </div>
 </div>
 
+<!-- ДОБАВЛЯЕМ CSS для решения проблем с мобильным меню -->
+<style>
+/* Исправляем проблему с мобильным меню и WhatsApp кнопкой */
+.menu.is-active ~ .ht-ctc {
+    z-index: 999 !important;
+}
+
+.booking-cta-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 10px 20px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 998;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .booking-cta-wrapper.only-mobile {
+        display: block;
+    }
+}
+
+/* Когда открыто мобильное меню, скрываем booking bar */
+.menu.is-active ~ .booking-cta-wrapper {
+    display: none !important;
+}
+
+.booking-cta-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 1;
+}
+
+.booking-price-text {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.booking-cta-button {
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.booking-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 1001;
+    display: none;
+    flex-direction: column;
+}
+
+.booking-modal.open {
+    display: flex;
+}
+
+.booking-modal__header {
+    padding: 15px 20px;
+    background: white;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+</style>
+
 <script>
 // Simple utility functions for tour page
 document.addEventListener('DOMContentLoaded', function() {
@@ -625,6 +708,12 @@ document.addEventListener('DOMContentLoaded', function() {
   "@type": "TouristTrip",
   "name": "{{ tour.safe_translation_getter.title|escapejs }}",
   "description": "{{ tour.safe_translation_getter.short_description|escapejs }}",
+  {% if tour.location %}
+  "location": {
+    "@type": "Place",
+    "name": "{{ tour.location|escapejs }}"
+  },
+  {% endif %}
   "provider": {
     "@type": "Organization",
     "name": "Abroads Tours",
